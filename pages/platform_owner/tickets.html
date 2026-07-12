@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Tickets & Requests</title>
+    <meta name="description" content="Plan, register, and connect your corporate events with EventHub. The all-in-one event management platform for enterprise organizations, organizers, and attendees.">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/platform_owner/tickets.css">
+</head>
+<body>
+
+    <!-- Nav Bar Section -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="font-weight: 700; font-size: 1.15rem;"><a href="#" class="logo-link">EventHub</a></div>
+            <div class="user-menu">
+                <span>Platform Owner</span>
+                <span class="divider">|</span>
+                <span class="user-role">Admin <span class="caret">▼</span></span>
+
+                <a href="../../index.html" class="logout-link">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container for the entire Billing Features -->
+    <div class="layout-wrapper">
+        
+        <!-- Side Bar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">Dashboard</a>
+                <a href="organizers.html" class="nav-item">Organizers</a>
+                <a href="billing.html" class="nav-item">Billing & Invoices</a>
+                <a href="#" class="nav-item active">Tickets & Requests</a>
+            </nav>
+        </aside>
+
+        <!-- Wrapper for Tickets page content -->
+        <main class="dashboard-content">
+            <h1 class="page-title">Tickets & Requests</h1>
+
+            <div class="tickets-workspace">
+                
+                <!-- Ticket list stack -->
+                <div class="tickets-list-panel">
+                    <div class="ticket-item active">
+                        <div class="ticket-meta"><strong>#TCK-1042</strong> — Open</div>
+                        <div class="ticket-company">Acme Events Co.</div>
+                        <div class="ticket-subject">Can't edit event capacity</div>
+                    </div>
+                    
+                    <div class="ticket-item">
+                        <div class="ticket-meta"><strong>#TCK-1039</strong> — Open</div>
+                        <div class="ticket-company">Initech PH</div>
+                        <div class="ticket-subject">Request: add 3 more admins</div>
+                    </div>
+                    
+                    <div class="ticket-item">
+                        <div class="ticket-meta"><strong>#TCK-1031</strong> — In Progress</div>
+                        <div class="ticket-company">Northwind Corp.</div>
+                        <div class="ticket-subject">Invoice discrepancy</div>
+                    </div>
+                    
+                    <div class="ticket-item">
+                        <div class="ticket-meta"><strong>#TCK-1020</strong> — Resolved</div>
+                        <div class="ticket-company">Globex Holdings</div>
+                        <div class="ticket-subject">Reactivate account</div>
+                    </div>
+                </div>
+
+                <!-- Ticket details section -->
+                <div class="ticket-detail-panel">
+                    <h2 class="detail-header">#TCK-1042 — Can't edit event capacity</h2>
+                    
+                    <div class="detail-sub-meta">
+                        From: <span class="text-dark">Acme Events Co.</span> 
+                        <span class="dot-divider">•</span> Opened: 3 days ago 
+                        <span class="dot-divider">•</span> Status: Open
+                    </div>
+
+                    
+                    <div class="message-display-box">
+                        <p class="message-quote">“We're trying to raise our event capacity from 200 to 350 but the field won't save. Can someone check?”</p>
+                    </div>
+
+                    
+                    <form class="response-form" onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label for="userResponse" class="response-label">Your Response</label>
+                            <textarea id="userResponse" class="form-textarea"></textarea>
+                        </div>
+                        
+                        <div class="response-actions">
+                            <button type="submit" class="btn btn-dark action-btn">Send Response</button>
+                            <button type="button" class="btn btn-outline action-btn">Mark Resolved</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

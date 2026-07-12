@@ -1,0 +1,477 @@
+/* ================================================================
+   Login Modal — Glassmorphic Dark Theme
+   Open/close: CSS :target pseudo-class (zero JavaScript).
+   Validation:  Native HTML5 constraints + :user-invalid (modern
+                CSS — errors surface only after user interaction,
+                preventing premature error flash on page load).
+   ================================================================ */
+
+
+/* ── Design Tokens ─────────────────────────────────────────────── */
+:root {
+    /* Inherited from global.css — redeclared here for portability */
+    --bg-main:            #050811;
+
+    --panel-bg:           rgba(255, 255, 255, 0.02);
+    --panel-border:       rgba(255, 255, 255, 0.06);
+
+    --accent-blue:        #64b5f6;
+    --accent-blue-muted:  #26476b;
+    --text-main:          #f0f4f8;
+    --text-muted:         #8a9cb2;
+
+    /* Modal-specific tokens */
+    --modal-top-glow:     rgba(100, 181, 246, 0.55);
+    --input-bg:           rgba(255, 255, 255, 0.05);
+    --input-border:       rgba(255, 255, 255, 0.10);
+    --input-focus-glow:   rgba(100, 181, 246, 0.18);
+    --error-color:        #ef5350;
+    --error-border:       rgba(239, 83, 80, 0.65);
+    --error-glow:         rgba(239, 83, 80, 0.16);
+    --valid-border:       rgba(100, 181, 246, 0.40);
+}
+
+
+/* ── Overlay ────────────────────────────────────────────────────── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity    0.28s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Dimmed, blurred backdrop rendered as a pseudo-element so it
+   never intercepts pointer events intended for the card. */
+.modal-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 8, 17, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 0;
+}
+
+/* Active state — triggered by any <a href="#login-modal"> */
+.modal-overlay:target {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+/* Invisible close area that fills the overlay behind the card */
+.modal-backdrop {
+    position: absolute;
+    inset: 0;
+    display: block;
+    z-index: 0;
+    cursor: default;
+    text-decoration: none;
+}
+
+
+/* ── Card ───────────────────────────────────────────────────────── */
+.modal-card {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+    padding: 2.25rem 2rem 2rem;
+    border-radius: 16px;
+
+    /* Glassmorphic surface — mirrors .glass-panel conventions */
+    background: linear-gradient(
+        150deg,
+        rgba(255, 255, 255, 0.055) 0%,
+        rgba(255, 255, 255, 0.018) 100%
+    );
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+
+    /* Layered shadows: inner highlight border + outer depth */
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.13),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 24px 64px rgba(0, 0, 0, 0.55),
+        0 0 80px  rgba(100, 181, 246, 0.04);
+
+    /* Entrance animation — card eases up from slightly below */
+    transform: translateY(20px) scale(0.97);
+    transition: transform 0.34s cubic-bezier(0.34, 1.38, 0.64, 1);
+}
+
+.modal-overlay:target .modal-card {
+    transform: translateY(0) scale(1);
+}
+
+/* Decorative hairline glow along the top edge of the card */
+.modal-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--modal-top-glow),
+        transparent
+    );
+    border-radius: 0 0 4px 4px;
+    pointer-events: none;
+}
+
+
+/* ── Close Button ───────────────────────────────────────────────── */
+.modal-close {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    text-decoration: none;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+        color        0.2s ease,
+        background   0.2s ease,
+        border-color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: var(--text-main);
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.20);
+}
+
+.modal-close:focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 3px;
+}
+
+
+/* ── Header ─────────────────────────────────────────────────────── */
+.modal-header {
+    margin-bottom: 1.75rem;
+    text-align: center;
+}
+
+.modal-logo {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    opacity: 0.80;
+    margin-bottom: 0.9rem;
+}
+
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-main);
+    margin: 0 0 0.35rem;
+}
+
+.modal-subtitle {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+
+/* ── Form Layout ────────────────────────────────────────────────── */
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.forgot-link {
+    font-size: 0.77rem;
+    color: var(--accent-blue);
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.forgot-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+}
+
+
+/* ── Input Wrapper + Icon ───────────────────────────────────────── */
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-icon {
+    position: absolute;
+    left: 0.8rem;
+    color: var(--text-muted);
+    opacity: 0.60;
+    pointer-events: none;
+    flex-shrink: 0;
+    transition:
+        color   0.2s ease,
+        opacity 0.2s ease;
+}
+
+/* Icon turns accent-blue while the sibling input is focused */
+.input-wrapper:focus-within .input-icon {
+    color: var(--accent-blue);
+    opacity: 1;
+}
+
+/* Icon turns error-red when the input is :user-invalid */
+.form-group:has(.form-input:user-invalid) .input-icon {
+    color: var(--error-color);
+    opacity: 0.85;
+}
+
+
+/* ── Input ──────────────────────────────────────────────────────── */
+.form-input {
+    width: 100%;
+    padding: 0.68rem 0.875rem 0.68rem 2.45rem;
+    font-size: 0.9rem;
+    font-family: inherit;
+    color: var(--text-main);
+    background: var(--input-bg);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow   0.2s ease,
+        background   0.2s ease;
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.50;
+}
+
+/* Focus state */
+.form-input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px var(--input-focus-glow);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+
+/* ── Validation States (:user-invalid fires only after user interaction) */
+
+/* Valid: subtle blue tint once the field is correct */
+.form-input:user-valid:not(:placeholder-shown) {
+    border-color: var(--valid-border);
+}
+
+/* Invalid: red border + ambient glow */
+.form-input:user-invalid {
+    border-color: var(--error-border);
+    box-shadow: 0 0 0 3px var(--error-glow);
+    background: rgba(239, 83, 80, 0.03);
+}
+
+/* Preserve error border even when re-focused */
+.form-input:user-invalid:focus {
+    border-color: var(--error-border);
+    box-shadow: 0 0 0 3px var(--error-glow);
+}
+
+
+/* ── Inline Error Message ───────────────────────────────────────── */
+.field-error {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--error-color);
+    padding-left: 0.2rem;
+
+    /* Collapsed by default — animate open via max-height */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+        max-height 0.22s ease,
+        opacity    0.22s ease;
+}
+
+/* :has() lets us reach .field-error from outside the input-wrapper */
+.form-group:has(.form-input:user-invalid) .field-error {
+    max-height: 2.5rem;
+    opacity: 1;
+}
+
+
+/* ── Submit Button ──────────────────────────────────────────────── */
+.modal-submit {
+    margin-top: 0.4rem;
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-family: inherit;
+    color: #050811;
+    background: var(--accent-blue);
+    border: 1px solid var(--accent-blue);
+    border-radius: 8px;
+    cursor: pointer;
+    transition:
+        background 0.22s ease,
+        box-shadow 0.22s ease,
+        transform  0.14s ease;
+}
+
+.modal-submit:hover {
+    background: #90caf9;
+    box-shadow:
+        0 0 24px rgba(100, 181, 246, 0.45),
+        0 4px  12px rgba(0, 0, 0, 0.30);
+}
+
+.modal-submit:active {
+    transform: scale(0.98);
+}
+
+.modal-submit:focus-visible {
+    outline: 2px solid var(--accent-blue);
+    outline-offset: 3px;
+}
+
+
+/* ── Modal Footer ───────────────────────────────────────────────── */
+.modal-footer-text {
+    margin-top: 1.2rem;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+.footer-link {
+    color: var(--accent-blue);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.footer-link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Split Layout Engine setup */
+.splitter-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    min-height: calc(100vh - 80px);
+}
+
+.left-side {
+    text-align: center;
+    width: 100%;
+}
+
+.left-side h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+}
+
+.right-side {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Modifies existing modal card configuration for safe inline static nesting */
+.inline-login-card {
+    transform: none !important;
+    box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.13),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 12px 40px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Desktop Adaptive Media Rules */
+@media (min-width: 992px) {
+    .splitter-layout {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .left-side {
+        text-align: left;
+        width: 50%;
+    }
+
+    .left-side h1 {
+        font-size: 4rem;
+    }
+
+    .right-side {
+        width: 50%;
+        justify-content: flex-end;
+    }
+}
+
+
+/* ── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .modal-card {
+        padding: 1.75rem 1.25rem 1.5rem;
+        border-radius: 12px;
+    }
+
+    .modal-title {
+        font-size: 1.3rem;
+    }
+}

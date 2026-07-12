@@ -1,0 +1,213 @@
+.logo-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.attendee-profile {
+    font-size: 0.85rem;
+    color: var(--text-main); 
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.profile-caret {
+    font-size: 0.65rem;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+.registration-container {
+    padding: 1.5rem 1rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.event-summary-card {
+    padding: 1.5rem;
+    margin-bottom: 2.5rem; 
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background-color: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.event-display-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main); 
+    margin-bottom: 0.75rem;
+}
+
+.event-display-meta {
+    font-size: 0.88rem;
+    color: var(--text-muted); 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.meta-divider {
+    color: rgba(255, 255, 255, 0.2); 
+    margin: 0 0.25rem;
+}
+
+.form-section-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-main); 
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    width: 100%;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    color: var(--text-muted); 
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.95rem;
+    outline: none;
+    height: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--text-main);
+    transition: all 0.2s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.form-input::placeholder {
+    color: rgba(138, 156, 178, 0.5);
+}
+
+.form-input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 10px rgba(100, 181, 246, 0.15);
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Valid state — subtle accent border */
+.form-input:user-valid:not(:placeholder-shown) {
+    border-color: rgba(100, 181, 246, 0.50);
+    box-shadow: 0 0 8px rgba(100, 181, 246, 0.10);
+}
+
+/* Invalid state — error styling */
+.form-input:user-invalid {
+    border-color: rgba(239, 83, 80, 0.70);
+    background-color: rgba(239, 83, 80, 0.04);
+    box-shadow: 0 0 12px rgba(239, 83, 80, 0.18);
+}
+
+.form-input:user-invalid:focus {
+    border-color: rgba(239, 83, 80, 0.70);
+    box-shadow: 0 0 12px rgba(239, 83, 80, 0.18);
+}
+
+.form-actions {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+/* ── Validation Error Messages ─────────────────────────────────── */
+.field-error {
+    display: block;
+    font-size: 0.75rem;
+    color: #ef5350;
+    padding: 0.4rem 0.2rem 0 0.2rem;
+    
+    /* Collapsed by default */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.2s ease, opacity 0.2s ease;
+}
+
+/* Show error container when sibling input is :user-invalid */
+.form-group:has(.form-input:user-invalid) .field-error {
+    max-height: 3rem;
+    opacity: 1;
+}
+
+/* ── Submit Button Disabled State ───────────────────────────────── */
+/* Disable button styling when form has invalid fields */
+.registration-form:invalid .btn-dark.action-btn {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Enable button styling when form is valid */
+.registration-form:valid .btn-dark.action-btn {
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.action-btn {
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+@media (min-width: 768px) {
+    .registration-container {
+        padding: 2.5rem 3rem;
+    }
+
+    .event-summary-card {
+        padding: 2rem 2.5rem;
+    }
+
+    .form-row {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .form-row .form-group {
+        flex: 1;
+    }
+
+    .form-actions {
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .form-actions .btn {
+        width: auto;
+        min-width: 180px;
+    }
+}

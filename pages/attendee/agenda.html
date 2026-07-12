@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Tech Summit 2026</title>
+    <meta name="description" content="Plan, register, and connect your corporate events with EventHub. The all-in-one event management platform for enterprise organizations, organizers, and attendees.">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/attendee/agenda.css">
+</head>
+<body>
+
+    <!-- Nav Bar Section -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="font-weight: 700; font-size: 1.15rem;">
+                <a href="#" class="logo-link">EventHub</a>
+            </div>
+            <div class="user-menu-right">
+                <span>Tech Summit 2026</span>
+                <span class="header-divider">|</span>
+                <span class="profile-dropdown">Juan Dela Cruz <span class="profile-caret">▼</span></span>
+
+            </div>
+                <div class="user-menu"><a href="../../index.html" class="logout-link">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="workspace-container">
+        <div class="workspace-grid">
+            
+            <!-- Vertical Agenda Stack -->
+            <section class="agenda-section">
+                <h1 class="section-title">Agenda</h1>
+                <div class="agenda-timeline">
+                    
+                    <div class="agenda-card">
+                        <div class="agenda-time">9:00 AM</div>
+                        <div class="agenda-details">Registration & Welcome Coffee</div>
+                    </div>
+
+                    <div class="agenda-card">
+                        <div class="agenda-time">9:30 AM</div>
+                        <div class="agenda-details">Opening Keynote — Main Hall</div>
+                    </div>
+
+                    <div class="agenda-card">
+                        <div class="agenda-time">10:45 AM</div>
+                        <div class="agenda-details">Breakout: Cloud Architecture</div>
+                    </div>
+
+                    <div class="agenda-card">
+                        <div class="agenda-time">1:00 PM</div>
+                        <div class="agenda-details">Lunch & Networking</div>
+                    </div>
+
+                    <div class="agenda-card">
+                        <div class="agenda-time">2:00 PM</div>
+                        <div class="agenda-details">Panel: The Future of AI</div>
+                    </div>
+
+                    <div class="agenda-card">
+                        <div class="agenda-time">4:00 PM</div>
+                        <div class="agenda-details">Closing Remarks</div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Sidebar of the Attendees and Message to Organizer-->
+            <section class="sidebar-widgets-section">
+                
+                <!-- Attendees List -->
+                <div class="widget-card attendees-widget">
+                    <h2 class="section-title widget-title">Attendees</h2>
+                    <div class="attendees-panel-box">
+                        <ul class="attendee-list">
+                            <li class="attendee-item">
+                                <div class="avatar-placeholder"><img src="../../assets/attendee/attendee_50x50.png" alt="Attendee Icon" class="attendee-avatar-img"></div>
+                                <span class="attendee-info">Maria Santos — <span class="text-muted">Acme Events Co.</span></span>
+                            </li>
+                            <li class="attendee-item">
+                                <div class="avatar-placeholder"><img src="../../assets/attendee/attendee_50x50.png" alt="Attendee Icon" class="attendee-avatar-img"></div>
+                                <span class="attendee-info">Liam Cruz — <span class="text-muted">Northwind Corp.</span></span>
+                            </li>
+                            <li class="attendee-item">
+                                <div class="avatar-placeholder"><img src="../../assets/attendee/attendee_50x50.png" alt="Attendee Icon" class="attendee-avatar-img"></div>
+                                <span class="attendee-info">Ana Reyes — <span class="text-muted">Initech PH</span></span>
+                            </li>
+                            <li class="attendee-item meta-item">
+                                <div class="avatar-placeholder"><img src="../../assets/attendee/attendee_50x50.png" alt="Attendee Icon" class="attendee-avatar-img"></div>
+                                <span class="attendee-info italic-text">+ 118 more attendees</span>
+                            </li>
+                        </ul>
+                        <a href="#" class="btn btn-dark widget-btn">View All & Connect</a>
+                    </div>
+                </div>
+
+                <!-- Venue Map Widget -->
+                <div class="widget-card map-widget">
+                    <h2 class="section-title widget-title">Venue</h2>
+                    <div class="map-widget-box">
+
+                        <div class="map-container">
+
+                            <!-- Scroll-trap activation toggle.
+                                 Overlay is visible by default. First click dismisses it and
+                                 enables pointer events on the iframe — no JavaScript needed. -->
+                            <input type="checkbox" id="map-activate" class="map-toggle">
+
+                            <!-- Overlay: full-coverage label that dismisses on click -->
+                            <label for="map-activate" class="map-overlay" aria-label="Click to interact with map">
+                                <svg class="map-overlay-icon"
+                                     xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                                     aria-hidden="true">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                                    <circle cx="12" cy="9" r="2.5"></circle>
+                                </svg>
+                                <span class="map-overlay-text">Click to Interact</span>
+                            </label>
+
+                            <!-- Venue pin — sits above the overlay (z-index:3)
+                                 so it is clickable even before the map is activated -->
+                            <div class="map-pin-wrapper">
+                                <input type="checkbox" id="pin-main-hall" class="pin-toggle">
+                                <label for="pin-main-hall" class="map-pin" aria-label="View Main Hall details">
+                                    <span class="pin-pulse"></span>
+                                </label>
+                                <!-- Popup slides up from the pin on :checked -->
+                                <div class="popup-card">
+                                    <label for="pin-main-hall" class="popup-close" aria-label="Close venue info">&#x2715;</label>
+                                    <p class="popup-title">Main Hall</p>
+                                    <p class="popup-detail">Building A &mdash; Tech Zone</p>
+                                    <p class="popup-detail">Makati Convention Center</p>
+                                </div>
+                            </div>
+
+                            <!-- Google Maps iframe — dark-filtered via CSS,
+                                 pointer-events disabled until overlay is dismissed -->
+
+                            <!-- Custom Map Controls (Layered over map canvas) -->    
+                            <iframe
+                                class="map-iframe"
+                                src="https://maps.google.com/maps?q=Makati+Convention+Center,+Makati+City,+Philippines&hl=en&z=15&output=embed"
+                                title="Tech Summit 2026 Venue — Makati Convention Center"
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                allowfullscreen
+                            ></iframe>
+
+                        </div>
+
+                        <!-- Address footer strip -->
+                        <div class="map-footer">
+                            <span class="map-venue-name">Makati Convention Center</span>
+                            <span class="map-venue-address">Makati City, Metro Manila, Philippines</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Messaging Section -->
+                <div class="widget-card contact-widget">
+                    <p class="contact-prompt">Have a question for the organizer?</p>
+                    <a href="#" class="btn btn-outline widget-btn">Message the Organizer</a>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+</body>
+</html>

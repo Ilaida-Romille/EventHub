@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub — Login Modal Reference</title>
+    <!--
+        This file is the canonical reference for the login modal markup.
+        To embed the modal in another page (e.g. index.html):
+          1. Copy the <div id="login-modal"> block into that page's <body>.
+          2. Link log_in_form.css from that page's <head>.
+          3. Change any trigger <a> href="#login-modal" to match the modal id.
+    -->
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/log_in_form/log_in_form.css">
+</head>
+<body>
+
+    <!-- =====================================================
+         TRIGGER LINK
+         Place this anchor wherever you need a "Sign In" button.
+         The href must match the modal's id (#login-modal).
+         ===================================================== -->
+    <div style="display:flex; align-items:center; justify-content:center; height:100vh;">
+        <a href="#login-modal" class="btn btn-dark" style="width:auto; padding:0.75rem 1.75rem;">
+            Sign In — Demo Trigger
+        </a>
+    </div>
+
+
+    <!-- =====================================================
+         LOGIN MODAL
+         Opened by any <a href="#login-modal"> on the same page.
+         Closed by the × button or clicking the dim backdrop.
+         No JavaScript required — driven entirely by :target.
+         ===================================================== -->
+    <div id="login-modal"
+         class="modal-overlay"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="modal-title">
+
+        <!-- Backdrop — clicking outside the card closes the modal -->
+        <a href="#" class="modal-backdrop" tabindex="-1" aria-hidden="true"></a>
+
+        <div class="modal-card">
+
+            <!-- Close button -->
+            <a href="#" class="modal-close" aria-label="Close login modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                     stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                     aria-hidden="true">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </a>
+
+            <!-- Header -->
+            <div class="modal-header">
+                <span class="modal-logo">EventHub</span>
+                <h2 id="modal-title" class="modal-title">Welcome back</h2>
+                <p class="modal-subtitle">Sign in to continue to your dashboard</p>
+            </div>
+
+            <!--
+                Form notes:
+                - novalidate is intentionally omitted so the browser's
+                  constraint validation engine remains active. This allows
+                  :user-invalid to function and blocks form submission when
+                  fields are invalid — without any JavaScript.
+                - :user-invalid displays errors only after the user has
+                  actually interacted with a field, preventing premature
+                  error flash on page load.
+            -->
+            <form class="modal-form" method="post" action="#">
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label class="form-label" for="login-email">Email address</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg"
+                             width="15" height="15" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             aria-hidden="true">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                            <polyline points="22,6 12,13 2,6"></polyline>
+                        </svg>
+                        <input
+                            class="form-input"
+                            type="email"
+                            id="login-email"
+                            name="email"
+                            placeholder="you@company.com"
+                            required
+                            autocomplete="email"
+                            spellcheck="false"
+                        >
+                    </div>
+                    <span class="field-error" role="alert">Please enter a valid email address.</span>
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <div class="label-row">
+                        <label class="form-label" for="login-password">Password</label>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" xmlns="http://www.w3.org/2000/svg"
+                             width="15" height="15" viewBox="0 0 24 24" fill="none"
+                             stroke="currentColor" stroke-width="2"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             aria-hidden="true">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                        <input
+                            class="form-input"
+                            type="password"
+                            id="login-password"
+                            name="password"
+                            placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;"
+                            required
+                            minlength="8"
+                            autocomplete="current-password"
+                        >
+                    </div>
+                    <span class="field-error" role="alert">Password must be at least 8 characters.</span>
+                </div>
+
+                <button class="btn modal-submit" type="submit">Sign In</button>
+
+            </form>
+
+            <!-- Footer -->
+            <p class="modal-footer-text">
+                Don't have an account? <a href="#" class="footer-link">Sign up</a>
+            </p>
+
+        </div>
+    </div>
+
+</body>
+</html>

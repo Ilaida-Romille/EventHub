@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Platform Dashboard</title>
+    <meta name="description" content="Plan, register, and connect your corporate events with EventHub. The all-in-one event management platform for enterprise organizations, organizers, and attendees.">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/platform_owner/dashboard.css">
+</head>
+<body>
+
+    <!-- Nav Bar Section -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="font-weight: 700; font-size: 1.15rem;"><a href="#" class="logo-link">EventHub</a></div>
+            <div class="user-menu">
+                <span>Platform Owner</span>
+                <span class="divider">|</span>
+                <span class="user-role">Admin <span class="caret">▼</span></span>
+                <a href="../../index.html" class="logout-link">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container for the entire Dashboard Features -->
+    <div class="layout-wrapper">
+        
+        <!-- Side Bar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">Dashboard</a>
+                <a href="organizers.html" class="nav-item">Organizers</a>
+                <a href="billing.html" class="nav-item">Billing & Invoices</a>
+                <a href="tickets.html" class="nav-item">Tickets & Requests</a>
+            </nav>
+        </aside>
+
+        <!-- Dashboard Section -->
+        <main class="dashboard-content">
+            <h1 class="page-title">Platform Dashboard</h1>
+
+            <!-- Metrics up top -->
+            <section class="metrics-grid">
+                <div class="dashboard-card metric-card">
+                    <span class="metric-value">128</span>
+                    <span class="metric-label">Total Organizers</span>
+                </div>
+                <div class="dashboard-card metric-card">
+                    <span class="metric-value">342</span>
+                    <span class="metric-label">Total Events (This Year)</span>
+                </div>
+            </section>
+
+            <!-- Bar Graphs -->
+<section class="dashboard-card chart-card">
+    <h2 class="chart-title">Events per Month</h2>
+    <div class="bar-chart-container">
+        
+        <!-- Y-Axis Labels -->
+        <div class="chart-y-axis">
+            <span>100</span>
+            <span>75</span>
+            <span>50</span>
+            <span>25</span>
+            <span>0</span>
+        </div>
+        
+        <!-- Main Chart Area with Grid Background -->
+        <div class="chart-wrapper">
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 35%;" data-value="35"></div>
+                <span class="chart-label">Jan</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 55%;" data-value="55"></div>
+                <span class="chart-label">Feb</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 45%;" data-value="45"></div>
+                <span class="chart-label">Mar</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 70%;" data-value="70"></div>
+                <span class="chart-label">Apr</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 50%;" data-value="50"></div>
+                <span class="chart-label">May</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 65%;" data-value="65"></div>
+                <span class="chart-label">Jun</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 30%;" data-value="30"></div>
+                <span class="chart-label">Jul</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 52%;" data-value="52"></div>
+                <span class="chart-label">Aug</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 40%;" data-value="40"></div>
+                <span class="chart-label">Sep</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 60%;" data-value="60"></div>
+                <span class="chart-label">Oct</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 68%;" data-value="68"></div>
+                <span class="chart-label">Nov</span>
+            </div>
+            <div class="chart-column">
+                <div class="chart-bar" style="height: 48%;" data-value="48"></div>
+                <span class="chart-label">Dec</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <!-- BUttons below -->
+            <section class="actions-grid">
+                <a href="#" class="btn btn-outline action-link">View Organizers ›</a>
+                <a href="#" class="btn btn-outline action-link">View Billing ›</a>
+                <a href="#" class="btn btn-outline action-link">View Tickets ›</a>
+            </section>
+        </main>
+    </div>
+
+</body>
+</html>

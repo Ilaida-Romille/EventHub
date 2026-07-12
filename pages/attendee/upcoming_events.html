@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Upcoming Events</title>
+    <meta name="description" content="Plan, register, and connect your corporate events with EventHub. The all-in-one event management platform for enterprise organizations, organizers, and attendees.">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/attendee/events.css">
+</head>
+<body>
+
+    <!-- Nav Bar Section -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="font-weight: 700; font-size: 1.15rem;">
+                <a href="#" class="logo-link">EventHub</a>
+            </div>
+            
+            <div class="attendee-profile">
+                Juan Dela Cruz <span class="profile-caret">▼</span>
+                <a href="../../index.html" class="logout-link">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Entire Container for the Upcoming Events -->
+    <main class="attendee-container">
+        <h1 class="page-title">Upcoming Events</h1>
+
+        <!-- Grid for the events card -->
+        <section class="events-grid">
+            
+            <!-- Card 1 -->
+            <div class="card-flip-wrapper">
+                <input type="checkbox" id="flip-card-1" class="card-flip-toggle">
+                <div class="card-flip-inner">
+                    <div class="card-front event-card">
+                        <label for="flip-card-1" class="card-flip-trigger" aria-label="View stats for Tech Summit 2026"></label>
+                        <div class="event-banner-placeholder"></div>
+                        <div class="event-details">
+                            <h2 class="event-title">Tech Summit 2026</h2>
+                            <p class="event-date">Aug 14, 2026</p>
+                            <p class="event-organizer">by Acme Events Co.</p>
+                            <a href="registration.html?title=Tech%20Summit%202026&date=Aug%2014,%202026&location=Makati%20Convention%20Center" class="btn btn-dark event-btn">View & Register</a>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <span class="back-badge">Quick Stats</span>
+                        <ul class="back-stats">
+                            <li>
+                                <span class="stat-label">Current Attendees</span>
+                                <span class="stat-value">124</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Event Status</span>
+                                <span class="stat-value status-open">Registration Open</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Remaining Slots</span>
+                                <span class="stat-value">26</span>
+                            </li>
+                        </ul>
+                        <label for="flip-card-1" class="back-to-details-btn">&#8592; Back to Details</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card-flip-wrapper">
+                <input type="checkbox" id="flip-card-2" class="card-flip-toggle">
+                <div class="card-flip-inner">
+                    <div class="card-front event-card">
+                        <label for="flip-card-2" class="card-flip-trigger" aria-label="View stats for Year-End Party"></label>
+                        <div class="event-banner-placeholder"></div>
+                        <div class="event-details">
+                            <h2 class="event-title">Year-End Party</h2>
+                            <p class="event-date">Dec 12, 2026</p>
+                            <p class="event-organizer">by Northwind Corp.</p>
+                            <a href="registration.html?title=Year-End%20Party&date=Dec%2012,%202026&location=World%20Trade%20Center" class="btn btn-dark event-btn">View & Register</a>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <span class="back-badge">Quick Stats</span>
+                        <ul class="back-stats">
+                            <li>
+                                <span class="stat-label">Current Attendees</span>
+                                <span class="stat-value">87</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Event Status</span>
+                                <span class="stat-value status-filling">Filling Fast</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Remaining Slots</span>
+                                <span class="stat-value">13</span>
+                            </li>
+                        </ul>
+                        <label for="flip-card-2" class="back-to-details-btn">&#8592; Back to Details</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="card-flip-wrapper">
+                <input type="checkbox" id="flip-card-3" class="card-flip-toggle">
+                <div class="card-flip-inner">
+                    <div class="card-front event-card">
+                        <label for="flip-card-3" class="card-flip-trigger" aria-label="View stats for Leadership Offsite"></label>
+                        <div class="event-banner-placeholder"></div>
+                        <div class="event-details">
+                            <h2 class="event-title">Leadership Offsite</h2>
+                            <p class="event-date">Sep 3, 2026</p>
+                            <p class="event-organizer">by Initech PH</p>
+                            <a href="registration.html?title=Leadership%20Offsite&date=Sep%203,%202026&location=Araneta%20Center" class="btn btn-dark event-btn">View & Register</a>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <span class="back-badge">Quick Stats</span>
+                        <ul class="back-stats">
+                            <li>
+                                <span class="stat-label">Current Attendees</span>
+                                <span class="stat-value">41</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Event Status</span>
+                                <span class="stat-value status-open">Registration Open</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Remaining Slots</span>
+                                <span class="stat-value">59</span>
+                            </li>
+                        </ul>
+                        <label for="flip-card-3" class="back-to-details-btn">&#8592; Back to Details</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card-flip-wrapper">
+                <input type="checkbox" id="flip-card-4" class="card-flip-toggle">
+                <div class="card-flip-inner">
+                    <div class="card-front event-card">
+                        <label for="flip-card-4" class="card-flip-trigger" aria-label="View stats for Product Conference"></label>
+                        <div class="event-banner-placeholder"></div>
+                        <div class="event-details">
+                            <h2 class="event-title">Product Conference</h2>
+                            <p class="event-date">Oct 21, 2026</p>
+                            <p class="event-organizer">by Globex Holdings</p>
+                            <a href="registration.html?title=Product%20Conference&date=Oct%2021,%202026&location=Araneta%20Center" class="btn btn-dark event-btn">View & Register</a>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <span class="back-badge">Quick Stats</span>
+                        <ul class="back-stats">
+                            <li>
+                                <span class="stat-label">Current Attendees</span>
+                                <span class="stat-value">156</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Event Status</span>
+                                <span class="stat-value status-full">Almost Full</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Remaining Slots</span>
+                                <span class="stat-value">4</span>
+                            </li>
+                        </ul>
+                        <label for="flip-card-4" class="back-to-details-btn">&#8592; Back to Details</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="card-flip-wrapper">
+                <input type="checkbox" id="flip-card-5" class="card-flip-toggle">
+                <div class="card-flip-inner">
+                    <div class="card-front event-card">
+                        <label for="flip-card-5" class="card-flip-trigger" aria-label="View stats for Sales Kickoff"></label>
+                        <div class="event-banner-placeholder"></div>
+                        <div class="event-details">
+                            <h2 class="event-title">Sales Kickoff</h2>
+                            <p class="event-date">Jan 15, 2027</p>
+                            <p class="event-organizer">by Acme Events Co.</p>
+                            <a href="registration.html?title=Sales%20Kickoff&date=Jan%2015,%202027&location=Makati%20Convention%20Center" class="btn btn-dark event-btn">View & Register</a>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <span class="back-badge">Quick Stats</span>
+                        <ul class="back-stats">
+                            <li>
+                                <span class="stat-label">Current Attendees</span>
+                                <span class="stat-value">23</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Event Status</span>
+                                <span class="stat-value status-open">Registration Open</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Remaining Slots</span>
+                                <span class="stat-value">77</span>
+                            </li>
+                        </ul>
+                        <label for="flip-card-5" class="back-to-details-btn">&#8592; Back to Details</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="card-flip-wrapper">
+                <input type="checkbox" id="flip-card-6" class="card-flip-toggle">
+                <div class="card-flip-inner">
+                    <div class="card-front event-card">
+                        <label for="flip-card-6" class="card-flip-trigger" aria-label="View stats for Wellness Day"></label>
+                        <div class="event-banner-placeholder"></div>
+                        <div class="event-details">
+                            <h2 class="event-title">Wellness Day</h2>
+                            <p class="event-date">Nov 8, 2026</p>
+                            <p class="event-organizer">by Umbrella Group</p>
+                            <a href="registration.html?title=Wellness%20Day&date=Nov%208,%202026&location=World%20Trade%20Center" class="btn btn-dark event-btn">View & Register</a>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <span class="back-badge">Quick Stats</span>
+                        <ul class="back-stats">
+                            <li>
+                                <span class="stat-label">Current Attendees</span>
+                                <span class="stat-value">68</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Event Status</span>
+                                <span class="stat-value status-filling">Filling Fast</span>
+                            </li>
+                            <li>
+                                <span class="stat-label">Remaining Slots</span>
+                                <span class="stat-value">32</span>
+                            </li>
+                        </ul>
+                        <label for="flip-card-6" class="back-to-details-btn">&#8592; Back to Details</label>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Pagination Section -->
+        <nav class="pagination-container" aria-label="Page Navigation">
+            
+            <a href="#" class="page-link page-control page-disabled" tabindex="-1" aria-disabled="true">« Prev</a>
+            
+            <div class="page-numbers-wrapper">
+                <a href="#" class="page-link page-active" aria-current="page">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <span class="page-ellipsis">...</span>
+                <a href="#" class="page-link">12</a>
+            </div>
+            
+            <a href="#" class="page-link page-control">Next »</a>
+            
+        </nav>
+    </main>
+
+</body>
+</html>

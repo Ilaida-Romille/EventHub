@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub | Enterprise & Corporate Event Management Platform</title>
+    <meta name="description"
+        content="Plan, register, and connect your corporate events with EventHub. The all-in-one event management platform for enterprise organizations, organizers, and attendees.">
+    <link rel="stylesheet" href="styles/landing_page.css">
+    <link rel="stylesheet" href="styles/global.css">
+    <link rel="stylesheet" href="styles/log_in_form/log_in_form.css">
+</head>
+
+<body>
+
+    <!-- Navbar Section -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo logo-link">EventHub</a>
+            <nav class="nav-links">
+                <a href="/">About</a>
+                <a href="/">How It Works</a>
+                <a href="/">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Container of the Page -->
+    <main class="content-container splitter-layout">
+
+        <!-- Left Column: Hero Section -->
+        <section class="hero left-side">
+            <h1>Plan.<br>Register.<br>Connect.</h1>
+            <p class="subtitle">One platform for corporate events — sign in to access your space.</p>
+        </section>
+
+        <!-- Right Column: Login Card Section -->
+        <section class="right-side">
+            <div class="modal-card inline-login-card">
+                <!-- Header -->
+                <div class="modal-header">
+                    <span class="modal-logo">EventHub</span>
+                    <h2 class="modal-title">Welcome back</h2>
+                    <p class="modal-subtitle">Sign in to continue to your platform</p>
+                </div>
+
+                <!-- Form with dynamic redirection and custom criteria matching -->
+                <form class="modal-form" id="dynamic-login-form" novalidate>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label class="form-label" for="login-email">Email address</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                                </path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <input class="form-input" type="email" id="login-email" name="email"
+                                placeholder="you@company.com" required minlength="15" maxlength="100"
+                                autocomplete="email" spellcheck="false">
+                        </div>
+                        <span class="field-error" id="email-error" role="alert">Please enter a valid email address
+                            (15-100 characters).</span>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label class="form-label" for="login-password">Password</label>
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <input class="form-input" type="password" id="login-password" name="password"
+                                placeholder="••••••••" required minlength="8" autocomplete="current-password">
+                        </div>
+                        <span class="field-error" id="password-error" role="alert">Password must be at least 8
+                            characters.</span>
+                    </div>
+
+                    <button class="btn modal-submit" type="submit">Sign In</button>
+
+                </form>
+
+                <!-- Footer -->
+                <p class="modal-footer-text">
+                    Don't have an account? <a href="#" class="footer-link">Sign up</a>
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Dynamic Validation & Routing Controller Script -->
+    <script>
+        document.getElementById('dynamic-login-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Stop raw submission to intercept processing
+
+            const emailInput = document.getElementById('login-email');
+            const passwordInput = document.getElementById('login-password');
+
+            const email = emailInput.value.trim().toLowerCase(); // Normalized to lowercase for robust matching
+            const password = passwordInput.value;
+
+            let isValid = true;
+
+            // 1. Core Structural Email Constraints
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email) || email.length < 5 || email.length > 100) { // Lowered min length slightly from 15 to account for shorter valid emails like a@b.co
+                emailInput.classList.add('user-invalid');
+                document.getElementById('email-error').style.maxHeight = "2.5rem";
+                document.getElementById('email-error').style.opacity = "1";
+                isValid = false;
+            } else {
+                emailInput.classList.remove('user-invalid');
+                document.getElementById('email-error').style.maxHeight = "0";
+                document.getElementById('email-error').style.opacity = "0";
+            }
+
+            // 2. Standard Passwords Boundary Restrictions
+            if (password.length < 8) {
+                passwordInput.classList.add('user-invalid');
+                document.getElementById('password-error').style.maxHeight = "2.5rem";
+                document.getElementById('password-error').style.opacity = "1";
+                isValid = false;
+            } else {
+                passwordInput.classList.remove('user-invalid');
+                document.getElementById('password-error').style.maxHeight = "0";
+                document.getElementById('password-error').style.opacity = "0";
+            }
+
+            // Halt if validation limits are breached
+            if (!isValid) return;
+
+            // 3. Conditional Domain Routing Engine
+            if (email.includes('@eventhub.com')) {
+                // Route 1: Platform Owner
+                window.location.href = 'pages/platform_owner/dashboard.html';
+
+            } else if (
+                email === 'admin@company.com' ||
+                (email.startsWith('admin') && (email.includes('@foundation.') || email.includes('@school.')))
+            ) {
+                // Route 2: Organizers (Explicit admin accounts)
+                window.location.href = 'pages/organizer/dashboard.html';
+
+            } else if (
+                email.includes('@company.com') ||
+                email.includes('@school.') ||
+                email.includes('@foundation.')
+            ) {
+                // Route 3: Attendees (Standard domain users without admin permissions)
+                window.location.href = 'pages/attendee/upcoming_events.html';
+
+            } else {
+                // Route 4: Catch-all fallback for unregistered domains
+                alert('Access Denied: This corporate domain or email configuration is unregistered.');
+            }
+        });
+
+        // Clear warning visuals immediately when inputs change manually
+        document.querySelectorAll('.form-input').forEach(input => {
+            input.addEventListener('input', function () {
+                this.classList.remove('user-invalid');
+                const errorSpan = this.closest('.form-group').querySelector('.field-error');
+                if (errorSpan) {
+                    errorSpan.style.maxHeight = "0";
+                    errorSpan.style.opacity = "0";
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

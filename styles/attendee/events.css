@@ -1,0 +1,370 @@
+.logo-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.attendee-profile {
+    font-size: 0.85rem;
+    color: var(--text-main); 
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.profile-caret {
+    font-size: 0.65rem;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+.attendee-container {
+    padding: 1.5rem 1rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.page-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-main); 
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px rgba(100, 181, 246, 0.15);
+}
+
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    width: 100%;
+    margin-top: 3.5rem;
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid transparent;
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.005) 60%) 1;
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
+}
+
+.page-numbers-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.page-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-main);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    min-width: 36px;
+    padding: 0 0.5rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.page-link:hover:not(.page-disabled):not(.page-active) {
+    background: rgba(100, 181, 246, 0.1);
+    border-color: rgba(100, 181, 246, 0.4);
+    color: var(--accent-blue);
+    transform: translateY(-1px);
+}
+
+.page-link.page-active {
+    background-color: var(--accent-blue-muted);
+    border: 1px solid var(--accent-blue);
+    color: var(--text-main);
+    box-shadow: 0 0 15px rgba(100, 181, 246, 0.25);
+    pointer-events: none;
+}
+
+.page-control {
+    padding: 0 0.85rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.page-link.page-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.02);
+}
+
+.page-ellipsis {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding: 0 0.25rem;
+    letter-spacing: 0.05em;
+}
+
+.events-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+.event-card {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid transparent;
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.01) 60%) 1;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.25s ease;
+}
+
+.event-card:hover {
+    box-shadow: 0 12px 40px 0 rgba(100, 181, 246, 0.15);
+}
+
+.event-banner-placeholder {
+    width: 100%;
+    height: 120px; 
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.25) 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.event-details {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-main); 
+    margin-bottom: 0.75rem;
+}
+
+.event-date {
+    font-size: 0.85rem;
+    color: var(--accent-blue); 
+    margin-bottom: 0.25rem;
+    font-weight: 500;
+}
+
+.event-organizer {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--text-muted); 
+    margin-bottom: 1.25rem;
+}
+
+.event-btn {
+    position: relative;
+    z-index: 2;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin-top: auto;
+}
+
+@media (min-width: 600px) {
+    .events-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .pagination-container {
+        justify-content: center; 
+        gap: 1.5rem;
+        padding: 0.85rem 1.5rem;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+        display: inline-flex; 
+    }
+    
+    .attendee-container {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .page-numbers-wrapper {
+        gap: 0.5rem;
+    }
+    
+    .page-link {
+        height: 40px;
+        min-width: 40px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .attendee-container {
+        padding: 2.5rem 3rem;
+    }
+
+    .events-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .pagination-container {
+        margin-top: 4.5rem;
+    }
+}
+
+
+/* ── Card Flip ────────────────────────────────────────────────── */
+
+/* Hidden checkbox — the toggle that drives the flip state */
+.card-flip-toggle {
+    display: none;
+}
+
+/* Outer perspective container — each grid item */
+.card-flip-wrapper {
+    perspective: 1200px;
+}
+
+/* The 3D scene element that rotates as a unit */
+.card-flip-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Flip triggered by the checkbox */
+.card-flip-toggle:checked ~ .card-flip-inner {
+    transform: rotateY(180deg);
+}
+
+/* ── Front Face ─────────────────────────────────────────────── */
+.card-front {
+    position: relative;   /* anchors the invisible trigger overlay */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Full-card invisible label overlay — clicking anywhere on the front
+   (except the button which sits above it via z-index:2) flips the card */
+.card-flip-trigger {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* ── Back Face ──────────────────────────────────────────────── */
+.card-back {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    /* Pre-rotated so it faces away until the parent flips 180deg */
+    transform: rotateY(180deg);
+
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+
+    background: linear-gradient(
+        150deg,
+        rgba(26, 47, 76, 0.72) 0%,
+        rgba(5, 8, 17, 0.94) 100%
+    );
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow:
+        inset 0 1px 0 rgba(100, 181, 246, 0.14),
+        inset 0 0 0 1px rgba(100, 181, 246, 0.08);
+}
+
+/* Eyebrow label at the top of the back face */
+.back-badge {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-blue);
+    opacity: 0.85;
+    margin-bottom: 1rem;
+}
+
+/* Stats list */
+.back-stats {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.back-stats li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.back-stats li:last-child {
+    border-bottom: none;
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.stat-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.stat-value.status-open    { color: #66bb6a; }
+.stat-value.status-filling { color: #ffa726; }
+.stat-value.status-full    { color: #ef5350; }
+
+/* "Back to Details" label button */
+.back-to-details-btn {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: 1.1rem;
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    cursor: pointer;
+    transition:
+        color        0.2s ease,
+        background   0.2s ease,
+        border-color 0.2s ease;
+}
+
+.back-to-details-btn:hover {
+    color: var(--accent-blue);
+    background: rgba(100, 181, 246, 0.08);
+    border-color: rgba(100, 181, 246, 0.30);
+}

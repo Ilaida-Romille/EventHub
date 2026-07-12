@@ -1,0 +1,522 @@
+.logo-link {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.user-menu-right {
+    font-size: 0.85rem;
+    color: var(--text-main); 
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.header-divider {
+    color: rgba(255, 255, 255, 0.15); 
+}
+
+.profile-dropdown {
+    cursor: pointer;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.profile-dropdown:hover {
+    color: var(--accent-blue);
+}
+
+.profile-caret {
+    font-size: 0.65rem;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+.workspace-container {
+    padding: 1.5rem 1rem;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.workspace-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    width: 100%;
+}
+
+.section-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-main); 
+    margin-bottom: 1.25rem;
+    text-shadow: 0 0 15px rgba(100, 181, 246, 0.15);
+}
+
+.agenda-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.agenda-card {
+    display: flex;
+    align-items: stretch;
+    min-height: 75px;
+    
+    
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid transparent;
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.01) 60%) 1;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agenda-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 8px 32px rgba(100, 181, 246, 0.1);
+}
+
+.agenda-time {
+    width: 110px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-align: center;
+    
+    
+    background-color: rgba(0, 0, 0, 0.25);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--accent-blue); 
+    text-shadow: 0 0 10px rgba(100, 181, 246, 0.2);
+}
+
+.agenda-details {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: var(--text-main); 
+}
+
+.sidebar-widgets-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.widget-card {
+    background-color: transparent; 
+    width: 100%;
+}
+
+.attendees-panel-box {
+    padding: 1.5rem;
+    padding-bottom: 0; 
+    display: flex;
+    flex-direction: column;
+    
+    
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid transparent;
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.01) 60%) 1;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.attendee-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.attendee-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar-placeholder {
+    width: 34px; 
+    height: 34px; 
+    border-radius: 50%; 
+    flex-shrink: 0; 
+    background: rgba(0, 0, 0, 0.2); 
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    
+    
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.25s ease;
+}
+
+.attendee-avatar-img {
+    width: 18px; 
+    height: 18px;
+    object-fit: contain;
+
+    /* NAVY TINT MATRIX:
+       Forces the black Icons8 PNG to invert to white, saturates it, 
+       then hue-rotates it straight to match your --bg-glow-tl: #1a2f4c profile */
+    filter: brightness(0) invert(1) sepia(1) saturate(5.5) hue-rotate(185deg) brightness(0.65);
+    opacity: 0.8;
+    transition: all 0.25s ease;
+}
+
+.meta-avatar {
+    background: rgba(26, 47, 76, 0.3); 
+    border-color: rgba(100, 181, 246, 0.2); 
+}
+
+.meta-avatar .attendee-avatar-img {
+    filter: brightness(0) invert(1) sepia(1) saturate(7) hue-rotate(185deg) brightness(0.8);
+    opacity: 0.9;
+}
+
+.attendee-item:hover .avatar-placeholder {
+    border-color: rgba(100, 181, 246, 0.4);
+    background: rgba(26, 47, 76, 0.2);
+    box-shadow: 0 0 10px rgba(100, 181, 246, 0.15);
+}
+
+.attendee-item:hover .attendee-avatar-img {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: brightness(0) invert(1) sepia(1) saturate(8) hue-rotate(185deg) brightness(1.1); 
+}
+
+.attendee-info {
+    font-size: 0.88rem;
+    color: var(--text-main); 
+}
+
+.text-muted {
+    color: var(--text-muted); 
+}
+
+.italic-text {
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+.widget-btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    width: calc(100% + 3rem); 
+    margin-left: -1.5rem;
+    margin-bottom: -1px; 
+    border-radius: 0;
+}
+
+.contact-widget {
+    padding: 2rem 1.5rem 0 1.5rem;
+    
+    
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid transparent;
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.01) 60%) 1;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.contact-prompt {
+    font-size: 0.9rem;
+    color: var(--text-muted); 
+    margin-bottom: 1.75rem;
+    text-align: left;
+}
+
+@media (min-width: 992px) {
+    .workspace-container {
+        padding: 2.5rem 3rem;
+    }
+
+    
+    .workspace-grid {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 3rem;
+    }
+
+    .agenda-section {
+        flex: 1; 
+    }
+
+    .sidebar-widgets-section {
+        flex: 0 0 380px; 
+        padding-top: 2.85rem; 
+    }
+}
+
+
+/* ================================================================
+   Venue Map Widget
+   - Scroll-trap guard:  hidden checkbox + label overlay trick.
+   - Dark filter matrix: grayscale → invert → hue-rotate blue.
+   - Venue popup:        :checked sibling selector slide-up.
+   ================================================================ */
+
+/* ── Widget shell ─────────────────────────────────────────────── */
+.map-widget-box {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid transparent;
+    border-image: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.01) 60%) 1;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* ── Map viewport ─────────────────────────────────────────────── */
+.map-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;   /* self-sizing: height tracks width */
+    overflow: hidden;        /* clips iframe + pins to the container */
+}
+
+/* ── Scroll-trap toggle ───────────────────────────────────────── */
+.map-toggle {
+    display: none;
+}
+
+/* Hide the venue pin and popup once the map is activated */
+.map-toggle:checked ~ .map-pin-wrapper {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* ── Interaction overlay ──────────────────────────────────────── */
+/* Covers the iframe, blocking accidental scroll-trap until the
+   user explicitly clicks to activate the map. */
+.map-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    cursor: pointer;
+    background: rgba(5, 8, 17, 0.48);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    transition:
+        opacity         0.3s ease,
+        backdrop-filter 0.3s ease;
+}
+
+.map-overlay-icon {
+    color: var(--accent-blue);
+    opacity: 0.85;
+    line-height: 0;
+}
+
+.map-overlay-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--text-main);
+    opacity: 0.70;
+}
+
+/* Dismiss overlay when checkbox fires */
+.map-toggle:checked ~ .map-overlay {
+    opacity: 0;
+    pointer-events: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+
+
+/* ── Google Maps iframe — dark filter matrix ──────────────────── */
+/* Rendering pipeline:
+   1. grayscale(1)      strip all hue
+   2. invert(1)         flip luminance (dark roads → bright, sky → dark)
+   3. hue-rotate(195deg) shift inverted palette toward navy/cyan
+   4. saturate(2.8)     restore vivid blue tones
+   5. contrast(0.88)    soften harsh whites
+   6. brightness(0.78)  dim to match --bg-main canvas                */
+.map-iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;   /* disabled until overlay is dismissed */
+    filter:
+        grayscale(1)
+        invert(1)
+        hue-rotate(195deg)
+        saturate(2.8)
+        contrast(0.88)
+        brightness(0.78);
+}
+
+/* Activate iframe interaction after overlay click */
+.map-toggle:checked ~ .map-iframe {
+    pointer-events: auto;
+}
+
+/* ── Venue pin ────────────────────────────────────────────────── */
+/* z-index:3 keeps pin above the overlay (z-index:2) so it
+   is always clickable even before the map is activated. */
+.map-pin-wrapper {
+    position: absolute;
+    top: 62%;
+    left: 48%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+}
+
+.pin-toggle {
+    display: none;
+}
+
+.map-pin {
+    display: block;
+    position: relative;
+    width: 12px;
+    height: 12px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow:
+        0 0 0 3px rgba(100, 181, 246, 0.22),
+        0 0 14px rgba(100, 181, 246, 0.75);
+}
+
+/* Pulsing ring around the pin dot */
+.pin-pulse {
+    position: absolute;
+    inset: -5px;
+    border: 1.5px solid var(--accent-blue);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: pin-pulse 2.2s ease-out infinite;
+}
+
+@keyframes pin-pulse {
+    0%   { transform: scale(1);   opacity: 0.65; }
+    100% { transform: scale(2.6); opacity: 0;    }
+}
+
+/* ── Venue popup card ─────────────────────────────────────────── */
+/* Positioned above the pin, slides up and fades in on :checked. */
+.popup-card {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    width: 178px;
+    padding: 0.8rem 0.9rem 0.7rem;
+
+    background: linear-gradient(
+        135deg,
+        rgba(26, 47, 76, 0.96) 0%,
+        rgba(5, 8, 17, 0.98) 100%
+    );
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow:
+        inset 0 1px 0 rgba(100, 181, 246, 0.18),
+        inset 0 0 0 1px rgba(100, 181, 246, 0.09),
+        0 8px 28px rgba(0, 0, 0, 0.6);
+
+    /* Hidden + shifted down by default */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(7px);
+    transition:
+        opacity   0.26s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.26s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Downward-pointing caret connecting popup to pin */
+.popup-card::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-top-color: rgba(26, 47, 76, 0.96);
+    pointer-events: none;
+}
+
+/* Slide up and reveal */
+.pin-toggle:checked ~ .popup-card {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Close button — second label for the same checkbox */
+.popup-close {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.5rem;
+    font-size: 0.6rem;
+    line-height: 1;
+    color: var(--text-muted);
+    cursor: pointer;
+    opacity: 0.65;
+    transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.popup-close:hover {
+    opacity: 1;
+    color: var(--text-main);
+}
+
+.popup-title {
+    font-size: 0.86rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0 0 0.3rem;
+    padding-right: 1rem; /* clear the close button */
+}
+
+.popup-detail {
+    font-size: 0.73rem;
+    color: var(--text-muted);
+    margin: 0 0 0.12rem;
+    line-height: 1.4;
+}
+
+/* ── Address footer ───────────────────────────────────────────── */
+.map-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.12rem;
+    padding: 0.65rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.map-venue-name {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.map-venue-address {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}

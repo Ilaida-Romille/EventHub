@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Billing & Invoices</title>
+    <meta name="description" content="Plan, register, and connect your corporate events with EventHub. The all-in-one event management platform for enterprise organizations, organizers, and attendees.">
+    <link rel="stylesheet" href="../../styles/global.css">
+    <link rel="stylesheet" href="../../styles/platform_owner/billing.css">
+</head>
+<body>
+
+    <!-- Nav Bar Section -->
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="logo" style="font-weight: 700; font-size: 1.15rem;"><a href="../../index.html" class="logo-link">EventHub</a></div>
+            <div class="user-menu">
+                <span>Platform Owner</span>
+                <span class="divider">|</span>
+                <span class="user-role">Admin <span class="caret">▼</span></span>
+
+                <a href="../../index.html" class="logout-link">Log Out</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container for the entire Billing Features -->
+    <div class="layout-wrapper">
+        
+        <!-- Side Bar -->
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">Dashboard</a>
+                <a href="organizers.html" class="nav-item">Organizers</a>
+                <a href="#" class="nav-item active">Billing & Invoices</a>
+                <a href="tickets.html" class="nav-item">Tickets & Requests</a>
+            </nav>
+        </aside>
+
+        <!-- Dashboard -->
+        <main class="dashboard-content">
+            <h1 class="page-title">Search Invoices (Historical)</h1>
+
+            <!-- Filters at the Top -->
+            <form class="invoice-filter-form" onsubmit="event.preventDefault();">
+                <div class="form-group organizer-field">
+                    <label for="filterOrganizer">Organizer</label>
+                    <input type="text" id="filterOrganizer" class="form-input">
+                </div>
+                <div class="date-range-group">
+                    <div class="form-group">
+                        <label for="filterFrom">From</label>
+                        <input type="text" id="filterFrom" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <label for="filterTo">To</label>
+                        <input type="text" id="filterTo" class="form-input">
+                    </div>
+                </div>
+                <div class="form-group button-field">
+                    <button type="submit" class="btn btn-dark go-btn">Go</button>
+                </div>
+            </form>
+
+            <!-- Table for details -->
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Invoice #</th>
+                            <th>Organizer</th>
+                            <th>Period</th>
+                            <th>Amount (PHP)</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>INV-2026-0512</td>
+                            <td>Acme Events Co.</td>
+                            <td>May 2026</td>
+                            <td>₱ 84,200</td>
+                            <td>Paid</td>
+                        </tr>
+                        <tr>
+                            <td>INV-2026-0498</td>
+                            <td>Northwind Corp.</td>
+                            <td>May 2026</td>
+                            <td>₱ 22,750</td>
+                            <td>Paid</td>
+                        </tr>
+                        <tr>
+                            <td>INV-2026-0501</td>
+                            <td>Initech PH</td>
+                            <td>May 2026</td>
+                            <td>₱ 51,300</td>
+                            <td>Overdue</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Bottom Sections -->
+            <h2 class="section-subtitle">Generate Invoices</h2>
+
+            <div class="generation-grid">
+                
+                <div class="generation-card">
+                    <h3 class="card-heading">All Organizers — This Month</h3>
+                    <p class="card-description">Runs monthly billing for every active organizer at once.</p>
+                    <button type="button" class="btn btn-dark action-btn">Generate Monthly Invoices (Batch)</button>
+                </div>
+
+                
+                <div class="generation-card">
+                    <h3 class="card-heading">Specific Organizer</h3>
+                    <form class="specific-generation-form" onsubmit="event.preventDefault();">
+                        <div class="form-group row-organizer">
+                            <label for="genOrganizer">Organizer</label>
+                            <input type="text" id="genOrganizer" class="form-input">
+                        </div>
+                        <div class="form-group row-month">
+                            <label for="genMonth">Month</label>
+                            <input type="text" id="genMonth" class="form-input">
+                        </div>
+                        <div class="form-group row-submit">
+                            <button type="submit" class="btn btn-dark action-btn">Generate Invoice</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+</body>
+</html>
