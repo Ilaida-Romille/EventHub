@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Register as an attendee on EventHub." />
+    <title>EventHub - Attendee Registration</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/users/attendee-registration.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="../../index.html" class="logo" aria-label="EventHub Home">
+                <span class="material-symbols-outlined logo-icon">event</span>
+                <span>EventHub</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-card auth-card-medium">
+            <div class="auth-header">
+                <h1>Join EventHub</h1>
+                <p>Create your account to discover and register for events</p>
+            </div>
+
+            <form method="GET" action="upcoming-events.html">
+                <fieldset>
+                    <legend class="sr-only">Attendee Registration Form</legend>
+
+
+                    <section class="form-section">
+                        <h2 class="section-title">Personal Information</h2>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="first-name">First Name *</label>
+                                <input type="text" id="first-name" name="first_name" required minlength="2"
+                                    maxlength="50" placeholder="Jane" autocomplete="given-name" />
+                                <span class="error-message">First name is required (2-50 characters).</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last-name">Last Name *</label>
+                                <input type="text" id="last-name" name="last_name" required minlength="2" maxlength="50"
+                                    placeholder="Smith" autocomplete="family-name" />
+                                <span class="error-message">Last name is required (2-50 characters).</span>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required minlength="15" maxlength="100"
+                                    placeholder="jane@example.com" autocomplete="email" />
+                                <span class="error-message">Please enter a valid email address.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required minlength="10" maxlength="20"
+                                    placeholder="+1 (555) 000-0000" autocomplete="tel" />
+                                <span class="error-message">Please enter a valid phone number.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="date-of-birth">Date of Birth *</label>
+                                <input type="date" id="date-of-birth" name="date_of_birth" required
+                                    autocomplete="bday" />
+                                <span class="error-message">Date of birth is required.</span>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="form-section">
+                        <h2 class="section-title">Professional Information</h2>
+
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="company">Company / Organization *</label>
+                                <input type="text" id="company" name="company" required minlength="2" maxlength="100"
+                                    placeholder="e.g. Acme Corporation" autocomplete="organization" />
+                                <span class="error-message">Company name is required.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="job-title">Job Title *</label>
+                                <input type="text" id="job-title" name="job_title" required minlength="2" maxlength="50"
+                                    placeholder="e.g. Software Engineer" autocomplete="job-title" />
+                                <span class="error-message">Job title is required.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="department">Department</label>
+                                <input type="text" id="department" name="department" minlength="2" maxlength="50"
+                                    placeholder="e.g. Engineering" />
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="dietary">Dietary Restrictions (optional)</label>
+                                <input type="text" id="dietary" name="dietary" maxlength="100"
+                                    placeholder="e.g. Vegetarian, Vegan, Gluten-free, None" />
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="form-section">
+                        <h2 class="section-title">Account Information</h2>
+
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="password">Password *</label>
+                                <input type="password" id="password" name="password" required minlength="8"
+                                    maxlength="128" placeholder="••••••••" autocomplete="new-password" />
+                                <span class="error-message">Password must be at least 8 characters.</span>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="confirm-password">Confirm Password *</label>
+                                <input type="password" id="confirm-password" name="confirm_password" required
+                                    minlength="8" maxlength="128" placeholder="••••••••" autocomplete="new-password" />
+                                <span class="error-message">Passwords must match.</span>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="form-section">
+                        <h2 class="section-title">Preferences</h2>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="newsletter" name="newsletter" checked />
+                            <label for="newsletter">Send me event updates and recommendations</label>
+                        </div>
+                    </section>
+
+
+                    <section class="form-section">
+                        <h2 class="section-title">Legal & Compliance</h2>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="terms" name="terms" required />
+                            <label for="terms">I agree to the <a href="#">Terms of Service</a> *</label>
+                            <span class="error-message">You must agree to the terms of service.</span>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="privacy" name="privacy" required />
+                            <label for="privacy">I agree to the <a href="#">Privacy Policy</a> *</label>
+                            <span class="error-message">You must agree to the privacy policy.</span>
+                        </div>
+                    </section>
+
+                    <div class="form-actions">
+                        <a href="../index.html" class="btn btn-outline cancel-btn">Cancel</a>
+                        <button type="submit" class="btn btn-primary submit-btn">Create Account</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="../../index.html">Sign in here</a></p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

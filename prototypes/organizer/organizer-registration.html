@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Register your organization on EventHub." />
+    <title>EventHub - Organizer Registration</title>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/organizer/organizer-registration.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="header-container">
+            <a href="../index.html" class="logo" aria-label="EventHub Home">
+                <span class="material-symbols-outlined logo-icon">event</span>
+                <span>EventHub</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-card auth-card-large">
+            <div class="auth-header">
+                <h1>Organize with EventHub</h1>
+                <p>Register your organization and start creating events</p>
+            </div>
+
+            <form method="GET" action="dashboard.html">
+                <fieldset>
+                    <legend class="sr-only">Organizer Registration Form</legend>
+
+
+                    <section class="form-section">
+                        <h2 class="section-title">Personal Information</h2>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="first-name">First Name *</label>
+                                <input type="text" id="first-name" name="first_name" required minlength="2"
+                                    maxlength="50" placeholder="John" autocomplete="given-name" />
+                                <span class="error-message">First name is required (2-50 characters).</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last-name">Last Name *</label>
+                                <input type="text" id="last-name" name="last_name" required minlength="2" maxlength="50"
+                                    placeholder="Doe" autocomplete="family-name" />
+                                <span class="error-message">Last name is required (2-50 characters).</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required minlength="15" maxlength="100"
+                                    placeholder="john@company.com" autocomplete="email" />
+                                <span class="error-message">Please enter a valid email address.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required minlength="10" maxlength="20"
+                                    placeholder="+1 (555) 000-0000" autocomplete="tel" />
+                                <span class="error-message">Please enter a valid phone number.</span>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="form-section">
+                        <h2 class="section-title">Organization Information</h2>
+
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="company-name">Organization Name *</label>
+                                <input type="text" id="company-name" name="company_name" required minlength="2"
+                                    maxlength="100" placeholder="Acme Corporation" autocomplete="organization" />
+                                <span class="error-message">Organization name is required (2-100 characters).</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="registration-number">Business Registration Number *</label>
+                                <input type="text" id="registration-number" name="registration_number" required
+                                    minlength="5" maxlength="50" placeholder="e.g. BRN-123456789"
+                                    pattern="[A-Z0-9\-]+" />
+                                <span class="error-message">Please enter a valid registration number (alphanumeric and
+                                    hyphens only).</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="tax-id">Tax Identification Number *</label>
+                                <input type="text" id="tax-id" name="tax_id" required minlength="15" maxlength="50"
+                                    placeholder="e.g. TIN-987654321" pattern="[A-Z0-9\-]+" />
+                                <span class="error-message">Please enter a valid TIN (alphanumeric and hyphens
+                                    only).</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="industry">Industry *</label>
+                                <select id="industry" name="industry" required>
+                                    <option value="">Select an industry</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="education">Education</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <span class="error-message">Please select an industry.</span>
+                            </div>
+                        </div>
+
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="address">Street Address *</label>
+                                <input type="text" id="address" name="address" required minlength="5" maxlength="100"
+                                    placeholder="123 Main Street" autocomplete="street-address" />
+                                <span class="error-message">Street address is required.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="city">City *</label>
+                                <input type="text" id="city" name="city" required minlength="2" maxlength="50"
+                                    placeholder="Manila" autocomplete="address-level2" />
+                                <span class="error-message">City is required.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="state">State / Province *</label>
+                                <input type="text" id="state" name="state" required minlength="2" maxlength="50"
+                                    placeholder="Metro Manila" autocomplete="address-level1" />
+                                <span class="error-message">State/Province is required.</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="postal">Postal Code *</label>
+                                <input type="text" id="postal" name="postal" required minlength="3" maxlength="20"
+                                    placeholder="1200" autocomplete="postal-code" />
+                                <span class="error-message">Postal code is required.</span>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="country">Country *</label>
+                                <input type="text" id="country" name="country" required minlength="2" maxlength="50"
+                                    placeholder="Philippines" autocomplete="country-name" />
+                                <span class="error-message">Country is required.</span>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="form-section">
+                        <h2 class="section-title">Account Information</h2>
+
+                        <div class="form-grid">
+                            <div class="form-group full-width">
+                                <label for="password">Password *</label>
+                                <input type="password" id="password" name="password" required minlength="8"
+                                    maxlength="128" placeholder="••••••••" autocomplete="new-password" />
+                                <span class="error-message">Password must be at least 8 characters.</span>
+                            </div>
+
+                            <div class="form-group full-width">
+                                <label for="confirm-password">Confirm Password *</label>
+                                <input type="password" id="confirm-password" name="confirm_password" required
+                                    minlength="8" maxlength="128" placeholder="••••••••" autocomplete="new-password" />
+                                <span class="error-message">Passwords must match.</span>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="form-section">
+                        <h2 class="section-title">Legal & Compliance</h2>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="terms" name="terms" required />
+                            <label for="terms">I agree to the <a href="#">Terms of Service</a> *</label>
+                            <span class="error-message">You must agree to the terms of service.</span>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="privacy" name="privacy" required />
+                            <label for="privacy">I agree to the <a href="#">Privacy Policy</a> *</label>
+                            <span class="error-message">You must agree to the privacy policy.</span>
+                        </div>
+
+                        <div class="form-group checkbox">
+                            <input type="checkbox" id="verification" name="verification" required />
+                            <label for="verification">I certify that the information provided is accurate and authorize
+                                EventHub to verify these details *</label>
+                            <span class="error-message">You must authorize verification.</span>
+                        </div>
+
+                        <div class="compliance-notice">
+                            <strong>Note:</strong> Your registration will be subject to verification by EventHub's
+                            platform owner. This process may take 2-5 business days.
+                        </div>
+                    </section>
+
+                    <div class="form-actions">
+                        <a href="../../index.html" class="btn btn-outline cancel-btn">Cancel</a>
+                        <button type="submit" class="btn btn-primary submit-btn">Create Organization Account</button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="../../index.html">Sign in here</a></p>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="Organizer command and workspace center." />
+   <title>EventHub - Organizer Dashboard</title>
+   <link rel="stylesheet" href="../css/global.css" />
+   <link rel="stylesheet" href="../css/organizer/dashboard.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+      rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+   <header class="header">
+      <div class="header-container">
+         <div class="logo">
+            <span class="material-symbols-outlined logo-icon">event</span>
+            <a href="../index.html">EventHub</a>
+         </div>
+
+         <nav class="details-nav">
+            <span class="context-breadcrumb">Acme Events Co.</span>
+            <span class="divider">|</span>
+            <a href="#" class="nav-link">Jane Dela Cruz &#9662;</a>
+         </nav>
+      </div>
+   </header>
+
+   <div class="layout-container">
+      <aside class="sidebar">
+         <nav aria-label="Sidebar Navigation">
+            <ul>
+               <li class="active">
+                  <a href="dashboard.html">
+                     <span class="material-symbols-outlined">dashboard</span>Dashboard
+                  </a>
+               </li>
+               <li>
+                  <a href="employees.html">
+                     <span class="material-symbols-outlined">badge</span>Manage Employees
+                  </a>
+               </li>
+               <li>
+                  <a href="events.html">
+                     <span class="material-symbols-outlined">layers</span>Manage Events
+                  </a>
+               </li>
+               <li>
+                  <a href="settings.html">
+                     <span class="material-symbols-outlined">settings</span>Settings
+                  </a>
+               </li>
+               <li>
+                  <a href="tickets.html">
+                     <span class="material-symbols-outlined">confirmation_number</span>Tickets /
+                     Requests
+                  </a>
+               </li>
+            </ul>
+         </nav>
+      </aside>
+
+      <main class="main-content">
+         <header class="dashboard-welcome">
+            <h1 class="page-title">Welcome back, Acme Events Co.</h1>
+            <p class="subtitle-prompt">What would you like to do today?</p>
+         </header>
+
+         <section class="feature-action-grid" aria-label="Workspace Hub Options">
+            <div class="card workspace-card">
+               <div class="card-icon-box">
+                  <span class="material-symbols-outlined">groups</span>
+               </div>
+               <div class="card-body-content">
+                  <h2>Manage Employees</h2>
+                  <p>Add, remove, and manage the employees on your corporate account.</p>
+               </div>
+               <a href="employees.html" class="btn btn-outline card-action-trigger">Open</a>
+            </div>
+
+            <div class="card workspace-card">
+               <div class="card-icon-box">
+                  <span class="material-symbols-outlined">calendar_month</span>
+               </div>
+               <div class="card-body-content">
+                  <h2>Manage Events</h2>
+                  <p>Create, edit, and configure your company's premium events.</p>
+               </div>
+               <a href="events.html" class="btn btn-outline card-action-trigger">Open</a>
+            </div>
+
+            <div class="card workspace-card">
+               <div class="card-icon-box">
+                  <span class="material-symbols-outlined">tune</span>
+               </div>
+               <div class="card-body-content">
+                  <h2>Settings</h2>
+                  <p>Update your corporate company profile and account global preferences.</p>
+               </div>
+               <a href="settings.html" class="btn btn-outline card-action-trigger">Open</a>
+            </div>
+
+            <div class="card workspace-card highlight-card">
+               <div class="card-icon-box">
+                  <span class="material-symbols-outlined">contact_support</span>
+               </div>
+               <div class="card-body-content">
+                  <h2>File a Ticket / Request</h2>
+                  <p>
+                     Reach out securely to the core EventHub platform operations team for help.
+                  </p>
+               </div>
+               <a href="tickets.html" class="btn btn-primary card-action-trigger">New Ticket</a>
+            </div>
+         </section>
+      </main>
+   </div>
+</body>
+
+</html>

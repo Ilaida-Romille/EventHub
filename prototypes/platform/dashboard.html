@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="Platform owner analytics operational center." />
+   <title>EventHub - Platform Dashboard</title>
+   <link rel="stylesheet" href="../css/global.css" />
+   <link rel="stylesheet" href="../css/platform/dashboard.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+      rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+   <header class="header">
+      <div class="header-container">
+         <div class="logo">
+            <span class="material-symbols-outlined logo-icon">event</span>
+            <a href="../index.html">EventHub</a>
+         </div>
+         <nav>
+            <a href="#" class="nav-link">Platform Owner | Admin &#9662;</a>
+         </nav>
+      </div>
+   </header>
+
+   <div class="layout-container">
+      <aside class="sidebar">
+         <nav aria-label="Sidebar Navigation">
+            <ul>
+               <li class="active">
+                  <a href="dashboard.html">
+                     <span class="material-symbols-outlined">dashboard</span>Dashboard
+                  </a>
+               </li>
+               <li>
+                  <a href="organizers.html">
+                     <span class="material-symbols-outlined">group</span>Organizers
+                  </a>
+               </li>
+               <li>
+                  <a href="billing.html">
+                     <span class="material-symbols-outlined">payments</span>Billing
+                  </a>
+               </li>
+               <li>
+                  <a href="tickets.html">
+                     <span class="material-symbols-outlined">confirmation_number</span>Tickets
+                  </a>
+               </li>
+            </ul>
+         </nav>
+      </aside>
+
+      <main class="main-content">
+         <h1 class="page-title">Platform Dashboard</h1>
+
+         <section class="kpi-container" aria-label="Metrics Overview">
+            <div class="card kpi-card">
+               <div class="value">128</div>
+               <div class="label">Total Organizers</div>
+            </div>
+            <div class="card kpi-card">
+               <div class="value">342</div>
+               <div class="label">Total Events (This Year)</div>
+            </div>
+         </section>
+
+         <section class="graph-container" aria-label="Analytics Visualization">
+            <div class="graph-title">Events Distribution per Month</div>
+            <div class="mock-bar-chart">
+               <div class="bar" style="height: 20%" title="Jan"></div>
+               <div class="bar" style="height: 45%" title="Feb"></div>
+               <div class="bar" style="height: 35%" title="Mar"></div>
+               <div class="bar" style="height: 75%" title="Apr"></div>
+               <div class="bar" style="height: 40%" title="May"></div>
+               <div class="bar" style="height: 60%" title="Jun"></div>
+               <div class="bar" style="height: 15%" title="Jul"></div>
+               <div class="bar" style="height: 50%" title="Aug"></div>
+               <div class="bar" style="height: 25%" title="Sep"></div>
+               <div class="bar" style="height: 42%" title="Oct"></div>
+               <div class="bar" style="height: 58%" title="Nov"></div>
+               <div class="bar" style="height: 38%" title="Dec"></div>
+            </div>
+         </section>
+
+         <nav class="shortcut-grid" aria-label="Quick Actions Summary">
+            <a href="organizers.html" class="btn-shortcut"><span>View Organizers</span><span
+                  class="material-symbols-outlined">arrow_forward_ios</span></a>
+            <a href="billing.html" class="btn-shortcut"><span>View Billing</span><span
+                  class="material-symbols-outlined">arrow_forward_ios</span></a>
+            <a href="tickets.html" class="btn-shortcut"><span>View Tickets</span><span
+                  class="material-symbols-outlined">arrow_forward_ios</span></a>
+         </nav>
+      </main>
+   </div>
+</body>
+
+</html>

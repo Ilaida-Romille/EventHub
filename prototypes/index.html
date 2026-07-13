@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description"
+      content="A modernized platform to seamlessly organize, manage, and discover corporate events." />
+   <title>EventHub - Portal</title>
+   <link rel="stylesheet" href="css/global.css" />
+   <link rel="stylesheet" href="css/index.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstapi.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet" />
+</head>
+
+<body>
+   <main class="landing-main">
+      <section class="landing-hero">
+         <div class="hero-content">
+            <div class="hero-brand">
+               <span class="material-symbols-outlined hero-brand-icon">event</span>
+               <span class="hero-brand-name">EventHub</span>
+            </div>
+            <h1>Streamline Your Corporate Events</h1>
+            <p>Welcome to a modernized platform built to seamlessly organize, manage, and discover corporate events all
+               in one place.</p>
+         </div>
+         <div class="hero-decoration">
+            <div class="decoration-circle decoration-circle-1"></div>
+            <div class="decoration-circle decoration-circle-2"></div>
+         </div>
+      </section>
+
+      <section class="login-section">
+         <div class="login-wrapper">
+            <form id="login-form" method="POST" action="#" novalidate>
+
+
+               <div class="form-group full-width">
+                  <label for="email">Email address</label>
+                  <input type="email" id="email" name="email" required minlength="15" maxlength="100"
+                     placeholder="Email address" autocomplete="email" />
+                  <span class="error-message">Please enter a valid email address.</span>
+               </div>
+
+               <div class="form-group full-width">
+                  <label for="password">Password</label>
+                  <input type="password" id="password" name="password" required minlength="8" maxlength="128"
+                     placeholder="Password" autocomplete="current-password" />
+                  <span class="error-message">Password must be at least 8 characters.</span>
+               </div>
+
+               <div class="form-controls">
+                  <div class="form-group checkbox">
+                     <input type="checkbox" id="remember" name="remember" />
+                     <label for="remember">Remember me</label>
+                  </div>
+                  <a href="#" class="forgot-password">Forgot password?</a>
+               </div>
+
+               <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+
+            </form>
+
+            <script>
+               (function () {
+                  const form = document.getElementById('login-form');
+                  const emailInput = document.getElementById('email');
+                  const passwordInput = document.getElementById('password');
+
+                  form.addEventListener('submit', function (e) {
+                     e.preventDefault();
+                     form.classList.add('form-submitted');
+
+                     const emailOk = emailInput.value.trim() && emailInput.validity.valid;
+                     const passwordOk = passwordInput.value && passwordInput.value.length >= 8;
+
+                     if (emailOk && passwordOk) {
+                        const email = emailInput.value.trim().toLowerCase();
+                        let target;
+
+                        if (email.endsWith('@eventhub.com')) {
+                           target = 'platform/dashboard.html';
+                        } else if (/^admin@[^@]+\.com$/.test(email)) {
+                           target = 'organizer/dashboard.html';
+                        } else {
+                           target = 'users/upcoming-events.html';
+                        }
+
+                        window.location.href = target;
+                     }
+                  });
+               })();
+            </script>
+
+            <div class="login-divider">
+               <span>or sign in with:</span>
+            </div>
+
+            <div class="social-options">
+               <a href="#" class="social-btn" aria-label="Sign in with Facebook">
+                  <span class="material-symbols-outlined">language</span>
+               </a>
+               <a href="#" class="social-btn" aria-label="Sign in with Google">
+                  <span class="material-symbols-outlined">language</span>
+               </a>
+               <a href="#" class="social-btn" aria-label="Sign in with Twitter">
+                  <span class="material-symbols-outlined">language</span>
+               </a>
+               <a href="#" class="social-btn" aria-label="Sign in with GitHub">
+                  <span class="material-symbols-outlined">language</span>
+               </a>
+            </div>
+
+            <div class="signup-section">
+               <p>Don't have an account?</p>
+               <div class="signup-buttons">
+                  <a href="users/attendee-registration.html" class="btn btn-outline btn-block">
+                     <span class="material-symbols-outlined">group</span>
+                     Sign Up as Employee
+                  </a>
+                  <a href="organizer/organizer-registration.html" class="btn btn-outline btn-block">
+                     <span class="material-symbols-outlined">corporate_fare</span>
+                     Sign Up as Organizer
+                  </a>
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+.badge {
+   display: inline-flex;
+   padding: 4px 10px;
+   font-size: 0.75rem;
+   font-weight: 700;
+   border-radius: 12px;
+   text-transform: uppercase;
+}
+
+.badge-active {
+   background-color: rgb(16 185 129 / 20%);
+   color: var(--color-success);
+}
+
+.badge-suspended {
+   background-color: rgb(239 68 110 / 20%);
+   color: var(--color-danger);
+}
+
+.badge-pending {
+   background-color: rgb(245 158 11 / 20%);
+   color: var(--color-warning);
+}
+
+.table-actions a {
+   color: var(--color-primary-glow);
+   font-weight: 600;
+}
+
+.table-actions a:hover {
+   color: var(--color-white);
+}
+
+.table-pagination-footer {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   gap: 12px;
+   margin-top: 16px;
+   font-size: 0.9rem;
+   font-weight: 600;
+   color: var(--color-text-muted);
+}
+
+.page-nav-btn {
+   background: var(--color-hub-surface);
+   border: 1px solid var(--color-hub-border);
+   color: var(--color-white);
+   width: 32px;
+   height: 32px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: var(--radius-sm);
+}
+
+.page-nav-btn:hover {
+   background-color: var(--color-hub-border);
+}

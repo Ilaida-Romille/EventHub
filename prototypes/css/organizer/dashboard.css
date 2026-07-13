@@ -1,0 +1,115 @@
+.details-nav {
+   display: flex;
+   align-items: center;
+   gap: 12px;
+}
+
+.context-breadcrumb {
+   color: var(--color-text-muted);
+   font-size: 0.95rem;
+   font-weight: 600;
+}
+
+.details-nav .divider {
+   color: var(--color-hub-border);
+}
+
+.dashboard-welcome {
+   margin-bottom: 32px;
+}
+
+.dashboard-welcome .page-title {
+   margin-bottom: 6px;
+   font-size: 1.85rem;
+   font-weight: 800;
+   letter-spacing: -0.5px;
+   color: var(--color-white);
+}
+
+.dashboard-welcome .subtitle-prompt {
+   font-size: 1.05rem;
+   color: var(--color-text-muted);
+   font-style: italic;
+}
+
+.feature-action-grid {
+   display: grid;
+   grid-template-columns: 1fr;
+   gap: 24px;
+}
+
+@media (width >= 768px) {
+   .feature-action-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
+
+.workspace-card {
+   background: var(--color-hub-surface);
+   border: 1px solid var(--color-hub-border);
+   border-radius: var(--radius-md);
+   padding: 28px;
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   position: relative;
+   box-shadow: var(--shadow-sm);
+   transition: var(--transition-smooth);
+}
+
+.workspace-card:hover {
+   border-color: var(--color-primary-glow);
+   transform: translateY(-2px);
+   box-shadow: var(--shadow-md);
+}
+
+.workspace-card.highlight-card:hover {
+   border-color: var(--color-accent);
+}
+
+.card-icon-box {
+   width: 48px;
+   height: 48px;
+   background-color: var(--color-hub-bg);
+   border: 1px solid var(--color-hub-border);
+   border-radius: var(--radius-sm);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+
+.card-icon-box .material-symbols-outlined {
+   color: var(--color-primary-glow);
+   font-size: 1.5rem;
+}
+
+.workspace-card.highlight-card .card-icon-box .material-symbols-outlined {
+   color: var(--color-accent);
+}
+
+.card-body-content {
+   flex-grow: 1;
+   margin-bottom: 24px;
+}
+
+.card-body-content h2 {
+   font-size: 1.25rem;
+   font-weight: 700;
+   color: var(--color-white);
+   margin-bottom: 8px;
+}
+
+.card-body-content p {
+   font-size: 0.9rem;
+   color: var(--color-text-muted);
+   line-height: 1.5;
+}
+
+.card-action-trigger {
+   width: 100%;
+   text-align: center;
+   padding: 10px 0;
+   font-size: 0.95rem;
+   font-weight: 700;
+}

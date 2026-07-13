@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="Central desk resolution management console." />
+   <title>EventHub - Tickets & Support</title>
+   <link rel="stylesheet" href="../css/global.css" />
+   <link rel="stylesheet" href="../css/platform/tickets.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+      rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+   <header class="header">
+      <div class="header-container">
+         <div class="logo">
+            <span class="material-symbols-outlined logo-icon">event</span>
+            <a href="../index.html">EventHub</a>
+         </div>
+         <nav>
+            <a href="#" class="nav-link">Platform Owner | Admin &#9662;</a>
+         </nav>
+      </div>
+   </header>
+
+   <div class="layout-container">
+      <aside class="sidebar">
+         <nav aria-label="Sidebar Navigation">
+            <ul>
+               <li>
+                  <a href="dashboard.html"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+               </li>
+               <li>
+                  <a href="organizers.html"><span class="material-symbols-outlined">group</span>Organizers</a>
+               </li>
+               <li>
+                  <a href="billing.html"><span class="material-symbols-outlined">payments</span>Billing</a>
+               </li>
+               <li class="active">
+                  <a href="tickets.html"><span class="material-symbols-outlined">confirmation_number</span>Tickets</a>
+               </li>
+            </ul>
+         </nav>
+      </aside>
+
+      <main class="main-content">
+         <h1 class="page-title">Tickets & Requests</h1>
+
+         <div class="desk-split">
+
+            <div class="ticket-list-column">
+               <section class="ticket-list-group" aria-label="Current open tickets list">
+                  <div class="ticket-item active">
+                     <div class="ticket-header-line">
+                        <span class="ticket-id">#TCK-1042</span>
+                        <span class="status-badge badge-open">Open</span>
+                     </div>
+                     <div class="ticket-meta">Acme Events Co.</div>
+                     <div class="ticket-subject">Can't edit event capacity</div>
+                  </div>
+
+                  <div class="ticket-item">
+                     <div class="ticket-header-line">
+                        <span class="ticket-id">#TCK-1039</span>
+                        <span class="status-badge badge-open">Open</span>
+                     </div>
+                     <div class="ticket-meta">Initech PH</div>
+                     <div class="ticket-subject">Request: Add 3 more admins</div>
+                  </div>
+
+                  <div class="ticket-item">
+                     <div class="ticket-header-line">
+                        <span class="ticket-id">#TCK-1031</span>
+                        <span class="status-badge badge-progress">In Progress</span>
+                     </div>
+                     <div class="ticket-meta">Northwind Corp.</div>
+                     <div class="ticket-subject">Invoice discrepancy</div>
+                  </div>
+
+                  <div class="ticket-item">
+                     <div class="ticket-header-line">
+                        <span class="ticket-id">#TCK-1020</span>
+                        <span class="status-badge badge-resolved">Resolved</span>
+                     </div>
+                     <div class="ticket-meta">Globex Holdings</div>
+                     <div class="ticket-subject">Reactivate account</div>
+                  </div>
+               </section>
+
+
+               <div class="table-pagination-footer">
+                  <a href="#" class="page-nav-btn" aria-label="Back page">
+                     <span class="material-symbols-outlined" style="font-size: 16px">arrow_back_ios_new</span>
+                  </a>
+                  <span>Page 1 of 5</span>
+                  <a href="#" class="page-nav-btn" aria-label="Forward page">
+                     <span class="material-symbols-outlined" style="font-size: 16px">arrow_forward_ios</span>
+                  </a>
+               </div>
+            </div>
+
+
+            <section class="ticket-view-pane" aria-label="Active ticket operational investigation view">
+               <div class="pane-title-area">
+                  <h2>#TCK-1042 &mdash; Can't edit event capacity</h2>
+                  <span class="status-badge badge-open">Open</span>
+               </div>
+
+               <div class="ticket-investigation-meta">
+                  From: <strong>Acme Events Co.</strong> &nbsp;&middot;&nbsp; Opened: 3 days ago
+               </div>
+
+               <blockquote class="quote-box">
+                  &ldquo;We're trying to raise our event capacity from 200 to 350 but the field
+                  won't save. Can someone check?&rdquo;
+               </blockquote>
+
+               <form method="POST" action="">
+                  <div class="form-group">
+                     <label for="helpdesk-response">Your Response</label>
+                     <textarea id="helpdesk-response" class="response-textarea"
+                        placeholder="Type notes to send to the organizer..."></textarea>
+                  </div>
+
+                  <div class="ticket-actions-row">
+                     <button type="submit" class="btn btn-primary action-send">
+                        Send Response
+                     </button>
+                     <button type="button" class="btn btn-outline action-resolve">
+                        Mark Resolved
+                     </button>
+                  </div>
+               </form>
+            </section>
+         </div>
+      </main>
+   </div>
+</body>
+
+</html>

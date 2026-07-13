@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <meta name="description" content="Platform financial operations log database." />
+   <title>EventHub - Billing & Invoices</title>
+   <link rel="stylesheet" href="../css/global.css" />
+   <link rel="stylesheet" href="../css/platform/billing.css" />
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+      rel="stylesheet" />
+   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+   <header class="header">
+      <div class="header-container">
+         <div class="logo">
+            <span class="material-symbols-outlined logo-icon">event</span>
+            <a href="../index.html">EventHub</a>
+         </div>
+         <nav>
+            <a href="#" class="nav-link">Platform Owner | Admin &#9662;</a>
+         </nav>
+      </div>
+   </header>
+
+   <div class="layout-container">
+      <aside class="sidebar">
+         <nav aria-label="Sidebar Navigation">
+            <ul>
+               <li>
+                  <a href="dashboard.html"><span class="material-symbols-outlined">dashboard</span>Dashboard</a>
+               </li>
+               <li>
+                  <a href="organizers.html"><span class="material-symbols-outlined">group</span>Organizers</a>
+               </li>
+               <li class="active">
+                  <a href="billing.html"><span class="material-symbols-outlined">payments</span>Billing</a>
+               </li>
+               <li>
+                  <a href="tickets.html"><span class="material-symbols-outlined">confirmation_number</span>Tickets</a>
+               </li>
+            </ul>
+         </nav>
+      </aside>
+
+      <main class="main-content">
+         <h1 class="page-title">Search Invoices (Historical)</h1>
+
+         <div class="filter-row">
+            <form class="filter-form" method="GET" action="">
+               <div class="form-group search-group">
+                  <label for="organizer-account">Organizer</label>
+                  <input type="text" id="organizer-account" name="organizer" placeholder="Search organizers..." />
+               </div>
+
+               <div class="form-group">
+                  <label for="from-date">From Date</label>
+                  <input type="date" id="from-date" name="from_date" />
+               </div>
+
+               <div class="form-group">
+                  <label for="to-date">To Date</label>
+                  <input type="date" id="to-date" name="to_date" />
+               </div>
+
+               <button class="btn btn-primary filter-submit-btn" type="submit">Go</button>
+            </form>
+         </div>
+
+         <div class="table-responsive">
+            <table>
+               <thead>
+                  <tr>
+                     <th>Invoice #</th>
+                     <th>Organizer</th>
+                     <th>Period</th>
+                     <th>Amount (PHP)</th>
+                     <th>Status</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td style="font-family: monospace; font-weight: 700">INV-2026-0512</td>
+                     <td>Acme Events Co.</td>
+                     <td>May 2026</td>
+                     <td style="font-weight: 700">₱ 84,200.00</td>
+                     <td><span class="badge badge-paid">Paid</span></td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: monospace; font-weight: 700">INV-2026-0498</td>
+                     <td>Northwind Corp.</td>
+                     <td>May 2026</td>
+                     <td style="font-weight: 700">₱ 22,750.00</td>
+                     <td><span class="badge badge-paid">Paid</span></td>
+                  </tr>
+                  <tr>
+                     <td style="font-family: monospace; font-weight: 700">INV-2026-0501</td>
+                     <td>Initech PH</td>
+                     <td>May 2026</td>
+                     <td style="font-weight: 700; color: var(--color-danger)">₱ 51,300.00</td>
+                     <td><span class="badge badge-overdue">Overdue</span></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+         <div class="table-pagination-footer">
+            <a href="#" class="page-nav-btn" aria-label="Back page"><span class="material-symbols-outlined"
+                  style="font-size: 16px">arrow_back_ios_new</span></a>
+            <span>Page 1 of 99</span>
+            <a href="#" class="page-nav-btn" aria-label="Forward page"><span class="material-symbols-outlined"
+                  style="font-size: 16px">arrow_forward_ios</span></a>
+         </div>
+
+         <div class="section-break">Generate Invoices</div>
+
+         <div class="panel-split">
+            <section class="card" aria-labelledby="batch-billing-title">
+               <h2 id="batch-billing-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 12px">
+                  All Organizers &mdash; This Month
+               </h2>
+               <p style="font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: 20px">
+                  Runs monthly billing for every active organizer at once.
+               </p>
+               <form method="POST" action="">
+                  <button type="submit" class="btn btn-primary">
+                     Generate Monthly Invoices (Batch)
+                  </button>
+               </form>
+            </section>
+
+            <section class="card" aria-labelledby="isolated-billing-title">
+               <h2 id="isolated-billing-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 12px">
+                  Specific Organizer
+               </h2>
+               <form method="POST" action="">
+                  <div style="display: flex; gap: 12px; margin-bottom: 16px">
+                     <div class="form-group" style="flex: 2">
+                        <label>Organizer</label>
+                        <input type="text" placeholder="Search organizer..." />
+                     </div>
+                     <div class="form-group" style="flex: 1">
+                        <label>Target Cycle</label>
+                        <input type="text" placeholder="MM/YY" />
+                     </div>
+                  </div>
+                  <button type="submit" class="btn btn-outline" style="width: 100%">
+                     Generate Invoice
+                  </button>
+               </form>
+            </section>
+         </div>
+      </main>
+   </div>
+</body>
+
+</html>
