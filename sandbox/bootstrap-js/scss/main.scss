@@ -1,0 +1,91 @@
+$body-bg: #0a071b; 
+$body-color: #f1f5f9; 
+$primary: #3730a3; 
+$danger: #ef4444; 
+$success: #10b981; 
+$warning: #f59e0b; 
+$border-color: #25215a; 
+
+$font-family-sans-serif: "Plus Jakarta Sans", -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif; 
+
+$btn-border-radius: 24px; 
+$btn-padding-y: 12px; 
+$btn-padding-x: 24px; 
+
+$input-bg: #0a071b; 
+$input-border-color: #25215a; 
+$input-color: #fff; 
+$input-border-radius: 8px; 
+$input-padding-y: 10px; 
+$input-padding-x: 14px; 
+$input-focus-border-color: #f43f5e; 
+$input-focus-box-shadow: 0 0 0 4px rgba(244, 63, 94, 0.25); 
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+a {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+
+.layout-container {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 68px);
+
+    @include media-breakpoint-up(md) {
+        flex-direction: row;
+    }
+}
+
+.header {
+    background-color: #141133; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid $border-color;
+
+    .logo-icon {
+        color: #f43f5e; 
+    }
+}
+
+.sidebar {
+    background-color: #141133; 
+    border-right: 1px solid $border-color;
+    width: 100%;
+
+    @include media-breakpoint-up(md) {
+        width: 260px;
+        flex-shrink: 0;
+    }
+
+    ul li a {
+        color: #94a3b8; 
+
+        &:hover,
+        &.active {
+            background-color: rgba(244, 63, 94, 0.15); 
+            color: #f43f5e; 
+        }
+    }
+}
+
+.filter-row,
+.card,
+.table-responsive {
+    background: #141133; 
+    border: 1px solid $border-color;
+    border-radius: 14px; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+}
+
+table {
+    th {
+        background-color: rgba(10, 7, 27, 0.6); 
+    }
+
+    tr:hover td {
+        background-color: rgba(244, 63, 94, 0.04); 
+    }
+}
