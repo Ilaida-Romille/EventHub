@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Platform owner analytics operational center." />
+    <title>EventHub - Platform Dashboard</title>
+
+    <link rel="stylesheet" href="../css/platform/dashboard.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2=family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container-xl d-flex justify-content-between align-items-center flex-wrap gap-3 p-3">
+            <div class="d-flex align-items-center gap-2 fw-extrabold fs-5">
+                <span class="material-symbols-outlined logo-icon fs-4">event</span>
+                <a href="../index.html" class="text-white text-decoration-none fw-bolder">EventHub</a>
+            </div>
+            <nav>
+                <a href="#" class="text-white text-decoration-none opacity-75 fw-medium"
+                    style="font-size: 0.95rem;">Platform Owner | Admin &#9662;</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="layout-container">
+
+        <aside class="sidebar p-4 py-md-5">
+            <nav aria-label="Sidebar Navigation">
+                <ul class="nav flex-row flex-md-column gap-2 p-0 m-0 overflow-auto text-nowrap">
+                    <li class="nav-item active">
+                        <a href="dashboard.html"
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            <span class="material-symbols-outlined fs-5">dashboard</span>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="organizers.html"
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            <span class="material-symbols-outlined fs-5">group</span>Organizers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="billing.html"
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            <span class="material-symbols-outlined fs-5">payments</span>Billing
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="tickets.html"
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            <span class="material-symbols-outlined fs-5">confirmation_number</span>Tickets
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+
+        <main class="w-100 p-4 p-md-5 mx-auto" style="max-width: 1200px;">
+            <h1 class="h3 fw-extrabold text-white mb-4" style="letter-spacing: -0.5px;">Platform Dashboard</h1>
+            <section class="row row-cols-1 row-cols-md-2 g-3 g-md-4 mb-4" aria-label="Metrics Overview">
+                <div class="col">
+                    <div class="card kpi-card p-4 h-100 ps-4">
+                        <div class="value mb-1">128</div>
+                        <div class="text-secondary text-uppercase fw-bold"
+                            style="font-size: 0.85rem; letter-spacing: 0.5px;">Total Organizers</div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card kpi-card p-4 h-100 ps-4">
+                        <div class="value mb-1">342</div>
+                        <div class="text-secondary text-uppercase fw-bold"
+                            style="font-size: 0.85rem; letter-spacing: 0.5px;">Total Events (This Year)</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card p-4 mb-4" aria-label="Analytics Visualization">
+                <div class="text-white fw-bold mb-4 text-uppercase" style="font-size: 0.95rem; letter-spacing: 0.5px;">
+                    Events Distribution per Month
+                </div>
+
+                <div class="mock-bar-chart">
+                    <div class="bar" style="height: 20%" title="Jan"></div>
+                    <div class="bar" style="height: 45%" title="Feb"></div>
+                    <div class="bar" style="height: 35%" title="Mar"></div>
+                    <div class="bar" style="height: 75%" title="Apr"></div>
+                    <div class="bar" style="height: 40%" title="May"></div>
+                    <div class="bar" style="height: 60%" title="Jun"></div>
+                    <div class="bar" style="height: 15%" title="Jul"></div>
+                    <div class="bar" style="height: 50%" title="Aug"></div>
+                    <div class="bar" style="height: 25%" title="Sep"></div>
+                    <div class="bar" style="height: 42%" title="Oct"></div>
+                    <div class="bar" style="height: 58%" title="Nov"></div>
+                    <div class="bar" style="height: 38%" title="Dec"></div>
+                </div>
+            </section>
+
+
+            <nav class="row row-cols-1 row-cols-md-3 g-3 g-md-4" aria-label="Quick Actions Summary">
+                <div class="col">
+                    <a href="organizers.html" class="btn-shortcut">
+                        <span>View Organizers</span>
+                        <span class="material-symbols-outlined fs-6 fw-bold">arrow_forward_ios</span>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="billing.html" class="btn-shortcut">
+                        <span>View Billing</span>
+                        <span class="material-symbols-outlined fs-6 fw-bold">arrow_forward_ios</span>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="tickets.html" class="btn-shortcut">
+                        <span>View Tickets</span>
+                        <span class="material-symbols-outlined fs-6 fw-bold">arrow_forward_ios</span>
+                    </a>
+                </div>
+            </nav>
+        </main>
+    </div>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
