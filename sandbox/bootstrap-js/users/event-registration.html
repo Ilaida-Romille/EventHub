@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Register for events on EventHub." />
+    <title>EventHub - Register for Event</title>
+    <link rel="stylesheet" href="../css/users/event-registration.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300..800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="container-xl d-flex justify-content-between align-items-center flex-wrap gap-3 p-3">
+            <div class="d-flex align-items-center gap-2 fw-extrabold fs-5">
+                <span class="material-symbols-outlined logo-icon fs-4">event</span>
+                <a href="../index.html" class="text-white text-decoration-none fw-bolder">EventHub</a>
+            </div>
+            <nav aria-label="Header Navigation">
+                <a href="#" class="text-white text-decoration-none opacity-75 fw-medium"
+                    style="font-size: 0.95rem;">Juan Dela Cruz &#9662;</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="registration-container">
+        <a href="upcoming-events.html" class="back-link">
+            <span class="material-symbols-outlined">arrow_back</span> Back to Events
+        </a>
+
+        <div class="event-summary-card">
+            <div class="summary-details">
+                <span class="event-tag">Featured Event</span>
+                <h1>Tech Summit 2026</h1>
+                <div class="summary-meta-grid flex-row flex-wrap">
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        <span>Aug 14, 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined">schedule</span>
+                        <span>9:00 AM &ndash; 5:00 PM</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <span>Makati Convention Center</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card registration-map-card">
+            <h2 class="form-title">Venue Location</h2>
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.713532724623!2d121.0186985!3d14.5540327!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c90b0e555555%3A0x5555555555555555!2sMakati%20Convention%20Center!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph"
+                    title="Google Maps" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+        <div class="card p-4 p-lg-5 mb-5">
+            <h2 class="form-title">Registration Details</h2>
+            <form action="event-details.html" method="GET">
+
+
+                <div class="row g-4 mb-4">
+                    <div class="col-12 col-md-6">
+                        <label for="full-name" class="form-label text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">Full Name *</label>
+                        <input type="text" id="full-name" class="form-control" name="name" required
+                            placeholder="e.g. Maria Santos" />
+                        <span class="error-message">Full name is required.</span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="email" class="form-label text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">Email Address *</label>
+                        <input type="email" id="email" name="email" required minlength="15" maxlength="100"
+                            class="form-control" placeholder="e.g. maria@company.com" />
+                        <span class="error-message">Please enter a valid email address (15-100 characters).</span>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="company" class="form-label text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">Company / Department</label>
+                        <input type="text" id="company" class="form-control" name="company"
+                            placeholder="e.g. Acme Events Co." />
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label for="dietary" class="form-label text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">Dietary Restrictions</label>
+                        <input type="text" id="dietary" class="form-control" name="dietary"
+                            placeholder="e.g. Vegetarian, No seafood, None" />
+                    </div>
+
+                    <div class="col-12">
+                        <label for="notes" class="form-label text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">Additional Notes (optional)</label>
+                        <textarea id="notes" class="form-control" name="notes" rows="4" style="resize: vertical;"
+                            placeholder="Any special requirements or questions..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions d-flex flex-column-reverse flex-sm-row justify-content-sm-end gap-3">
+                    <a href="upcoming-events.html"
+                        class="btn btn-outline-secondary text-white border-secondary px-sm-5 py-2 fw-bold">Cancel</a>
+                    <button type="submit" class="btn btn-primary px-sm-5 py-2 fw-bold">Register</button>
+                </div>
+            </form>
+        </div>
+
+    </main>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

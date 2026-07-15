@@ -1,0 +1,135 @@
+@import "../main";
+
+.registration-container {
+   max-width: 900px;
+   margin: 0 auto;
+   padding: 32px 20px;
+}
+
+.back-link {
+   display: inline-flex;
+   align-items: center;
+   gap: 6px;
+   color: #94a3b8;
+   font-weight: 600;
+   font-size: 0.9rem;
+   margin-bottom: 24px;
+   text-decoration: none;
+   transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+   &:hover {
+      color: #f43f5e;
+   }
+}
+
+.event-summary-card {
+   background: linear-gradient(135deg, #141133 0%, #1e1952 100%);
+   border: 1px solid #25215a;
+   border-radius: 14px;
+   padding: 32px;
+   margin-bottom: 32px;
+   box-shadow: 0 8px 24px rgb(0 0 0 / 40%);
+   position: relative;
+   overflow: hidden;
+
+   &::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgb(244 63 94 / 15%) 0%, transparent 70%);
+      pointer-events: none;
+   }
+
+   h1 {
+      font-size: 2rem;
+      color: #fff;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+   }
+}
+
+.event-tag {
+   background-color: rgb(244 63 94 / 15%);
+   color: #f43f5e;
+   padding: 4px 10px;
+   font-size: 0.75rem;
+   font-weight: 700;
+   border-radius: 12px;
+   text-transform: uppercase;
+   letter-spacing: 0.5px;
+   display: inline-block;
+   margin-bottom: 12px;
+}
+
+.summary-meta-grid {
+   display: flex;
+   flex-direction: column;
+   gap: 12px 24px;
+}
+
+.meta-item {
+   display: flex;
+   align-items: center;
+   gap: 8px;
+   font-size: 0.95rem;
+   color: #f8fafc;
+
+   .material-symbols-outlined {
+      color: #4338ca;
+   }
+}
+
+.form-title {
+   font-size: 1.4rem;
+   color: #fff;
+   margin-bottom: 24px;
+   font-weight: 700;
+}
+
+.error-message {
+   display: none;
+   color: #e53e3e;
+   font-size: 0.78rem;
+   margin-top: 6px;
+}
+
+input:user-invalid ~ .error-message,
+textarea:user-invalid ~ .error-message {
+   display: block;
+}
+
+input:user-invalid,
+textarea:user-invalid {
+   border-color: #e53e3e !important;
+   outline-color: #e53e3e;
+}
+
+.form-actions {
+   display: flex;
+   flex-direction: column-reverse;
+   gap: 12px;
+   border-top: 1px solid #25215a;
+   padding-top: 24px;
+}
+
+.registration-map-card {
+   margin-bottom: 32px;
+   padding: 28px 24px;
+}
+
+.map-wrapper {
+   width: 100%;
+   border-radius: 8px;
+   overflow: hidden;
+   border: 1px solid #25215a;
+   background: #0b0924;
+
+   iframe {
+      display: block;
+      width: 100%;
+   }
+}
