@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Discover and register for upcoming corporate events." />
+    <title>EventHub - Upcoming Events</title>
+    <link rel="stylesheet" href="../css/users/upcoming-events.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=300..800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+    <header class="header">
+        <div class="container-xl d-flex justify-content-between align-items-center flex-wrap gap-3 p-3">
+            <div class="d-flex align-items-center gap-2 fw-extrabold fs-5">
+                <span class="material-symbols-outlined logo-icon fs-4">event</span>
+                <a href="../index.html" class="text-white text-decoration-none fw-bolder">EventHub</a>
+            </div>
+            <nav aria-label="Header Navigation">
+                <a href="#" class="text-white text-decoration-none opacity-75 fw-medium"
+                    style="font-size: 0.95rem;">Juan Dela Cruz &#9662;</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container-xl py-4 py-md-5">
+        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-4">
+            <h1 class="h3 fw-extrabold text-white m-0" style="letter-spacing: -0.5px;">Upcoming Events</h1>
+        </div>
+
+        <div class="filter-row mb-4">
+            <form class="filter-form" method="GET" action="">
+                <div class="row g-3 align-items-end">
+                    <div class="col-12 col-md-4">
+                        <label for="search" class="form-label text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">Search Events</label>
+                        <input type="text" id="search" name="search" placeholder="Type keywords..." />
+                    </div>
+
+                    <div class="col-12 col-sm-4 col-md-2">
+                        <label for="category" class="form-label text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">Category</label>
+                        <select id="category" name="category">
+                            <option value="">All Categories</option>
+                            <option value="tech">Tech & Innovation</option>
+                            <option value="corporate">Corporate</option>
+                            <option value="social">Social Gatherings</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12 col-sm-4 col-md-2">
+                        <label for="start-date" class="form-label text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">From Date</label>
+                        <input type="date" id="start-date" name="start_date" />
+                    </div>
+
+                    <div class="col-12 col-sm-4 col-md-2">
+                        <label for="end-date" class="form-label text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">To Date</label>
+                        <input type="date" id="end-date" name="end_date" />
+                    </div>
+
+                    <div class="col-12 col-md-2">
+                        <button type="submit" class="btn btn-primary w-100 fw-bold" style="height: 44px;">Go</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="sort-pill-container mb-4">
+            <span class="sort-label">Order by:</span>
+            <div class="pill-group">
+                <a href="?date=upcoming" class="pill-btn active">Upcoming First</a>
+                <a href="?date=recent" class="pill-btn">Recently Added</a>
+            </div>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" aria-label="Upcoming Events Listings">
+            <div class="col">
+                <article class="event-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="event-thumbnail">
+                                <span class="room-capacity-pill">
+                                    <span class="material-symbols-outlined">groups</span>
+                                    121/200
+                                </span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-date">
+                                    <span
+                                        class="material-symbols-outlined detail-icon calendar-icon">calendar_today</span>
+                                    Aug 14, 2026
+                                </div>
+                                <h2>Tech Summit 2026</h2>
+                                <div class="event-organizer">
+                                    <span class="material-symbols-outlined detail-icon">corporate_fare</span>
+                                    by Acme Events Co.
+                                </div>
+                                <div class="event-categories">
+                                    <span class="category-pill">
+                                        <span class="material-symbols-outlined category-icon">devices</span>
+                                        Tech & Innovation
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div>
+                                <h2>Tech Summit 2026</h2>
+                                <p class="event-description">
+                                    Join industry pioneers for this year's premiere tech event. Features keynotes on AI
+                                    architecture, deep-dive panel discussions, hands-on developer workshops, and
+                                    dedicated B2B networking zones.
+                                </p>
+                            </div>
+                            <a href="event-details.html" class="btn btn-primary w-100 fw-bold">View</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col">
+                <article class="event-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="event-thumbnail">
+                                <span class="room-capacity-pill">
+                                    <span class="material-symbols-outlined">groups</span>
+                                    24/25
+                                </span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-date">
+                                    <span
+                                        class="material-symbols-outlined detail-icon calendar-icon">calendar_today</span>
+                                    Dec 12, 2026
+                                </div>
+                                <h2>Year-End Party</h2>
+                                <div class="event-organizer">
+                                    <span class="material-symbols-outlined detail-icon">corporate_fare</span>
+                                    by Northwind Corp.
+                                </div>
+                                <div class="event-categories">
+                                    <span class="category-pill">
+                                        <span class="material-symbols-outlined category-icon">celebration</span>
+                                        Social Gatherings
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div>
+                                <h2>Year-End Party</h2>
+                                <p class="event-description">
+                                    Celebrate our collective corporate milestones and hard work! Includes a formal
+                                    sit-down dinner, live band performances, our annual employee raffle, and the
+                                    peer-voted recognition gala.
+                                </p>
+                            </div>
+                            <a href="event-registration.html" class="btn btn-primary w-100 fw-bold">Register</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col">
+                <article class="event-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="event-thumbnail">
+                                <span class="room-capacity-pill">
+                                    <span class="material-symbols-outlined">groups</span>
+                                    9/30
+                                </span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-date">
+                                    <span
+                                        class="material-symbols-outlined detail-icon calendar-icon">calendar_today</span>
+                                    Sep 3, 2026
+                                </div>
+                                <h2>Leadership Offsite</h2>
+                                <div class="event-organizer">
+                                    <span class="material-symbols-outlined detail-icon">corporate_fare</span>
+                                    by Initech PH
+                                </div>
+                                <div class="event-categories">
+                                    <span class="category-pill">
+                                        <span class="material-symbols-outlined category-icon">business_center</span>
+                                        Corporate
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div>
+                                <h2>Leadership Offsite</h2>
+                                <p class="event-description">
+                                    An exclusive planning forum designed for team leads, executives, and managers. We
+                                    will focus directly on high-level strategic alignment, cross-department resource
+                                    plotting, and Q4 performance objectives.
+                                </p>
+                            </div>
+                            <a href="event-registration.html" class="btn btn-primary w-100 fw-bold">Register</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col">
+                <article class="event-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="event-thumbnail">
+                                <span class="room-capacity-pill">
+                                    <span class="material-symbols-outlined">groups</span>
+                                    37/45
+                                </span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-date">
+                                    <span
+                                        class="material-symbols-outlined detail-icon calendar-icon">calendar_today</span>
+                                    Oct 21, 2026
+                                </div>
+                                <h2>Product Conference</h2>
+                                <div class="event-organizer">
+                                    <span class="material-symbols-outlined detail-icon">corporate_fare</span>
+                                    by Globex Holdings
+                                </div>
+                                <div class="event-categories">
+                                    <span class="category-pill">
+                                        <span class="material-symbols-outlined category-icon">devices</span>
+                                        Tech & Innovation
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div>
+                                <h2>Product Conference</h2>
+                                <p class="event-description">
+                                    Discover modern philosophies in product roadmap generation, execution, and research.
+                                    Learn how agile frameworks scale and interact with modern consumer UI/UX analytics
+                                    platforms.
+                                </p>
+                            </div>
+                            <a href="event-registration.html" class="btn btn-primary w-100 fw-bold">Register</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col">
+                <article class="event-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="event-thumbnail">
+                                <span class="room-capacity-pill">
+                                    <span class="material-symbols-outlined">groups</span>
+                                    1/10
+                                </span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-date">
+                                    <span
+                                        class="material-symbols-outlined detail-icon calendar-icon">calendar_today</span>
+                                    Jan 15, 2027
+                                </div>
+                                <h2>Sales Kickoff</h2>
+                                <div class="event-organizer">
+                                    <span class="material-symbols-outlined detail-icon">corporate_fare</span>
+                                    by Acme Events Co.
+                                </div>
+                                <div class="event-categories">
+                                    <span class="category-pill">
+                                        <span class="material-symbols-outlined category-icon">business_center</span>
+                                        Corporate
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div>
+                                <h2>Sales Kickoff</h2>
+                                <p class="event-description">
+                                    Aligning our regional sales forces for the upcoming calendar year. Unpacking new
+                                    enterprise tier solutions, optimization techniques for the sales pipeline,
+                                    commission reviews, and market territory targets.
+                                </p>
+                            </div>
+                            <a href="event-registration.html" class="btn btn-primary w-100 fw-bold">Register</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="col">
+                <article class="event-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="event-thumbnail">
+                                <span class="room-capacity-pill">
+                                    <span class="material-symbols-outlined">groups</span>
+                                    49/60
+                                </span>
+                            </div>
+                            <div class="event-details">
+                                <div class="event-date">
+                                    <span
+                                        class="material-symbols-outlined detail-icon calendar-icon">calendar_today</span>
+                                    Nov 8, 2026
+                                </div>
+                                <h2>Wellness Day</h2>
+                                <div class="event-organizer">
+                                    <span class="material-symbols-outlined detail-icon">corporate_fare</span>
+                                    by Umbrella Group
+                                </div>
+                                <div class="event-categories">
+                                    <span class="category-pill">
+                                        <span class="material-symbols-outlined category-icon">celebration</span>
+                                        Social Gatherings
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div>
+                                <h2>Wellness Day</h2>
+                                <p class="event-description">
+                                    Take a breath and hit reset. This company-wide initiative features personalized
+                                    ergonomics analysis, holistic stress-management lectures, mindfulness exercises,
+                                    healthy food bars, and open yoga blocks.
+                                </p>
+                            </div>
+                            <a href="event-registration.html" class="btn btn-primary w-100 fw-bold">Register</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+        </div>
+
+        <nav class="pagination-wrapper" aria-label="Pagination Navigation">
+            <ul class="pagination">
+                <li><a href="?page=1" aria-label="Previous Page">&laquo;</a></li>
+                <li><a href="?page=1" class="active">1</a></li>
+                <li><a href="?page=2">2</a></li>
+                <li><a href="?page=3">3</a></li>
+                <li><a href="?page=2" aria-label="Next Page">&raquo;</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
