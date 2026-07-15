@@ -1,0 +1,43 @@
+@import "../main";
+
+.section-break {
+   margin: 40px 0 20px;
+   font-size: 1.35rem;
+   font-weight: 800;
+   color: #fff;
+   letter-spacing: -0.5px;
+}
+
+.filter-form input[type="date"]::-webkit-calendar-picker-indicator {
+   filter: invert(1) brightness(2);
+   cursor: pointer;
+}
+
+.badge-paid {
+   background-color: rgb(16 185 129 / 20%) !important;
+   color: #10b981 !important;
+}
+
+.badge-overdue {
+   background-color: rgb(239 68 110 / 20%) !important;
+   color: #ef4444 !important;
+}
+
+.page-nav-btn {
+   background: #141133;
+   border: 1px solid #25215a;
+   color: #fff;
+   width: 32px;
+   height: 32px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 8px;
+   text-decoration: none;
+   transition: background-color 0.3s ease;
+
+   &:hover {
+      background-color: #25215a;
+      color: #fff;
+   }
+}
