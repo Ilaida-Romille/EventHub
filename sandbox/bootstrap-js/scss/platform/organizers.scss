@@ -1,17 +1,17 @@
 @import "../main";
 
 .badge-active {
-   background-color: rgba(16, 185, 129, 0.2) !important;
+   background-color: rgb(16 185 129 / 20%) !important;
    color: #10b981 !important;
 }
 
 .badge-suspended {
-   background-color: rgba(239, 68, 110, 0.2) !important;
+   background-color: rgb(239 68 110 / 20%) !important;
    color: #ef4444 !important;
 }
 
 .badge-pending {
-   background-color: rgba(245, 158, 11, 0.2) !important;
+   background-color: rgb(245 158 11 / 20%) !important;
 }
 
 .table-actions {

@@ -94,7 +94,7 @@
 
    &:hover {
       border-color: #4338ca;
-      background-color: rgba(67, 56, 202, 0.1);
+      background-color: rgb(67 56 202 / 10%);
       color: #4338ca;
    }
 }
@@ -105,7 +105,7 @@
 
       &:focus {
          border-color: #4338ca !important;
-         box-shadow: 0 0 0 4px rgba(67, 56, 202, 0.25) !important;
+         box-shadow: 0 0 0 4px rgb(67 56 202 / 25%) !important;
       }
    }
 }
