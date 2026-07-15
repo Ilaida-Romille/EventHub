@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Central desk resolution management console." />
+    <title>EventHub - Tickets & Support</title>
+
+
+    <link rel="stylesheet" href="../css/platform/tickets.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2=family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container-xl d-flex justify-content-between align-items-center flex-wrap gap-3 p-3">
+            <div class="d-flex align-items-center gap-2 fw-extrabold fs-5">
+                <span class="material-symbols-outlined logo-icon fs-4">event</span>
+                <a href="../index.html" class="text-white text-decoration-none fw-bolder">EventHub</a>
+            </div>
+            <nav>
+                <a href="#" class="text-white text-decoration-none opacity-75 fw-medium"
+                    style="font-size: 0.95rem;">Platform Owner | Admin &#9662;</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="layout-container">
+
+        <aside class="sidebar p-4 py-md-5">
+            <nav aria-label="Sidebar Navigation">
+                <ul class="nav flex-row flex-md-column gap-2 p-0 m-0 overflow-auto text-nowrap">
+                    <li class="nav-item">
+                        <a href="dashboard.html"
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            <span class="material-symbols-outlined fs-5">dashboard</span>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="organizers.html"
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            <span class="material-symbols-outlined fs-5">group</span>Organizers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="billing.html"
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            <span class="material-symbols-outlined fs-5">payments</span>Billing
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="tickets.html"
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            <span class="material-symbols-outlined fs-5">confirmation_number</span>Tickets
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+
+        <main class="w-100 p-4 p-md-5 mx-auto" style="max-width: 1200px;">
+            <h1 class="h3 fw-extrabold text-white mb-4" style="letter-spacing: -0.5px;">Tickets & Requests</h1>
+
+
+            <div class="row g-4 align-items-start">
+
+
+                <div class="col-12 col-md-5 col-lg-4 d-flex flex-column gap-3">
+                    <section class="card p-0 overflow-hidden" aria-label="Current open tickets list">
+                        <div class="d-flex flex-column">
+
+                            <div class="ticket-item active">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="ticket-id">#TCK-1042</span>
+                                    <span class="status-badge badge-open">Open</span>
+                                </div>
+                                <div class="text-secondary mb-2" style="font-size: 0.85rem;">Acme Events Co.</div>
+                                <div class="text-white fw-semibold" style="font-size: 1rem;">Can't edit event capacity
+                                </div>
+                            </div>
+
+                            <div class="ticket-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="ticket-id">#TCK-1039</span>
+                                    <span class="status-badge badge-open">Open</span>
+                                </div>
+                                <div class="text-secondary mb-2" style="font-size: 0.85rem;">Initech PH</div>
+                                <div class="text-white fw-semibold" style="font-size: 1rem;">Request: Add 3 more admins
+                                </div>
+                            </div>
+
+                            <div class="ticket-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="ticket-id">#TCK-1031</span>
+                                    <span class="status-badge badge-progress">In Progress</span>
+                                </div>
+                                <div class="text-secondary mb-2" style="font-size: 0.85rem;">Northwind Corp.</div>
+                                <div class="text-white fw-semibold" style="font-size: 1rem;">Invoice discrepancy</div>
+                            </div>
+
+                            <div class="ticket-item">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="ticket-id">#TCK-1020</span>
+                                    <span class="status-badge badge-resolved">Resolved</span>
+                                </div>
+                                <div class="text-secondary mb-2" style="font-size: 0.85rem;">Globex Holdings</div>
+                                <div class="text-white fw-semibold" style="font-size: 1rem;">Reactivate account</div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <div class="d-flex justify-content-center align-items-center gap-3 mt-1 text-secondary fw-semibold"
+                        style="font-size: 0.9rem;">
+                        <a href="#" class="page-nav-btn" aria-label="Back page"><span
+                                class="material-symbols-outlined fs-6">arrow_back_ios_new</span></a>
+                        <span>Page 1 of 5</span>
+                        <a href="#" class="page-nav-btn" aria-label="Forward page"><span
+                                class="material-symbols-outlined fs-6">arrow_forward_ios</span></a>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-md-7 col-lg-8">
+                    <section class="card p-4 p-lg-5" aria-label="Active ticket operational investigation view">
+                        <div
+                            class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center gap-3 mb-2">
+                            <h2 class="h5 fw-extrabold text-white m-0" style="font-size: 1.35rem;">#TCK-1042 &mdash;
+                                Can't edit event capacity</h2>
+                            <span class="status-badge badge-open align-self-start align-self-sm-auto">Open</span>
+                        </div>
+
+                        <div class="text-secondary pb-3 mb-4 border-bottom border-secondary" style="font-size: 0.9rem;">
+                            From: <strong class="text-white fw-bold">Acme Events Co.</strong> &nbsp;&middot;&nbsp;
+                            Opened: 3 days ago
+                        </div>
+
+                        <blockquote class="quote-box">
+                            &ldquo;We're trying to raise our event capacity from 200 to 350 but the field won't save.
+                            Can someone check?&rdquo;
+                        </blockquote>
+
+                        <form method="POST" action="">
+                            <div class="mb-4">
+                                <label for="helpdesk-response"
+                                    class="form-label text-uppercase text-secondary fw-bold mb-2"
+                                    style="font-size: 0.85rem; letter-spacing: 0.5px;">Your Response</label>
+                                <textarea id="helpdesk-response" class="form-control"
+                                    style="height: 140px; resize: vertical;"
+                                    placeholder="Type notes to send to the organizer..."></textarea>
+                            </div>
+
+
+                            <div class="d-flex flex-column flex-sm-row gap-3">
+                                <button type="submit" class="btn btn-primary flex-sm-grow-2 fw-bold"
+                                    style="height: 44px;">
+                                    Send Response
+                                </button>
+                                <button type="button"
+                                    class="btn btn-outline-secondary flex-sm-grow-1 fw-bold text-white"
+                                    style="height: 44px;">
+                                    Mark Resolved
+                                </button>
+                            </div>
+                        </form>
+                    </section>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
