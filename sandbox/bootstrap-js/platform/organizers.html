@@ -9,50 +9,73 @@
     <link rel="stylesheet" href="../css/platform/organizers.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300..800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 </head>
 
 <body>
     <header class="header">
-        <div class="container-xl d-flex justify-content-between align-items-center flex-wrap gap-3 p-3">
-            <div class="d-flex align-items-center gap-2 fw-extrabold fs-5">
-                <span class="material-symbols-outlined logo-icon fs-4">event</span>
-                <a href="../index.html" class="text-white text-decoration-none fw-bolder">EventHub</a>
+        <nav class="navbar navbar-expand-lg py-3">
+            <div class="container-xl">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bolder fs-5" href="../index.html">
+                    <span class="material-symbols-outlined logo-icon fs-4">event</span>
+                    <span class="text-white">EventHub</span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white fw-medium opacity-75" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.95rem;">
+                                Platform Owner | Admin
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <nav>
-                <a href="#" class="text-white text-decoration-none opacity-75 fw-medium"
-                    style="font-size: 0.95rem;">Platform Owner | Admin &#9662;</a>
-            </nav>
-        </div>
+        </nav>
     </header>
 
     <div class="layout-container">
-        <aside class="sidebar p-4 py-md-5">
+        <aside class="sidebar p-3 p-md-4">
             <nav aria-label="Sidebar Navigation">
-                <ul class="nav flex-row flex-md-column gap-2 p-0 m-0 overflow-auto text-nowrap">
+                <ul class="nav flex-row flex-md-column gap-2">
                     <li class="nav-item">
                         <a href="dashboard.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
                             <span class="material-symbols-outlined fs-5">dashboard</span>Dashboard
                         </a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a href="organizers.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            class="nav-link active d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium ">
                             <span class="material-symbols-outlined fs-5">group</span>Organizers
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="billing.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
                             <span class="material-symbols-outlined fs-5">payments</span>Billing
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="tickets.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
+                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
                             <span class="material-symbols-outlined fs-5">confirmation_number</span>Tickets
                         </a>
                     </li>
