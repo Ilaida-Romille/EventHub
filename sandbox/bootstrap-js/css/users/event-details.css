@@ -11866,7 +11866,7 @@ a {
 .layout-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 @media (min-width: 768px) {
   .layout-container {
@@ -11893,7 +11893,6 @@ a {
 @media (min-width: 768px) {
   .sidebar {
     width: 260px;
-    flex-shrink: 0;
   }
 }
 .sidebar ul li a {
@@ -11916,43 +11915,12 @@ a {
   border-radius: 14px;
 }
 
-.details-nav {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.details-nav .divider {
-  color: #25215a;
-}
-
-.context-breadcrumb {
-  color: #94a3b8;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.section-title,
-.sidebar-title {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #fff;
-  margin-bottom: 24px;
-  letter-spacing: -0.5px;
-}
-
-.timeline-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
 .timeline-card {
   display: flex;
   background-color: #141133;
   border: 1px solid #25215a;
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .timeline-card:hover {
@@ -12051,25 +12019,6 @@ a {
   font-weight: 500;
 }
 
-.structural-card {
-  padding: 28px 24px;
-  margin-bottom: 24px;
-}
-
-.spacing-top {
-  margin-top: 24px;
-}
-
-.communication-card {
-  text-align: center;
-}
-
-.prompt-text {
-  color: #f8fafc;
-  font-size: 0.95rem;
-  margin-bottom: 16px;
-}
-
 .map-container {
   width: 100%;
   border-radius: 8px;
@@ -12080,14 +12029,6 @@ a {
 .map-container iframe {
   display: block;
   width: 100%;
-}
-
-@media (width >= 992px) {
-  .sticky-sidebar-lg {
-    position: sticky;
-    top: 92px;
-    height: fit-content;
-  }
 }
 
 /*# sourceMappingURL=event-details.css.map */

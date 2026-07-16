@@ -46,8 +46,8 @@
     <main class="container px-4 py-5">
         <div class="row g-4 g-lg-5">
             <section class="col-12 col-lg-8" aria-label="Event Agenda">
-                <h2 class="section-title">Agenda</h2>
-                <div class="timeline-stack">
+                <h2 class="h3 fw-bold mb-4">Agenda</h2>
+                <div class="d-flex flex-column gap-3">
                     <div class="timeline-card">
                         <div class="time-block">9:00 AM</div>
                         <div class="details-block">
@@ -111,60 +111,57 @@
                 </div>
             </section>
 
-            <aside class="col-12 col-lg-4">
-                <div class="sticky-sidebar-lg">
-                    <div class="card structural-card">
-                        <h2 class="sidebar-title">Attendees</h2>
-                        <div class="attendee-list">
-                            <div class="attendee-row">
-                                <div class="avatar" aria-hidden="true">MS</div>
-                                <div class="attendee-info">
-                                    <span class="name">Maria Santos</span>
-                                    <span class="comp">Acme Events Co.</span>
-                                </div>
-                            </div>
-
-                            <div class="attendee-row">
-                                <div class="avatar" aria-hidden="true">LC</div>
-                                <div class="attendee-info">
-                                    <span class="name">Liam Cruz</span>
-                                    <span class="comp">Northwind Corp.</span>
-                                </div>
-                            </div>
-
-                            <div class="attendee-row">
-                                <div class="avatar" aria-hidden="true">AR</div>
-                                <div class="attendee-info">
-                                    <span class="name">Ana Reyes</span>
-                                    <span class="comp">Initech PH</span>
-                                </div>
-                            </div>
-
-                            <div class="more-row">
-                                <span class="indicator">+ 118 more attendees</span>
+            <aside class="col-12 col-md-4">
+                <div class="card p-4 mb-4">
+                    <h2 class="h4 fw-bold mb-4">Attendees</h2>
+                    <div class="attendee-list">
+                        <div class="attendee-row">
+                            <div class="avatar" aria-hidden="true">MS</div>
+                            <div class="attendee-info">
+                                <span class="name">Maria Santos</span>
+                                <span class="comp">Acme Events Co.</span>
                             </div>
                         </div>
-                        <button class="btn btn-primary w-100 spacing-top fw-bold" type="button">View All &
-                            Connect</button>
-                    </div>
 
-                    <div class="card structural-card">
-                        <h2 class="sidebar-title">Venue Location</h2>
-                        <div class="map-container">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.127814986121!2d121.0336214!3d14.6205779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7b1f5555555%3A0x5555555555555555!2sQuezon%20City%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph"
-                                title="Google Maps" height="220" style="border:0;" allowfullscreen="" loading="lazy"
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
+                        <div class="attendee-row">
+                            <div class="avatar" aria-hidden="true">LC</div>
+                            <div class="attendee-info">
+                                <span class="name">Liam Cruz</span>
+                                <span class="comp">Northwind Corp.</span>
+                            </div>
+                        </div>
+
+                        <div class="attendee-row">
+                            <div class="avatar" aria-hidden="true">AR</div>
+                            <div class="attendee-info">
+                                <span class="name">Ana Reyes</span>
+                                <span class="comp">Initech PH</span>
+                            </div>
+                        </div>
+
+                        <div class="more-row">
+                            <span class="indicator">+ 118 more attendees</span>
                         </div>
                     </div>
+                    <button class="btn btn-primary w-100 mt-3 fw-bold" type="button">View All &
+                        Connect</button>
+                </div>
 
-                    <div class="card structural-card communication-card">
-                        <p class="prompt-text">Have a question for the organizer?</p>
-                        <button class="btn btn-outline-secondary text-white border-secondary w-100 fw-bold"
-                            type="button">Message the Organizer</button>
+                <div class="card p-4 mb-4">
+                    <h2 class="h4 fw-bold mb-3">Venue Location</h2>
+                    <div class="map-container">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3861.127814986121!2d121.0336214!3d14.6205779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b7b1f5555555%3A0x5555555555555555!2sQuezon%20City%2C%20Metro%20Manila!5e0!3m2!1sen!2sph!4v1710000000000!5m2!1sen!2sph"
+                            title="Google Maps" height="220" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
                     </div>
+                </div>
 
+                <div class="card p-4 mb-4 text-center">
+                    <p class="fs-6 mb-3">Have a question for the organizer?</p>
+                    <button class="btn btn-outline-secondary border-secondary w-100 fw-bold" type="button">Message the
+                        Organizer</button>
                 </div>
             </aside>
 

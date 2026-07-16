@@ -74,34 +74,33 @@
             </ul>
         </aside>
 
-        <main class="w-100 p-4 p-md-5 mx-auto" style="max-width: 1200px;">
-            <h1 class="h3 fw-extrabold text-white mb-4" style="letter-spacing: -0.5px;">Search Invoices (Historical)
+        <main class="w-100 p-4 mx-auto" style="max-width: 1200px;">
+            <h1 class="h3 fw-extrabold text-white mb-4">Search Invoices (Historical)
             </h1>
 
-            <div class="filter-row mb-4">
-                <form class="filter-form d-flex flex-wrap align-items-end p-4   gap-3" method="GET" action="">
-                    <div class="form-group flex-grow-1 flex-shrink-1" style="min-width: 260px;">
+            <div class="filter-row p-4 mb-4">
+                <form class="filter-form row g-3 align-items-end" method="GET" action="">
+                    <div class="col-12 col-md-6">
                         <label for="organizer-account" class="form-label text-uppercase text-secondary fw-bold mb-2"
-                            style="font-size: 0.85rem; letter-spacing: 0.5px;">Organizer</label>
-                        <input type="text" class="form-control" style="height: 44px;" id="organizer-account"
-                            name="organizer" placeholder="Search organizers..." />
+                            style="font-size: 0.85rem;">Organizer</label>
+                        <input type="text" class="form-control" id="organizer-account" name="organizer"
+                            placeholder="Search organizers..." />
                     </div>
 
-                    <div class="form-group flex-grow-1 flex-shrink-1" style="min-width: 180px;">
+                    <div class="col-12 col-md-2">
                         <label for="from-date" class="form-label text-uppercase text-secondary fw-bold mb-2"
-                            style="font-size: 0.85rem; letter-spacing: 0.5px;">From Date</label>
-                        <input type="date" class="form-control" style="height: 44px;" id="from-date" name="from_date" />
+                            style="font-size: 0.85rem;">From Date</label>
+                        <input type="date" class="form-control" id="from-date" name="from_date" />
                     </div>
 
-                    <div class="form-group flex-grow-1 flex-shrink-1" style="min-width: 180px;">
+                    <div class="col-12 col-md-2">
                         <label for="to-date" class="form-label text-uppercase text-secondary fw-bold mb-2"
-                            style="font-size: 0.85rem; letter-spacing: 0.5px;">To Date</label>
-                        <input type="date" class="form-control" style="height: 44px;" id="to-date" name="to_date" />
+                            style="font-size: 0.85rem;">To Date</label>
+                        <input type="date" class="form-control" id="to-date" name="to_date" />
                     </div>
 
-                    <div class="flex-shrink-0">
-                        <button class="btn btn-primary fw-bold" style="height: 44px; padding: 0 40px;"
-                            type="submit">Search</button>
+                    <div class="col-12 col-md-2">
+                        <button class="btn btn-primary px-5 fw-bold" type="submit">Search</button>
                     </div>
                 </form>
             </div>
@@ -109,7 +108,7 @@
             <div class="table-responsive mb-4">
                 <table class="table table-striped table-hover align-middle m-0" style="min-width: 700px;">
                     <thead>
-                        <tr class="text-uppercase" style="font-size: 0.8rem; letter-spacing: 0.5px;">
+                        <tr class="text-uppercase" style="font-size: 0.8rem;">
                             <th class="p-3 px-4 text-white border-bottom border-secondary">Invoice #</th>
                             <th class="p-3 px-4 text-white border-bottom border-secondary">Organizer</th>
                             <th class="p-3 px-4 text-white border-bottom border-secondary">Period</th>

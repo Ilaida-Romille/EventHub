@@ -1,43 +1,11 @@
 @import "../main";
 
-.details-nav {
-   display: flex;
-   align-items: center;
-   gap: 12px;
-
-   .divider {
-      color: #25215a;
-   }
-}
-
-.context-breadcrumb {
-   color: #94a3b8;
-   font-size: 0.95rem;
-   font-weight: 600;
-}
-
-.section-title,
-.sidebar-title {
-   font-size: 1.5rem;
-   font-weight: 800;
-   color: #fff;
-   margin-bottom: 24px;
-   letter-spacing: -0.5px;
-}
-
-.timeline-stack {
-   display: flex;
-   flex-direction: column;
-   gap: 16px;
-}
-
 .timeline-card {
    display: flex;
    background-color: #141133;
    border: 1px solid $border-color;
    border-radius: 14px;
    overflow: hidden;
-   box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
    &:hover {
@@ -143,25 +111,6 @@
    }
 }
 
-.structural-card {
-   padding: 28px 24px;
-   margin-bottom: 24px;
-}
-
-.spacing-top {
-   margin-top: 24px;
-}
-
-.communication-card {
-   text-align: center;
-}
-
-.prompt-text {
-   color: #f8fafc;
-   font-size: 0.95rem;
-   margin-bottom: 16px;
-}
-
 .map-container {
    width: 100%;
    border-radius: 8px;
@@ -172,13 +121,5 @@
    iframe {
       display: block;
       width: 100%;
-   }
-}
-
-@media (width >= 992px) {
-   .sticky-sidebar-lg {
-      position: sticky;
-      top: 92px;
-      height: fit-content;
    }
 }

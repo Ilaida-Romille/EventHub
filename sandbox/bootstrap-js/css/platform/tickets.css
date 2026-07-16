@@ -11866,7 +11866,7 @@ a {
 .layout-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 @media (min-width: 768px) {
   .layout-container {
@@ -11893,7 +11893,6 @@ a {
 @media (min-width: 768px) {
   .sidebar {
     width: 260px;
-    flex-shrink: 0;
   }
 }
 .sidebar ul li a {

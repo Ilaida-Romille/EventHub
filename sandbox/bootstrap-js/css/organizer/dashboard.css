@@ -11866,7 +11866,7 @@ a {
 .layout-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 @media (min-width: 768px) {
   .layout-container {
@@ -11893,7 +11893,6 @@ a {
 @media (min-width: 768px) {
   .sidebar {
     width: 260px;
-    flex-shrink: 0;
   }
 }
 .sidebar ul li a {
@@ -11947,13 +11946,11 @@ a {
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .workspace-card:hover {
   border-color: #4338ca;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .card-icon-box {

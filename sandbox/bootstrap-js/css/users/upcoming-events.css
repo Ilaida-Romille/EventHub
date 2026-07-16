@@ -11866,7 +11866,7 @@ a {
 .layout-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 }
 @media (min-width: 768px) {
   .layout-container {
@@ -11893,7 +11893,6 @@ a {
 @media (min-width: 768px) {
   .sidebar {
     width: 260px;
-    flex-shrink: 0;
   }
 }
 .sidebar ul li a {
@@ -11922,7 +11921,6 @@ a {
   border-radius: 14px;
   padding: 20px;
   margin-bottom: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .filter-form input[type=date],
@@ -11971,7 +11969,6 @@ a {
   border: 1px solid #25215a;
   border-radius: 50px;
   padding: 4px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .pill-btn {
@@ -12018,7 +12015,6 @@ a {
 .event-card {
   background-color: transparent;
   border: none;
-  box-shadow: none;
   perspective: 1000px;
   height: 380px;
 }
@@ -12027,7 +12023,6 @@ a {
 }
 .event-card:hover .card-front, .event-card:hover .card-back {
   border-color: #3730a3;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .card-inner {
@@ -12048,7 +12043,6 @@ a {
   background-color: #141133;
   border: 1px solid #25215a;
   border-radius: 14px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -12165,7 +12159,6 @@ a {
   border: 1px solid #25215a;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 .pagination li a {
   display: block;

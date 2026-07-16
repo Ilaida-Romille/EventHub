@@ -1,5 +1,8 @@
+// Non-default variables
 $header-color: #141133;
 $card-color: #141133;
+
+// Default variables
 $body-bg: #0a071b;
 $body-color: #f1f5f9;
 $primary: #3730a3;
@@ -37,7 +40,7 @@ a {
 .layout-container {
    display: flex;
    flex-direction: column;
-   height: 100vh;
+   min-height: 100vh;
 
    @include media-breakpoint-up(md) {
       flex-direction: row;
@@ -63,7 +66,6 @@ a {
 
    @include media-breakpoint-up(md) {
       width: 260px;
-      flex-shrink: 0;
    }
 
    ul li a {
