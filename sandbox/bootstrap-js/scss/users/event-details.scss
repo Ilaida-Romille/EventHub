@@ -34,7 +34,7 @@
 .timeline-card {
    display: flex;
    background-color: #141133;
-   border: 1px solid #25215a;
+   border: 1px solid $border-color;
    border-radius: 14px;
    overflow: hidden;
    box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
@@ -59,7 +59,7 @@
    justify-content: center;
    font-weight: 700;
    color: #fff;
-   border-right: 1px solid #25215a;
+   border-right: 1px solid $border-color;
    font-size: 0.95rem;
 }
 
@@ -106,7 +106,7 @@
    width: 40px;
    height: 40px;
    background-color: #0b0924;
-   border: 2px solid #25215a;
+   border: 2px solid $border-color;
    color: #f8fafc;
    font-weight: 700;
    font-size: 0.85rem;
@@ -166,7 +166,7 @@
    width: 100%;
    border-radius: 8px;
    overflow: hidden;
-   border: 1px solid #25215a;
+   border: 1px solid $border-color;
    background: #0b0924;
 
    iframe {

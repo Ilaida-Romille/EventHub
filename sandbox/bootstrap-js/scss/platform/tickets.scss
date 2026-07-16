@@ -11,7 +11,7 @@
    }
 
    &:hover {
-      background-color: rgb(244 63 94 / 4%);
+      background-color: $table-hover-bg;
    }
 
    &.active {
@@ -57,8 +57,8 @@
 }
 
 .page-nav-btn {
-   background: #141133;
-   border: 1px solid #25215a;
+   background: $body-bg;
+   border: 1px solid $border-color;
    color: #fff;
    width: 32px;
    height: 32px;
@@ -67,10 +67,9 @@
    justify-content: center;
    border-radius: 8px;
    text-decoration: none;
-   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
    &:hover {
-      background-color: #25215a;
+      background-color: #4338ca;
       color: #fff;
    }
 }

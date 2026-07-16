@@ -17,7 +17,6 @@
    .value {
       font-size: 2.75rem;
       font-weight: 800;
-      color: #fff;
       line-height: 1.1;
       letter-spacing: -1px;
    }
@@ -41,7 +40,6 @@
 
       &:hover {
          background: #4338ca;
-         transform: scaleY(1.03);
       }
    }
 }
@@ -50,21 +48,17 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
-   background: #141133;
-   border: 2px solid #25215a;
+   background: $body-bg;
+   border: 2px solid $border-color;
    border-radius: 14px;
    padding: 18px 24px;
    font-weight: 700;
    font-size: 0.95rem;
    color: #4338ca;
-   box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
    text-decoration: none;
-   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
    &:hover {
-      border-color: #f43f5e;
-      background-color: rgb(244 63 94 / 6%);
+      background-color: #4338ca;
       color: #fff;
-      transform: translateX(4px);
    }
 }

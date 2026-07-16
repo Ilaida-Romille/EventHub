@@ -14,18 +14,18 @@
 }
 
 .badge-paid {
-   background-color: rgb(16 185 129 / 20%) !important;
-   color: #10b981 !important;
+   background-color: rgb(16 185 129 / 20%);
+   color: #10b981;
 }
 
 .badge-overdue {
-   background-color: rgb(239 68 110 / 20%) !important;
-   color: #ef4444 !important;
+   background-color: rgb(239 68 110 / 20%);
+   color: #ef4444;
 }
 
 .page-nav-btn {
-   background: #141133;
-   border: 1px solid #25215a;
+   background: $body-bg;
+   border: 1px solid $border-color;
    color: #fff;
    width: 32px;
    height: 32px;
@@ -34,10 +34,9 @@
    justify-content: center;
    border-radius: 8px;
    text-decoration: none;
-   transition: background-color 0.3s ease;
 
    &:hover {
-      background-color: #25215a;
+      background-color: #4338ca;
       color: #fff;
    }
 }

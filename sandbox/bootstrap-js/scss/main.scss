@@ -1,9 +1,11 @@
+$header-color: #141133;
+$card-color: #141133;
 $body-bg: #0a071b;
 $body-color: #f1f5f9;
 $primary: #3730a3;
 $secondary: #94a3b8;
 $danger: #ef4444;
-$success: #10b981;
+$success: #0c6145;
 $warning: #f59e0b;
 $border-color: #25215a;
 $font-family-sans-serif:
@@ -22,8 +24,9 @@ $input-color: #fff;
 $input-border-radius: 8px;
 $input-padding-y: 10px;
 $input-padding-x: 14px;
-$input-focus-border-color: #f43f5e;
-$input-focus-box-shadow: 0 0 0 4px rgb(244 63 94 / 25%);
+$input-focus-border-color: rgb(95 19 225 / 25%);
+$table-striped-bg: #141133;
+$table-hover-bg: #221e5e;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
@@ -34,7 +37,7 @@ a {
 .layout-container {
    display: flex;
    flex-direction: column;
-   min-height: calc(100vh - 68px);
+   height: 100vh;
 
    @include media-breakpoint-up(md) {
       flex-direction: row;
@@ -42,7 +45,7 @@ a {
 }
 
 .header {
-   background-color: #141133;
+   background-color: $header-color;
    position: sticky;
    top: 0;
    z-index: 100;
@@ -54,7 +57,7 @@ a {
 }
 
 .sidebar {
-   background-color: #141133;
+   background-color: $header-color;
    border-right: 1px solid $border-color;
    width: 100%;
 
@@ -64,7 +67,7 @@ a {
    }
 
    ul li a {
-      color: #94a3b8;
+      color: $secondary;
 
       &:hover,
       &.active {
@@ -75,20 +78,13 @@ a {
 }
 
 .filter-row,
-.card,
-.table-responsive {
-   background: #141133;
+.card {
+   background-color: $card-color;
    border: 1px solid $border-color;
    border-radius: 14px;
-   box-shadow: 0 4px 12px rgb(0 0 0 / 30%);
 }
 
-table {
-   th {
-      background-color: rgb(10 7 27 / 60%);
-   }
-
-   tr:hover td {
-      background-color: rgb(244 63 94 / 4%);
-   }
+.table-responsive {
+   border: 1px solid $border-color;
+   border-radius: 14px;
 }

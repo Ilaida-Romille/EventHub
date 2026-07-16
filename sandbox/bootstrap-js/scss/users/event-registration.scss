@@ -1,11 +1,5 @@
 @import "../main";
 
-.registration-container {
-   max-width: 900px;
-   margin: 0 auto;
-   padding: 32px 20px;
-}
-
 .back-link {
    display: inline-flex;
    align-items: center;
@@ -24,7 +18,7 @@
 
 .event-summary-card {
    background: linear-gradient(135deg, #141133 0%, #1e1952 100%);
-   border: 1px solid #25215a;
+   border: 1px solid $border-color;
    border-radius: 14px;
    padding: 32px;
    margin-bottom: 32px;
@@ -112,7 +106,7 @@ textarea:user-invalid {
    display: flex;
    flex-direction: column-reverse;
    gap: 12px;
-   border-top: 1px solid #25215a;
+   border-top: 1px solid $border-color;
    padding-top: 24px;
 }
 
@@ -125,7 +119,7 @@ textarea:user-invalid {
    width: 100%;
    border-radius: 8px;
    overflow: hidden;
-   border: 1px solid #25215a;
+   border: 1px solid $border-color;
    background: #0b0924;
 
    iframe {

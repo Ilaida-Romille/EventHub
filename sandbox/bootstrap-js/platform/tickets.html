@@ -16,80 +16,66 @@
 
 <body>
     <header class="header">
-        <nav class="navbar navbar-expand-lg py-3">
-            <div class="container-xl">
-                <a class="navbar-brand d-flex align-items-center gap-2 fw-bolder fs-5" href="../index.html">
-                    <span class="material-symbols-outlined logo-icon fs-4">event</span>
-                    <span class="text-white">EventHub</span>
-                </a>
+        <nav class="container-fluid navbar navbar-expand-md px-4 py-3">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bolder fs-5" href="../index.html">
+                <span class="material-symbols-outlined logo-icon fs-4">event</span>
+                <span class="text-white">EventHub</span>
+            </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-white fw-medium opacity-75" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.95rem;">
-                                Platform Owner | Admin
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item text-danger" href="#">Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fw-medium opacity-75" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.95rem;">
+                            Platform Owner | Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item text-danger" href="../index.html">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <div class="layout-container">
-        <aside class="sidebar p-3 p-md-4">
-            <nav aria-label="Sidebar Navigation">
-                <ul class="nav flex-row flex-md-column gap-2">
-                    <li class="nav-item">
-                        <a href="dashboard.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
-                            <span class="material-symbols-outlined fs-5">dashboard</span>Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="organizers.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium ">
-                            <span class="material-symbols-outlined fs-5">group</span>Organizers
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="billing.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
-                            <span class="material-symbols-outlined fs-5">payments</span>Billing
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="tickets.html"
-                            class="nav-link active d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
-                            <span class="material-symbols-outlined fs-5">confirmation_number</span>Tickets
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <aside class="sidebar p-2 py-4">
+            <ul class="nav flex-row flex-md-column gap-2">
+                <li class="nav-item">
+                    <a href="dashboard.html"
+                        class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
+                        <span class="material-symbols-outlined fs-5">dashboard</span>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="organizers.html"
+                        class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium ">
+                        <span class="material-symbols-outlined fs-5">group</span>Organizers
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="billing.html" class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
+                        <span class="material-symbols-outlined fs-5">payments</span>Billing
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="tickets.html"
+                        class="nav-link active d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
+                        <span class="material-symbols-outlined fs-5">confirmation_number</span>Tickets
+                    </a>
+                </li>
+            </ul>
         </aside>
 
         <main class="w-100 p-4 p-md-5 mx-auto" style="max-width: 1200px;">
             <h1 class="h3 fw-extrabold text-white mb-4" style="letter-spacing: -0.5px;">Tickets & Requests</h1>
 
-
             <div class="row g-4 align-items-start">
-
-
                 <div class="col-12 col-md-5 col-lg-4 d-flex flex-column gap-3">
                     <section class="card p-0 overflow-hidden" aria-label="Current open tickets list">
                         <div class="d-flex flex-column">
@@ -134,7 +120,6 @@
                         </div>
                     </section>
 
-
                     <div class="d-flex justify-content-center align-items-center gap-3 mt-1 text-secondary fw-semibold"
                         style="font-size: 0.9rem;">
                         <a href="#" class="page-nav-btn" aria-label="Back page"><span
@@ -144,7 +129,6 @@
                                 class="material-symbols-outlined fs-6">arrow_forward_ios</span></a>
                     </div>
                 </div>
-
 
                 <div class="col-12 col-md-7 col-lg-8">
                     <section class="card p-4 p-lg-5" aria-label="Active ticket operational investigation view">
@@ -181,8 +165,7 @@
                                     style="height: 44px;">
                                     Send Response
                                 </button>
-                                <button type="button"
-                                    class="btn btn-outline-secondary flex-sm-grow-1 fw-bold text-white"
+                                <button type="button" class="btn btn-success flex-sm-grow-1 fw-bold text-white"
                                     style="height: 44px;">
                                     Mark Resolved
                                 </button>

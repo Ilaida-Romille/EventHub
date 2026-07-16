@@ -16,57 +16,64 @@
 
 <body>
     <header class="header">
-        <div class="container-xl d-flex justify-content-between align-items-center flex-wrap gap-3 p-3">
-            <div class="d-flex align-items-center gap-2 fw-extrabold fs-5">
+        <nav class="container-fluid navbar navbar-expand-md px-4 py-3">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bolder fs-5" href="../index.html">
                 <span class="material-symbols-outlined logo-icon fs-4">event</span>
-                <a href="../index.html" class="text-white text-decoration-none fw-bolder">EventHub</a>
-            </div>
+                <span class="text-white">EventHub</span>
+            </a>
 
-            <nav class="details-nav" aria-label="Organizer details navigation">
-                <span class="context-breadcrumb">Acme Events Co.</span>
-                <span class="divider">|</span>
-                <a href="#" class="text-white text-decoration-none opacity-75 fw-medium"
-                    style="font-size: 0.95rem;">Jane Dela Cruz &#9662;</a>
-            </nav>
-        </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fw-medium opacity-75" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 0.95rem;">
+                            Acme Events Co. | Jane Dela Cruz
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item text-danger" href="../index.html">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </header>
 
     <div class="layout-container">
-        <aside class="sidebar p-4 py-md-5">
-            <nav aria-label="Sidebar Navigation">
-                <ul class="nav flex-row flex-md-column gap-2 p-0 m-0 overflow-auto text-nowrap">
-                    <li class="nav-item active">
-                        <a href="dashboard.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
-                            <span class="material-symbols-outlined fs-5">dashboard</span>Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="employees.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
-                            <span class="material-symbols-outlined fs-5">badge</span>Manage Employees
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="events.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
-                            <span class="material-symbols-outlined fs-5">layers</span>Manage Events
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="settings.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
-                            <span class="material-symbols-outlined fs-5">settings</span>Settings
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="tickets.html"
-                            class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium text-decoration-none">
-                            <span class="material-symbols-outlined fs-5">confirmation_number</span>Tickets / Requests
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+        <aside class="sidebar p-2 py-4">
+            <ul class="nav flex-row flex-md-column gap-2">
+                <li class="nav-item active">
+                    <a href="dashboard.html"
+                        class="nav-link active d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
+                        <span class="material-symbols-outlined fs-5">dashboard</span>Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="employees.html"
+                        class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
+                        <span class="material-symbols-outlined fs-5">badge</span>Manage Employees
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="events.html" class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium ">
+                        <span class="material-symbols-outlined fs-5">layers</span>Manage Events
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="settings.html" class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
+                        <span class="material-symbols-outlined fs-5">settings</span>Settings
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="tickets.html" class="nav-link d-flex align-items-center gap-2 p-2 px-3 rounded fw-medium">
+                        <span class="material-symbols-outlined fs-5">confirmation_number</span>Tickets
+                    </a>
+                </li>
+            </ul>
         </aside>
 
         <main class="w-100 p-4 p-md-5 mx-auto" style="max-width: 1200px;">
@@ -85,8 +92,7 @@
                             <h2>Manage Employees</h2>
                             <p>Add, remove, and manage the employees on your corporate account.</p>
                         </div>
-                        <a href="employees.html"
-                            class="btn btn-outline-secondary text-white border-secondary card-action-trigger">Open</a>
+                        <a href="employees.html" class="btn btn-primary card-action-trigger">Open</a>
                     </div>
                 </div>
 
@@ -99,8 +105,7 @@
                             <h2>Manage Events</h2>
                             <p>Create, edit, and configure your company's premium events.</p>
                         </div>
-                        <a href="events.html"
-                            class="btn btn-outline-secondary text-white border-secondary card-action-trigger">Open</a>
+                        <a href="events.html" class="btn btn-primary card-action-trigger">Open</a>
                     </div>
                 </div>
 
@@ -113,13 +118,12 @@
                             <h2>Settings</h2>
                             <p>Update your corporate company profile and account global preferences.</p>
                         </div>
-                        <a href="settings.html"
-                            class="btn btn-outline-secondary text-white border-secondary card-action-trigger">Open</a>
+                        <a href="settings.html" class="btn btn-primary card-action-trigger">Open</a>
                     </div>
                 </div>
 
                 <div class="col">
-                    <div class="card workspace-card highlight-card h-100">
+                    <div class="card workspace-card h-100">
                         <div class="card-icon-box">
                             <span class="material-symbols-outlined">contact_support</span>
                         </div>
