@@ -218,13 +218,13 @@
                         <div class="row g-3 mb-4">
                             <div class="col-12 col-md-8">
                                 <label class="form-label text-uppercase text-secondary fw-bold mb-2"
-                                    style="font-size: 0.75rem; letter-spacing: 0.5px;">Organizer</label>
+                                    style="font-size: 0.75rem;">Organizer</label>
                                 <input type="text" id="invoice-organizer" class="form-control"
                                     placeholder="Search organizer..." value="Initech PH" />
                             </div>
                             <div class="col-12 col-md-4">
                                 <label class="form-label text-uppercase text-secondary fw-bold mb-2"
-                                    style="font-size: 0.75rem; letter-spacing: 0.5px;">Target Cycle</label>
+                                    style="font-size: 0.75rem;">Target Cycle</label>
                                 <input type="text" id="invoice-cycle" class="form-control" placeholder="MM/YY"
                                     value="05/26" />
                             </div>
@@ -247,15 +247,21 @@
                         aria-label="Close"></button>
                 </div>
                 <div class="modal-body py-4">
-                    <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
-                            <h6 class="text-secondary text-uppercase small mb-1"
-                                style="font-size: 0.75rem; letter-spacing: 0.5px;">Invoice To</h6>
+                            <h6 class="text-secondary text-uppercase small mb-1" style="font-size: 0.75rem;">Invoice
+                                To</h6>
                             <p class="fw-bold mb-0 text-white" id="modal-org-name">Organizer Name</p>
                         </div>
+                        <div class="text-center">
+                            <h6 class="text-secondary text-uppercase small mb-1" style="font-size: 0.75rem;">Status
+                            </h6>
+                            <span class="badge badge-overdue rounded-pill text-uppercase fw-bold p-2 px-3"
+                                id="modal-status" style="font-size: 0.75rem;">Overdue</span>
+                        </div>
                         <div class="text-end">
-                            <h6 class="text-secondary text-uppercase small mb-1"
-                                style="font-size: 0.75rem; letter-spacing: 0.5px;">Billing Cycle</h6>
+                            <h6 class="text-secondary text-uppercase small mb-1" style="font-size: 0.75rem;">Billing
+                                Cycle</h6>
                             <p class="fw-bold mb-0 text-white" id="modal-cycle">MM/YY</p>
                         </div>
                     </div>
@@ -265,7 +271,7 @@
 
                     <table class="table align-middle mb-0">
                         <thead>
-                            <tr class="text-uppercase" style="font-size: 0.75rem; letter-spacing: 0.5px;">
+                            <tr class="text-uppercase" style="font-size: 0.75rem;">
                                 <th class="pb-2">Description</th>
                                 <th class="text-end pb-2">Qty</th>
                                 <th class="text-end pb-2">Rate</th>
@@ -286,8 +292,8 @@
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mt-3">
-                        <span class="fw-bold text-uppercase text-secondary small"
-                            style="font-size: 0.75rem; letter-spacing: 0.5px;">Total Due</span>
+                        <span class="fw-bold text-uppercase text-secondary small" style="font-size: 0.75rem;">Total
+                            Due</span>
                         <span class="h4 fw-extrabold mb-0 modal-grand-total" id="modal-grand-total">₱0.00</span>
                     </div>
                 </div>
