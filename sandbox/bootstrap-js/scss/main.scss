@@ -40,7 +40,7 @@ a {
 .layout-container {
    display: flex;
    flex-direction: column;
-   min-height: 100vh;
+   min-height: calc(100vh - 74px);
 
    @include media-breakpoint-up(md) {
       flex-direction: row;
@@ -57,19 +57,49 @@ a {
    .logo-icon {
       color: #f43f5e;
    }
+
+   .dropdown-menu {
+      background-color: $header-color;
+
+      .dropdown-item {
+         color: $danger;
+         transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+
+         &:hover,
+         &:focus {
+            background-color: rgba($danger, 0.1);
+            color: $danger;
+         }
+      }
+   }
 }
 
 .sidebar {
-   background-color: $header-color;
+   background-color: $header-color !important;
    border-right: 1px solid $border-color;
-   width: 100%;
+   width: 280px;
+   height: 100%;
+
+   @media (max-width: #{breakpoint-max(sm)}) {
+      border-right: 1px solid $border-color;
+
+      &.offcanvas-md {
+         max-width: 280px;
+      }
+   }
 
    @include media-breakpoint-up(md) {
-      width: 260px;
+      position: sticky;
+      top: 74px;
+      height: calc(100vh - 74px);
+      flex-shrink: 0;
    }
 
    ul li a {
       color: $secondary;
+      text-decoration: none;
 
       &:hover,
       &.active {
