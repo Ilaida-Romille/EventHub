@@ -40,3 +40,32 @@
       color: #fff;
    }
 }
+
+.modal-content {
+   background-color: $card-color;
+   border: 1px solid $border-color;
+   border-radius: 14px;
+}
+
+.modal-header {
+   border-bottom: 1px solid $border-color;
+}
+
+.modal-body {
+   .table {
+      --bs-table-bg: transparent;
+
+      th {
+         color: $secondary;
+         border-bottom: 1px solid $border-color;
+      }
+
+      td {
+         border-bottom: 1px solid transparent;
+      }
+   }
+}
+
+.modal-grand-total {
+   color: #10b981;
+}
