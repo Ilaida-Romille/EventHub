@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("invoice-organizer").value || "Generic Organizer";
          const targetCycle = document.getElementById("invoice-cycle").value || "Current Cycle";
 
-         const mockAttendeeCount = 340;
+         const mockAttendeeCount = 342;
          const mockRatePerAttendee = 150;
 
          const totalCalculated = calculateInvoiceTotal(mockAttendeeCount, mockRatePerAttendee);
