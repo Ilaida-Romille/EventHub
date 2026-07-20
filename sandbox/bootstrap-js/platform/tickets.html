@@ -78,46 +78,8 @@
             <div class="row g-4 align-items-start">
                 <div class="col-12 col-md-5 col-lg-4 d-flex flex-column gap-3">
                     <section class="card p-0 overflow-hidden" aria-label="Current open tickets list">
-                        <div class="d-flex flex-column">
-
-                            <div class="ticket-item active">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="ticket-id">#TCK-1042</span>
-                                    <span class="status-badge">Open</span>
-                                </div>
-                                <div class="text-secondary mb-2" style="font-size: 0.85rem;">Acme Events Co.</div>
-                                <div class="text-white fw-semibold" style="font-size: 1rem;">Can't edit event capacity
-                                </div>
-                            </div>
-
-                            <div class="ticket-item">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="ticket-id">#TCK-1039</span>
-                                    <span class="status-badge">Open</span>
-                                </div>
-                                <div class="text-secondary mb-2" style="font-size: 0.85rem;">Initech PH</div>
-                                <div class="text-white fw-semibold" style="font-size: 1rem;">Request: Add 3 more admins
-                                </div>
-                            </div>
-
-                            <div class="ticket-item">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="ticket-id">#TCK-1031</span>
-                                    <span class="status-badge">In Progress</span>
-                                </div>
-                                <div class="text-secondary mb-2" style="font-size: 0.85rem;">Northwind Corp.</div>
-                                <div class="text-white fw-semibold" style="font-size: 1rem;">Invoice discrepancy</div>
-                            </div>
-
-                            <div class="ticket-item">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="ticket-id">#TCK-1020</span>
-                                    <span class="status-badge">Resolved</span>
-                                </div>
-                                <div class="text-secondary mb-2" style="font-size: 0.85rem;">Globex Holdings</div>
-                                <div class="text-white fw-semibold" style="font-size: 1rem;">Reactivate account</div>
-                            </div>
-                        </div>
+                        <!-- The dynamic items will be injected right here -->
+                        <div id="tickets-container" class="d-flex flex-column"></div>
                     </section>
 
                     <div class="d-flex justify-content-center align-items-center gap-3 mt-1 text-secondary fw-semibold"
@@ -159,7 +121,6 @@
                                     placeholder="Type notes to send to the organizer..."></textarea>
                             </div>
 
-
                             <div class="d-flex flex-column flex-sm-row gap-3">
                                 <button type="submit" class="btn btn-primary flex-sm-grow-2 fw-bold"
                                     style="height: 44px;">
@@ -180,21 +141,70 @@
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const ticketStatusBadges = document.querySelectorAll('.status-badge');
+        const ticketsData = [
+            {
+                id: "#TCK-1042",
+                status: "Open",
+                company: "Acme Events Co.",
+                title: "Can't edit event capacity",
+                isActive: true
+            },
+            {
+                id: "#TCK-1039",
+                status: "Open",
+                company: "Initech PH",
+                title: "Request: Add 3 more admins",
+                isActive: false
+            },
+            {
+                id: "#TCK-1031",
+                status: "In Progress",
+                company: "Northwind Corp.",
+                title: "Invoice discrepancy",
+                isActive: false
+            },
+            {
+                id: "#TCK-1020",
+                status: "Resolved",
+                company: "Globex Holdings",
+                title: "Reactivate account",
+                isActive: false
+            }
+        ];
 
-        ticketStatusBadges.forEach(statusBadge => {
-            const statusText = statusBadge.textContent.trim().toLowerCase();
+        function getStatusClass(status) {
+            const normalizedStatus = status.trim().toLowerCase();
+            if (normalizedStatus === 'open') return 'badge-open';
+            if (normalizedStatus === 'in progress') return 'badge-progress';
+            if (normalizedStatus === 'resolved') return 'badge-resolved';
+            return '';
+        }
 
-            if (statusText === 'open') {
-                statusBadge.classList.add('badge-open');
-            }
-            else if (statusText === 'in progress') {
-                statusBadge.classList.add('badge-progress');
-            }
-            else if (statusText === 'resolved') {
-                statusBadge.classList.add('badge-resolved');
-            }
-        });
+        function renderTickets() {
+            const container = document.getElementById('tickets-container');
+
+            container.innerHTML = '';
+
+            ticketsData.forEach(ticket => {
+                const ticketItem = document.createElement('div');
+                ticketItem.className = `ticket-item ${ticket.isActive ? 'active' : ''}`;
+
+                const statusBadgeClass = getStatusClass(ticket.status);
+
+                ticketItem.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="ticket-id">${ticket.id}</span>
+                        <span class="status-badge ${statusBadgeClass}">${ticket.status}</span>
+                    </div>
+                    <div class="text-secondary mb-2" style="font-size: 0.85rem;">${ticket.company}</div>
+                    <div class="text-white fw-semibold" style="font-size: 1rem;">${ticket.title}</div>
+                `;
+
+                container.appendChild(ticketItem);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', renderTickets);
     </script>
 </body>
 
