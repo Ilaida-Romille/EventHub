@@ -50,19 +50,19 @@
         <div class="event-summary-card">
             <div class="summary-details">
                 <span class="event-tag">Featured Event</span>
-                <h1>Tech Summit 2026</h1>
+                <h1 id="registration-event-title">Loading event...</h1>
                 <div class="summary-meta-grid flex-row flex-wrap">
                     <div class="meta-item">
                         <span class="material-symbols-outlined">calendar_month</span>
-                        <span>Aug 14, 2026</span>
+                        <span id="registration-event-date">Date TBD</span>
                     </div>
                     <div class="meta-item">
                         <span class="material-symbols-outlined">schedule</span>
-                        <span>9:00 AM &ndash; 5:00 PM</span>
+                        <span id="registration-event-time">Time TBD</span>
                     </div>
                     <div class="meta-item">
                         <span class="material-symbols-outlined">location_on</span>
-                        <span>Makati Convention Center</span>
+                        <span id="registration-event-venue">Venue TBD</span>
                     </div>
                 </div>
             </div>
@@ -81,7 +81,8 @@
 
         <div class="card p-4 p-md-5">
             <h2 class="form-title">Registration Details</h2>
-            <form action="event-details.html" method="GET">
+            <form id="registration-form" action="event-details.html" method="GET">
+                <input type="hidden" id="registration-event-id" name="eventId" value="" />
                 <div class="row g-4 mb-4">
                     <div class="col-12 col-md-6">
                         <label for="full-name" class="form-label text-secondary fw-bold mb-2"
@@ -131,6 +132,7 @@
     </main>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./js/event-registration.js"></script>
 </body>
 
 </html>
