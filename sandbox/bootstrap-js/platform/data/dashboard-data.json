@@ -1,0 +1,20 @@
+{
+   "kpis": {
+      "totalOrganizers": 128,
+      "totalEventsThisYear": 342
+   },
+   "monthlyEvents": [
+      { "month": "Jan", "percent": 20 },
+      { "month": "Feb", "percent": 45 },
+      { "month": "Mar", "percent": 35 },
+      { "month": "Apr", "percent": 75 },
+      { "month": "May", "percent": 40 },
+      { "month": "Jun", "percent": 60 },
+      { "month": "Jul", "percent": 15 },
+      { "month": "Aug", "percent": 50 },
+      { "month": "Sep", "percent": 25 },
+      { "month": "Oct", "percent": 42 },
+      { "month": "Nov", "percent": 58 },
+      { "month": "Dec", "percent": 38 }
+   ]
+}

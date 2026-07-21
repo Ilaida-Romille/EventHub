@@ -105,14 +105,14 @@
             <section class="row row-cols-1 row-cols-md-2 g-3 g-md-4 mb-4" aria-label="Metrics Overview">
                 <div class="col">
                     <div class="card kpi-card p-4">
-                        <div class="value mb-1">128</div>
+                        <div id="kpi-total-organizers" class="value mb-1">0</div>
                         <div class="text-secondary text-uppercase fw-bold" style="font-size: 0.85rem;">Total Organizers
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card kpi-card p-4">
-                        <div class="value mb-1">342</div>
+                        <div id="kpi-total-events" class="value mb-1">0</div>
                         <div class="text-secondary text-uppercase fw-bold" style="font-size: 0.85rem;">Total Events
                             (This Year)</div>
                     </div>
@@ -124,20 +124,7 @@
                     Events Distribution per Month
                 </div>
 
-                <div class="mock-bar-chart">
-                    <div class="bar" style="height: 20%" title="Jan"></div>
-                    <div class="bar" style="height: 45%" title="Feb"></div>
-                    <div class="bar" style="height: 35%" title="Mar"></div>
-                    <div class="bar" style="height: 75%" title="Apr"></div>
-                    <div class="bar" style="height: 40%" title="May"></div>
-                    <div class="bar" style="height: 60%" title="Jun"></div>
-                    <div class="bar" style="height: 15%" title="Jul"></div>
-                    <div class="bar" style="height: 50%" title="Aug"></div>
-                    <div class="bar" style="height: 25%" title="Sep"></div>
-                    <div class="bar" style="height: 42%" title="Oct"></div>
-                    <div class="bar" style="height: 58%" title="Nov"></div>
-                    <div class="bar" style="height: 38%" title="Dec"></div>
-                </div>
+                <div id="events-bar-chart" class="mock-bar-chart"></div>
             </section>
 
 
@@ -165,6 +152,7 @@
     </div>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./js/dashboard.js"></script>
 </body>
 
 </html>
