@@ -1,0 +1,110 @@
+{
+   "event": {
+      "title": "Tech Summit 2026",
+      "dateLabel": "Aug 14, 2026",
+      "location": "Grand Stage",
+      "venue": "Quezon City, Metro Manila",
+      "description": "A premium technology forum featuring keynote talks, breakout sessions, and networking for enterprise teams.",
+      "moreAttendeesCount": 9
+   },
+   "agenda": [
+      {
+         "time": "9:00 AM",
+         "title": "Registration & Welcome Coffee",
+         "location": "Lobby Lounge",
+         "icon": "coffee",
+         "active": false
+      },
+      {
+         "time": "9:30 AM",
+         "title": "Opening Keynote — Main Hall",
+         "location": "Grand Stage",
+         "icon": "theater_comedy",
+         "active": true
+      },
+      {
+         "time": "10:45 AM",
+         "title": "Breakout: Cloud Architecture",
+         "location": "Room 302B",
+         "icon": "layers",
+         "active": false
+      },
+      {
+         "time": "11:30 AM",
+         "title": "Roundtable: Security at Scale",
+         "location": "Room 210A",
+         "icon": "shield",
+         "active": false
+      },
+      {
+         "time": "12:15 PM",
+         "title": "Partner Showcase",
+         "location": "Expo Hall",
+         "icon": "storefront",
+         "active": false
+      },
+      {
+         "time": "1:00 PM",
+         "title": "Lunch & Networking",
+         "location": "Dining Hall",
+         "icon": "restaurant",
+         "active": false
+      },
+      {
+         "time": "2:00 PM",
+         "title": "Panel: The Future of AI",
+         "location": "Grand Stage",
+         "icon": "psychology",
+         "active": false
+      },
+      {
+         "time": "2:45 PM",
+         "title": "Workshop: Product Analytics",
+         "location": "Lab 104",
+         "icon": "query_stats",
+         "active": false
+      },
+      {
+         "time": "3:30 PM",
+         "title": "Lightning Talks",
+         "location": "Grand Stage",
+         "icon": "bolt",
+         "active": false
+      },
+      {
+         "time": "4:00 PM",
+         "title": "Closing Remarks",
+         "location": "Main Hall",
+         "icon": "pin_drop",
+         "active": false
+      },
+      {
+         "time": "4:30 PM",
+         "title": "VIP Meet & Greet",
+         "location": "Sky Lounge",
+         "icon": "groups",
+         "active": false
+      },
+      {
+         "time": "5:00 PM",
+         "title": "After Hours Mixer",
+         "location": "Rooftop Bar",
+         "icon": "local_bar",
+         "active": false
+      }
+   ],
+   "attendees": [
+      { "name": "Maria Santos", "company": "Acme Events Co.", "initials": "MS" },
+      { "name": "Liam Cruz", "company": "Northwind Corp.", "initials": "LC" },
+      { "name": "Ana Reyes", "company": "Initech PH", "initials": "AR" },
+      { "name": "Noah Garcia", "company": "Globex Holdings", "initials": "NG" },
+      { "name": "Sofia Lim", "company": "Wayne Enterprises", "initials": "SL" },
+      { "name": "Ethan Flores", "company": "Stark Experiences", "initials": "EF" },
+      { "name": "Maya Tan", "company": "Umbrella Group", "initials": "MT" },
+      { "name": "Daniel Perez", "company": "Wonka Live Labs", "initials": "DP" },
+      { "name": "Chloe Cruz", "company": "Hooli Events", "initials": "CC" },
+      { "name": "Ramon Dizon", "company": "Aperture Gatherings", "initials": "RD" },
+      { "name": "Ivy Santos", "company": "Tyrell Productions", "initials": "IS" },
+      { "name": "Paolo Reyes", "company": "Oscorp Social", "initials": "PR" }
+   ]
+}

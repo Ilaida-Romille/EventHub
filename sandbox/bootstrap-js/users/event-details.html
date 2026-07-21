@@ -47,102 +47,13 @@
         <div class="row g-4 g-lg-5">
             <section class="col-12 col-lg-8" aria-label="Event Agenda">
                 <h2 class="h3 fw-bold mb-4">Agenda</h2>
-                <div class="d-flex flex-column gap-3">
-                    <div class="timeline-card">
-                        <div class="time-block">9:00 AM</div>
-                        <div class="details-block">
-                            <h3>Registration & Welcome Coffee</h3>
-                            <p class="session-location">
-                                <span class="material-symbols-outlined">coffee</span> Lobby Lounge
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-card active-session">
-                        <div class="time-block">9:30 AM</div>
-                        <div class="details-block">
-                            <h3>Opening Keynote &mdash; Main Hall</h3>
-                            <p class="session-location">
-                                <span class="material-symbols-outlined">theater_comedy</span> Grand Stage
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-card">
-                        <div class="time-block">10:45 AM</div>
-                        <div class="details-block">
-                            <h3>Breakout: Cloud Architecture</h3>
-                            <p class="session-location">
-                                <span class="material-symbols-outlined">layers</span> Room 302B
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-card">
-                        <div class="time-block">1:00 PM</div>
-                        <div class="details-block">
-                            <h3>Lunch & Networking</h3>
-                            <p class="session-location">
-                                <span class="material-symbols-outlined">restaurant</span> Dining Hall
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-card">
-                        <div class="time-block">2:00 PM</div>
-                        <div class="details-block">
-                            <h3>Panel: The Future of AI</h3>
-                            <p class="session-location">
-                                <span class="material-symbols-outlined">psychology</span> Grand Stage
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-card">
-                        <div class="time-block">4:00 PM</div>
-                        <div class="details-block">
-                            <h3>Closing Remarks</h3>
-                            <p class="session-location">
-                                <span class="material-symbols-outlined">pin_drop</span> Main Hall
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
+                <div id="event-agenda-list" class="d-flex flex-column gap-3"></div>
             </section>
 
             <aside class="col-12 col-md-4">
                 <div class="card p-4 mb-4">
                     <h2 class="h4 fw-bold mb-4">Attendees</h2>
-                    <div class="attendee-list">
-                        <div class="attendee-row">
-                            <div class="avatar" aria-hidden="true">MS</div>
-                            <div class="attendee-info">
-                                <span class="name">Maria Santos</span>
-                                <span class="comp">Acme Events Co.</span>
-                            </div>
-                        </div>
-
-                        <div class="attendee-row">
-                            <div class="avatar" aria-hidden="true">LC</div>
-                            <div class="attendee-info">
-                                <span class="name">Liam Cruz</span>
-                                <span class="comp">Northwind Corp.</span>
-                            </div>
-                        </div>
-
-                        <div class="attendee-row">
-                            <div class="avatar" aria-hidden="true">AR</div>
-                            <div class="attendee-info">
-                                <span class="name">Ana Reyes</span>
-                                <span class="comp">Initech PH</span>
-                            </div>
-                        </div>
-
-                        <div class="more-row">
-                            <span class="indicator">+ 118 more attendees</span>
-                        </div>
-                    </div>
+                    <div id="event-attendee-list" class="attendee-list"></div>
                     <button class="btn btn-primary w-100 mt-3 fw-bold" type="button">View All &
                         Connect</button>
                 </div>
@@ -169,6 +80,7 @@
     </main>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./js/event-details.js"></script>
 </body>
 
 </html>
