@@ -137,74 +137,24 @@
                             <th class="p-3 px-4 text-white border-bottom border-secondary">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="border-0">
-                        <tr>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary">Acme Events Co.</td>
-                            <td class="p-3 px-4 border-bottom border-secondary text-white">24</td>
-                            <td class="p-3 px-4 border-bottom border-secondary"><span
-                                    class="badge badge-active rounded-pill text-uppercase fw-bold p-2 px-3"
-                                    style="font-size: 0.75rem;">Active</span></td>
-                            <td class="p-3 px-4 border-bottom border-secondary table-actions text-secondary">
-                                <a href="#">View Details</a> &nbsp;|&nbsp; <a href="#">Change Status</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary">Northwind Corp.</td>
-                            <td class="p-3 px-4 border-bottom border-secondary text-white">9</td>
-                            <td class="p-3 px-4 border-bottom border-secondary"><span
-                                    class="badge badge-active rounded-pill text-uppercase fw-bold p-2 px-3"
-                                    style="font-size: 0.75rem;">Active</span></td>
-                            <td class="p-3 px-4 border-bottom border-secondary table-actions text-secondary">
-                                <a href="#">View Details</a> &nbsp;|&nbsp; <a href="#">Change Status</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary">Globex Holdings</td>
-                            <td class="p-3 px-4 border-bottom border-secondary text-white">3</td>
-                            <td class="p-3 px-4 border-bottom border-secondary"><span
-                                    class="badge badge-suspended rounded-pill text-uppercase fw-bold p-2 px-3"
-                                    style="font-size: 0.75rem;">Suspended</span></td>
-                            <td class="p-3 px-4 border-bottom border-secondary table-actions text-secondary">
-                                <a href="#">View Details</a> &nbsp;|&nbsp; <a href="#">Change Status</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary">Initech PH</td>
-                            <td class="p-3 px-4 border-bottom border-secondary text-white">17</td>
-                            <td class="p-3 px-4 border-bottom border-secondary"><span
-                                    class="badge badge-active rounded-pill text-uppercase fw-bold p-2 px-3"
-                                    style="font-size: 0.75rem;">Active</span></td>
-                            <td class="p-3 px-4 border-bottom border-secondary table-actions text-secondary">
-                                <a href="#">View Details</a> &nbsp;|&nbsp; <a href="#">Change Status</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 px-4 text-white border-0">Umbrella Group</td>
-                            <td class="p-3 px-4 border-0 text-white">1</td>
-                            <td class="p-3 px-4 border-0"><span
-                                    class="badge badge-pending text-warning rounded-pill text-uppercase fw-bold p-2 px-3"
-                                    style="font-size: 0.75rem;">Pending</span></td>
-                            <td class="p-3 px-4 border-0 table-actions text-secondary">
-                                <a href="#">View Details</a> &nbsp;|&nbsp; <a href="#">Change Status</a>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody id="organizers-table-body" class="border-0"></tbody>
                 </table>
             </div>
 
 
             <div class="d-flex justify-content-end align-items-center gap-3 text-secondary fw-semibold"
                 style="font-size: 0.9rem;">
-                <a href="#" class="page-nav-btn" aria-label="Back page"><span
+                <a href="#" id="organizers-prev-page" class="page-nav-btn" aria-label="Back page"><span
                         class="material-symbols-outlined fs-6">arrow_back_ios_new</span></a>
-                <span>Page 1 of 99</span>
-                <a href="#" class="page-nav-btn" aria-label="Forward page"><span
+                <span id="organizers-page-indicator">Page 1 of 1</span>
+                <a href="#" id="organizers-next-page" class="page-nav-btn" aria-label="Forward page"><span
                         class="material-symbols-outlined fs-6">arrow_forward_ios</span></a>
             </div>
         </main>
     </div>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./js/organizers.js"></script>
 </body>
 
 </html>

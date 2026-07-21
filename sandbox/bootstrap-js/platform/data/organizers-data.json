@@ -1,0 +1,14 @@
+[
+   { "companyName": "Acme Events Co.", "eventsCount": 24, "status": "Active" },
+   { "companyName": "Northwind Corp.", "eventsCount": 9, "status": "Active" },
+   { "companyName": "Globex Holdings", "eventsCount": 3, "status": "Suspended" },
+   { "companyName": "Initech PH", "eventsCount": 17, "status": "Active" },
+   { "companyName": "Umbrella Group", "eventsCount": 1, "status": "Pending" },
+   { "companyName": "Wayne Enterprises", "eventsCount": 14, "status": "Active" },
+   { "companyName": "Stark Experiences", "eventsCount": 21, "status": "Active" },
+   { "companyName": "Wonka Live Labs", "eventsCount": 6, "status": "Pending" },
+   { "companyName": "Hooli Events", "eventsCount": 12, "status": "Suspended" },
+   { "companyName": "Aperture Gatherings", "eventsCount": 5, "status": "Active" },
+   { "companyName": "Tyrell Productions", "eventsCount": 8, "status": "Pending" },
+   { "companyName": "Oscorp Social", "eventsCount": 19, "status": "Active" }
+]
