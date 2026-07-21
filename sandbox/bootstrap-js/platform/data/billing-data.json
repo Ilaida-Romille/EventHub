@@ -1,86 +1,110 @@
 [
    {
       "invoiceNumber": "INV-2026-0512",
-      "organizer": "Acme Events Co.",
-      "period": "May 2026",
+      "organizerId": "ORG-001",
       "amount": 84200,
-      "status": "Paid"
+      "status": "Paid",
+      "issuedAt": "2026-05-12T08:00:00Z",
+      "createdAt": "2026-05-12T08:00:00Z",
+      "updatedAt": "2026-05-14T04:00:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0498",
-      "organizer": "Northwind Corp.",
-      "period": "May 2026",
+      "organizerId": "ORG-002",
       "amount": 22750,
-      "status": "Paid"
+      "status": "Paid",
+      "issuedAt": "2026-05-10T08:00:00Z",
+      "createdAt": "2026-05-10T08:00:00Z",
+      "updatedAt": "2026-05-11T06:00:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0501",
-      "organizer": "Initech PH",
-      "period": "May 2026",
+      "organizerId": "ORG-004",
       "amount": 51300,
-      "status": "Overdue"
+      "status": "Overdue",
+      "issuedAt": "2026-05-11T08:00:00Z",
+      "createdAt": "2026-05-11T08:00:00Z",
+      "updatedAt": "2026-07-18T10:10:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0477",
-      "organizer": "Globex Holdings",
-      "period": "Apr 2026",
+      "organizerId": "ORG-003",
       "amount": 18400,
-      "status": "Paid"
+      "status": "Paid",
+      "issuedAt": "2026-04-29T08:00:00Z",
+      "createdAt": "2026-04-29T08:00:00Z",
+      "updatedAt": "2026-04-30T05:00:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0465",
-      "organizer": "Umbrella Group",
-      "period": "Apr 2026",
+      "organizerId": "ORG-005",
       "amount": 9900,
-      "status": "Overdue"
+      "status": "Overdue",
+      "issuedAt": "2026-04-24T08:00:00Z",
+      "createdAt": "2026-04-24T08:00:00Z",
+      "updatedAt": "2026-07-17T09:10:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0458",
-      "organizer": "Wayne Enterprises",
-      "period": "Apr 2026",
+      "organizerId": "ORG-006",
       "amount": 64500,
-      "status": "Paid"
+      "status": "Paid",
+      "issuedAt": "2026-04-22T08:00:00Z",
+      "createdAt": "2026-04-22T08:00:00Z",
+      "updatedAt": "2026-04-24T04:00:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0449",
-      "organizer": "Stark Experiences",
-      "period": "Mar 2026",
+      "organizerId": "ORG-007",
       "amount": 90500,
-      "status": "Paid"
+      "status": "Paid",
+      "issuedAt": "2026-03-28T08:00:00Z",
+      "createdAt": "2026-03-28T08:00:00Z",
+      "updatedAt": "2026-03-29T03:10:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0433",
-      "organizer": "Wonka Live Labs",
-      "period": "Mar 2026",
+      "organizerId": "ORG-008",
       "amount": 12500,
-      "status": "Overdue"
+      "status": "Overdue",
+      "issuedAt": "2026-03-20T08:00:00Z",
+      "createdAt": "2026-03-20T08:00:00Z",
+      "updatedAt": "2026-07-16T03:00:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0422",
-      "organizer": "Hooli Events",
-      "period": "Mar 2026",
+      "organizerId": "ORG-009",
       "amount": 31750,
-      "status": "Paid"
+      "status": "Paid",
+      "issuedAt": "2026-03-15T08:00:00Z",
+      "createdAt": "2026-03-15T08:00:00Z",
+      "updatedAt": "2026-03-16T01:30:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0410",
-      "organizer": "Aperture Gatherings",
-      "period": "Feb 2026",
+      "organizerId": "ORG-010",
       "amount": 20800,
-      "status": "Paid"
+      "status": "Paid",
+      "issuedAt": "2026-02-27T08:00:00Z",
+      "createdAt": "2026-02-27T08:00:00Z",
+      "updatedAt": "2026-03-01T02:10:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0399",
-      "organizer": "Tyrell Productions",
-      "period": "Feb 2026",
+      "organizerId": "ORG-011",
       "amount": 17600,
-      "status": "Overdue"
+      "status": "Overdue",
+      "issuedAt": "2026-02-18T08:00:00Z",
+      "createdAt": "2026-02-18T08:00:00Z",
+      "updatedAt": "2026-07-14T04:20:00Z"
    },
    {
       "invoiceNumber": "INV-2026-0388",
-      "organizer": "Oscorp Social",
-      "period": "Feb 2026",
+      "organizerId": "ORG-012",
       "amount": 40250,
-      "status": "Paid"
+      "status": "Paid",
+      "issuedAt": "2026-02-12T08:00:00Z",
+      "createdAt": "2026-02-12T08:00:00Z",
+      "updatedAt": "2026-02-14T06:05:00Z"
    }
 ]

@@ -4,6 +4,20 @@ const BILLING_ITEMS_PER_PAGE = 6;
 let billingData = [];
 let billingCurrentPage = 1;
 
+function formatInvoicePeriod(issuedAt) {
+   const date = new Date(issuedAt);
+
+   if (Number.isNaN(date.getTime())) {
+      return "N/A";
+   }
+
+   return new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      year: "numeric",
+      timeZone: "UTC"
+   }).format(date);
+}
+
 function getBillingStatusBadgeClass(status) {
    const value = String(status).trim().toLowerCase();
 
@@ -95,9 +109,29 @@ function initializeBillingPagination() {
 
 async function loadBillingData() {
    try {
-      const response = await fetch("./data/billing-data.json");
-      const data = await response.json();
-      billingData = Array.isArray(data) ? data : [];
+      const [billingResponse, organizersResponse] = await Promise.all([
+         fetch("./data/billing-data.json"),
+         fetch("./data/organizers-data.json")
+      ]);
+
+      const [billingRows, organizersData] = await Promise.all([
+         billingResponse.json(),
+         organizersResponse.json()
+      ]);
+
+      const organizersMap = new Map(
+         (Array.isArray(organizersData) ? organizersData : []).map((organizer) => [
+            organizer.organizerId,
+            organizer
+         ])
+      );
+
+      billingData = (Array.isArray(billingRows) ? billingRows : []).map((invoice) => ({
+         ...invoice,
+         organizer: organizersMap.get(invoice.organizerId)?.companyName ?? "Unknown Organizer",
+         period: formatInvoicePeriod(invoice.issuedAt)
+      }));
+
       billingCurrentPage = 1;
       renderBillingPage();
    } catch (error) {

@@ -2,6 +2,21 @@ const UPCOMING_EVENTS_PER_PAGE = 6;
 let upcomingEvents = [];
 let currentPage = 1;
 
+function formatDateLabel(dateValue) {
+   const date = new Date(dateValue);
+
+   if (Number.isNaN(date.getTime())) {
+      return "Date TBD";
+   }
+
+   return new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      timeZone: "UTC"
+   }).format(date);
+}
+
 function formatCapacityText(event) {
    if (event.capacityText) {
       return event.capacityText;
@@ -117,9 +132,44 @@ function renderEventsPage() {
 
 async function loadUpcomingEvents() {
    try {
-      const response = await fetch("./data/upcoming-events-data.json");
-      const data = await response.json();
-      upcomingEvents = Array.isArray(data.events) ? data.events : [];
+      const [eventsResponse, organizersResponse] = await Promise.all([
+         fetch("./data/upcoming-events-data.json"),
+         fetch("../platform/data/organizers-data.json")
+      ]);
+
+      const [eventsData, organizersData] = await Promise.all([
+         eventsResponse.json(),
+         organizersResponse.json()
+      ]);
+
+      const organizersMap = new Map(
+         (Array.isArray(organizersData) ? organizersData : []).map((organizer) => [
+            organizer.organizerId,
+            organizer
+         ])
+      );
+      const categoriesMap = new Map(
+         (Array.isArray(eventsData.categories) ? eventsData.categories : []).map((category) => [
+            category.id,
+            category
+         ])
+      );
+
+      const events = Array.isArray(eventsData.events) ? eventsData.events : [];
+      upcomingEvents = events.map((event) => {
+         const organizer = organizersMap.get(event.organizerId);
+         const category = categoriesMap.get(event.categoryId);
+
+         return {
+            ...event,
+            organizer: organizer?.companyName ?? "Unknown Organizer",
+            category: category?.name ?? "General",
+            categoryIcon: category?.icon ?? "event",
+            dateLabel: formatDateLabel(event.date),
+            capacityText: `${Number(event.capacityUsed ?? 0)}/${Number(event.capacityTotal ?? 0)}`
+         };
+      });
+
       renderEventsPage();
    } catch (error) {
       console.error("Failed to load upcoming events.", error);

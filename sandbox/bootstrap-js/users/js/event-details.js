@@ -15,6 +15,21 @@ function buildAgendaItem(entry) {
    return item;
 }
 
+function formatDateLabel(dateValue) {
+   const date = new Date(dateValue);
+
+   if (Number.isNaN(date.getTime())) {
+      return "Date TBD";
+   }
+
+   return new Intl.DateTimeFormat("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      timeZone: "UTC"
+   }).format(date);
+}
+
 function buildAttendeeRow(attendee) {
    const row = document.createElement("div");
    row.className = "attendee-row";
@@ -60,9 +75,45 @@ function renderEventDetails(data) {
 
 async function loadEventDetails() {
    try {
-      const response = await fetch("./data/event-details-data.json");
-      const data = await response.json();
-      renderEventDetails(data);
+      const params = new URLSearchParams(window.location.search);
+      const eventIdFromUrl = params.get("eventId");
+
+      const [detailsResponse, eventsResponse] = await Promise.all([
+         fetch("./data/event-details-data.json"),
+         fetch("./data/upcoming-events-data.json")
+      ]);
+
+      const [detailsData, eventsData] = await Promise.all([
+         detailsResponse.json(),
+         eventsResponse.json()
+      ]);
+
+      const events = Array.isArray(eventsData.events) ? eventsData.events : [];
+      const resolvedEventId = eventIdFromUrl || detailsData.eventId;
+      const baseEvent = events.find((event) => event.id === resolvedEventId) ?? null;
+
+      const attendees = (Array.isArray(detailsData.attendees) ? detailsData.attendees : []).map(
+         (attendee) => ({
+            ...attendee,
+            company: attendee.company ?? "Independent Attendee"
+         })
+      );
+
+      const mergedData = {
+         ...detailsData,
+         event: {
+            title: baseEvent?.title ?? "Event Details",
+            dateLabel: formatDateLabel(baseEvent?.date),
+            location: "Grand Stage",
+            venue: "Quezon City, Metro Manila",
+            description:
+               "A premium technology forum featuring keynote talks, breakout sessions, and networking for enterprise teams.",
+            moreAttendeesCount: Math.max(0, attendees.length - 3)
+         },
+         attendees
+      };
+
+      renderEventDetails(mergedData);
    } catch (error) {
       console.error("Failed to load event details data.", error);
    }

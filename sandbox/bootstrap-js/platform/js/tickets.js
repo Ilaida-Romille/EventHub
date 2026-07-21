@@ -3,6 +3,34 @@ let ticketsData = [];
 let ticketsCurrentPage = 1;
 let selectedTicketId = null;
 
+function getRelativeOpenedText(createdAt) {
+   const createdDate = new Date(createdAt);
+   const now = new Date();
+
+   if (Number.isNaN(createdDate.getTime())) {
+      return "unknown";
+   }
+
+   const diffMs = Math.max(0, now.getTime() - createdDate.getTime());
+   const dayMs = 24 * 60 * 60 * 1000;
+   const dayDiff = Math.floor(diffMs / dayMs);
+
+   if (dayDiff < 1) {
+      return "today";
+   }
+
+   if (dayDiff === 1) {
+      return "1 day ago";
+   }
+
+   if (dayDiff < 7) {
+      return `${dayDiff} days ago`;
+   }
+
+   const weekDiff = Math.floor(dayDiff / 7);
+   return weekDiff === 1 ? "1 week ago" : `${weekDiff} weeks ago`;
+}
+
 function getStatusClass(status) {
    const normalizedStatus = String(status).trim().toLowerCase();
 
@@ -173,10 +201,29 @@ function initializeActions() {
 
 document.addEventListener("DOMContentLoaded", async () => {
    try {
-      const response = await fetch("./data/tickets-data.json");
-      const data = await response.json();
+      const [ticketsResponse, organizersResponse] = await Promise.all([
+         fetch("./data/tickets-data.json"),
+         fetch("./data/organizers-data.json")
+      ]);
 
-      ticketsData = Array.isArray(data.tickets) ? data.tickets : [];
+      const [data, organizersData] = await Promise.all([
+         ticketsResponse.json(),
+         organizersResponse.json()
+      ]);
+
+      const organizersMap = new Map(
+         (Array.isArray(organizersData) ? organizersData : []).map((organizer) => [
+            organizer.organizerId,
+            organizer
+         ])
+      );
+
+      ticketsData = (Array.isArray(data.tickets) ? data.tickets : []).map((ticket) => ({
+         ...ticket,
+         company: organizersMap.get(ticket.organizerId)?.companyName ?? "Unknown Organizer",
+         openedAgo: getRelativeOpenedText(ticket.createdAt)
+      }));
+
       selectedTicketId =
          ticketsData.find((ticket) => ticket.id === data.activeTicketId)?.id ?? ticketsData[0]?.id;
       ticketsCurrentPage = 1;
