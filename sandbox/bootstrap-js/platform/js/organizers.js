@@ -98,9 +98,37 @@ function initializeOrganizersPagination() {
 
 document.addEventListener("DOMContentLoaded", async () => {
    try {
-      const response = await fetch("./data/organizers-data.json");
-      const data = await response.json();
-      organizersData = Array.isArray(data) ? data : [];
+      const [organizersResponse, upcomingEventsResponse] = await Promise.all([
+         fetch("./data/organizers-data.json"),
+         fetch("../users/data/upcoming-events-data.json")
+      ]);
+
+      const [organizersRows, upcomingEventsData] = await Promise.all([
+         organizersResponse.json(),
+         upcomingEventsResponse.json()
+      ]);
+
+      const eventCountByOrganizerId = new Map();
+      const upcomingEvents = Array.isArray(upcomingEventsData.events)
+         ? upcomingEventsData.events
+         : [];
+
+      upcomingEvents.forEach((event) => {
+         const organizerId = event.organizerId;
+
+         if (!organizerId) {
+            return;
+         }
+
+         const currentCount = eventCountByOrganizerId.get(organizerId) ?? 0;
+         eventCountByOrganizerId.set(organizerId, currentCount + 1);
+      });
+
+      organizersData = (Array.isArray(organizersRows) ? organizersRows : []).map((organizer) => ({
+         ...organizer,
+         eventsCount: Number(eventCountByOrganizerId.get(organizer.organizerId) ?? 0)
+      }));
+
       organizersCurrentPage = 1;
       initializeOrganizersPagination();
       renderOrganizersPage();
