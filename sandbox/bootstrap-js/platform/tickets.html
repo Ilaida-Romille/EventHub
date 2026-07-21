@@ -112,10 +112,10 @@
 
                     <div class="d-flex justify-content-center align-items-center gap-3 mt-1 text-secondary fw-semibold"
                         style="font-size: 0.9rem;">
-                        <a href="#" class="page-nav-btn" aria-label="Back page"><span
+                        <a href="#" id="tickets-prev-page" class="page-nav-btn" aria-label="Back page"><span
                                 class="material-symbols-outlined fs-6">arrow_back_ios_new</span></a>
-                        <span>Page 1 of 5</span>
-                        <a href="#" class="page-nav-btn" aria-label="Forward page"><span
+                        <span id="tickets-page-indicator">Page 1 of 1</span>
+                        <a href="#" id="tickets-next-page" class="page-nav-btn" aria-label="Forward page"><span
                                 class="material-symbols-outlined fs-6">arrow_forward_ios</span></a>
                     </div>
                 </div>
@@ -124,19 +124,20 @@
                     <section class="card p-4 p-lg-5" aria-label="Active ticket operational investigation view">
                         <div
                             class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center gap-3 mb-2">
-                            <h2 class="h5 fw-extrabold text-white m-0" style="font-size: 1.35rem;">#TCK-1042 &mdash;
-                                Can't edit event capacity</h2>
-                            <span class="status-badge badge-open align-self-start align-self-sm-auto">Open</span>
+                            <h2 id="active-ticket-title" class="h5 fw-extrabold text-white m-0"
+                                style="font-size: 1.35rem;">
+                            </h2>
+                            <span id="active-ticket-status"
+                                class="status-badge align-self-start align-self-sm-auto"></span>
                         </div>
 
                         <div class="text-secondary pb-3 mb-4 border-bottom border-secondary" style="font-size: 0.9rem;">
-                            From: <strong class="text-white fw-bold">Acme Events Co.</strong> &nbsp;&middot;&nbsp;
-                            Opened: 3 days ago
+                            From: <strong id="active-ticket-company" class="text-white fw-bold"></strong>
+                            &nbsp;&middot;&nbsp;
+                            Opened: <span id="active-ticket-opened"></span>
                         </div>
 
-                        <blockquote class="quote-box">
-                            &ldquo;We're trying to raise our event capacity from 200 to 350 but the field won't save.
-                            Can someone check?&rdquo;
+                        <blockquote id="active-ticket-message" class="quote-box">
                         </blockquote>
 
                         <form method="POST" action="">
@@ -168,72 +169,7 @@
     </div>
 
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const ticketsData = [
-            {
-                id: "#TCK-1042",
-                status: "Open",
-                company: "Acme Events Co.",
-                title: "Can't edit event capacity",
-                isActive: true
-            },
-            {
-                id: "#TCK-1039",
-                status: "Open",
-                company: "Initech PH",
-                title: "Request: Add 3 more admins",
-                isActive: false
-            },
-            {
-                id: "#TCK-1031",
-                status: "In Progress",
-                company: "Northwind Corp.",
-                title: "Invoice discrepancy",
-                isActive: false
-            },
-            {
-                id: "#TCK-1020",
-                status: "Resolved",
-                company: "Globex Holdings",
-                title: "Reactivate account",
-                isActive: false
-            }
-        ];
-
-        function getStatusClass(status) {
-            const normalizedStatus = status.trim().toLowerCase();
-            if (normalizedStatus === 'open') return 'badge-open';
-            if (normalizedStatus === 'in progress') return 'badge-progress';
-            if (normalizedStatus === 'resolved') return 'badge-resolved';
-            return '';
-        }
-
-        function renderTickets() {
-            const container = document.getElementById('tickets-container');
-
-            container.innerHTML = '';
-
-            ticketsData.forEach(ticket => {
-                const ticketItem = document.createElement('div');
-                ticketItem.className = `ticket-item ${ticket.isActive ? 'active' : ''}`;
-
-                const statusBadgeClass = getStatusClass(ticket.status);
-
-                ticketItem.innerHTML = `
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span class="ticket-id">${ticket.id}</span>
-                        <span class="status-badge ${statusBadgeClass}">${ticket.status}</span>
-                    </div>
-                    <div class="text-secondary mb-2" style="font-size: 0.85rem;">${ticket.company}</div>
-                    <div class="text-white fw-semibold" style="font-size: 1rem;">${ticket.title}</div>
-                `;
-
-                container.appendChild(ticketItem);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', renderTickets);
-    </script>
+    <script type="module" src="./js/tickets.js"></script>
 </body>
 
 </html>

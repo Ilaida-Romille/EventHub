@@ -1,0 +1,101 @@
+{
+   "activeTicketId": "#TCK-1042",
+   "tickets": [
+      {
+         "id": "#TCK-1042",
+         "status": "Open",
+         "company": "Acme Events Co.",
+         "title": "Can't edit event capacity",
+         "openedAgo": "3 days ago",
+         "message": "We're trying to raise our event capacity from 200 to 350 but the field won't save. Can someone check?"
+      },
+      {
+         "id": "#TCK-1039",
+         "status": "Open",
+         "company": "Initech PH",
+         "title": "Request: Add 3 more admins",
+         "openedAgo": "5 days ago",
+         "message": "Please add three additional admin seats to our account before next week."
+      },
+      {
+         "id": "#TCK-1031",
+         "status": "In Progress",
+         "company": "Northwind Corp.",
+         "title": "Invoice discrepancy",
+         "openedAgo": "1 week ago",
+         "message": "Our May invoice appears higher than expected versus attendee count."
+      },
+      {
+         "id": "#TCK-1020",
+         "status": "Resolved",
+         "company": "Globex Holdings",
+         "title": "Reactivate account",
+         "openedAgo": "2 weeks ago",
+         "message": "Please reactivate our account after payment confirmation."
+      },
+      {
+         "id": "#TCK-1018",
+         "status": "Open",
+         "company": "Umbrella Group",
+         "title": "Unable to export attendee CSV",
+         "openedAgo": "2 days ago",
+         "message": "CSV export stalls at 70 percent every time for our latest event."
+      },
+      {
+         "id": "#TCK-1014",
+         "status": "In Progress",
+         "company": "Wayne Enterprises",
+         "title": "Need branded ticket template",
+         "openedAgo": "4 days ago",
+         "message": "We need custom logo placement in the downloadable ticket PDF."
+      },
+      {
+         "id": "#TCK-1009",
+         "status": "Open",
+         "company": "Stark Experiences",
+         "title": "Webhook retries too frequent",
+         "openedAgo": "6 days ago",
+         "message": "Our endpoint receives duplicate webhook retries even after 200 responses."
+      },
+      {
+         "id": "#TCK-1004",
+         "status": "Resolved",
+         "company": "Wonka Live Labs",
+         "title": "Need payout schedule clarification",
+         "openedAgo": "9 days ago",
+         "message": "Can you confirm exact payout timing for weekend events?"
+      },
+      {
+         "id": "#TCK-0998",
+         "status": "Open",
+         "company": "Hooli Events",
+         "title": "Organizer members not receiving invites",
+         "openedAgo": "10 days ago",
+         "message": "Invitation emails are not arriving for newly added organizer members."
+      },
+      {
+         "id": "#TCK-0991",
+         "status": "In Progress",
+         "company": "Aperture Gatherings",
+         "title": "Seat map mismatch on mobile",
+         "openedAgo": "11 days ago",
+         "message": "Mobile seating chart shows row labels shifted by one column."
+      },
+      {
+         "id": "#TCK-0986",
+         "status": "Resolved",
+         "company": "Tyrell Productions",
+         "title": "Two-factor reset request",
+         "openedAgo": "12 days ago",
+         "message": "We need to reset two-factor auth for our finance manager account."
+      },
+      {
+         "id": "#TCK-0979",
+         "status": "Open",
+         "company": "Oscorp Social",
+         "title": "Duplicate attendee records",
+         "openedAgo": "2 weeks ago",
+         "message": "Some attendees are duplicated after scanning QR codes at entry."
+      }
+   ]
+}
