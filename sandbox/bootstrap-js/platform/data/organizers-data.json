@@ -2,97 +2,97 @@
    {
       "organizerId": "ORG-001",
       "companyName": "Acme Events Co.",
-      "eventsCount": 24,
+      "eventsCount": null,
       "status": "Active",
       "createdAt": "2026-01-03T09:00:00Z",
-      "updatedAt": "2026-07-20T03:00:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-002",
       "companyName": "Northwind Corp.",
-      "eventsCount": 9,
+      "eventsCount": null,
       "status": "Active",
       "createdAt": "2026-01-05T10:15:00Z",
-      "updatedAt": "2026-07-19T07:20:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-003",
       "companyName": "Globex Holdings",
-      "eventsCount": 3,
+      "eventsCount": null,
       "status": "Suspended",
       "createdAt": "2026-01-09T08:10:00Z",
-      "updatedAt": "2026-07-10T05:45:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-004",
       "companyName": "Initech PH",
-      "eventsCount": 17,
+      "eventsCount": null,
       "status": "Active",
       "createdAt": "2026-01-12T11:05:00Z",
-      "updatedAt": "2026-07-21T02:00:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-005",
       "companyName": "Umbrella Group",
-      "eventsCount": 1,
+      "eventsCount": null,
       "status": "Pending",
       "createdAt": "2026-02-01T13:20:00Z",
-      "updatedAt": "2026-07-18T09:12:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-006",
       "companyName": "Wayne Enterprises",
-      "eventsCount": 14,
+      "eventsCount": null,
       "status": "Active",
       "createdAt": "2026-01-19T07:30:00Z",
-      "updatedAt": "2026-07-20T06:30:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-007",
       "companyName": "Stark Experiences",
-      "eventsCount": 21,
+      "eventsCount": null,
       "status": "Active",
       "createdAt": "2026-01-21T09:50:00Z",
-      "updatedAt": "2026-07-20T10:40:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-008",
       "companyName": "Wonka Live Labs",
-      "eventsCount": 6,
+      "eventsCount": null,
       "status": "Pending",
       "createdAt": "2026-02-10T12:30:00Z",
-      "updatedAt": "2026-07-15T08:33:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-009",
       "companyName": "Hooli Events",
-      "eventsCount": 12,
+      "eventsCount": null,
       "status": "Suspended",
       "createdAt": "2026-02-22T04:00:00Z",
-      "updatedAt": "2026-07-11T01:55:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-010",
       "companyName": "Aperture Gatherings",
-      "eventsCount": 5,
+      "eventsCount": null,
       "status": "Active",
       "createdAt": "2026-03-05T06:40:00Z",
-      "updatedAt": "2026-07-19T05:00:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-011",
       "companyName": "Tyrell Productions",
-      "eventsCount": 8,
+      "eventsCount": null,
       "status": "Pending",
       "createdAt": "2026-03-14T03:30:00Z",
-      "updatedAt": "2026-07-14T04:40:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    },
    {
       "organizerId": "ORG-012",
       "companyName": "Oscorp Social",
-      "eventsCount": 19,
+      "eventsCount": null,
       "status": "Active",
       "createdAt": "2026-03-21T05:25:00Z",
-      "updatedAt": "2026-07-20T08:15:00Z"
+      "updatedAt": "2026-07-21T02:30:00Z"
    }
 ]

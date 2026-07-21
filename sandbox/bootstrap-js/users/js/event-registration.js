@@ -56,7 +56,7 @@ async function loadRegistrationEvent() {
       const data = await response.json();
       const events = Array.isArray(data.events) ? data.events : [];
 
-      const selectedEvent = events.find((event) => event.id === eventId) ?? events[0] ?? null;
+      const selectedEvent = events.find((event) => event.id === eventId) ?? null;
 
       applyEventToRegistration(selectedEvent);
    } catch (error) {

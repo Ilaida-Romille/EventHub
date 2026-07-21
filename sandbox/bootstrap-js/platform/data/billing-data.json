@@ -2,7 +2,7 @@
    {
       "invoiceNumber": "INV-2026-0512",
       "organizerId": "ORG-001",
-      "amount": 84200,
+      "amount": null,
       "status": "Paid",
       "issuedAt": "2026-05-12T08:00:00Z",
       "createdAt": "2026-05-12T08:00:00Z",
@@ -11,7 +11,7 @@
    {
       "invoiceNumber": "INV-2026-0498",
       "organizerId": "ORG-002",
-      "amount": 22750,
+      "amount": null,
       "status": "Paid",
       "issuedAt": "2026-05-10T08:00:00Z",
       "createdAt": "2026-05-10T08:00:00Z",
@@ -20,7 +20,7 @@
    {
       "invoiceNumber": "INV-2026-0501",
       "organizerId": "ORG-004",
-      "amount": 51300,
+      "amount": null,
       "status": "Overdue",
       "issuedAt": "2026-05-11T08:00:00Z",
       "createdAt": "2026-05-11T08:00:00Z",
@@ -29,7 +29,7 @@
    {
       "invoiceNumber": "INV-2026-0477",
       "organizerId": "ORG-003",
-      "amount": 18400,
+      "amount": null,
       "status": "Paid",
       "issuedAt": "2026-04-29T08:00:00Z",
       "createdAt": "2026-04-29T08:00:00Z",
@@ -38,7 +38,7 @@
    {
       "invoiceNumber": "INV-2026-0465",
       "organizerId": "ORG-005",
-      "amount": 9900,
+      "amount": null,
       "status": "Overdue",
       "issuedAt": "2026-04-24T08:00:00Z",
       "createdAt": "2026-04-24T08:00:00Z",
@@ -47,7 +47,7 @@
    {
       "invoiceNumber": "INV-2026-0458",
       "organizerId": "ORG-006",
-      "amount": 64500,
+      "amount": null,
       "status": "Paid",
       "issuedAt": "2026-04-22T08:00:00Z",
       "createdAt": "2026-04-22T08:00:00Z",
@@ -56,7 +56,7 @@
    {
       "invoiceNumber": "INV-2026-0449",
       "organizerId": "ORG-007",
-      "amount": 90500,
+      "amount": null,
       "status": "Paid",
       "issuedAt": "2026-03-28T08:00:00Z",
       "createdAt": "2026-03-28T08:00:00Z",
@@ -65,7 +65,7 @@
    {
       "invoiceNumber": "INV-2026-0433",
       "organizerId": "ORG-008",
-      "amount": 12500,
+      "amount": null,
       "status": "Overdue",
       "issuedAt": "2026-03-20T08:00:00Z",
       "createdAt": "2026-03-20T08:00:00Z",
@@ -74,7 +74,7 @@
    {
       "invoiceNumber": "INV-2026-0422",
       "organizerId": "ORG-009",
-      "amount": 31750,
+      "amount": null,
       "status": "Paid",
       "issuedAt": "2026-03-15T08:00:00Z",
       "createdAt": "2026-03-15T08:00:00Z",
@@ -83,7 +83,7 @@
    {
       "invoiceNumber": "INV-2026-0410",
       "organizerId": "ORG-010",
-      "amount": 20800,
+      "amount": null,
       "status": "Paid",
       "issuedAt": "2026-02-27T08:00:00Z",
       "createdAt": "2026-02-27T08:00:00Z",
@@ -92,7 +92,7 @@
    {
       "invoiceNumber": "INV-2026-0399",
       "organizerId": "ORG-011",
-      "amount": 17600,
+      "amount": null,
       "status": "Overdue",
       "issuedAt": "2026-02-18T08:00:00Z",
       "createdAt": "2026-02-18T08:00:00Z",
@@ -101,7 +101,7 @@
    {
       "invoiceNumber": "INV-2026-0388",
       "organizerId": "ORG-012",
-      "amount": 40250,
+      "amount": null,
       "status": "Paid",
       "issuedAt": "2026-02-12T08:00:00Z",
       "createdAt": "2026-02-12T08:00:00Z",
