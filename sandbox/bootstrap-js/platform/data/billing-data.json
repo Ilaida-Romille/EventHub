@@ -1,0 +1,86 @@
+[
+   {
+      "invoiceNumber": "INV-2026-0512",
+      "organizer": "Acme Events Co.",
+      "period": "May 2026",
+      "amount": 84200,
+      "status": "Paid"
+   },
+   {
+      "invoiceNumber": "INV-2026-0498",
+      "organizer": "Northwind Corp.",
+      "period": "May 2026",
+      "amount": 22750,
+      "status": "Paid"
+   },
+   {
+      "invoiceNumber": "INV-2026-0501",
+      "organizer": "Initech PH",
+      "period": "May 2026",
+      "amount": 51300,
+      "status": "Overdue"
+   },
+   {
+      "invoiceNumber": "INV-2026-0477",
+      "organizer": "Globex Holdings",
+      "period": "Apr 2026",
+      "amount": 18400,
+      "status": "Paid"
+   },
+   {
+      "invoiceNumber": "INV-2026-0465",
+      "organizer": "Umbrella Group",
+      "period": "Apr 2026",
+      "amount": 9900,
+      "status": "Overdue"
+   },
+   {
+      "invoiceNumber": "INV-2026-0458",
+      "organizer": "Wayne Enterprises",
+      "period": "Apr 2026",
+      "amount": 64500,
+      "status": "Paid"
+   },
+   {
+      "invoiceNumber": "INV-2026-0449",
+      "organizer": "Stark Experiences",
+      "period": "Mar 2026",
+      "amount": 90500,
+      "status": "Paid"
+   },
+   {
+      "invoiceNumber": "INV-2026-0433",
+      "organizer": "Wonka Live Labs",
+      "period": "Mar 2026",
+      "amount": 12500,
+      "status": "Overdue"
+   },
+   {
+      "invoiceNumber": "INV-2026-0422",
+      "organizer": "Hooli Events",
+      "period": "Mar 2026",
+      "amount": 31750,
+      "status": "Paid"
+   },
+   {
+      "invoiceNumber": "INV-2026-0410",
+      "organizer": "Aperture Gatherings",
+      "period": "Feb 2026",
+      "amount": 20800,
+      "status": "Paid"
+   },
+   {
+      "invoiceNumber": "INV-2026-0399",
+      "organizer": "Tyrell Productions",
+      "period": "Feb 2026",
+      "amount": 17600,
+      "status": "Overdue"
+   },
+   {
+      "invoiceNumber": "INV-2026-0388",
+      "organizer": "Oscorp Social",
+      "period": "Feb 2026",
+      "amount": 40250,
+      "status": "Paid"
+   }
+]

@@ -144,50 +144,16 @@
                             <th class="p-3 px-4 text-white border-bottom border-secondary">Status</th>
                         </tr>
                     </thead>
-                    <tbody class="border-0">
-                        <tr>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary font-monospace fw-bold">
-                                INV-2026-0512
-                            </td>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary text-secondary">Acme Events
-                                Co.</td>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary text-secondary">May 2026</td>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary fw-bold">₱ 84,200.00</td>
-                            <td class="p-3 px-4 border-bottom border-secondary"><span
-                                    class="badge badge-paid rounded-pill text-uppercase fw-bold p-2 px-3"
-                                    style="font-size: 0.75rem;">Paid</span></td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary font-monospace fw-bold">
-                                INV-2026-0498
-                            </td>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary text-secondary">Northwind
-                                Corp.</td>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary text-secondary">May 2026</td>
-                            <td class="p-3 px-4 text-white border-bottom border-secondary fw-bold">₱ 22,750.00</td>
-                            <td class="p-3 px-4 border-bottom border-secondary"><span
-                                    class="badge badge-paid rounded-pill text-uppercase fw-bold p-2 px-3"
-                                    style="font-size: 0.75rem;">Paid</span></td>
-                        </tr>
-                        <tr>
-                            <td class="p-3 px-4 text-white border-0 font-monospace fw-bold">INV-2026-0501</td>
-                            <td class="p-3 px-4 text-white border-0 text-secondary">Initech PH</td>
-                            <td class="p-3 px-4 text-white border-0 text-secondary">May 2026</td>
-                            <td class="p-3 px-4 text-red border-0 fw-bold text-danger">₱ 51,300.00</td>
-                            <td class="p-3 px-4 border-0"><span
-                                    class="badge badge-overdue rounded-pill text-uppercase fw-bold p-2 px-3"
-                                    style="font-size: 0.75rem;">Overdue</span></td>
-                        </tr>
-                    </tbody>
+                    <tbody id="billing-table-body" class="border-0"></tbody>
                 </table>
             </div>
 
             <div class="d-flex justify-content-end align-items-center gap-3 mb-4 text-secondary fw-semibold"
                 style="font-size: 0.9rem;">
-                <a href="#" class="page-nav-btn" aria-label="Back page"><span
+                <a href="#" id="billing-prev-page" class="page-nav-btn" aria-label="Back page"><span
                         class="material-symbols-outlined fs-6">arrow_back_ios_new</span></a>
-                <span>Page 1 of 99</span>
-                <a href="#" class="page-nav-btn" aria-label="Forward page"><span
+                <span id="billing-page-indicator">Page 1 of 1</span>
+                <a href="#" id="billing-next-page" class="page-nav-btn" aria-label="Forward page"><span
                         class="material-symbols-outlined fs-6">arrow_forward_ios</span></a>
             </div>
 
