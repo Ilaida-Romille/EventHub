@@ -1,8 +1,11 @@
 import { calculateInvoiceTotal, formatCurrencyPHP } from "./utils.js";
 
 const BILLING_ITEMS_PER_PAGE = 6;
+const BASE_RATE_PER_ATTENDEE = 200;
 let billingData = [];
 let billingCurrentPage = 1;
+let organizersByName = new Map();
+let organizerAttendeeCountById = new Map();
 
 function formatInvoicePeriod(issuedAt) {
    const date = new Date(issuedAt);
@@ -109,14 +112,16 @@ function initializeBillingPagination() {
 
 async function loadBillingData() {
    try {
-      const [billingResponse, organizersResponse] = await Promise.all([
+      const [billingResponse, organizersResponse, upcomingEventsResponse] = await Promise.all([
          fetch("./data/billing-data.json"),
-         fetch("./data/organizers-data.json")
+         fetch("./data/organizers-data.json"),
+         fetch("../users/data/upcoming-events-data.json")
       ]);
 
-      const [billingRows, organizersData] = await Promise.all([
+      const [billingRows, organizersData, upcomingEventsData] = await Promise.all([
          billingResponse.json(),
-         organizersResponse.json()
+         organizersResponse.json(),
+         upcomingEventsResponse.json()
       ]);
 
       const organizersMap = new Map(
@@ -126,9 +131,40 @@ async function loadBillingData() {
          ])
       );
 
+      organizersByName = new Map(
+         (Array.isArray(organizersData) ? organizersData : []).map((organizer) => [
+            String(organizer.companyName ?? "")
+               .trim()
+               .toLowerCase(),
+            organizer
+         ])
+      );
+
+      organizerAttendeeCountById = new Map();
+
+      const upcomingEvents = Array.isArray(upcomingEventsData.events)
+         ? upcomingEventsData.events
+         : [];
+      upcomingEvents.forEach((event) => {
+         const organizerId = event.organizerId;
+
+         if (!organizerId) {
+            return;
+         }
+
+         const currentCount = organizerAttendeeCountById.get(organizerId) ?? 0;
+         const nextCount = currentCount + Number(event.capacityUsed ?? 0);
+         organizerAttendeeCountById.set(organizerId, nextCount);
+      });
+
       billingData = (Array.isArray(billingRows) ? billingRows : []).map((invoice) => ({
          ...invoice,
          organizer: organizersMap.get(invoice.organizerId)?.companyName ?? "Unknown Organizer",
+         attendeeCount: Number(organizerAttendeeCountById.get(invoice.organizerId) ?? 0),
+         amount: calculateInvoiceTotal(
+            Number(organizerAttendeeCountById.get(invoice.organizerId) ?? 0),
+            BASE_RATE_PER_ATTENDEE
+         ),
          period: formatInvoicePeriod(invoice.issuedAt)
       }));
 
@@ -151,17 +187,21 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("invoice-organizer").value || "Generic Organizer";
          const targetCycle = document.getElementById("invoice-cycle").value || "Current Cycle";
 
-         const mockAttendeeCount = 342;
-         const mockRatePerAttendee = 150;
+         const normalizedOrganizerName = String(organizerName).trim().toLowerCase();
+         const organizer = organizersByName.get(normalizedOrganizerName);
+         const attendeeCount = organizer
+            ? Number(organizerAttendeeCountById.get(organizer.organizerId) ?? 0)
+            : 0;
 
-         const totalCalculated = calculateInvoiceTotal(mockAttendeeCount, mockRatePerAttendee);
+         const totalCalculated = calculateInvoiceTotal(attendeeCount, BASE_RATE_PER_ATTENDEE);
 
-         const formattedRate = formatCurrencyPHP(mockRatePerAttendee);
+         const formattedRate = formatCurrencyPHP(BASE_RATE_PER_ATTENDEE);
          const formattedTotal = formatCurrencyPHP(totalCalculated);
 
-         document.getElementById("modal-org-name").textContent = organizerName;
+         document.getElementById("modal-org-name").textContent =
+            organizer?.companyName ?? organizerName;
          document.getElementById("modal-cycle").textContent = targetCycle;
-         document.getElementById("modal-qty").textContent = mockAttendeeCount.toLocaleString();
+         document.getElementById("modal-qty").textContent = attendeeCount.toLocaleString();
          document.getElementById("modal-rate").textContent = formattedRate;
          document.getElementById("modal-line-total").textContent = formattedTotal;
          document.getElementById("modal-grand-total").textContent = formattedTotal;
