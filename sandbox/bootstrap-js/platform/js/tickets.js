@@ -44,6 +44,40 @@ function renderActiveTicket(ticket) {
    }
 }
 
+function clearActiveTicketView() {
+   const title = document.getElementById("active-ticket-title");
+   const status = document.getElementById("active-ticket-status");
+   const company = document.getElementById("active-ticket-company");
+   const opened = document.getElementById("active-ticket-opened");
+   const message = document.getElementById("active-ticket-message");
+   const responseInput = document.getElementById("helpdesk-response");
+
+   if (title) {
+      title.textContent = "No ticket selected";
+   }
+
+   if (status) {
+      status.textContent = "";
+      status.className = "status-badge align-self-start align-self-sm-auto";
+   }
+
+   if (company) {
+      company.textContent = "N/A";
+   }
+
+   if (opened) {
+      opened.textContent = "N/A";
+   }
+
+   if (message) {
+      message.textContent = "No ticket entries found.";
+   }
+
+   if (responseInput) {
+      responseInput.value = "";
+   }
+}
+
 function buildTicketItem(ticket, isActive) {
    const ticketItem = document.createElement("div");
    ticketItem.className = `ticket-item text-start ${isActive ? "active" : ""}`;
@@ -90,6 +124,14 @@ function renderTicketsList(tickets, activeTicketId) {
 
    container.replaceChildren();
 
+   if (!Array.isArray(tickets) || tickets.length === 0) {
+      const emptyState = document.createElement("div");
+      emptyState.className = "p-4 text-center text-secondary";
+      emptyState.textContent = "No ticket entries found.";
+      container.appendChild(emptyState);
+      return;
+   }
+
    tickets.forEach((ticket) => {
       const ticketItem = buildTicketItem(ticket, ticket.id === activeTicketId);
 
@@ -134,6 +176,9 @@ function renderTicketsPage() {
       const ticket = ticketsData.find((entry) => entry.id === activeTicketInPage);
       renderActiveTicket(ticket);
       selectedTicketId = activeTicketInPage;
+   } else {
+      clearActiveTicketView();
+      selectedTicketId = null;
    }
 
    updateTicketsPagination(pageData.totalPages);
