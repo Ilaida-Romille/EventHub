@@ -89,7 +89,21 @@ function toBoundaryDate(dateValue, boundary) {
       return null;
    }
 
-   const isDateOnly = /^\d{4}-\d{2}-\d{2}$/.test(String(dateValue));
+   const rawValue = String(dateValue);
+   const isDateOnly = /^\d{4}-\d{2}-\d{2}$/.test(rawValue);
+   const isMonthOnly = /^\d{4}-\d{2}$/.test(rawValue);
+
+   if (isMonthOnly) {
+      const [yearValue, monthValue] = rawValue.split("-");
+      const year = Number(yearValue);
+      const monthIndex = Number(monthValue) - 1;
+
+      if (boundary === "end") {
+         return new Date(Date.UTC(year, monthIndex + 1, 0, 23, 59, 59, 999));
+      }
+
+      return new Date(Date.UTC(year, monthIndex, 1, 0, 0, 0, 0));
+   }
 
    if (!isDateOnly) {
       return date;

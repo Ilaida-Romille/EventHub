@@ -51,6 +51,24 @@ describe("billing.logic", () => {
       ).toHaveLength(1);
    });
 
+   it("filters by month range using YYYY-MM values", () => {
+      const result = buildBillingViewModel(billingRows, organizers, events, 200);
+
+      expect(
+         filterInvoices(result.invoices, {
+            fromDate: "2026-05",
+            toDate: "2026-05"
+         })
+      ).toHaveLength(2);
+
+      expect(
+         filterInvoices(result.invoices, {
+            fromDate: "2026-06",
+            toDate: "2026-06"
+         })
+      ).toHaveLength(0);
+   });
+
    it("builds organizer dropdown options mapped to invoice numbers", () => {
       const result = buildBillingViewModel(billingRows, organizers, events, 200);
       const options = buildOrganizerInvoiceOptions(result.invoices);
