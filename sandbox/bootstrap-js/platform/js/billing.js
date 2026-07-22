@@ -192,7 +192,7 @@ function applyBillingFilters() {
    }
 
    if (fromDate && toDate && new Date(fromDate) > new Date(toDate)) {
-      setSearchFeedback("From date cannot be later than To date.");
+      setSearchFeedback('"From date" cannot be later than "To date."');
       return;
    }
 
