@@ -1,3 +1,5 @@
+import { getUsersUpcomingEventsData } from "../../js/api/data-api.js";
+
 function formatDateLabel(dateValue) {
    const date = new Date(dateValue);
 
@@ -48,12 +50,17 @@ function applyEventToRegistration(event) {
 }
 
 async function loadRegistrationEvent() {
+   const eventIdInput = document.getElementById("registration-event-id");
+
+   if (eventIdInput) {
+      eventIdInput.setAttribute("aria-busy", "true");
+   }
+
    try {
       const params = new URLSearchParams(window.location.search);
       const eventId = params.get("eventId");
 
-      const response = await fetch("./data/upcoming-events-data.json");
-      const data = await response.json();
+      const data = await getUsersUpcomingEventsData();
       const events = Array.isArray(data.events) ? data.events : [];
 
       const selectedEvent = events.find((event) => event.id === eventId) ?? null;
@@ -62,6 +69,10 @@ async function loadRegistrationEvent() {
    } catch (error) {
       console.error("Failed to load registration event.", error);
       applyEventToRegistration(null);
+   } finally {
+      if (eventIdInput) {
+         eventIdInput.setAttribute("aria-busy", "false");
+      }
    }
 }
 
