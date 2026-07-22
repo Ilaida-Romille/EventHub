@@ -1,38 +1,34 @@
-import { calculateInvoiceTotal, formatCurrencyPHP } from "./utils.js";
+import { getPlatformBillingPayload } from "../../js/api/data-api.js";
+import { calculateInvoiceTotal, formatCurrencyPHP } from "./billing.helpers.js";
+import {
+   buildBillingViewModel,
+   buildOrganizerInvoiceOptions,
+   filterInvoices,
+   getBillingStatusBadgeClass,
+   paginateItems
+} from "./billing.logic.js";
+import { getResponsiveItemsPerPage, shouldRecomputePageSize } from "./pagination.js";
 
-const BILLING_ITEMS_PER_PAGE = 6;
+const BILLING_PAGE_SIZE = {
+   mobile: 4,
+   desktop: 6
+};
 const BASE_RATE_PER_ATTENDEE = 200;
-let billingData = [];
+let allInvoices = [];
+let visibleInvoices = [];
 let billingCurrentPage = 1;
-let organizersByName = new Map();
 let organizerAttendeeCountById = new Map();
+let currentViewportWidth = window.innerWidth;
 
-function formatInvoicePeriod(issuedAt) {
-   const date = new Date(issuedAt);
-
-   if (Number.isNaN(date.getTime())) {
-      return "N/A";
-   }
-
-   return new Intl.DateTimeFormat("en-US", {
-      month: "short",
-      year: "numeric",
-      timeZone: "UTC"
-   }).format(date);
+function createCell(className, textValue) {
+   const cell = document.createElement("td");
+   cell.className = className;
+   cell.textContent = textValue;
+   return cell;
 }
 
-function getBillingStatusBadgeClass(status) {
-   const value = String(status).trim().toLowerCase();
-
-   if (value === "paid") {
-      return "badge-paid";
-   }
-
-   if (value === "overdue") {
-      return "badge-overdue";
-   }
-
-   return "badge-overdue";
+function getItemsPerPage() {
+   return getResponsiveItemsPerPage(window.innerWidth, BILLING_PAGE_SIZE);
 }
 
 function renderBillingRows(invoices) {
@@ -42,7 +38,7 @@ function renderBillingRows(invoices) {
       return;
    }
 
-   tableBody.innerHTML = "";
+   tableBody.replaceChildren();
 
    invoices.forEach((invoice, index) => {
       const isLast = index === invoices.length - 1;
@@ -52,23 +48,43 @@ function renderBillingRows(invoices) {
       const amountClass = status.toLowerCase() === "overdue" ? "text-danger" : "text-white";
 
       const row = document.createElement("tr");
-      row.innerHTML = `
-         <td class="p-3 px-4 text-white font-monospace fw-bold ${borderClass}">${invoice.invoiceNumber}</td>
-         <td class="p-3 px-4 text-secondary ${borderClass}">${invoice.organizer}</td>
-         <td class="p-3 px-4 text-secondary ${borderClass}">${invoice.period}</td>
-         <td class="p-3 px-4 fw-bold ${amountClass} ${borderClass}">${formatCurrencyPHP(invoice.amount ?? 0)}</td>
-         <td class="p-3 px-4 ${borderClass}">
-            <span class="badge ${statusClass} rounded-pill text-uppercase fw-bold p-2 px-3" style="font-size: 0.75rem;">${status}</span>
-         </td>
-      `;
+      row.appendChild(
+         createCell(
+            `p-3 px-4 text-white font-monospace fw-bold ${borderClass}`,
+            String(invoice.invoiceNumber ?? "N/A")
+         )
+      );
+      row.appendChild(
+         createCell(
+            `p-3 px-4 text-secondary ${borderClass}`,
+            String(invoice.organizer ?? "Unknown Organizer")
+         )
+      );
+      row.appendChild(
+         createCell(`p-3 px-4 text-secondary ${borderClass}`, String(invoice.period ?? "N/A"))
+      );
+      row.appendChild(
+         createCell(
+            `p-3 px-4 fw-bold ${amountClass} ${borderClass}`,
+            formatCurrencyPHP(invoice.amount ?? 0)
+         )
+      );
+
+      const statusCell = document.createElement("td");
+      statusCell.className = `p-3 px-4 ${borderClass}`;
+      const statusBadge = document.createElement("span");
+      statusBadge.className = `badge ${statusClass} rounded-pill text-uppercase fw-bold p-2 px-3`;
+      statusBadge.style.fontSize = "0.75rem";
+      statusBadge.textContent = status;
+      statusCell.appendChild(statusBadge);
+      row.appendChild(statusCell);
 
       tableBody.appendChild(row);
    });
 }
 
-function updateBillingPagination() {
+function updateBillingPagination(totalPages) {
    const indicator = document.getElementById("billing-page-indicator");
-   const totalPages = Math.max(1, Math.ceil(billingData.length / BILLING_ITEMS_PER_PAGE));
 
    if (indicator) {
       indicator.textContent = `Page ${billingCurrentPage} of ${totalPages}`;
@@ -76,10 +92,10 @@ function updateBillingPagination() {
 }
 
 function renderBillingPage() {
-   const start = (billingCurrentPage - 1) * BILLING_ITEMS_PER_PAGE;
-   const end = start + BILLING_ITEMS_PER_PAGE;
-   renderBillingRows(billingData.slice(start, end));
-   updateBillingPagination();
+   const pageData = paginateItems(visibleInvoices, billingCurrentPage, getItemsPerPage());
+   billingCurrentPage = pageData.currentPage;
+   renderBillingRows(pageData.pageItems);
+   updateBillingPagination(pageData.totalPages);
 }
 
 function initializeBillingPagination() {
@@ -101,7 +117,7 @@ function initializeBillingPagination() {
       nextBtn.addEventListener("click", (event) => {
          event.preventDefault();
 
-         const totalPages = Math.max(1, Math.ceil(billingData.length / BILLING_ITEMS_PER_PAGE));
+         const totalPages = Math.max(1, Math.ceil(visibleInvoices.length / getItemsPerPage()));
          if (billingCurrentPage < totalPages) {
             billingCurrentPage += 1;
             renderBillingPage();
@@ -110,118 +126,197 @@ function initializeBillingPagination() {
    }
 }
 
-async function loadBillingData() {
-   try {
-      const [billingResponse, organizersResponse, upcomingEventsResponse] = await Promise.all([
-         fetch("./data/billing-data.json"),
-         fetch("./data/organizers-data.json"),
-         fetch("../users/data/upcoming-events-data.json")
-      ]);
+function initializeResponsivePagination() {
+   window.addEventListener("resize", () => {
+      const nextWidth = window.innerWidth;
 
-      const [billingRows, organizersData, upcomingEventsData] = await Promise.all([
-         billingResponse.json(),
-         organizersResponse.json(),
-         upcomingEventsResponse.json()
-      ]);
+      if (shouldRecomputePageSize(currentViewportWidth, nextWidth)) {
+         renderBillingPage();
+      }
 
-      const organizersMap = new Map(
-         (Array.isArray(organizersData) ? organizersData : []).map((organizer) => [
-            organizer.organizerId,
-            organizer
-         ])
-      );
+      currentViewportWidth = nextWidth;
+   });
+}
 
-      organizersByName = new Map(
-         (Array.isArray(organizersData) ? organizersData : []).map((organizer) => [
-            String(organizer.companyName ?? "")
-               .trim()
-               .toLowerCase(),
-            organizer
-         ])
-      );
+function setBillingLoading(isLoading) {
+   const searchBtn = document.getElementById("billing-search-btn");
+   const generateBtn = document.getElementById("btn-generate-invoice");
+   const tableBody = document.getElementById("billing-table-body");
+   const organizerToggle = document.getElementById("invoice-organizer-toggle");
 
-      organizerAttendeeCountById = new Map();
+   if (searchBtn) {
+      searchBtn.disabled = isLoading;
+   }
 
-      const upcomingEvents = Array.isArray(upcomingEventsData.events)
-         ? upcomingEventsData.events
-         : [];
-      upcomingEvents.forEach((event) => {
-         const organizerId = event.organizerId;
+   if (generateBtn) {
+      generateBtn.disabled = isLoading;
+   }
 
-         if (!organizerId) {
-            return;
-         }
+   if (organizerToggle) {
+      organizerToggle.disabled = isLoading;
+   }
 
-         const currentCount = organizerAttendeeCountById.get(organizerId) ?? 0;
-         const nextCount = currentCount + Number(event.capacityUsed ?? 0);
-         organizerAttendeeCountById.set(organizerId, nextCount);
-      });
-
-      billingData = (Array.isArray(billingRows) ? billingRows : []).map((invoice) => ({
-         ...invoice,
-         organizer: organizersMap.get(invoice.organizerId)?.companyName ?? "Unknown Organizer",
-         attendeeCount: Number(organizerAttendeeCountById.get(invoice.organizerId) ?? 0),
-         amount: calculateInvoiceTotal(
-            Number(organizerAttendeeCountById.get(invoice.organizerId) ?? 0),
-            BASE_RATE_PER_ATTENDEE
-         ),
-         period: formatInvoicePeriod(invoice.issuedAt)
-      }));
-
-      billingCurrentPage = 1;
-      renderBillingPage();
-   } catch (error) {
-      console.error("Failed to load billing data.", error);
+   if (tableBody) {
+      tableBody.setAttribute("aria-busy", String(isLoading));
    }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function setSearchFeedback(message) {
+   const feedback = document.getElementById("billing-search-feedback");
+
+   if (feedback) {
+      feedback.textContent = message;
+   }
+}
+
+function applyBillingFilters() {
+   const query = document.getElementById("billing-search-query")?.value ?? "";
+   const fromDate = document.getElementById("billing-from-date")?.value ?? "";
+   const toDate = document.getElementById("billing-to-date")?.value ?? "";
+
+   if (fromDate && toDate && new Date(fromDate) > new Date(toDate)) {
+      setSearchFeedback("From date cannot be later than To date.");
+      return;
+   }
+
+   visibleInvoices = filterInvoices(allInvoices, {
+      query,
+      fromDate,
+      toDate
+   });
+
+   setSearchFeedback("");
+   billingCurrentPage = 1;
+   renderBillingPage();
+}
+
+function initializeBillingSearch() {
+   const form = document.getElementById("billing-search-form");
+
+   if (!form) {
+      return;
+   }
+
+   form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      applyBillingFilters();
+   });
+}
+
+function createOrganizerMenuItem(option, onSelect) {
+   const listItem = document.createElement("li");
+   const button = document.createElement("button");
+   button.type = "button";
+   button.className = "dropdown-item py-2";
+
+   const companyName = document.createElement("span");
+   companyName.className = "d-block fw-semibold";
+   companyName.textContent = option.organizerName;
+
+   const invoiceNumber = document.createElement("small");
+   invoiceNumber.className = "d-block text-secondary";
+   invoiceNumber.textContent = option.primaryInvoiceNumber;
+
+   button.appendChild(companyName);
+   button.appendChild(invoiceNumber);
+
+   button.addEventListener("click", () => onSelect(option));
+   listItem.appendChild(button);
+
+   return listItem;
+}
+
+function setSelectedOrganizer(option) {
+   const selectedInput = document.getElementById("invoice-organizer");
+   const toggleLabel = document.getElementById("invoice-organizer-toggle-label");
+
+   if (selectedInput) {
+      selectedInput.value = option?.organizerId ?? "";
+   }
+
+   if (toggleLabel) {
+      if (!option) {
+         toggleLabel.className = "text-secondary";
+         toggleLabel.textContent = "Select organizer";
+         return;
+      }
+
+      toggleLabel.className = "d-flex flex-column";
+
+      const companyName = document.createElement("span");
+      companyName.className = "fw-semibold text-white";
+      companyName.textContent = option.organizerName;
+
+      const invoiceNumber = document.createElement("small");
+      invoiceNumber.className = "text-secondary";
+      invoiceNumber.textContent = option.primaryInvoiceNumber;
+
+      toggleLabel.replaceChildren(companyName, invoiceNumber);
+   }
+}
+
+function populateOrganizerDropdown() {
+   const organizerMenu = document.getElementById("invoice-organizer-menu");
+
+   if (!organizerMenu) {
+      return;
+   }
+
+   const options = buildOrganizerInvoiceOptions(allInvoices);
+   organizerMenu.replaceChildren();
+
+   options.forEach((option) => {
+      organizerMenu.appendChild(
+         createOrganizerMenuItem(option, (selectedOption) => {
+            setSelectedOrganizer(selectedOption);
+         })
+      );
+   });
+
+   setSelectedOrganizer(options[0] ?? null);
+}
+
+function renderInvoicePreview() {
+   const organizerId = document.getElementById("invoice-organizer")?.value ?? "";
+   const selectedInvoice = allInvoices.find((invoice) => invoice.organizerId === organizerId);
+
+   if (!selectedInvoice) {
+      return;
+   }
+
+   const attendeeCount = Number(organizerAttendeeCountById.get(organizerId) ?? 0);
+   const totalCalculated = calculateInvoiceTotal(attendeeCount, BASE_RATE_PER_ATTENDEE);
+   const formattedRate = formatCurrencyPHP(BASE_RATE_PER_ATTENDEE);
+   const formattedTotal = formatCurrencyPHP(totalCalculated);
+
+   document.getElementById("modal-org-name").textContent = selectedInvoice.organizer;
+   document.getElementById("modal-invoice-number").textContent = String(
+      selectedInvoice.invoiceNumber ?? "N/A"
+   );
+   document.getElementById("modal-qty").textContent = attendeeCount.toLocaleString();
+   document.getElementById("modal-rate").textContent = formattedRate;
+   document.getElementById("modal-line-total").textContent = formattedTotal;
+   document.getElementById("modal-grand-total").textContent = formattedTotal;
+
+   const invoiceModalEl = document.getElementById("invoiceModal");
+   const modalInstance = bootstrap.Modal.getOrCreateInstance(invoiceModalEl);
+   modalInstance.show();
+}
+
+function initializeInvoiceActions() {
    const generateBtn = document.getElementById("btn-generate-invoice");
 
-   initializeBillingPagination();
-   loadBillingData();
-
    if (generateBtn) {
-      generateBtn.addEventListener("click", () => {
-         const organizerName =
-            document.getElementById("invoice-organizer").value || "Generic Organizer";
-         const targetCycle = document.getElementById("invoice-cycle").value || "Current Cycle";
-
-         const normalizedOrganizerName = String(organizerName).trim().toLowerCase();
-         const organizer = organizersByName.get(normalizedOrganizerName);
-         const attendeeCount = organizer
-            ? Number(organizerAttendeeCountById.get(organizer.organizerId) ?? 0)
-            : 0;
-
-         const totalCalculated = calculateInvoiceTotal(attendeeCount, BASE_RATE_PER_ATTENDEE);
-
-         const formattedRate = formatCurrencyPHP(BASE_RATE_PER_ATTENDEE);
-         const formattedTotal = formatCurrencyPHP(totalCalculated);
-
-         document.getElementById("modal-org-name").textContent =
-            organizer?.companyName ?? organizerName;
-         document.getElementById("modal-cycle").textContent = targetCycle;
-         document.getElementById("modal-qty").textContent = attendeeCount.toLocaleString();
-         document.getElementById("modal-rate").textContent = formattedRate;
-         document.getElementById("modal-line-total").textContent = formattedTotal;
-         document.getElementById("modal-grand-total").textContent = formattedTotal;
-
-         const invoiceModalEl = document.getElementById("invoiceModal");
-         const modalInstance = new bootstrap.Modal(invoiceModalEl);
-         modalInstance.show();
-      });
+      generateBtn.addEventListener("click", renderInvoicePreview);
    }
-});
 
-document.addEventListener("DOMContentLoaded", () => {
    const invoiceModalEl = document.getElementById("invoiceModal");
    const invoiceToastEl = document.getElementById("invoiceToast");
+   const confirmBtn = document.getElementById("btn-confirm-invoice");
 
-   if (invoiceModalEl && invoiceToastEl) {
+   if (invoiceModalEl && invoiceToastEl && confirmBtn) {
       const modalInstance = bootstrap.Modal.getOrCreateInstance(invoiceModalEl);
       const toastInstance = bootstrap.Toast.getOrCreateInstance(invoiceToastEl);
-
-      const confirmBtn = document.getElementById("btn-confirm-invoice");
 
       confirmBtn.addEventListener("click", () => {
          modalInstance.hide();
@@ -231,4 +326,44 @@ document.addEventListener("DOMContentLoaded", () => {
          }, 150);
       });
    }
+}
+
+async function loadBillingData() {
+   setBillingLoading(true);
+
+   try {
+      const [billingRows, organizersData, upcomingEventsData] = await getPlatformBillingPayload();
+
+      const viewModel = buildBillingViewModel(
+         billingRows,
+         organizersData,
+         upcomingEventsData,
+         BASE_RATE_PER_ATTENDEE
+      );
+
+      allInvoices = viewModel.invoices;
+      visibleInvoices = [...allInvoices];
+      organizerAttendeeCountById = viewModel.attendeeCountByOrganizerId;
+      billingCurrentPage = 1;
+
+      renderBillingPage();
+      populateOrganizerDropdown();
+   } catch (error) {
+      console.error("Failed to load billing data.", error);
+      allInvoices = [];
+      visibleInvoices = [];
+      billingCurrentPage = 1;
+      renderBillingPage();
+      setSelectedOrganizer(null);
+   } finally {
+      setBillingLoading(false);
+   }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+   initializeBillingPagination();
+   initializeResponsivePagination();
+   initializeBillingSearch();
+   initializeInvoiceActions();
+   loadBillingData();
 });

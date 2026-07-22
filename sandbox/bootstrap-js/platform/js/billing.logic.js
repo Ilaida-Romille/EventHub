@@ -1,4 +1,5 @@
-import { calculateInvoiceTotal } from "./utils.js";
+import { calculateInvoiceTotal } from "./billing.helpers.js";
+import { paginateItems } from "./pagination.js";
 
 export function formatInvoicePeriod(issuedAt) {
    const date = new Date(issuedAt);
@@ -72,23 +73,59 @@ export function buildBillingViewModel(
    };
 }
 
-export function filterInvoicesByQuery(invoices, query, minLength = 3) {
-   const normalizedQuery = String(query ?? "")
+function toSafeDate(dateValue) {
+   if (!dateValue) {
+      return null;
+   }
+
+   const date = new Date(dateValue);
+   return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function toBoundaryDate(dateValue, boundary) {
+   const date = toSafeDate(dateValue);
+
+   if (!date) {
+      return null;
+   }
+
+   const isDateOnly = /^\d{4}-\d{2}-\d{2}$/.test(String(dateValue));
+
+   if (!isDateOnly) {
+      return date;
+   }
+
+   const next = new Date(date.getTime());
+
+   if (boundary === "end") {
+      next.setUTCHours(23, 59, 59, 999);
+   } else {
+      next.setUTCHours(0, 0, 0, 0);
+   }
+
+   return next;
+}
+
+export function filterInvoices(invoices, filters = {}) {
+   const normalizedQuery = String(filters.query ?? "")
       .trim()
       .toLowerCase();
+   const fromDate = toBoundaryDate(filters.fromDate, "start");
+   const toDate = toBoundaryDate(filters.toDate, "end");
 
-   if (!normalizedQuery) {
-      return invoices;
-   }
-
-   if (normalizedQuery.length < minLength) {
-      return [];
-   }
-
-   return invoices.filter((invoice) => {
+   return (Array.isArray(invoices) ? invoices : []).filter((invoice) => {
       const organizer = String(invoice.organizer ?? "").toLowerCase();
       const invoiceNumber = String(invoice.invoiceNumber ?? "").toLowerCase();
-      return organizer.includes(normalizedQuery) || invoiceNumber.includes(normalizedQuery);
+      const matchesQuery =
+         !normalizedQuery ||
+         organizer.includes(normalizedQuery) ||
+         invoiceNumber.includes(normalizedQuery);
+
+      const issuedAt = toSafeDate(invoice.issuedAt);
+      const startsAfterFrom = !fromDate || (issuedAt && issuedAt >= fromDate);
+      const endsBeforeTo = !toDate || (issuedAt && issuedAt <= toDate);
+
+      return matchesQuery && startsAfterFrom && endsBeforeTo;
    });
 }
 
@@ -104,7 +141,8 @@ export function buildOrganizerInvoiceOptions(invoices) {
          optionsMap.set(invoice.organizerId, {
             organizerId: invoice.organizerId,
             organizerName: invoice.organizer ?? "Unknown Organizer",
-            invoiceNumbers: []
+            invoiceNumbers: [],
+            latestIssuedAt: null
          });
       }
 
@@ -112,24 +150,22 @@ export function buildOrganizerInvoiceOptions(invoices) {
       if (invoice.invoiceNumber) {
          option.invoiceNumbers.push(String(invoice.invoiceNumber));
       }
+
+      const issuedAt = toSafeDate(invoice.issuedAt);
+      const latestIssuedAt = toSafeDate(option.latestIssuedAt);
+      if (issuedAt && (!latestIssuedAt || issuedAt > latestIssuedAt)) {
+         option.primaryInvoiceNumber = String(invoice.invoiceNumber ?? "No invoice number");
+         option.latestIssuedAt = issuedAt.toISOString();
+      }
    });
 
    return Array.from(optionsMap.values())
       .map((option) => ({
          ...option,
-         label: `${option.organizerName} (${option.invoiceNumbers.join(", ") || "No invoice number"})`
+         primaryInvoiceNumber:
+            option.primaryInvoiceNumber ?? option.invoiceNumbers[0] ?? "No invoice number"
       }))
       .sort((a, b) => a.organizerName.localeCompare(b.organizerName));
 }
 
-export function paginateItems(items, page, itemsPerPage) {
-   const totalPages = Math.max(1, Math.ceil(items.length / itemsPerPage));
-   const currentPage = Math.min(Math.max(1, page), totalPages);
-   const start = (currentPage - 1) * itemsPerPage;
-
-   return {
-      currentPage,
-      totalPages,
-      pageItems: items.slice(start, start + itemsPerPage)
-   };
-}
+export { paginateItems };

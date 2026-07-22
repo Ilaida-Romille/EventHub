@@ -107,28 +107,33 @@
             </h1>
 
             <div class="filter-row p-4 mb-4">
-                <form class="filter-form row g-3 align-items-end" method="GET" action="">
+                <form id="billing-search-form" class="filter-form row g-3 align-items-end" method="GET" action="">
                     <div class="col-12 col-md-6">
-                        <label for="organizer-account" class="form-label text-uppercase text-secondary fw-bold mb-2"
-                            style="font-size: 0.85rem;">Organizer</label>
-                        <input type="text" class="form-control" id="organizer-account" name="organizer"
-                            placeholder="Search organizers..." />
+                        <label for="billing-search-query" class="form-label text-uppercase text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">Organizer or Invoice #</label>
+                        <input type="text" class="form-control" id="billing-search-query" name="search"
+                            placeholder="Search organizers or invoice numbers..." />
                     </div>
 
                     <div class="col-12 col-md-2">
-                        <label for="from-date" class="form-label text-uppercase text-secondary fw-bold mb-2"
-                            style="font-size: 0.85rem;">From Date</label>
-                        <input type="date" class="form-control" id="from-date" name="from_date" />
+                        <label for="billing-from-date" class="form-label text-uppercase text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">From</label>
+                        <input type="date" class="form-control" id="billing-from-date" name="from_date" />
                     </div>
 
                     <div class="col-12 col-md-2">
-                        <label for="to-date" class="form-label text-uppercase text-secondary fw-bold mb-2"
-                            style="font-size: 0.85rem;">To Date</label>
-                        <input type="date" class="form-control" id="to-date" name="to_date" />
+                        <label for="billing-to-date" class="form-label text-uppercase text-secondary fw-bold mb-2"
+                            style="font-size: 0.85rem;">To</label>
+                        <input type="date" class="form-control" id="billing-to-date" name="to_date" />
                     </div>
 
-                    <div class="col-12 col-md-2">
-                        <button class="btn btn-primary px-5 fw-bold" type="submit">Search</button>
+                    <div class="col-12 col-md-2 d-grid">
+                        <button id="billing-search-btn" class="btn btn-primary px-5 fw-bold"
+                            type="submit">Search</button>
+                    </div>
+
+                    <div class="col-12">
+                        <small id="billing-search-feedback" class="text-warning mt-2 d-block"></small>
                     </div>
                 </form>
             </div>
@@ -161,14 +166,14 @@
 
             <div class="row g-4">
                 <div class="col-12 col-md-6">
-                    <section class="card h-100 p-4" aria-labelledby="batch-billing-title">
+                    <section class="card h-100 p-4 d-flex flex-column" aria-labelledby="batch-billing-title">
                         <h2 id="batch-billing-title" class="h6 fw-bold text-white mb-2">
                             All Organizers &mdash; This Month
                         </h2>
                         <p class="text-secondary mb-4" style="font-size: 0.9rem;">
                             Runs monthly billing for every active organizer at once.
                         </p>
-                        <form method="POST" action="">
+                        <form method="POST" action="" class="mt-auto d-grid">
                             <button type="submit" class="btn btn-primary w-100 fw-bold">
                                 Generate Monthly Invoices (Batch)
                             </button>
@@ -182,17 +187,20 @@
                             Specific Organizer
                         </h2>
                         <div class="row g-3 mb-4">
-                            <div class="col-12 col-md-8">
+                            <div class="col-12">
                                 <label class="form-label text-uppercase text-secondary fw-bold mb-2"
                                     style="font-size: 0.75rem;">Organizer</label>
-                                <input type="text" id="invoice-organizer" class="form-control"
-                                    placeholder="Search organizer..." value="Initech PH" />
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <label class="form-label text-uppercase text-secondary fw-bold mb-2"
-                                    style="font-size: 0.75rem;">Target Cycle</label>
-                                <input type="text" id="invoice-cycle" class="form-control" placeholder="MM/YY"
-                                    value="05/26" />
+                                <div class="dropdown" id="invoice-organizer-dropdown">
+                                    <button id="invoice-organizer-toggle"
+                                        class="btn btn-outline-light w-100 text-start d-flex justify-content-between align-items-center"
+                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <span id="invoice-organizer-toggle-label" class="text-secondary">Select
+                                            organizer</span>
+                                        <span class="material-symbols-outlined">expand_more</span>
+                                    </button>
+                                    <ul id="invoice-organizer-menu" class="dropdown-menu w-100"></ul>
+                                    <input type="hidden" id="invoice-organizer" value="" />
+                                </div>
                             </div>
                         </div>
                         <button type="button" id="btn-generate-invoice" class="btn btn-primary w-100 fw-bold">
@@ -226,9 +234,9 @@
                                 id="modal-status" style="font-size: 0.75rem;">Overdue</span>
                         </div>
                         <div class="text-end">
-                            <h6 class="text-secondary text-uppercase small mb-1" style="font-size: 0.75rem;">Billing
-                                Cycle</h6>
-                            <p class="fw-bold mb-0 text-white" id="modal-cycle">MM/YY</p>
+                            <h6 class="text-secondary text-uppercase small mb-1" style="font-size: 0.75rem;">Invoice #
+                            </h6>
+                            <p class="fw-bold mb-0 text-white" id="modal-invoice-number">INV-0000</p>
                         </div>
                     </div>
 
