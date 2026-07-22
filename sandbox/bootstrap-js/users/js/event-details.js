@@ -1,16 +1,34 @@
+import { getUsersEventDetailsPayload } from "../../js/api/data-api.js";
+
 function buildAgendaItem(entry) {
    const item = document.createElement("div");
    item.className = `timeline-card${entry.active ? " active-session" : ""}`;
 
-   item.innerHTML = `
-      <div class="time-block">${entry.time}</div>
-      <div class="details-block">
-         <h3>${entry.title}</h3>
-         <p class="session-location">
-            <span class="material-symbols-outlined">${entry.icon}</span> ${entry.location}
-         </p>
-      </div>
-   `;
+   const timeBlock = document.createElement("div");
+   timeBlock.className = "time-block";
+   timeBlock.textContent = entry.time;
+
+   const detailsBlock = document.createElement("div");
+   detailsBlock.className = "details-block";
+
+   const heading = document.createElement("h3");
+   heading.textContent = entry.title;
+
+   const sessionLocation = document.createElement("p");
+   sessionLocation.className = "session-location";
+
+   const locationIcon = document.createElement("span");
+   locationIcon.className = "material-symbols-outlined";
+   locationIcon.textContent = entry.icon;
+
+   sessionLocation.appendChild(locationIcon);
+   sessionLocation.appendChild(document.createTextNode(` ${entry.location}`));
+
+   detailsBlock.appendChild(heading);
+   detailsBlock.appendChild(sessionLocation);
+
+   item.appendChild(timeBlock);
+   item.appendChild(detailsBlock);
 
    return item;
 }
@@ -34,13 +52,27 @@ function buildAttendeeRow(attendee) {
    const row = document.createElement("div");
    row.className = "attendee-row";
 
-   row.innerHTML = `
-      <div class="avatar" aria-hidden="true">${attendee.initials}</div>
-      <div class="attendee-info">
-         <span class="name">${attendee.name}</span>
-         <span class="comp">${attendee.company}</span>
-      </div>
-   `;
+   const avatar = document.createElement("div");
+   avatar.className = "avatar";
+   avatar.setAttribute("aria-hidden", "true");
+   avatar.textContent = attendee.initials;
+
+   const attendeeInfo = document.createElement("div");
+   attendeeInfo.className = "attendee-info";
+
+   const attendeeName = document.createElement("span");
+   attendeeName.className = "name";
+   attendeeName.textContent = attendee.name;
+
+   const attendeeCompany = document.createElement("span");
+   attendeeCompany.className = "comp";
+   attendeeCompany.textContent = attendee.company;
+
+   attendeeInfo.appendChild(attendeeName);
+   attendeeInfo.appendChild(attendeeCompany);
+
+   row.appendChild(avatar);
+   row.appendChild(attendeeInfo);
 
    return row;
 }
@@ -51,12 +83,12 @@ function renderEventDetails(data) {
    const attendeeCountIndicator = document.querySelector(".more-row .indicator");
 
    if (agendaList) {
-      agendaList.innerHTML = "";
+      agendaList.replaceChildren();
       (data.agenda ?? []).forEach((entry) => agendaList.appendChild(buildAgendaItem(entry)));
    }
 
    if (attendeeList) {
-      attendeeList.innerHTML = "";
+      attendeeList.replaceChildren();
       const attendees = Array.isArray(data.attendees) ? data.attendees : [];
       attendees
          .slice(0, 3)
@@ -64,7 +96,10 @@ function renderEventDetails(data) {
 
       const moreRow = document.createElement("div");
       moreRow.className = "more-row";
-      moreRow.innerHTML = `<span class="indicator">+ ${Math.max(0, attendees.length - 3)} more attendees</span>`;
+      const indicator = document.createElement("span");
+      indicator.className = "indicator";
+      indicator.textContent = `+ ${Math.max(0, attendees.length - 3)} more attendees`;
+      moreRow.appendChild(indicator);
       attendeeList.appendChild(moreRow);
    }
 
@@ -73,20 +108,27 @@ function renderEventDetails(data) {
    }
 }
 
+function setEventDetailsLoading(isLoading) {
+   const agendaList = document.getElementById("event-agenda-list");
+   const attendeeList = document.getElementById("event-attendee-list");
+
+   if (agendaList) {
+      agendaList.setAttribute("aria-busy", String(isLoading));
+   }
+
+   if (attendeeList) {
+      attendeeList.setAttribute("aria-busy", String(isLoading));
+   }
+}
+
 async function loadEventDetails() {
+   setEventDetailsLoading(true);
+
    try {
       const params = new URLSearchParams(window.location.search);
       const eventIdFromUrl = params.get("eventId");
 
-      const [detailsResponse, eventsResponse] = await Promise.all([
-         fetch("./data/event-details-data.json"),
-         fetch("./data/upcoming-events-data.json")
-      ]);
-
-      const [detailsData, eventsData] = await Promise.all([
-         detailsResponse.json(),
-         eventsResponse.json()
-      ]);
+      const [detailsData, eventsData] = await getUsersEventDetailsPayload();
 
       const events = Array.isArray(eventsData.events) ? eventsData.events : [];
       const resolvedEventId = eventIdFromUrl || detailsData.eventId;
@@ -116,6 +158,8 @@ async function loadEventDetails() {
       renderEventDetails(mergedData);
    } catch (error) {
       console.error("Failed to load event details data.", error);
+   } finally {
+      setEventDetailsLoading(false);
    }
 }
 
