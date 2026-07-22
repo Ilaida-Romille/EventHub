@@ -1,23 +1,31 @@
-const ORGANIZERS_ITEMS_PER_PAGE = 6;
-let organizersData = [];
+import { getPlatformOrganizersPayload } from "../../js/api/data-api.js";
+import {
+   buildOrganizersWithEventCounts,
+   filterOrganizers,
+   getStatusBadgeClass,
+   paginateItems,
+   validateCompanySearchQuery
+} from "./organizers.logic.js";
+import { getResponsiveItemsPerPage, shouldRecomputePageSize } from "./pagination.js";
+
+const ORGANIZERS_PAGE_SIZE = {
+   mobile: 4,
+   desktop: 6
+};
+let allOrganizers = [];
+let filteredOrganizers = [];
 let organizersCurrentPage = 1;
+let currentViewportWidth = window.innerWidth;
 
-function getStatusBadgeClass(status) {
-   const value = String(status).trim().toLowerCase();
+function getItemsPerPage() {
+   return getResponsiveItemsPerPage(window.innerWidth, ORGANIZERS_PAGE_SIZE);
+}
 
-   if (value === "active") {
-      return "badge-active";
-   }
-
-   if (value === "suspended") {
-      return "badge-suspended";
-   }
-
-   if (value === "pending") {
-      return "badge-pending text-warning";
-   }
-
-   return "badge-pending";
+function createCell(className, textValue) {
+   const cell = document.createElement("td");
+   cell.className = className;
+   cell.textContent = textValue;
+   return cell;
 }
 
 function renderOrganizersTable(organizers) {
@@ -27,31 +35,59 @@ function renderOrganizersTable(organizers) {
       return;
    }
 
-   tableBody.innerHTML = "";
+   tableBody.replaceChildren();
 
    organizers.forEach((organizer, index) => {
       const isLast = index === organizers.length - 1;
       const borderClass = isLast ? "border-0" : "border-bottom border-secondary";
 
       const row = document.createElement("tr");
-      row.innerHTML = `
-         <td class="p-3 px-4 text-white ${borderClass}">${organizer.companyName}</td>
-         <td class="p-3 px-4 text-white ${borderClass}">${Number(organizer.eventsCount ?? 0).toLocaleString()}</td>
-         <td class="p-3 px-4 ${borderClass}">
-            <span class="badge ${getStatusBadgeClass(organizer.status)} rounded-pill text-uppercase fw-bold p-2 px-3" style="font-size: 0.75rem;">${organizer.status}</span>
-         </td>
-         <td class="p-3 px-4 table-actions text-secondary ${borderClass}">
-            <a href="#">View Details</a> &nbsp;|&nbsp; <a href="#">Change Status</a>
-         </td>
-      `;
+      row.appendChild(
+         createCell(
+            `p-3 px-4 text-white ${borderClass}`,
+            String(organizer.companyName ?? "Unknown")
+         )
+      );
+      row.appendChild(
+         createCell(
+            `p-3 px-4 text-white ${borderClass}`,
+            Number(organizer.eventsCount ?? 0).toLocaleString()
+         )
+      );
+
+      const statusCell = document.createElement("td");
+      statusCell.className = `p-3 px-4 ${borderClass}`;
+      const statusBadge = document.createElement("span");
+      statusBadge.className = `badge ${getStatusBadgeClass(organizer.status)} rounded-pill text-uppercase fw-bold p-2 px-3`;
+      statusBadge.style.fontSize = "0.75rem";
+      statusBadge.textContent = String(organizer.status ?? "Pending");
+      statusCell.appendChild(statusBadge);
+      row.appendChild(statusCell);
+
+      const actionCell = document.createElement("td");
+      actionCell.className = `p-3 px-4 table-actions text-secondary ${borderClass}`;
+
+      const viewLink = document.createElement("a");
+      viewLink.href = "#";
+      viewLink.textContent = "View Details";
+
+      const separator = document.createTextNode(" | ");
+
+      const changeStatusLink = document.createElement("a");
+      changeStatusLink.href = "#";
+      changeStatusLink.textContent = "Change Status";
+
+      actionCell.appendChild(viewLink);
+      actionCell.appendChild(separator);
+      actionCell.appendChild(changeStatusLink);
+      row.appendChild(actionCell);
 
       tableBody.appendChild(row);
    });
 }
 
-function updateOrganizersPagination() {
+function updateOrganizersPagination(totalPages) {
    const indicator = document.getElementById("organizers-page-indicator");
-   const totalPages = Math.max(1, Math.ceil(organizersData.length / ORGANIZERS_ITEMS_PER_PAGE));
 
    if (indicator) {
       indicator.textContent = `Page ${organizersCurrentPage} of ${totalPages}`;
@@ -59,10 +95,10 @@ function updateOrganizersPagination() {
 }
 
 function renderOrganizersPage() {
-   const start = (organizersCurrentPage - 1) * ORGANIZERS_ITEMS_PER_PAGE;
-   const end = start + ORGANIZERS_ITEMS_PER_PAGE;
-   renderOrganizersTable(organizersData.slice(start, end));
-   updateOrganizersPagination();
+   const pageData = paginateItems(filteredOrganizers, organizersCurrentPage, getItemsPerPage());
+   organizersCurrentPage = pageData.currentPage;
+   renderOrganizersTable(pageData.pageItems);
+   updateOrganizersPagination(pageData.totalPages);
 }
 
 function initializeOrganizersPagination() {
@@ -84,10 +120,7 @@ function initializeOrganizersPagination() {
       nextBtn.addEventListener("click", (event) => {
          event.preventDefault();
 
-         const totalPages = Math.max(
-            1,
-            Math.ceil(organizersData.length / ORGANIZERS_ITEMS_PER_PAGE)
-         );
+         const totalPages = Math.max(1, Math.ceil(filteredOrganizers.length / getItemsPerPage()));
          if (organizersCurrentPage < totalPages) {
             organizersCurrentPage += 1;
             renderOrganizersPage();
@@ -96,43 +129,95 @@ function initializeOrganizersPagination() {
    }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-   try {
-      const [organizersResponse, upcomingEventsResponse] = await Promise.all([
-         fetch("./data/organizers-data.json"),
-         fetch("../users/data/upcoming-events-data.json")
-      ]);
+function initializeResponsivePagination() {
+   window.addEventListener("resize", () => {
+      const nextWidth = window.innerWidth;
 
-      const [organizersRows, upcomingEventsData] = await Promise.all([
-         organizersResponse.json(),
-         upcomingEventsResponse.json()
-      ]);
+      if (shouldRecomputePageSize(currentViewportWidth, nextWidth)) {
+         renderOrganizersPage();
+      }
 
-      const eventCountByOrganizerId = new Map();
-      const upcomingEvents = Array.isArray(upcomingEventsData.events)
-         ? upcomingEventsData.events
-         : [];
+      currentViewportWidth = nextWidth;
+   });
+}
 
-      upcomingEvents.forEach((event) => {
-         const organizerId = event.organizerId;
+function setOrganizersLoading(isLoading) {
+   const tableBody = document.getElementById("organizers-table-body");
+   const searchBtn = document.getElementById("organizers-search-btn");
 
-         if (!organizerId) {
-            return;
-         }
+   if (tableBody) {
+      tableBody.setAttribute("aria-busy", String(isLoading));
+   }
 
-         const currentCount = eventCountByOrganizerId.get(organizerId) ?? 0;
-         eventCountByOrganizerId.set(organizerId, currentCount + 1);
+   if (searchBtn) {
+      searchBtn.disabled = isLoading;
+   }
+}
+
+function setSearchFeedback(message) {
+   const feedback = document.getElementById("organizers-search-feedback");
+
+   if (feedback) {
+      feedback.textContent = message;
+   }
+}
+
+function applyOrganizerFilters() {
+   const queryInput = document.getElementById("organizers-search-query");
+   const statusSelect = document.getElementById("organizers-status-filter");
+
+   const queryValidation = validateCompanySearchQuery(queryInput?.value ?? "", 3);
+
+   if (!queryValidation.isValid) {
+      setSearchFeedback(queryValidation.message);
+      return;
+   }
+
+   filteredOrganizers = filterOrganizers(
+      allOrganizers,
+      queryValidation.normalizedQuery,
+      statusSelect?.value ?? ""
+   );
+
+   setSearchFeedback("");
+   organizersCurrentPage = 1;
+   renderOrganizersPage();
+}
+
+function initializeOrganizerFilters() {
+   const form = document.getElementById("organizers-filter-form");
+
+   if (form) {
+      form.addEventListener("submit", (event) => {
+         event.preventDefault();
+         applyOrganizerFilters();
       });
+   }
+}
 
-      organizersData = (Array.isArray(organizersRows) ? organizersRows : []).map((organizer) => ({
-         ...organizer,
-         eventsCount: Number(eventCountByOrganizerId.get(organizer.organizerId) ?? 0)
-      }));
+async function loadOrganizersData() {
+   setOrganizersLoading(true);
 
+   try {
+      const [organizersRows, upcomingEventsData] = await getPlatformOrganizersPayload();
+      allOrganizers = buildOrganizersWithEventCounts(organizersRows, upcomingEventsData);
+      filteredOrganizers = [...allOrganizers];
       organizersCurrentPage = 1;
-      initializeOrganizersPagination();
       renderOrganizersPage();
    } catch (error) {
       console.error("Failed to load organizers data.", error);
+      allOrganizers = [];
+      filteredOrganizers = [];
+      organizersCurrentPage = 1;
+      renderOrganizersPage();
+   } finally {
+      setOrganizersLoading(false);
    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+   initializeOrganizersPagination();
+   initializeResponsivePagination();
+   initializeOrganizerFilters();
+   loadOrganizersData();
 });

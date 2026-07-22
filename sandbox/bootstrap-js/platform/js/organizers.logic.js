@@ -1,3 +1,5 @@
+import { paginateItems } from "./pagination.js";
+
 export function getStatusBadgeClass(status) {
    const value = String(status).trim().toLowerCase();
 
@@ -62,14 +64,28 @@ export function filterOrganizers(organizers, companyQuery, statusQuery) {
    });
 }
 
-export function paginateItems(items, page, itemsPerPage) {
-   const totalPages = Math.max(1, Math.ceil(items.length / itemsPerPage));
-   const currentPage = Math.min(Math.max(1, page), totalPages);
-   const start = (currentPage - 1) * itemsPerPage;
+export function validateCompanySearchQuery(query, minLength = 3) {
+   const normalizedQuery = String(query ?? "").trim();
+
+   if (!normalizedQuery) {
+      return {
+         isValid: true,
+         normalizedQuery: ""
+      };
+   }
+
+   if (normalizedQuery.length < minLength) {
+      return {
+         isValid: false,
+         normalizedQuery,
+         message: `Enter at least ${minLength} characters to search by company name.`
+      };
+   }
 
    return {
-      currentPage,
-      totalPages,
-      pageItems: items.slice(start, start + itemsPerPage)
+      isValid: true,
+      normalizedQuery
    };
 }
+
+export { paginateItems };
