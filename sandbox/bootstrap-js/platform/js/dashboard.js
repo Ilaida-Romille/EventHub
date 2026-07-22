@@ -43,9 +43,21 @@ function renderMonthlyChart(labels, counts) {
                label: "Events",
                data: counts,
                borderRadius: 8,
-               backgroundColor: "rgba(99, 102, 241, 0.75)",
-               borderColor: "rgba(165, 180, 252, 1)",
-               borderWidth: 1
+               backgroundColor: function (context) {
+                  const chart = context.chart;
+                  const { ctx, chartArea } = chart;
+
+                  if (!chartArea) {
+                     return null;
+                  }
+
+                  const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+
+                  gradient.addColorStop(0, "#f43f5e");
+                  gradient.addColorStop(1, "#3730a3");
+
+                  return gradient;
+               }
             }
          ]
       },
