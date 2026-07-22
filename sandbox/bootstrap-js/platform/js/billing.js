@@ -54,7 +54,7 @@ function renderBillingRows(invoices) {
    invoices.forEach((invoice, index) => {
       const isLast = index === invoices.length - 1;
       const borderClass = isLast ? "border-0" : "border-bottom border-secondary";
-      const status = invoice.status ?? "Overdue";
+      const status = invoice.status ?? "N/A";
       const statusClass = getBillingStatusBadgeClass(status);
       const amountClass = status.toLowerCase() === "overdue" ? "text-danger" : "text-white";
 
@@ -331,8 +331,15 @@ function renderInvoicePreview() {
    const totalCalculated = calculateInvoiceTotal(attendeeCount, BASE_RATE_PER_ATTENDEE);
    const formattedRate = formatCurrencyPHP(BASE_RATE_PER_ATTENDEE);
    const formattedTotal = formatCurrencyPHP(totalCalculated);
+   const status = String(selectedInvoice.status ?? "Overdue");
+   const statusClass = getBillingStatusBadgeClass(status);
 
    document.getElementById("modal-org-name").textContent = selectedInvoice.organizer;
+   const modalStatus = document.getElementById("modal-status");
+   if (modalStatus) {
+      modalStatus.textContent = status;
+      modalStatus.className = `badge ${statusClass} rounded-pill text-uppercase fw-bold p-2 px-3`;
+   }
    document.getElementById("modal-invoice-number").textContent = String(
       selectedInvoice.invoiceNumber ?? "N/A"
    );
