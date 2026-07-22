@@ -68,3 +68,65 @@
 .modal-grand-total {
    color: $input-color;
 }
+
+#invoice-organizer-toggle {
+   border: 1px solid rgba($secondary, 0.42);
+   background-color: rgba($body-bg, 0.8);
+   color: $input-color;
+   min-height: 44px;
+
+   &:hover {
+      border-color: rgba($primary, 0.58);
+      background-color: rgba($primary, 0.18);
+   }
+
+   &:focus,
+   &:focus-visible {
+      border-color: rgba($primary, 0.66);
+      box-shadow: 0 0 0 0.2rem rgba($primary, 0.28);
+   }
+}
+
+#invoice-cycle {
+   min-height: 66px;
+
+   &[readonly] {
+      background-color: rgba($body-bg, 0.8);
+      border-color: rgba($secondary, 0.42);
+      color: $input-color;
+   }
+}
+
+#invoice-organizer-menu {
+   border: 1px solid rgba($secondary, 0.32);
+   background-color: rgba($body-bg, 0.9);
+   max-height: min(44vh, 18rem);
+   overflow-y: auto;
+   overscroll-behavior: contain;
+
+   .dropdown-item {
+      color: $input-color;
+      border-bottom: 1px solid rgba($secondary, 0.18);
+
+      &:last-child {
+         border-bottom: 0;
+      }
+
+      &:hover,
+      &:focus,
+      &:focus-visible {
+         background-color: rgba($primary, 0.24);
+         color: $input-color;
+      }
+
+      small {
+         color: rgba($secondary, 0.9);
+      }
+   }
+}
+
+@media (width <= 767.98px) {
+   #invoice-organizer-menu {
+      max-height: min(52vh, 16rem);
+   }
+}

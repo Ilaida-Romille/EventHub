@@ -187,20 +187,27 @@
                             Specific Organizer
                         </h2>
                         <div class="row g-3 mb-4">
-                            <div class="col-12">
+                            <div class="col-12 col-md-8">
                                 <label class="form-label text-uppercase text-secondary fw-bold mb-2"
                                     style="font-size: 0.75rem;">Organizer</label>
-                                <div class="dropdown" id="invoice-organizer-dropdown">
+                                <div class="dropup" id="invoice-organizer-dropdown">
                                     <button id="invoice-organizer-toggle"
                                         class="btn btn-outline-light w-100 text-start d-flex justify-content-between align-items-center"
-                                        type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                                        aria-haspopup="listbox">
                                         <span id="invoice-organizer-toggle-label" class="text-secondary">Select
                                             organizer</span>
                                         <span class="material-symbols-outlined">expand_more</span>
                                     </button>
-                                    <ul id="invoice-organizer-menu" class="dropdown-menu w-100"></ul>
+                                    <ul id="invoice-organizer-menu" class="dropdown-menu w-100" role="listbox"></ul>
                                     <input type="hidden" id="invoice-organizer" value="" />
                                 </div>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <label for="invoice-cycle" class="form-label text-uppercase text-secondary fw-bold mb-2"
+                                    style="font-size: 0.75rem;">Target Cycle</label>
+                                <input type="text" id="invoice-cycle" class="form-control" readonly aria-readonly="true"
+                                    placeholder="MM/YY" value="" />
                             </div>
                         </div>
                         <button type="button" id="btn-generate-invoice" class="btn btn-primary w-100 fw-bold">

@@ -40,6 +40,17 @@ function renderBillingRows(invoices) {
 
    tableBody.replaceChildren();
 
+   if (!Array.isArray(invoices) || invoices.length === 0) {
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+      cell.colSpan = 5;
+      cell.className = "p-4 text-center text-secondary";
+      cell.textContent = "No billing entries found.";
+      row.appendChild(cell);
+      tableBody.appendChild(row);
+      return;
+   }
+
    invoices.forEach((invoice, index) => {
       const isLast = index === invoices.length - 1;
       const borderClass = isLast ? "border-0" : "border-bottom border-secondary";
@@ -173,6 +184,12 @@ function applyBillingFilters() {
    const query = document.getElementById("billing-search-query")?.value ?? "";
    const fromDate = document.getElementById("billing-from-date")?.value ?? "";
    const toDate = document.getElementById("billing-to-date")?.value ?? "";
+   const normalizedQuery = String(query).trim();
+
+   if (normalizedQuery && normalizedQuery.length < 3) {
+      setSearchFeedback("Enter at least 3 characters to search by organizer or invoice number.");
+      return;
+   }
 
    if (fromDate && toDate && new Date(fromDate) > new Date(toDate)) {
       setSearchFeedback("From date cannot be later than To date.");
@@ -180,7 +197,7 @@ function applyBillingFilters() {
    }
 
    visibleInvoices = filterInvoices(allInvoices, {
-      query,
+      query: normalizedQuery,
       fromDate,
       toDate
    });
@@ -226,9 +243,26 @@ function createOrganizerMenuItem(option, onSelect) {
    return listItem;
 }
 
+function toTargetCycle(issuedAt) {
+   if (!issuedAt) {
+      return "";
+   }
+
+   const date = new Date(issuedAt);
+
+   if (Number.isNaN(date.getTime())) {
+      return "";
+   }
+
+   const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+   const year = String(date.getUTCFullYear()).slice(-2);
+   return `${month}/${year}`;
+}
+
 function setSelectedOrganizer(option) {
    const selectedInput = document.getElementById("invoice-organizer");
    const toggleLabel = document.getElementById("invoice-organizer-toggle-label");
+   const cycleInput = document.getElementById("invoice-cycle");
 
    if (selectedInput) {
       selectedInput.value = option?.organizerId ?? "";
@@ -238,6 +272,11 @@ function setSelectedOrganizer(option) {
       if (!option) {
          toggleLabel.className = "text-secondary";
          toggleLabel.textContent = "Select organizer";
+
+         if (cycleInput) {
+            cycleInput.value = "";
+         }
+
          return;
       }
 
@@ -252,6 +291,10 @@ function setSelectedOrganizer(option) {
       invoiceNumber.textContent = option.primaryInvoiceNumber;
 
       toggleLabel.replaceChildren(companyName, invoiceNumber);
+
+      if (cycleInput) {
+         cycleInput.value = toTargetCycle(option.latestIssuedAt);
+      }
    }
 }
 
