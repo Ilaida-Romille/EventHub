@@ -1,3 +1,5 @@
+import { getPlatformTicketsPayload } from "../../js/api/data-api.js";
+
 const TICKETS_ITEMS_PER_PAGE = 5;
 let ticketsData = [];
 let ticketsCurrentPage = 1;
@@ -73,6 +75,43 @@ function renderActiveTicket(ticket) {
    }
 }
 
+function buildTicketItem(ticket, isActive) {
+   const ticketItem = document.createElement("div");
+   ticketItem.className = `ticket-item text-start ${isActive ? "active" : ""}`;
+   ticketItem.setAttribute("role", "button");
+   ticketItem.setAttribute("tabindex", "0");
+
+   const topRow = document.createElement("div");
+   topRow.className = "d-flex justify-content-between align-items-center mb-2";
+
+   const ticketId = document.createElement("span");
+   ticketId.className = "ticket-id";
+   ticketId.textContent = ticket.id;
+
+   const status = document.createElement("span");
+   status.className = `status-badge ${getStatusClass(ticket.status)}`;
+   status.textContent = ticket.status;
+
+   topRow.appendChild(ticketId);
+   topRow.appendChild(status);
+
+   const company = document.createElement("div");
+   company.className = "text-secondary mb-2";
+   company.style.fontSize = "0.85rem";
+   company.textContent = ticket.company;
+
+   const title = document.createElement("div");
+   title.className = "text-white fw-semibold";
+   title.style.fontSize = "1rem";
+   title.textContent = ticket.title;
+
+   ticketItem.appendChild(topRow);
+   ticketItem.appendChild(company);
+   ticketItem.appendChild(title);
+
+   return ticketItem;
+}
+
 function renderTicketsList(tickets, activeTicketId) {
    const container = document.getElementById("tickets-container");
 
@@ -80,24 +119,10 @@ function renderTicketsList(tickets, activeTicketId) {
       return;
    }
 
-   container.innerHTML = "";
+   container.replaceChildren();
 
    tickets.forEach((ticket) => {
-      const ticketItem = document.createElement("div");
-      ticketItem.className = `ticket-item text-start ${ticket.id === activeTicketId ? "active" : ""}`;
-      ticketItem.setAttribute("role", "button");
-      ticketItem.setAttribute("tabindex", "0");
-
-      const statusBadgeClass = getStatusClass(ticket.status);
-
-      ticketItem.innerHTML = `
-         <div class="d-flex justify-content-between align-items-center mb-2">
-            <span class="ticket-id">${ticket.id}</span>
-            <span class="status-badge ${statusBadgeClass}">${ticket.status}</span>
-         </div>
-         <div class="text-secondary mb-2" style="font-size: 0.85rem;">${ticket.company}</div>
-         <div class="text-white fw-semibold" style="font-size: 1rem;">${ticket.title}</div>
-      `;
+      const ticketItem = buildTicketItem(ticket, ticket.id === activeTicketId);
 
       const activateTicket = () => {
          selectedTicketId = ticket.id;
@@ -199,17 +224,19 @@ function initializeActions() {
    }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-   try {
-      const [ticketsResponse, organizersResponse] = await Promise.all([
-         fetch("./data/tickets-data.json"),
-         fetch("./data/organizers-data.json")
-      ]);
+function setTicketsLoading(isLoading) {
+   const container = document.getElementById("tickets-container");
 
-      const [data, organizersData] = await Promise.all([
-         ticketsResponse.json(),
-         organizersResponse.json()
-      ]);
+   if (container) {
+      container.setAttribute("aria-busy", String(isLoading));
+   }
+}
+
+async function loadTicketsData() {
+   setTicketsLoading(true);
+
+   try {
+      const [data, organizersData] = await getPlatformTicketsPayload();
 
       const organizersMap = new Map(
          (Array.isArray(organizersData) ? organizersData : []).map((organizer) => [
@@ -228,10 +255,20 @@ document.addEventListener("DOMContentLoaded", async () => {
          ticketsData.find((ticket) => ticket.id === data.activeTicketId)?.id ?? ticketsData[0]?.id;
       ticketsCurrentPage = 1;
 
-      initializeTicketsPagination();
       renderTicketsPage();
-      initializeActions();
    } catch (error) {
       console.error("Failed to load tickets data.", error);
+      ticketsData = [];
+      ticketsCurrentPage = 1;
+      selectedTicketId = null;
+      renderTicketsPage();
+   } finally {
+      setTicketsLoading(false);
    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+   initializeTicketsPagination();
+   initializeActions();
+   loadTicketsData();
 });
