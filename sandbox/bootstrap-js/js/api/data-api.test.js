@@ -44,9 +44,10 @@ describe("api/data-api", () => {
             .fn()
             .mockResolvedValueOnce({ ok: true, json: vi.fn().mockResolvedValue({ kpis: {} }) })
             .mockResolvedValueOnce({ ok: true, json: vi.fn().mockResolvedValue({ events: [] }) })
+            .mockResolvedValueOnce({ ok: true, json: vi.fn().mockResolvedValue([]) })
       );
 
       const result = await getPlatformDashboardPayload();
-      expect(result).toHaveLength(2);
+      expect(result).toHaveLength(3);
    });
 });
