@@ -1,4 +1,8 @@
-import { getPlatformDashboardData } from "../../js/api/data-api.js";
+import Chart from "chart.js/auto";
+import { getPlatformDashboardPayload } from "../../js/api/data-api.js";
+import { buildMonthlyEventsFromSource } from "./dashboard.logic.js";
+
+let monthlyEventsChart = null;
 
 function renderKpis(kpis) {
    const organizersEl = document.getElementById("kpi-total-organizers");
@@ -13,41 +17,94 @@ function renderKpis(kpis) {
    }
 }
 
-function renderMonthlyBars(monthlyEvents) {
-   const chart = document.getElementById("events-bar-chart");
+function renderMonthlyChart(labels, counts) {
+   const canvas = document.getElementById("events-bar-chart");
 
-   if (!chart) {
+   if (!canvas) {
       return;
    }
 
-   chart.replaceChildren();
+   const context = canvas.getContext("2d");
 
-   monthlyEvents.forEach((entry) => {
-      const bar = document.createElement("div");
-      bar.className = "bar";
-      bar.style.height = `${Math.max(0, Math.min(100, Number(entry.percent ?? 0)))}%`;
-      bar.title = entry.month ?? "";
-      chart.appendChild(bar);
+   if (!context) {
+      return;
+   }
+
+   if (monthlyEventsChart) {
+      monthlyEventsChart.destroy();
+   }
+
+   monthlyEventsChart = new Chart(context, {
+      type: "bar",
+      data: {
+         labels,
+         datasets: [
+            {
+               label: "Events",
+               data: counts,
+               borderRadius: 8,
+               backgroundColor: "rgba(99, 102, 241, 0.75)",
+               borderColor: "rgba(165, 180, 252, 1)",
+               borderWidth: 1
+            }
+         ]
+      },
+      options: {
+         responsive: true,
+         maintainAspectRatio: false,
+         plugins: {
+            legend: {
+               labels: {
+                  color: "#cbd5e1"
+               }
+            }
+         },
+         scales: {
+            x: {
+               ticks: {
+                  color: "#94a3b8"
+               },
+               grid: {
+                  color: "rgba(148, 163, 184, 0.15)"
+               }
+            },
+            y: {
+               beginAtZero: true,
+               ticks: {
+                  precision: 0,
+                  color: "#94a3b8"
+               },
+               grid: {
+                  color: "rgba(148, 163, 184, 0.15)"
+               }
+            }
+         }
+      }
    });
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+function setDashboardLoading(isLoading) {
    const chart = document.getElementById("events-bar-chart");
 
    if (chart) {
-      chart.setAttribute("aria-busy", "true");
+      chart.setAttribute("aria-busy", String(isLoading));
    }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+   setDashboardLoading(true);
 
    try {
-      const data = await getPlatformDashboardData();
+      const [dashboardData, upcomingEventsData] = await getPlatformDashboardPayload();
 
-      renderKpis(data.kpis ?? {});
-      renderMonthlyBars(data.monthlyEvents ?? []);
+      const year = new Date().getUTCFullYear();
+      const monthlyEvents = buildMonthlyEventsFromSource(upcomingEventsData?.events, year);
+
+      renderKpis(dashboardData.kpis ?? {});
+      renderMonthlyChart(monthlyEvents.labels, monthlyEvents.counts);
    } catch (error) {
       console.error("Failed to load dashboard data.", error);
    } finally {
-      if (chart) {
-         chart.setAttribute("aria-busy", "false");
-      }
+      setDashboardLoading(false);
    }
 });
