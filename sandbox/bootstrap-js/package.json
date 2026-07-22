@@ -16,7 +16,8 @@
       "vitest": "^4.1.10"
    },
    "dependencies": {
-      "bootstrap": "^5.3.8"
+      "bootstrap": "^5.3.8",
+      "chart.js": "^4.5.1"
    },
    "scripts": {
       "dev": "vite",
