@@ -48,6 +48,20 @@ export function buildMonthlyEventsFromSource(events, year = new Date().getUTCFul
    };
 }
 
+export function buildDashboardKpis(organizers, events, year = new Date().getUTCFullYear()) {
+   const totalOrganizers = Array.isArray(organizers) ? organizers.length : 0;
+
+   const totalEventsThisYear = (Array.isArray(events) ? events : []).filter((event) => {
+      const date = new Date(event?.date);
+      return !Number.isNaN(date.getTime()) && date.getUTCFullYear() === Number(year);
+   }).length;
+
+   return {
+      totalOrganizers,
+      totalEventsThisYear
+   };
+}
+
 export function normalizeMonthlySeries(monthlyEvents) {
    const monthLabels = [
       "Jan",

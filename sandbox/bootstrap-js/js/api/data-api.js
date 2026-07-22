@@ -30,7 +30,11 @@ export function getPlatformOrganizersPayload() {
 }
 
 export function getPlatformDashboardPayload() {
-   return Promise.all([getPlatformDashboardData(), getUsersUpcomingEventsData()]);
+   return Promise.all([
+      getPlatformDashboardData(),
+      getUsersUpcomingEventsData(),
+      getPlatformOrganizersData()
+   ]);
 }
 
 export function getPlatformBillingPayload() {

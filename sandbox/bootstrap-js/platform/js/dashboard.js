@@ -1,6 +1,6 @@
 import Chart from "chart.js/auto";
 import { getPlatformDashboardPayload } from "../../js/api/data-api.js";
-import { buildMonthlyEventsFromSource } from "./dashboard.logic.js";
+import { buildDashboardKpis, buildMonthlyEventsFromSource } from "./dashboard.logic.js";
 
 let monthlyEventsChart = null;
 
@@ -95,12 +95,14 @@ document.addEventListener("DOMContentLoaded", async () => {
    setDashboardLoading(true);
 
    try {
-      const [dashboardData, upcomingEventsData] = await getPlatformDashboardPayload();
+      const [_dashboardData, upcomingEventsData, organizersData] =
+         await getPlatformDashboardPayload();
 
       const year = new Date().getUTCFullYear();
+      const computedKpis = buildDashboardKpis(organizersData, upcomingEventsData?.events, year);
       const monthlyEvents = buildMonthlyEventsFromSource(upcomingEventsData?.events, year);
 
-      renderKpis(dashboardData.kpis ?? {});
+      renderKpis(computedKpis);
       renderMonthlyChart(monthlyEvents.labels, monthlyEvents.counts);
    } catch (error) {
       console.error("Failed to load dashboard data.", error);
