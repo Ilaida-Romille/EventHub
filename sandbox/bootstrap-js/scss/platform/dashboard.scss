@@ -21,28 +21,6 @@
    }
 }
 
-.mock-bar-chart {
-   display: flex;
-   align-items: flex-end;
-   justify-content: space-between;
-   height: 200px;
-   padding-top: 16px;
-   border-bottom: 2px solid $border-color;
-   gap: 4px;
-
-   .bar {
-      background: linear-gradient(180deg, #f43f5e 0%, #3730a3 100%);
-      width: 100%;
-      max-width: 32px;
-      border-radius: 4px 4px 0 0;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-      &:hover {
-         background: #4338ca;
-      }
-   }
-}
-
 .btn-shortcut {
    display: flex;
    align-items: center;
