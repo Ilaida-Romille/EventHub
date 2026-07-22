@@ -1,3 +1,5 @@
+import { getPlatformDashboardData } from "../../js/api/data-api.js";
+
 function renderKpis(kpis) {
    const organizersEl = document.getElementById("kpi-total-organizers");
    const eventsEl = document.getElementById("kpi-total-events");
@@ -18,7 +20,7 @@ function renderMonthlyBars(monthlyEvents) {
       return;
    }
 
-   chart.innerHTML = "";
+   chart.replaceChildren();
 
    monthlyEvents.forEach((entry) => {
       const bar = document.createElement("div");
@@ -30,13 +32,22 @@ function renderMonthlyBars(monthlyEvents) {
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+   const chart = document.getElementById("events-bar-chart");
+
+   if (chart) {
+      chart.setAttribute("aria-busy", "true");
+   }
+
    try {
-      const response = await fetch("./data/dashboard-data.json");
-      const data = await response.json();
+      const data = await getPlatformDashboardData();
 
       renderKpis(data.kpis ?? {});
       renderMonthlyBars(data.monthlyEvents ?? []);
    } catch (error) {
       console.error("Failed to load dashboard data.", error);
+   } finally {
+      if (chart) {
+         chart.setAttribute("aria-busy", "false");
+      }
    }
 });
