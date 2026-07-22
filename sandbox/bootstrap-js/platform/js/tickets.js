@@ -1,54 +1,23 @@
 import { getPlatformTicketsPayload } from "../../js/api/data-api.js";
+import {
+   getRelativeOpenedText,
+   getStatusClass,
+   paginateTickets,
+   resolveActiveTicketId
+} from "./tickets.logic.js";
+import { getResponsiveItemsPerPage, shouldRecomputePageSize } from "./pagination.js";
 
-const TICKETS_ITEMS_PER_PAGE = 5;
+const TICKETS_PAGE_SIZE = {
+   mobile: 3,
+   desktop: 5
+};
 let ticketsData = [];
 let ticketsCurrentPage = 1;
 let selectedTicketId = null;
+let currentViewportWidth = window.innerWidth;
 
-function getRelativeOpenedText(createdAt) {
-   const createdDate = new Date(createdAt);
-   const now = new Date();
-
-   if (Number.isNaN(createdDate.getTime())) {
-      return "unknown";
-   }
-
-   const diffMs = Math.max(0, now.getTime() - createdDate.getTime());
-   const dayMs = 24 * 60 * 60 * 1000;
-   const dayDiff = Math.floor(diffMs / dayMs);
-
-   if (dayDiff < 1) {
-      return "today";
-   }
-
-   if (dayDiff === 1) {
-      return "1 day ago";
-   }
-
-   if (dayDiff < 7) {
-      return `${dayDiff} days ago`;
-   }
-
-   const weekDiff = Math.floor(dayDiff / 7);
-   return weekDiff === 1 ? "1 week ago" : `${weekDiff} weeks ago`;
-}
-
-function getStatusClass(status) {
-   const normalizedStatus = String(status).trim().toLowerCase();
-
-   if (normalizedStatus === "open") {
-      return "badge-open";
-   }
-
-   if (normalizedStatus === "in progress") {
-      return "badge-progress";
-   }
-
-   if (normalizedStatus === "resolved") {
-      return "badge-resolved";
-   }
-
-   return "";
+function getItemsPerPage() {
+   return getResponsiveItemsPerPage(window.innerWidth, TICKETS_PAGE_SIZE);
 }
 
 function renderActiveTicket(ticket) {
@@ -145,9 +114,8 @@ function renderTicketsList(tickets, activeTicketId) {
    });
 }
 
-function updateTicketsPagination() {
+function updateTicketsPagination(totalPages) {
    const indicator = document.getElementById("tickets-page-indicator");
-   const totalPages = Math.max(1, Math.ceil(ticketsData.length / TICKETS_ITEMS_PER_PAGE));
 
    if (indicator) {
       indicator.textContent = `Page ${ticketsCurrentPage} of ${totalPages}`;
@@ -155,15 +123,12 @@ function updateTicketsPagination() {
 }
 
 function renderTicketsPage() {
-   const start = (ticketsCurrentPage - 1) * TICKETS_ITEMS_PER_PAGE;
-   const end = start + TICKETS_ITEMS_PER_PAGE;
+   const pageData = paginateTickets(ticketsData, ticketsCurrentPage, getItemsPerPage());
+   ticketsCurrentPage = pageData.currentPage;
 
-   const pageTickets = ticketsData.slice(start, end);
-   const activeTicketInPage = pageTickets.some((ticket) => ticket.id === selectedTicketId)
-      ? selectedTicketId
-      : pageTickets[0]?.id;
+   const activeTicketInPage = resolveActiveTicketId(pageData.pageItems, selectedTicketId);
 
-   renderTicketsList(pageTickets, activeTicketInPage);
+   renderTicketsList(pageData.pageItems, activeTicketInPage);
 
    if (activeTicketInPage) {
       const ticket = ticketsData.find((entry) => entry.id === activeTicketInPage);
@@ -171,7 +136,7 @@ function renderTicketsPage() {
       selectedTicketId = activeTicketInPage;
    }
 
-   updateTicketsPagination();
+   updateTicketsPagination(pageData.totalPages);
 }
 
 function initializeTicketsPagination() {
@@ -193,13 +158,25 @@ function initializeTicketsPagination() {
       nextBtn.addEventListener("click", (event) => {
          event.preventDefault();
 
-         const totalPages = Math.max(1, Math.ceil(ticketsData.length / TICKETS_ITEMS_PER_PAGE));
+         const totalPages = Math.max(1, Math.ceil(ticketsData.length / getItemsPerPage()));
          if (ticketsCurrentPage < totalPages) {
             ticketsCurrentPage += 1;
             renderTicketsPage();
          }
       });
    }
+}
+
+function initializeResponsivePagination() {
+   window.addEventListener("resize", () => {
+      const nextWidth = window.innerWidth;
+
+      if (shouldRecomputePageSize(currentViewportWidth, nextWidth)) {
+         renderTicketsPage();
+      }
+
+      currentViewportWidth = nextWidth;
+   });
 }
 
 function initializeActions() {
@@ -269,6 +246,7 @@ async function loadTicketsData() {
 
 document.addEventListener("DOMContentLoaded", () => {
    initializeTicketsPagination();
+   initializeResponsivePagination();
    initializeActions();
    loadTicketsData();
 });
