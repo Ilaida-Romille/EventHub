@@ -37,6 +37,17 @@ function renderOrganizersTable(organizers) {
 
    tableBody.replaceChildren();
 
+   if (!Array.isArray(organizers) || organizers.length === 0) {
+      const row = document.createElement("tr");
+      const cell = document.createElement("td");
+      cell.colSpan = 4;
+      cell.className = "p-4 text-center text-secondary";
+      cell.textContent = "No organizer entries found.";
+      row.appendChild(cell);
+      tableBody.appendChild(row);
+      return;
+   }
+
    organizers.forEach((organizer, index) => {
       const isLast = index === organizers.length - 1;
       const borderClass = isLast ? "border-0" : "border-bottom border-secondary";
