@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
    buildBillingViewModel,
    buildOrganizerInvoiceOptions,
-   filterInvoicesByQuery,
+   filterInvoices,
    paginateItems
 } from "./billing.logic.js";
 
@@ -36,16 +36,26 @@ describe("billing.logic", () => {
    it("filters by organizer and invoice number only", () => {
       const result = buildBillingViewModel(billingRows, organizers, events, 200);
 
-      expect(filterInvoicesByQuery(result.invoices, "initech")).toHaveLength(1);
-      expect(filterInvoicesByQuery(result.invoices, "inv-2001")).toHaveLength(1);
-      expect(filterInvoicesByQuery(result.invoices, "in", 3)).toHaveLength(0);
+      expect(filterInvoices(result.invoices, { query: "initech" })).toHaveLength(1);
+      expect(filterInvoices(result.invoices, { query: "inv-2001" })).toHaveLength(1);
+   });
+
+   it("filters by date range", () => {
+      const result = buildBillingViewModel(billingRows, organizers, events, 200);
+
+      expect(
+         filterInvoices(result.invoices, {
+            fromDate: "2026-05-19",
+            toDate: "2026-05-30"
+         })
+      ).toHaveLength(1);
    });
 
    it("builds organizer dropdown options mapped to invoice numbers", () => {
       const result = buildBillingViewModel(billingRows, organizers, events, 200);
       const options = buildOrganizerInvoiceOptions(result.invoices);
 
-      expect(options[0].label).toContain("INV-");
+      expect(options[0].primaryInvoiceNumber).toContain("INV-");
       expect(options).toHaveLength(2);
    });
 
