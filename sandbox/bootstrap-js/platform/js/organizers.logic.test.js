@@ -3,7 +3,8 @@ import {
    buildOrganizersWithEventCounts,
    filterOrganizers,
    getStatusBadgeClass,
-   paginateItems
+   paginateItems,
+   validateCompanySearchQuery
 } from "./organizers.logic.js";
 
 describe("organizers.logic", () => {
@@ -42,5 +43,11 @@ describe("organizers.logic", () => {
 
       expect(page.currentPage).toBe(2);
       expect(page.pageItems[0].organizerId).toBe("org-2");
+   });
+
+   it("validates query with minimum length", () => {
+      expect(validateCompanySearchQuery("ab", 3).isValid).toBe(false);
+      expect(validateCompanySearchQuery("abc", 3).isValid).toBe(true);
+      expect(validateCompanySearchQuery("", 3).isValid).toBe(true);
    });
 });
