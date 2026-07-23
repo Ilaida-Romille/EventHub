@@ -1,0 +1,99 @@
+<main class="container-fluid row vh-100 px-0 overflow-hidden m-0">
+    <section class="col-md-6 bg-gradient-dark position-relative d-flex align-items-center justify-content-center p-5">
+        <div class="hero-decoration">
+            <div class="decoration-circle decoration-circle-1"></div>
+            <div class="decoration-circle decoration-circle-2"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="d-flex align-items-center gap-2 mb-4">
+                <span class="material-symbols-outlined hero-brand-icon fs-2">event</span>
+                <span class="fs-4 fw-bolder hero-brand">EventHub</span>
+            </div>
+
+            <h1 class="display-5 fw-bolder hero-title mb-3">
+                <strong>Streamline Your Corporate Events</strong>
+            </h1>
+            <p class="hero-description fs-6">
+                Welcome to a modernized platform built to seamlessly organize, manage, and discover corporate events
+                all in one place.
+            </p>
+        </div>
+    </section>
+
+    <section class="col-md-6 d-flex align-items-center justify-content-center p-5 login-panel">
+        <div class="w-100 login-panel-content">
+
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+                <div class="mb-3">
+                    <label for="email" class="form-label text-uppercase text-secondary fw-bold field-label">
+                        Email address
+                    </label>
+                    <input type="email" class="form-control" id="email" formControlName="email"
+                        placeholder="e.g., john@company.com" autocomplete="email" />
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="form-label text-uppercase text-secondary fw-bold field-label">
+                        Password
+                    </label>
+                    <input type="password" class="form-control" id="password" formControlName="password"
+                        placeholder="••••••••" autocomplete="current-password" />
+                </div>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="form-check d-flex align-items-center gap-2">
+                        <input class="form-check-input mt-0 remember-checkbox" type="checkbox" id="remember"
+                            formControlName="remember" />
+                        <label class="form-check-label m-0 remember-label" for="remember">
+                            Remember me
+                        </label>
+                    </div>
+                    <a routerLink="/forgot-password" class="text-primary text-decoration-none fw-semibold auth-link">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 fw-bold mb-4">Sign In
+                </button>
+            </form>
+
+            <div class="login-divider text-center my-4">
+                <span class="text-secondary text-lowercase fs-6">or sign in with:</span>
+            </div>
+
+            <div class="d-flex justify-content-center gap-3 mb-4">
+                <a href="#" class="social-btn text-decoration-none" aria-label="Sign in with Facebook">
+                    <span class="material-symbols-outlined fs-5">language</span>
+                </a>
+                <a href="#" class="social-btn text-decoration-none" aria-label="Sign in with Google">
+                    <span class="material-symbols-outlined fs-5">language</span>
+                </a>
+                <a href="#" class="social-btn text-decoration-none" aria-label="Sign in with X">
+                    <span class="material-symbols-outlined fs-5">language</span>
+                </a>
+                <a href="#" class="social-btn text-decoration-none" aria-label="Sign in with GitHub">
+                    <span class="material-symbols-outlined fs-5">language</span>
+                </a>
+            </div>
+
+            <div class="login-divider text-center"></div>
+
+            <div class="text-center pt-4">
+                <p class="text-secondary fs-6 mb-3">Don't have an account?</p>
+                <div class="d-flex flex-column gap-2">
+                    <a routerLink="/users/attendee-registration"
+                        class="btn btn-outline-primary w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
+                        <span class="material-symbols-outlined auth-role-icon">group</span>
+                        Sign Up as Employee
+                    </a>
+                    <a routerLink="/organizer/organizer-registration"
+                        class="btn btn-outline-primary w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
+                        <span class="material-symbols-outlined auth-role-icon">corporate_fare</span>
+                        Sign Up as Organizer
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
