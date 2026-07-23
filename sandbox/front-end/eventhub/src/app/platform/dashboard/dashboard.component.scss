@@ -1,0 +1,76 @@
+.dashboard-shell {
+   max-width: 1200px;
+}
+
+.dashboard-title {
+   color: var(--bs-body-color);
+}
+
+.metric-label {
+   font-size: 0.85rem;
+}
+
+.analytics-title {
+   font-size: 0.95rem;
+   color: var(--bs-body-color);
+}
+
+.chart-container {
+   height: 260px;
+}
+
+.card {
+   background-color: var(--app-card-bg);
+   border: 1px solid var(--bs-border-color);
+   border-radius: 14px;
+}
+
+.kpi-card {
+   position: relative;
+   overflow: hidden;
+   border: 1.5px solid var(--bs-border-color);
+   background: var(--app-card-bg);
+
+   &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-color);
+   }
+
+   .value {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--bs-body-color);
+   }
+}
+
+.btn-shortcut {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background: var(--bs-body-bg);
+   border: 2px solid var(--bs-border-color);
+   border-radius: 14px;
+   padding: 18px 24px;
+   font-weight: 700;
+   font-size: 0.95rem;
+   color: var(--bs-primary);
+   text-decoration: none;
+   transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      transform 0.25s ease;
+
+   &:hover {
+      background-color: var(--bs-primary);
+      border-color: var(--bs-primary);
+      color: var(--bs-light);
+      transform: translateY(-1px);
+   }
+}
