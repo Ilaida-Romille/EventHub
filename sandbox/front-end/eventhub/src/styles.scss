@@ -1,1 +1,96 @@
-/* You can add global styles to this file, and also import other style files */
+// Bootstrap color modes
+$color-mode-type: data;
+$enable-dark-mode: true;
+
+// Light mode tokens
+$body-bg: #f4f8ff;
+$body-color: #0f172a;
+$primary: #3730a3;
+$secondary: #5b6b85;
+$danger: #dc2626;
+$success: #0b7a69;
+$warning: #b45309;
+$border-color: #a8b4ca;
+$input-bg: #fff;
+$input-border-color: #9aaccc;
+$input-color: #0f172a;
+$input-focus-border-color: rgb(47 75 206 / 42%);
+
+// Dark mode tokens
+$body-bg-dark: #0a071b;
+$body-color-dark: #f1f5f9;
+$body-secondary-color-dark: #94a3b8;
+$body-tertiary-color-dark: #94a3b8;
+$border-color-dark: #25215a;
+$input-bg-dark: #0a071b;
+$input-border-color-dark: #25215a;
+$input-color-dark: #fff;
+$input-focus-border-color-dark: rgb(95 19 225 / 45%);
+
+// Shared component tokens
+$font-family-sans-serif:
+   'Plus Jakarta Sans',
+   -apple-system,
+   blinkmacsystemfont,
+   'Segoe UI',
+   roboto,
+   sans-serif;
+$btn-border-radius: 24px;
+$btn-padding-y: 10px;
+$btn-padding-x: 24px;
+$input-border-radius: 8px;
+$input-padding-y: 10px;
+$input-padding-x: 14px;
+
+@import 'bootstrap/scss/bootstrap';
+
+:root {
+   --app-header-bg: #eef2ff;
+   --app-card-bg: #fff;
+   --hero-gradient-start: #e6e9ff;
+   --hero-gradient-end: #f8fafc;
+   --hero-heading: #0f172a;
+   --hero-body: #334155;
+   --login-divider-color: #b8c2d6;
+   --login-input-bg: #fff;
+   --login-input-border: #97a9c8;
+   --login-input-color: #0f172a;
+   --login-input-placeholder: #5f6f89;
+   --login-input-focus: #2f4bce;
+   --login-input-focus-ring: rgb(47 75 206 / 20%);
+   --login-panel-shadow: 0 24px 60px rgb(30 41 59 / 9%);
+}
+
+[data-bs-theme='dark'] {
+   --app-header-bg: #141133;
+   --app-card-bg: #141133;
+   --hero-gradient-start: #141133;
+   --hero-gradient-end: #0a071b;
+   --hero-heading: #f1f5f9;
+   --hero-body: #94a3b8;
+   --login-divider-color: #25215a;
+   --login-input-bg: #0a071b;
+   --login-input-border: #25215a;
+   --login-input-color: #fff;
+   --login-input-placeholder: #94a3b8;
+
+   .form-control {
+      background-color: var(--login-input-bg);
+      border-color: var(--login-input-border);
+      color: var(--login-input-color);
+
+      &::placeholder {
+         color: var(--login-input-placeholder);
+      }
+
+      &:focus {
+         background-color: var(--login-input-bg);
+         color: var(--login-input-color);
+         border-color: var(--login-input-focus, #5f13e1);
+      }
+   }
+}
+
+a {
+   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
