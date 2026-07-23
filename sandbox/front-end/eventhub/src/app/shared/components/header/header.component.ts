@@ -4,12 +4,12 @@ import { Component, inject, input, signal } from '@angular/core';
 type Theme = 'light' | 'dark';
 
 @Component({
-  selector: 'app-topbar',
+  selector: 'app-header',
   imports: [],
-  templateUrl: './topbar.component.html',
-  styleUrl: './topbar.component.scss'
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.scss'
 })
-export class TopbarComponent {
+export class HeaderComponent {
   private readonly document = inject(DOCUMENT);
   private readonly themeStorageKey = 'eventhub-theme';
 

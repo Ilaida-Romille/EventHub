@@ -1,0 +1,27 @@
+<header class="navbar navbar-expand-lg app-header" aria-label="Platform Navigation">
+    <div class="container-fluid app-header-inner">
+        <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" href="#" aria-label="EventHub home">
+            <span class="material-symbols-outlined header-brand-logo" aria-hidden="true">event</span>
+            <span class="header-brand-name">{{ brandName() }}</span>
+        </a>
+
+        <div class="d-flex align-items-center gap-2 ms-auto">
+            @if (showThemeToggle()) {
+            <button type="button" class="btn header-theme-toggle-btn" [attr.aria-label]="themeToggleLabel()"
+                [attr.title]="themeToggleLabel()" (click)="toggleTheme()">
+                @if (theme() === 'dark') {
+                <span class="material-symbols-outlined" aria-hidden="true">light_mode</span>
+                } @else {
+                <span class="material-symbols-outlined" aria-hidden="true">dark_mode</span>
+                }
+            </button>
+            }
+
+            <div class="d-flex align-items-center gap-2 app-header-profile" role="button" tabindex="0"
+                aria-label="User profile placeholder">
+                <span class="material-symbols-outlined header-profile-icon" aria-hidden="true">account_circle</span>
+                <span class="header-profile-name fw-semibold">{{ profileName() }}</span>
+            </div>
+        </div>
+    </div>
+</header>

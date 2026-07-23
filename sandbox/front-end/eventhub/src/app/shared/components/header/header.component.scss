@@ -1,4 +1,4 @@
-.app-topbar {
+.app-header {
    width: 100%;
    background: var(--app-card-bg);
    border-bottom: 1px solid var(--bs-border-color);
@@ -6,20 +6,20 @@
    margin-bottom: 1rem;
 }
 
-.app-topbar-inner {
+.app-header-inner {
    padding: 0.85rem 1.25rem;
 }
 
-.topbar-brand-logo {
+.header-brand-logo {
    color: var(--accent-color);
 }
 
-.topbar-brand-name {
+.header-brand-name {
    color: var(--bs-body-color);
    letter-spacing: 0.02em;
 }
 
-.app-topbar-profile {
+.app-header-profile {
    color: var(--bs-body-color);
    border: 1px solid var(--bs-border-color);
    border-radius: 999px;
@@ -27,7 +27,7 @@
    background: color-mix(in srgb, var(--app-card-bg) 85%, var(--bs-primary) 15%);
 }
 
-.topbar-theme-toggle-btn {
+.header-theme-toggle-btn {
    width: 2.4rem;
    height: 2.4rem;
    border: 1px solid var(--bs-border-color);
@@ -49,10 +49,10 @@
    }
 }
 
-.topbar-profile-icon {
+.header-profile-icon {
    color: var(--accent-color); // Updated profile icon accent
 }
 
-.topbar-profile-name {
+.header-profile-name {
    font-size: 0.9rem;
 }
