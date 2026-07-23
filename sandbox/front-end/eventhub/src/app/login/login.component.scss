@@ -55,37 +55,6 @@
    max-width: 500px;
 }
 
-.field-label {
-   font-size: 0.75rem;
-}
-
-.remember-checkbox {
-   width: 18px;
-   height: 18px;
-   cursor: pointer;
-   background-color: var(--login-input-bg, #fff);
-   border-color: var(--login-input-border, #97a9c8);
-
-   &:checked {
-      background-color: var(--bs-primary);
-      border-color: var(--bs-primary);
-   }
-
-   &:focus {
-      box-shadow: 0 0 0 0.25rem var(--login-input-focus-ring);
-   }
-}
-
-.remember-label,
-.auth-link {
-   font-size: 0.9rem;
-}
-
-.remember-label {
-   color: var(--bs-body-color);
-   cursor: pointer;
-}
-
 .auth-role-icon {
    font-size: 1.1rem;
 }
