@@ -1,29 +1,41 @@
-import { defineConfig } from "eslint/config";
-import html from "@html-eslint/eslint-plugin";
+// @ts-check
+const eslint = require('@eslint/js');
+const { defineConfig } = require('eslint/config');
+const tseslint = require('typescript-eslint');
+const angular = require('angular-eslint');
 
-export default defineConfig([
+module.exports = defineConfig([
    {
-      files: ["**/*.html"],
-      plugins: {
-         html
-      },
-      language: "html/html",
+      files: ['**/*.ts'],
+      extends: [
+         eslint.configs.recommended,
+         tseslint.configs.recommended,
+         tseslint.configs.stylistic,
+         angular.configs.tsRecommended
+      ],
+      processor: angular.processInlineTemplates,
       rules: {
-         "html/no-duplicate-class": "error",
-
-         "html/no-duplicate-attrs": "error",
-         "html/no-duplicate-id": "error",
-         "html/require-button-type": "warn",
-
-         "html/quotes": ["error", "double"],
-
-         "html/require-lang": "error",
-         "html/require-img-alt": "error",
-         "html/require-frame-title": "warn",
-
-         "html/require-title": "error",
-         "html/no-multiple-h1": "warn",
-         "html/require-meta-description": "warn"
+         '@angular-eslint/directive-selector': [
+            'error',
+            {
+               type: 'attribute',
+               prefix: 'app',
+               style: 'camelCase'
+            }
+         ],
+         '@angular-eslint/component-selector': [
+            'error',
+            {
+               type: 'element',
+               prefix: 'app',
+               style: 'kebab-case'
+            }
+         ]
       }
+   },
+   {
+      files: ['**/*.html'],
+      extends: [angular.configs.templateRecommended, angular.configs.templateAccessibility],
+      rules: {}
    }
 ]);
