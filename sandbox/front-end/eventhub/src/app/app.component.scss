@@ -1,0 +1,28 @@
+.theme-toggle {
+   position: fixed;
+   top: 1rem;
+   right: 1rem;
+   z-index: 1200;
+   width: 2.75rem;
+   height: 2.75rem;
+   border: 1px solid var(--bs-border-color);
+   border-radius: 999px;
+   background: var(--bs-body-bg);
+   color: var(--bs-body-color);
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 0 8px 20px rgb(15 23 42 / 14%);
+
+   &:hover {
+      border-color: var(--bs-primary);
+      color: var(--bs-primary);
+   }
+
+   &:focus-visible {
+      outline: 0;
+      box-shadow:
+         0 0 0 0.25rem rgb(55 48 163 / 25%),
+         0 8px 20px rgb(15 23 42 / 14%);
+   }
+}
