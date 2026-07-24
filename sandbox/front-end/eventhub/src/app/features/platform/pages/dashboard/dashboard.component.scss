@@ -1,0 +1,84 @@
+.metric-label {
+   font-size: 0.85rem;
+   color: var(--platform-muted);
+}
+
+.analytics-title {
+   font-size: 0.95rem;
+   color: var(--platform-muted);
+}
+
+.chart-container {
+   height: 260px;
+}
+
+.chart-placeholder {
+   width: 100%;
+   min-height: 220px;
+   border: 1px dashed var(--platform-border);
+   border-radius: 14px;
+   color: var(--platform-muted);
+   font-weight: 600;
+   letter-spacing: 0.02em;
+   background: linear-gradient(180deg, var(--platform-panel-soft), transparent);
+}
+
+.card {
+   background-color: var(--platform-panel);
+   border: 1px solid var(--platform-border);
+   border-radius: 18px;
+}
+
+.kpi-card {
+   position: relative;
+   overflow: hidden;
+   border: 1px solid var(--platform-border);
+   background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--platform-panel) 92%, #2d57f0 8%),
+      var(--platform-panel)
+   );
+
+   &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--platform-accent);
+   }
+
+   .value {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--platform-heading);
+   }
+}
+
+.btn-shortcut {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   background: var(--platform-panel);
+   border: 1px solid var(--platform-border);
+   border-radius: 14px;
+   padding: 18px 24px;
+   font-weight: 700;
+   font-size: 0.95rem;
+   color: var(--platform-heading);
+   text-decoration: none;
+   transition:
+      background-color 0.25s ease,
+      border-color 0.25s ease,
+      color 0.25s ease,
+      transform 0.25s ease;
+
+   &:hover {
+      background-color: color-mix(in srgb, var(--platform-panel) 60%, var(--platform-accent) 40%);
+      border-color: color-mix(in srgb, var(--platform-accent) 72%, transparent);
+      color: var(--platform-heading);
+      transform: translateY(-1px);
+   }
+}

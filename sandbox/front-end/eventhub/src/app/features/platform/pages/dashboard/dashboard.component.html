@@ -1,0 +1,44 @@
+<app-platform-layout title="Welcome back, John" subtitle="Measure your event ROI and monitor organizer activity.">
+    <section class="row row-cols-1 row-cols-md-2 g-3 g-md-4 mb-4" aria-label="Metrics Overview">
+        <div class="col">
+            <div class="card kpi-card p-4">
+                <div id="kpi-total-organizers" class="value mb-1">2,031</div>
+                <div class="text-uppercase fw-bold metric-label">Total Organizers</div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card kpi-card p-4">
+                <div id="kpi-total-events" class="value mb-1">19,230</div>
+                <div class="text-uppercase fw-bold metric-label">Total Events (This Year)</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card p-4 mb-4" aria-label="Analytics Visualization">
+        <div class="fw-bold mb-4 text-uppercase analytics-title">Events Distribution per Month</div>
+        <div class="chart-container d-flex align-items-center justify-content-center">
+            <div class="chart-placeholder">Chart area</div>
+        </div>
+    </section>
+
+    <nav class="row row-cols-1 row-cols-md-3 g-3 g-md-4" aria-label="Quick Actions Summary">
+        <div class="col">
+            <a routerLink="/platform/organizers" class="btn-shortcut">
+                <span>View Organizers</span>
+                <app-lucide-icon name="arrow-right" [size]="15"></app-lucide-icon>
+            </a>
+        </div>
+        <div class="col">
+            <a routerLink="/platform/billing" class="btn-shortcut">
+                <span>View Billing</span>
+                <app-lucide-icon name="arrow-right" [size]="15"></app-lucide-icon>
+            </a>
+        </div>
+        <div class="col">
+            <a routerLink="/platform/tickets" class="btn-shortcut">
+                <span>View Tickets</span>
+                <app-lucide-icon name="arrow-right" [size]="15"></app-lucide-icon>
+            </a>
+        </div>
+    </nav>
+</app-platform-layout>
