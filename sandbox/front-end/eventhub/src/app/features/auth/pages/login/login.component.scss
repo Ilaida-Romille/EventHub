@@ -1,0 +1,211 @@
+.bg-gradient-dark {
+   background: linear-gradient(
+      180deg,
+      var(--hero-gradient-start) 0%,
+      var(--hero-gradient-end) 100%
+   );
+}
+
+.login-theme-toggle {
+   position: fixed;
+   top: 1rem;
+   right: 1rem;
+   z-index: 1200;
+   width: 2.9rem;
+   height: 2.9rem;
+   border: 1px solid color-mix(in srgb, var(--platform-accent) 35%, var(--bs-border-color));
+   border-radius: 999px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   color: var(--platform-heading);
+   background: linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--platform-panel) 72%, var(--platform-accent) 28%),
+      var(--platform-panel)
+   );
+   box-shadow: 0 10px 24px rgb(7 12 29 / 18%);
+
+   &:hover {
+      color: var(--platform-heading);
+      border-color: color-mix(in srgb, var(--platform-accent) 68%, transparent);
+      transform: translateY(-1px);
+   }
+
+   &:focus-visible {
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem var(--platform-ring);
+   }
+}
+
+.hero-content {
+   max-width: 500px;
+   z-index: 1;
+}
+
+.hero-brand,
+.hero-title {
+   color: var(--hero-heading);
+}
+
+.hero-description {
+   color: var(--hero-body);
+}
+
+.login-panel {
+   background-color: var(--bs-body-bg);
+   z-index: 1;
+}
+
+.login-panel-content {
+   max-width: 500px;
+}
+
+.auth-role-icon {
+   font-size: 1.1rem;
+}
+
+.hero-brand-icon {
+   color: var(--platform-accent);
+}
+
+.hero-decoration {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   z-index: 0;
+
+   .decoration-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.6;
+      filter: blur(40px);
+   }
+
+   .decoration-circle-1 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, #2954f3 0%, #25c5e8 100%);
+      top: -120px;
+      right: 10%;
+
+      @media (width <= 768px) {
+         width: 250px;
+         height: 250px;
+         top: -50px;
+      }
+   }
+
+   .decoration-circle-2 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #3c65ff 0%, #2dd4bf 100%);
+      bottom: -100px;
+      right: 0%;
+
+      @media (width <= 768px) {
+         width: 200px;
+         height: 200px;
+         bottom: -50px;
+      }
+   }
+}
+
+.login-divider {
+   position: relative;
+
+   &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background-color: var(--login-divider-color);
+   }
+
+   span {
+      background-color: var(--bs-body-bg);
+      padding: 0 8px;
+      position: relative;
+   }
+}
+
+.social-btn {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 44px;
+   height: 44px;
+   border: 1px solid var(--login-divider-color);
+   border-radius: 14px;
+   color: var(--platform-muted);
+   background: color-mix(in srgb, var(--app-card-bg) 85%, var(--platform-accent) 15%);
+   box-shadow: 0 6px 16px rgb(11 17 38 / 11%);
+   transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease;
+
+   svg {
+      display: block;
+   }
+
+   &:hover {
+      border-color: var(--platform-accent);
+      color: var(--platform-heading);
+      transform: translateY(-1px);
+      box-shadow: 0 9px 18px rgb(11 17 38 / 14%);
+   }
+
+   &:focus-visible {
+      outline: 0;
+      box-shadow: 0 0 0 0.2rem var(--platform-ring);
+   }
+}
+
+.social-btn-facebook {
+   color: #fff;
+   background: #1877f2;
+   border-color: color-mix(in srgb, #1877f2 65%, #0f172a 35%);
+
+   &:hover {
+      color: #fff;
+      border-color: #1877f2;
+      background: #1368d1;
+   }
+}
+
+.social-btn-google {
+   background: #fff;
+   border-color: color-mix(in srgb, #5f6368 25%, #d1d5db 75%);
+
+   &:hover {
+      background: #f8fafc;
+      border-color: #d1d5db;
+   }
+}
+
+.social-btn-x {
+   color: #fff;
+   background: #0f172a;
+   border-color: color-mix(in srgb, #0f172a 75%, #334155 25%);
+
+   &:hover {
+      color: #fff;
+      background: #0b1224;
+      border-color: #0f172a;
+   }
+}
+
+.social-btn-github {
+   color: #fff;
+   background: #181717;
+   border-color: color-mix(in srgb, #181717 74%, #334155 26%);
+
+   &:hover {
+      color: #fff;
+      background: #111010;
+      border-color: #181717;
+   }
+}

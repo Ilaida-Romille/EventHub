@@ -1,14 +1,18 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { LoginFormComponent, LoginFormValue } from './login-form/login-form.component';
+import {
+   LoginFormComponent,
+   LoginFormValue
+} from '../../components/login-form/login-form.component';
+import { LucideIconComponent } from '../../../../shared/components/lucide-icon/lucide-icon.component';
 
 type Theme = 'light' | 'dark';
 
 @Component({
    selector: 'app-login',
    standalone: true,
-   imports: [RouterLink, LoginFormComponent],
+   imports: [RouterLink, LoginFormComponent, LucideIconComponent],
    templateUrl: './login.component.html',
    styleUrl: './login.component.scss'
 })
