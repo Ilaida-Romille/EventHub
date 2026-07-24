@@ -6,8 +6,8 @@
     }
 
     <app-sidebar [profileName]="profileName()" [profileRole]="profileRole()" [mobileMode]="isMobile()"
-        [mobileOpen]="mobileSidebarOpen()" (collapsedChange)="onSidebarCollapsedChange($event)"
-        (navItemSelected)="closeMobileSidebar()"></app-sidebar>
+        [mobileOpen]="mobileSidebarOpen()" [(isCollapsed)]="collapsed" (navItemSelected)="closeMobileSidebar()">
+    </app-sidebar>
 
     <section class="platform-content-wrap">
         <header class="platform-topbar">

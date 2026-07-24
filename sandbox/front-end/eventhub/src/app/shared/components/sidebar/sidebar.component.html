@@ -4,7 +4,7 @@
         <div class="sidebar-brand-row" [class.compact]="showCollapsed()">
             @if (!showCollapsed()) {
             <a class="sidebar-brand" routerLink="/platform/dashboard" (click)="notifyNavItemSelected()">
-                <span class="sidebar-brand-icon-wrap">
+                <span class="sidebar-brand-icon-wrap pb-1">
                     <app-lucide-icon name="ticket" [size]="18"></app-lucide-icon>
                 </span>
                 <span>EventHub</span>
@@ -12,11 +12,14 @@
             }
 
             @if (!mobileMode()) {
-            <button class="btn sidebar-collapse-btn" type="button" (click)="toggleSidebar()" [class.solo]="collapsed()"
-                [attr.aria-label]="collapsed() ? 'Expand sidebar' : 'Collapse sidebar'"
-                [attr.title]="collapsed() ? 'Expand sidebar' : 'Collapse sidebar'">
-                <app-lucide-icon [name]="collapsed() ? 'panel-left-open' : 'panel-left-close'"
-                    [size]="16"></app-lucide-icon>
+            <button class="btn sidebar-collapse-btn" type="button" (click)="toggleSidebar()"
+                [class.solo]="isCollapsed()" [attr.aria-label]="isCollapsed() ? 'Expand sidebar' : 'Collapse sidebar'"
+                [attr.title]="isCollapsed() ? 'Expand sidebar' : 'Collapse sidebar'">
+                <span class="pb-1">
+                    <app-lucide-icon [name]="isCollapsed() ? 'panel-left-open' : 'panel-left-close'"
+                        [size]="16"></app-lucide-icon>
+                </span>
+
             </button>
             }
         </div>

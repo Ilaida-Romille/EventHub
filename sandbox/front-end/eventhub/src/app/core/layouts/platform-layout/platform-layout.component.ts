@@ -11,7 +11,6 @@ import { SidebarComponent } from '../../../shared/components/sidebar/sidebar.com
 })
 export class PlatformLayoutComponent {
    private readonly destroyRef = inject(DestroyRef);
-   private readonly sidebarCollapsedStorageKey = 'eventhub-platform-sidebar-collapsed';
 
    readonly title = input.required<string>();
    readonly subtitle = input.required<string>();
@@ -26,7 +25,6 @@ export class PlatformLayoutComponent {
    );
 
    constructor() {
-      this.initializeCollapsedState();
       this.initializeViewportWatcher();
    }
 
@@ -40,27 +38,6 @@ export class PlatformLayoutComponent {
 
    protected closeMobileSidebar(): void {
       this.mobileSidebarOpen.set(false);
-   }
-
-   protected onSidebarCollapsedChange(isCollapsed: boolean): void {
-      this.collapsed.set(isCollapsed);
-
-      if (typeof localStorage !== 'undefined') {
-         localStorage.setItem(this.sidebarCollapsedStorageKey, JSON.stringify(isCollapsed));
-      }
-   }
-
-   private initializeCollapsedState(): void {
-      if (typeof localStorage === 'undefined') {
-         return;
-      }
-
-      const storedValue = localStorage.getItem(this.sidebarCollapsedStorageKey);
-      if (storedValue === null) {
-         return;
-      }
-
-      this.collapsed.set(storedValue === 'true');
    }
 
    private initializeViewportWatcher(): void {

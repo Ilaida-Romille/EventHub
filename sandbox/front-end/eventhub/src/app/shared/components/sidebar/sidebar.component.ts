@@ -1,16 +1,16 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, computed, inject, input, output, signal } from '@angular/core';
+import { Component, computed, inject, input, output, signal, model } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 
 type Theme = 'light' | 'dark';
 
-type NavItem = {
+interface NavItem {
    label: string;
    route: string;
    icon: string;
    exact?: boolean;
-};
+}
 
 @Component({
    selector: 'app-sidebar',
@@ -23,18 +23,18 @@ export class SidebarComponent {
    private readonly document = inject(DOCUMENT);
    private readonly themeStorageKey = 'eventhub-theme';
 
-   readonly profileName = input<string>('John Dela Cruz');
-   readonly profileRole = input<string>('Platform Owner');
+   readonly profileName = input<string>('User Name');
+   readonly profileRole = input<string>('User Role');
    readonly mobileMode = input<boolean>(false);
    readonly mobileOpen = input<boolean>(false);
 
-   readonly collapsedChange = output<boolean>();
+   readonly isCollapsed = model<boolean>(false);
    readonly navItemSelected = output<void>();
 
    protected readonly theme = signal<Theme>('light');
-   protected readonly collapsed = signal<boolean>(false);
+
    protected readonly showCollapsed = computed<boolean>(
-      () => !this.mobileMode() && this.collapsed()
+      () => !this.mobileMode() && this.isCollapsed()
    );
 
    // TODO: Make navItems as inputs for reusability
@@ -60,11 +60,7 @@ export class SidebarComponent {
    }
 
    protected toggleSidebar(): void {
-      this.collapsed.update((value) => {
-         const nextValue = !value;
-         this.collapsedChange.emit(nextValue);
-         return nextValue;
-      });
+      this.isCollapsed.update((value) => !value);
    }
 
    protected notifyNavItemSelected(): void {
