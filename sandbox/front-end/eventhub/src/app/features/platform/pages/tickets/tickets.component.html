@@ -1,0 +1,119 @@
+<app-platform-layout title="Tickets and Requests"
+    subtitle="Review incoming support issues and move organizers from questions to resolution faster.">
+    <div class="row g-4 align-items-start">
+        <div class="col-12 col-xl-4 d-flex flex-column gap-3">
+            <section class="card p-3 queue-card" aria-label="Current open tickets list">
+                <div class="queue-top mb-3">
+                    <h2 class="h6 fw-bold m-0">Open Queue</h2>
+                    <span class="queue-count">12 tickets</span>
+                </div>
+
+                <div id="tickets-container" class="d-flex flex-column gap-2">
+                    <article class="ticket-item active">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <strong>Payment mismatch in April payout</strong>
+                            <span class="status-badge badge-open">Open</span>
+                        </div>
+                        <p class="ticket-meta mb-1">Acme Corp • Priority High</p>
+                        <small class="ticket-time">Opened 22 minutes ago</small>
+                    </article>
+
+                    <article class="ticket-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <strong>Need invoice copy for compliance</strong>
+                            <span class="status-badge badge-progress">In Progress</span>
+                        </div>
+                        <p class="ticket-meta mb-1">Northline Systems • Priority Medium</p>
+                        <small class="ticket-time">Opened 1 hour ago</small>
+                    </article>
+
+                    <article class="ticket-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <strong>Bulk attendee import issue</strong>
+                            <span class="status-badge badge-resolved">Resolved</span>
+                        </div>
+                        <p class="ticket-meta mb-1">Everpeak Ltd • Priority Low</p>
+                        <small class="ticket-time">Opened yesterday</small>
+                    </article>
+                </div>
+            </section>
+
+            <app-pagination-controls prevId="tickets-prev-page" nextId="tickets-next-page"
+                indicatorId="tickets-page-indicator" indicatorText="Page 1 of 1"
+                align="center"></app-pagination-controls>
+        </div>
+
+        <div class="col-12 col-xl-8">
+            <section class="card chat-card p-0" aria-label="Active ticket discussion panel">
+                <header class="chat-header p-4 border-bottom">
+                    <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center gap-3">
+                        <div>
+                            <h2 id="active-ticket-title" class="h5 fw-extrabold m-0">Payment mismatch in April payout
+                            </h2>
+                            <p class="ticket-meta mt-2 mb-0">Acme Corp • Opened July 20, 2026 • Assigned to John</p>
+                        </div>
+                        <span id="active-ticket-status"
+                            class="status-badge badge-open align-self-start align-self-sm-auto">Open</span>
+                    </div>
+                </header>
+
+                <div class="chat-thread p-4">
+                    <div class="chat-message organizer">
+                        <div class="chat-avatar">AC</div>
+                        <div class="chat-bubble">
+                            <div class="chat-meta">Acme Corp • 9:41 AM</div>
+                            <p>
+                                We are seeing a discrepancy between attendee count and payout total for the last
+                                invoice.
+                                Please confirm the fee breakdown and update us with a corrected statement.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message support">
+                        <div class="chat-avatar">JD</div>
+                        <div class="chat-bubble">
+                            <div class="chat-meta">You • 10:04 AM</div>
+                            <p>
+                                Thanks for flagging this. We are reconciling the settlement line items now and will send
+                                your revised invoice with the corrected attendee fee totals within the next hour.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="chat-message organizer">
+                        <div class="chat-avatar">AC</div>
+                        <div class="chat-bubble">
+                            <div class="chat-meta">Acme Corp • 10:11 AM</div>
+                            <p>Perfect, we need this today for compliance submission. Thank you.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form method="POST" action="" class="chat-composer p-4 border-top">
+                    <label for="helpdesk-response" class="form-label text-uppercase fw-bold mb-2">Your Response</label>
+                    <textarea id="helpdesk-response" class="form-control composer-input"
+                        placeholder="Type a clear response to the organizer..."></textarea>
+
+                    <div class="d-flex flex-column flex-sm-row gap-2 mt-3">
+                        <button type="button"
+                            class="btn btn-outline-secondary fw-semibold d-inline-flex align-items-center gap-2">
+                            <app-lucide-icon name="paperclip" [size]="15"></app-lucide-icon>
+                            Attach File
+                        </button>
+                        <button type="submit"
+                            class="btn btn-primary flex-sm-grow-1 fw-bold d-inline-flex align-items-center justify-content-center gap-2">
+                            <app-lucide-icon name="send-horizontal" [size]="15"></app-lucide-icon>
+                            Send Response
+                        </button>
+                        <button type="button"
+                            class="btn btn-success fw-bold text-white d-inline-flex align-items-center gap-2">
+                            <app-lucide-icon name="circle-check-big" [size]="15"></app-lucide-icon>
+                            Mark Resolved
+                        </button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</app-platform-layout>
