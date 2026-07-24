@@ -1,0 +1,21 @@
+@if (open()) {
+<div class="app-modal-backdrop" (click)="closeModal()">
+    <section class="app-modal" role="dialog" aria-modal="true" [attr.aria-label]="title()"
+        (click)="$event.stopPropagation()">
+        <header class="app-modal-header">
+            <h3>{{ title() }}</h3>
+            <button type="button" class="btn app-modal-close" (click)="closeModal()" aria-label="Close dialog">
+                <app-lucide-icon name="x" [size]="16"></app-lucide-icon>
+            </button>
+        </header>
+
+        <div class="app-modal-body">
+            <ng-content select="[modal-body]"></ng-content>
+        </div>
+
+        <footer class="app-modal-footer">
+            <ng-content select="[modal-footer]"></ng-content>
+        </footer>
+    </section>
+</div>
+}
