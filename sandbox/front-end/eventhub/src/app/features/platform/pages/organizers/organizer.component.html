@@ -1,0 +1,47 @@
+<app-platform-layout title="Organizers Management"
+    subtitle="Review organization status, account health, and event activity.">
+    <div class="filter-row p-4 mb-4">
+        <form id="organizers-filter-form" class="row g-3 align-items-end" method="GET" action="">
+            <div class="col-12 col-md-6">
+                <label class="form-label text-uppercase fw-bold mb-2">Search by company name</label>
+                <input type="text" id="organizers-search-query" class="form-control"
+                    placeholder="Enter company name..." />
+            </div>
+
+            <div class="col-12 col-md-3">
+                <label class="form-label text-uppercase fw-bold mb-2">Status</label>
+                <select id="organizers-status-filter" class="form-select">
+                    <option value="">All Statuses</option>
+                    <option value="active">Active</option>
+                    <option value="suspended">Suspended</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+
+            <div class="col-12 col-md-3">
+                <button id="organizers-search-btn" class="btn btn-primary px-5 fw-bold" type="submit">Search</button>
+            </div>
+
+            <div class="col-12">
+                <small id="organizers-search-feedback" class="text-warning d-block"></small>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive mb-4">
+        <table class="table table-striped table-hover align-middle m-0" style="min-width: 700px;">
+            <thead>
+                <tr class="text-uppercase" style="font-size: 0.8rem;">
+                    <th class="p-3 px-4 border-bottom">Company Name</th>
+                    <th class="p-3 px-4 border-bottom"># Events</th>
+                    <th class="p-3 px-4 border-bottom">Status</th>
+                    <th class="p-3 px-4 border-bottom">Actions</th>
+                </tr>
+            </thead>
+            <tbody id="organizers-table-body" class="border-0"></tbody>
+        </table>
+    </div>
+
+    <app-pagination-controls prevId="organizers-prev-page" nextId="organizers-next-page"
+        indicatorId="organizers-page-indicator" indicatorText="Page 1 of 1" align="end"></app-pagination-controls>
+</app-platform-layout>

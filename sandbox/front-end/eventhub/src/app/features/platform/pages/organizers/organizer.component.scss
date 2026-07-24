@@ -1,0 +1,77 @@
+.badge-active {
+   background-color: rgb(16 185 129 / 18%);
+   color: #34d399;
+}
+
+.badge-suspended {
+   background-color: rgb(251 113 133 / 18%);
+   color: #fb7185;
+}
+
+.badge-pending {
+   background-color: rgb(251 191 36 / 20%);
+   color: #f59e0b;
+}
+
+.table-actions {
+   a {
+      color: var(--platform-accent-soft);
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+         color: var(--platform-heading);
+      }
+   }
+}
+
+.filter-row {
+   background: var(--platform-panel);
+   border: 1px solid var(--platform-border);
+   border-radius: 18px;
+}
+
+.form-label {
+   font-size: 0.82rem;
+   color: var(--platform-muted);
+   letter-spacing: 0.04em;
+}
+
+.table {
+   --bs-table-bg: var(--platform-panel);
+   --bs-table-striped-bg: var(--platform-row-alt);
+   --bs-table-hover-bg: color-mix(in srgb, var(--platform-panel) 75%, var(--platform-accent) 25%);
+   --bs-table-border-color: var(--platform-border);
+   color: var(--platform-heading);
+
+   thead th {
+      color: var(--platform-muted);
+      border-color: var(--platform-border);
+      letter-spacing: 0.04em;
+   }
+}
+
+.page-indicator-wrap {
+   color: var(--platform-muted);
+   font-size: 0.9rem;
+   font-weight: 600;
+}
+
+.page-nav-btn {
+   background: var(--platform-panel);
+   border: 1px solid var(--platform-border);
+   color: var(--platform-heading);
+   width: 32px;
+   height: 32px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 8px;
+   text-decoration: none;
+
+   &:hover {
+      background-color: color-mix(in srgb, var(--platform-panel) 65%, var(--platform-accent) 35%);
+      border-color: color-mix(in srgb, var(--platform-accent) 70%, transparent);
+      color: var(--platform-heading);
+   }
+}
