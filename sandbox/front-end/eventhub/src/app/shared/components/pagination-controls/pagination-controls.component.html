@@ -1,0 +1,11 @@
+<div class="page-indicator-wrap d-flex align-items-center gap-3" [class.justify-content-start]="align() === 'start'"
+    [class.justify-content-center]="align() === 'center'" [class.justify-content-end]="align() === 'end'"
+    [class.mb-4]="withBottomMargin()">
+    <a href="#" [id]="prevId()" class="page-nav-btn" aria-label="Back page">
+        <app-lucide-icon name="chevron-left" [size]="16"></app-lucide-icon>
+    </a>
+    <span [id]="indicatorId()">{{ indicatorText() }}</span>
+    <a href="#" [id]="nextId()" class="page-nav-btn" aria-label="Forward page">
+        <app-lucide-icon name="chevron-right" [size]="16"></app-lucide-icon>
+    </a>
+</div>
