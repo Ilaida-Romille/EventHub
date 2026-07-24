@@ -25,6 +25,36 @@
    }
 }
 
+.filter-form {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-end;
+   gap: 1rem;
+}
+
+.filter-field {
+   flex: 1 1 220px;
+}
+
+.filter-field-wide {
+   flex-basis: 360px;
+}
+
+.filter-actions {
+   display: flex;
+   flex: 0 0 auto;
+   align-items: flex-end;
+
+   .btn {
+      width: 100%;
+      min-width: 11rem;
+   }
+}
+
+.filter-feedback {
+   flex: 1 0 100%;
+}
+
 .filter-row {
    background: var(--platform-panel);
    border: 1px solid var(--platform-border);
@@ -73,5 +103,15 @@
       background-color: color-mix(in srgb, var(--platform-panel) 65%, var(--platform-accent) 35%);
       border-color: color-mix(in srgb, var(--platform-accent) 70%, transparent);
       color: var(--platform-heading);
+   }
+}
+
+@media (width <= 768px) {
+   .filter-actions {
+      flex-basis: 100%;
+
+      .btn {
+         min-width: 0;
+      }
    }
 }

@@ -3,11 +3,39 @@
    background: var(--app-card-bg);
    border-bottom: 1px solid var(--bs-border-color);
    padding: 0;
-   margin-bottom: 1rem;
+   margin-bottom: 0;
 }
 
 .app-header-inner {
+   width: 100%;
+   max-width: none;
    padding: 0.85rem 1.25rem;
+}
+
+.navbar-brand {
+   text-decoration: none;
+}
+
+.header-menu-btn {
+   width: 2.4rem;
+   height: 2.4rem;
+   border: 1px solid var(--bs-border-color);
+   border-radius: 999px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   color: var(--bs-body-color);
+   background: color-mix(in srgb, var(--app-card-bg) 82%, var(--bs-primary) 18%);
+
+   &:hover {
+      color: var(--accent-color);
+      border-color: var(--accent-color);
+   }
+
+   &:focus-visible {
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--accent-color) 25%, transparent);
+   }
 }
 
 .header-brand-logo {
@@ -55,4 +83,14 @@
 
 .header-profile-name {
    font-size: 0.9rem;
+}
+
+@media (width <= 768px) {
+   .app-header {
+      border-radius: 0;
+   }
+
+   .app-header-inner {
+      padding: 0.8rem 0.95rem;
+   }
 }

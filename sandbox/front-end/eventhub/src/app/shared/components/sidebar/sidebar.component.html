@@ -1,8 +1,9 @@
-<aside class="platform-sidebar" aria-label="Main navigation">
+<aside id="platform-sidebar" class="platform-sidebar" [class.mobile-mode]="mobileMode()"
+    [class.mobile-open]="mobileOpen()" aria-label="Main navigation">
     <div class="sidebar-main">
-        <div class="sidebar-brand-row" [class.compact]="collapsed()">
-            @if (!collapsed()) {
-            <a class="sidebar-brand" routerLink="/platform/dashboard">
+        <div class="sidebar-brand-row" [class.compact]="showCollapsed()">
+            @if (!showCollapsed()) {
+            <a class="sidebar-brand" routerLink="/platform/dashboard" (click)="notifyNavItemSelected()">
                 <span class="sidebar-brand-icon-wrap">
                     <app-lucide-icon name="ticket" [size]="18"></app-lucide-icon>
                 </span>
@@ -10,20 +11,23 @@
             </a>
             }
 
+            @if (!mobileMode()) {
             <button class="btn sidebar-collapse-btn" type="button" (click)="toggleSidebar()" [class.solo]="collapsed()"
                 [attr.aria-label]="collapsed() ? 'Expand sidebar' : 'Collapse sidebar'"
                 [attr.title]="collapsed() ? 'Expand sidebar' : 'Collapse sidebar'">
                 <app-lucide-icon [name]="collapsed() ? 'panel-left-open' : 'panel-left-close'"
                     [size]="16"></app-lucide-icon>
             </button>
+            }
         </div>
 
         <nav class="sidebar-nav">
             @for (item of navItems; track item.route) {
             <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: !!item.exact }"
-                [attr.aria-label]="collapsed() ? item.label : null" [attr.title]="collapsed() ? item.label : null">
+                [attr.aria-label]="showCollapsed() ? item.label : null"
+                [attr.title]="showCollapsed() ? item.label : null" (click)="notifyNavItemSelected()">
                 <app-lucide-icon [name]="item.icon" [size]="18"></app-lucide-icon>
-                @if (!collapsed()) {
+                @if (!showCollapsed()) {
                 <span>{{ item.label }}</span>
                 }
             </a>
@@ -39,14 +43,14 @@
             } @else {
             <app-lucide-icon name="moon" [size]="17"></app-lucide-icon>
             }
-            @if (!collapsed()) {
+            @if (!showCollapsed()) {
             <span>{{ theme() === 'dark' ? 'Light mode' : 'Dark mode' }}</span>
             }
         </button>
 
-        <div class="sidebar-profile" [class.compact]="collapsed()">
+        <div class="sidebar-profile" [class.compact]="showCollapsed()">
             <div class="profile-avatar">JD</div>
-            @if (!collapsed()) {
+            @if (!showCollapsed()) {
             <div class="profile-meta">
                 <strong>{{ profileName() }}</strong>
                 <small>{{ profileRole() }}</small>
@@ -54,10 +58,10 @@
             }
         </div>
 
-        <a class="sidebar-logout" routerLink="/login" [attr.aria-label]="collapsed() ? 'Logout' : null"
-            [attr.title]="collapsed() ? 'Logout' : null">
+        <a class="sidebar-logout" routerLink="/login" [attr.aria-label]="showCollapsed() ? 'Logout' : null"
+            [attr.title]="showCollapsed() ? 'Logout' : null" (click)="notifyNavItemSelected()">
             <app-lucide-icon name="log-out" [size]="17"></app-lucide-icon>
-            @if (!collapsed()) {
+            @if (!showCollapsed()) {
             <span>Logout</span>
             }
         </a>

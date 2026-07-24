@@ -1,10 +1,23 @@
-<div class="platform-shell" [class.sidebar-collapsed]="collapsed()">
-    <app-sidebar [profileName]="profileName()" [profileRole]="profileRole()"
-        (collapsedChange)="onSidebarCollapsedChange($event)"></app-sidebar>
+<div class="platform-shell" [class.sidebar-collapsed]="showCollapsedSidebar()"
+    [class.mobile-sidebar-open]="mobileSidebarOpen()">
+    @if (isMobile() && mobileSidebarOpen()) {
+    <button class="platform-sidebar-backdrop" type="button" aria-label="Close navigation menu"
+        (click)="closeMobileSidebar()"></button>
+    }
+
+    <app-sidebar [profileName]="profileName()" [profileRole]="profileRole()" [mobileMode]="isMobile()"
+        [mobileOpen]="mobileSidebarOpen()" (collapsedChange)="onSidebarCollapsedChange($event)"
+        (navItemSelected)="closeMobileSidebar()"></app-sidebar>
 
     <section class="platform-content-wrap">
         <header class="platform-topbar">
-            <div>
+            @if (isMobile()) {
+            <app-header [brandName]="'EventHub'" [showMenuButton]="true" [menuExpanded]="mobileSidebarOpen()"
+                [showProfile]="false" [showThemeToggle]="false" [showBrandLogo]="false"
+                (menuToggle)="toggleMobileSidebar()"></app-header>
+            }
+
+            <div class="platform-page-header">
                 <h1 class="platform-headline">{{ title() }}</h1>
                 <p class="platform-subtitle">{{ subtitle() }}</p>
             </div>

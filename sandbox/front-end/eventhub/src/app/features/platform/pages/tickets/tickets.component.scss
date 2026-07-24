@@ -1,3 +1,20 @@
+.tickets-layout {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+   align-items: flex-start;
+}
+
+.tickets-queue-column {
+   flex: 1 1 300px;
+   max-width: 24rem;
+}
+
+.tickets-thread-column {
+   flex: 2 1 480px;
+   min-width: 0;
+}
+
 .ticket-item {
    padding: 16px;
    border: 1px solid var(--platform-border);
@@ -190,4 +207,20 @@
 .composer-input {
    min-height: 120px;
    resize: vertical;
+}
+
+@media (width <= 1200px) {
+   .tickets-queue-column {
+      max-width: none;
+   }
+}
+
+@media (width <= 768px) {
+   .tickets-layout {
+      gap: 1rem;
+   }
+
+   .chat-bubble {
+      max-width: 100%;
+   }
 }

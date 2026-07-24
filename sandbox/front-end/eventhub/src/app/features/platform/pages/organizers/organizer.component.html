@@ -1,14 +1,14 @@
 <app-platform-layout title="Organizers Management"
     subtitle="Review organization status, account health, and event activity.">
     <div class="filter-row p-4 mb-4">
-        <form id="organizers-filter-form" class="row g-3 align-items-end" method="GET" action="">
-            <div class="col-12 col-md-6">
+        <form id="organizers-filter-form" class="filter-form" method="GET" action="">
+            <div class="filter-field filter-field-wide">
                 <label class="form-label text-uppercase fw-bold mb-2">Search by company name</label>
                 <input type="text" id="organizers-search-query" class="form-control"
                     placeholder="Enter company name..." />
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="filter-field">
                 <label class="form-label text-uppercase fw-bold mb-2">Status</label>
                 <select id="organizers-status-filter" class="form-select">
                     <option value="">All Statuses</option>
@@ -18,11 +18,11 @@
                 </select>
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="filter-actions">
                 <button id="organizers-search-btn" class="btn btn-primary px-5 fw-bold" type="submit">Search</button>
             </div>
 
-            <div class="col-12">
+            <div class="filter-feedback">
                 <small id="organizers-search-feedback" class="text-warning d-block"></small>
             </div>
         </form>

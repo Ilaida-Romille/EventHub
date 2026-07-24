@@ -11,6 +11,40 @@
    border-radius: 18px;
 }
 
+.filter-form {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-end;
+   gap: 1rem;
+}
+
+.filter-field {
+   flex: 1 1 220px;
+}
+
+.filter-field-wide {
+   flex-basis: 360px;
+}
+
+.filter-field-date {
+   flex-basis: 150px;
+}
+
+.filter-actions {
+   display: flex;
+   flex: 0 0 auto;
+   align-items: flex-end;
+
+   .btn {
+      width: 100%;
+      min-width: 11rem;
+   }
+}
+
+.filter-feedback {
+   flex: 1 0 100%;
+}
+
 .form-label {
    font-size: 0.82rem;
    color: var(--platform-muted);
@@ -81,6 +115,30 @@
    border-radius: 18px;
 }
 
+.billing-panels {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+}
+
+.billing-panel {
+   flex: 1 1 320px;
+}
+
+.invoice-controls {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+}
+
+.invoice-control {
+   flex: 1 1 160px;
+}
+
+.invoice-control-wide {
+   flex-basis: 260px;
+}
+
 #invoice-organizer-toggle {
    border: 1px solid color-mix(in srgb, var(--platform-muted) 60%, transparent);
    background-color: var(--platform-panel-soft);
@@ -111,4 +169,14 @@
 
 .modal-grand-total {
    color: var(--platform-heading);
+}
+
+@media (width <= 768px) {
+   .filter-actions {
+      flex-basis: 100%;
+
+      .btn {
+         min-width: 0;
+      }
+   }
 }

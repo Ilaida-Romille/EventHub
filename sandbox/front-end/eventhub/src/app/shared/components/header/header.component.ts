@@ -1,11 +1,13 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, input, output, signal } from '@angular/core';
+import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 
 type Theme = 'light' | 'dark';
 
 @Component({
    selector: 'app-header',
-   imports: [],
+   standalone: true,
+   imports: [LucideIconComponent],
    templateUrl: './header.component.html',
    styleUrl: './header.component.scss'
 })
@@ -16,6 +18,12 @@ export class HeaderComponent {
    readonly brandName = input<string>('EventHub');
    readonly profileName = input<string>('John Dela Cruz');
    readonly showThemeToggle = input<boolean>(true);
+   readonly showProfile = input<boolean>(true);
+   readonly showMenuButton = input<boolean>(false);
+   readonly menuExpanded = input<boolean>(false);
+   readonly showBrandLogo = input<boolean>(true);
+
+   readonly menuToggle = output<void>();
 
    protected readonly theme = signal<Theme>('light');
 
@@ -31,6 +39,10 @@ export class HeaderComponent {
       this.theme.set(nextTheme);
       this.document.documentElement.setAttribute('data-bs-theme', nextTheme);
       localStorage.setItem(this.themeStorageKey, nextTheme);
+   }
+
+   protected onMenuToggle(): void {
+      this.menuToggle.emit();
    }
 
    private initializeThemeFromDocument(): void {

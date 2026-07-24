@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, inject, input, output, signal } from '@angular/core';
+import { Component, computed, inject, input, output, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 
@@ -25,12 +25,19 @@ export class SidebarComponent {
 
    readonly profileName = input<string>('John Dela Cruz');
    readonly profileRole = input<string>('Platform Owner');
+   readonly mobileMode = input<boolean>(false);
+   readonly mobileOpen = input<boolean>(false);
 
    readonly collapsedChange = output<boolean>();
+   readonly navItemSelected = output<void>();
 
    protected readonly theme = signal<Theme>('light');
    protected readonly collapsed = signal<boolean>(false);
+   protected readonly showCollapsed = computed<boolean>(
+      () => !this.mobileMode() && this.collapsed()
+   );
 
+   // TODO: Make navItems as inputs for reusability
    protected readonly navItems: NavItem[] = [
       { label: 'Dashboard', route: '/platform/dashboard', icon: 'layout-dashboard', exact: true },
       { label: 'Organizers', route: '/platform/organizers', icon: 'users' },
@@ -58,6 +65,10 @@ export class SidebarComponent {
          this.collapsedChange.emit(nextValue);
          return nextValue;
       });
+   }
+
+   protected notifyNavItemSelected(): void {
+      this.navItemSelected.emit();
    }
 
    private initializeThemeFromDocument(): void {

@@ -1,3 +1,14 @@
+.metrics-section {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+   margin-bottom: 1.5rem;
+}
+
+.metrics-item {
+   flex: 1 1 280px;
+}
+
 .metric-label {
    font-size: 0.85rem;
    color: var(--platform-muted);
@@ -61,6 +72,7 @@
    display: flex;
    align-items: center;
    justify-content: space-between;
+   flex: 1 1 220px;
    background: var(--platform-panel);
    border: 1px solid var(--platform-border);
    border-radius: 14px;
@@ -80,5 +92,21 @@
       border-color: color-mix(in srgb, var(--platform-accent) 72%, transparent);
       color: var(--platform-heading);
       transform: translateY(-1px);
+   }
+}
+
+.shortcut-list {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+}
+
+@media (width <= 768px) {
+   .kpi-card .value {
+      font-size: 2.25rem;
+   }
+
+   .btn-shortcut {
+      padding: 16px 18px;
    }
 }

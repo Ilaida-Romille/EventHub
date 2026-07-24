@@ -1,7 +1,7 @@
 <app-platform-layout title="Tickets and Requests"
     subtitle="Review incoming support issues and move organizers from questions to resolution faster.">
-    <div class="row g-4 align-items-start">
-        <div class="col-12 col-xl-4 d-flex flex-column gap-3">
+    <div class="tickets-layout">
+        <div class="tickets-queue-column d-flex flex-column gap-3">
             <section class="card p-3 queue-card" aria-label="Current open tickets list">
                 <div class="queue-top mb-3">
                     <h2 class="h6 fw-bold m-0">Open Queue</h2>
@@ -43,7 +43,7 @@
                 align="center"></app-pagination-controls>
         </div>
 
-        <div class="col-12 col-xl-8">
+        <div class="tickets-thread-column">
             <section class="card chat-card p-0" aria-label="Active ticket discussion panel">
                 <header class="chat-header p-4 border-bottom">
                     <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center gap-3">
