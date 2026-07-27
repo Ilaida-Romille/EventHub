@@ -1,0 +1,97 @@
+:root {
+    /* 📐 Layout & Spacing */
+    --spacing-unit: 8px;
+    --container-max: 1280px;
+    --gutter: 24px;
+    --margin-mobile: 16px;
+    --margin-desktop: 48px;
+
+    /* 🔷 Border Radius Shapes */
+    --radius-sm: 0.25rem;
+    --radius-default: 0.5rem;
+    --radius-md: 0.75rem;
+    --radius-lg: 1rem;
+    --radius-xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* 🅰️ Typography Scale (Montserrat) */
+    --font-family: 'Montserrat', sans-serif;
+
+    --fs-display-lg: 48px;
+    --fw-display-lg: 800;
+    --lh-display-lg: 56px;
+    --ls-display-lg: -0.02em;
+    --fs-display-lg-mob: 32px;
+    --fw-display-lg-mob: 800;
+    --lh-display-lg-mob: 40px;
+    --ls-display-lg-mob: -0.02em;
+    --fs-headline-lg: 32px;
+    --fw-headline-lg: 700;
+    --lh-headline-lg: 40px;
+    --ls-headline-lg: -0.01em;
+    --fs-headline-md: 24px;
+    --fw-headline-md: 700;
+    --lh-headline-md: 32px;
+    --ls-headline-md: normal;
+    --fs-body-lg: 18px;
+    --fw-body-lg: 400;
+    --lh-body-lg: 28px;
+    --ls-body-lg: normal;
+    --fs-body-md: 16px;
+    --fw-body-md: 400;
+    --lh-body-md: 24px;
+    --ls-body-md: normal;
+    --fs-label-md: 14px;
+    --fw-label-md: 600;
+    --lh-label-md: 20px;
+    --ls-label-md: 0.05em;
+    --fs-label-sm: 12px;
+    --fw-label-sm: 500;
+    --lh-label-sm: 16px;
+    --ls-label-sm: normal;
+}
+
+/* ☀️ LIGHT MODE (Default) */
+:root,
+[data-theme="light"] {
+    --primary: #006875;
+    --primary-accent: #00e5ff; // Electric Cyan accent
+    --surface: #f8f9fa;
+    --surface-dim: #d9dadb;
+    --surface-bright: #f8f9fa;
+    --surface-muted: #e2e80f;
+    --surface-container: #edeeef;
+    --background: #f8f9fa;
+    --on-background: #191c1d;
+    --on-surface: #191c1d;
+    --on-surface-variant: #3b494c;
+    --outline: #6b7a7d;
+    --outline-variant: #bac9cc;
+    --error: #ba1a1a;
+
+    /* Elevation & Depth */
+    --shadow-l1: 0px 4px 12px rgba(0, 0, 0, 0.03), 0px 0px 0px 1px rgba(0, 104, 117, 0.05);
+    --shadow-l2: 0px 10px 25px -5px rgba(0, 0, 0, 0.05), 0px 8px 10px -6px rgba(0, 0, 0, 0.05);
+}
+
+/* 🌙 DARK MODE (Electric Noir) */
+[data-theme="dark"] {
+    --primary: #00e5ff; // Cyan becomes main vibrant focus
+    --primary-accent: #006875;
+    --surface: #0a0a0b; // Noir near-black base
+    --surface-dim: #131516;
+    --surface-bright: #191c1d;
+    --surface-muted: #242729;
+    --surface-container: #1e2122;
+    --background: #0a0a0b;
+    --on-background: #f8f9fa; // White text contrast
+    --on-surface: #f8f9fa;
+    --on-surface-variant: #bac9cc;
+    --outline: #6b7a7d;
+    --outline-variant: #3b494c;
+    --error: #ffb4ab;
+
+    /* Dark Depth Shadows */
+    --shadow-l1: 0px 4px 20px rgba(0, 0, 0, 0.5), 0px 0px 0px 1px rgba(0, 229, 255, 0.1);
+    --shadow-l2: 0px 15px 30px rgba(0, 0, 0, 0.7);
+}

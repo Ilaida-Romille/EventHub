@@ -1,0 +1,66 @@
+<div class="landing-container">
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-logo">
+            <a href="#">EventHub</a>
+        </div>
+        <nav class="navbar-links">
+            <a href="#about">About</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-section">
+        <!-- Left Column: Value Proposition -->
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Plan.<br />
+                Register.<br />
+                Connect.
+            </h1>
+            <p class="hero-subtitle">
+                One platform for corporate events — sign in to access your space.
+            </p>
+        </div>
+
+        <!-- Right Column: Login Card -->
+        <div class="auth-card-container">
+            <div class="auth-card">
+                <span class="auth-brand">EVENTHUB</span>
+                <h2 class="auth-title">Welcome back</h2>
+                <p class="auth-subtitle">Sign in to continue to your platform</p>
+
+                <form class="auth-form" (ngSubmit)="$event.preventDefault()">
+                    <div class="form-group">
+                        <label for="email">EMAIL ADDRESS</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">✉</span>
+                            <input type="email" id="email" placeholder="you@company.com" autocomplete="email" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="label-row">
+                            <label for="password">PASSWORD</label>
+                            <a href="#" class="forgot-link">Forgot password?</a>
+                        </div>
+                        <div class="input-wrapper">
+                            <span class="input-icon">🔒</span>
+                            <input type="password" id="password" placeholder="••••••••"
+                                autocomplete="current-password" />
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Sign In</button>
+                </form>
+
+                <div class="auth-footer">
+                    <span>Don't have an account? </span>
+                    <a href="#" class="signup-link">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
