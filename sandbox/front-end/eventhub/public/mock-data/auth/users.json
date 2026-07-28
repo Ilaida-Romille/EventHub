@@ -1,0 +1,56 @@
+[
+   {
+      "id": "USR-PLT-001",
+      "email": "ops@eventhub.com",
+      "password": "EventHub#2026",
+      "displayName": "John Dela Cruz",
+      "role": "platform_admin",
+      "organizationId": null,
+      "isActive": true
+   },
+   {
+      "id": "USR-ORG-001",
+      "email": "admin@company.com",
+      "password": "Organizer#2026",
+      "displayName": "Jane Dela Cruz",
+      "role": "organizer_admin",
+      "organizationId": "ORG-001",
+      "isActive": true
+   },
+   {
+      "id": "USR-ORG-002",
+      "email": "owner@northwind.com",
+      "password": "Organizer#2026",
+      "displayName": "Angelica Ramos",
+      "role": "organizer_admin",
+      "organizationId": "ORG-002",
+      "isActive": true
+   },
+   {
+      "id": "USR-EMP-001",
+      "email": "juan@company.com",
+      "password": "Employee#2026",
+      "displayName": "Juan Dela Cruz",
+      "role": "employee",
+      "organizationId": "ORG-001",
+      "isActive": true
+   },
+   {
+      "id": "USR-EMP-002",
+      "email": "maria@company.com",
+      "password": "Employee#2026",
+      "displayName": "Maria Santos",
+      "role": "employee",
+      "organizationId": "ORG-006",
+      "isActive": true
+   },
+   {
+      "id": "USR-EMP-003",
+      "email": "suspended@company.com",
+      "password": "Employee#2026",
+      "displayName": "Suspended User",
+      "role": "employee",
+      "organizationId": "ORG-003",
+      "isActive": false
+   }
+]
