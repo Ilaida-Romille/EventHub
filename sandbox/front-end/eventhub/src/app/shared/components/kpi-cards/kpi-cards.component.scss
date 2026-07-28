@@ -1,0 +1,54 @@
+.metrics-section {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+   margin-bottom: 1.5rem;
+}
+
+.metrics-item {
+   flex: 1 1 280px;
+}
+
+.metric-label {
+   font-size: 0.85rem;
+   color: var(--platform-muted);
+}
+
+.card {
+   background-color: var(--platform-panel);
+   border: 1px solid var(--platform-border);
+   border-radius: 18px;
+}
+
+.kpi-card {
+   position: relative;
+   overflow: hidden;
+   background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--platform-panel) 92%, #2d57f0 8%),
+      var(--platform-panel)
+   );
+
+   &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--platform-accent);
+   }
+
+   .value {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--platform-heading);
+   }
+}
+
+@media (width <= 768px) {
+   .kpi-card .value {
+      font-size: 2.25rem;
+   }
+}

@@ -1,0 +1,24 @@
+<section class="card p-4 mb-4" aria-label="Analytics Visualization">
+    <div class="fw-bold mb-4 text-uppercase analytics-title">{{ title() }}</div>
+    <div class="chart-container">
+        <div class="bar-chart">
+            <div class="chart-grid" aria-hidden="true">
+                <div class="grid-line"><span>2.5k</span></div>
+                <div class="grid-line"><span>2.0k</span></div>
+                <div class="grid-line"><span>1.5k</span></div>
+                <div class="grid-line"><span>1.0k</span></div>
+                <div class="grid-line"><span>500</span></div>
+                <div class="grid-line"><span>0</span></div>
+            </div>
+
+            <div class="chart-bars">
+                @for (bar of bars(); track bar.month) {
+                <div class="bar-wrapper" [style.--value]="bar.height">
+                    <div class="bar" [attr.data-value]="bar.value"></div>
+                    <span class="month">{{ bar.month }}</span>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>
