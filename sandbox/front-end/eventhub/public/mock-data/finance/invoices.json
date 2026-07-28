@@ -1,0 +1,102 @@
+[
+   {
+      "id": "INV-2026-0512",
+      "organizationId": "ORG-001",
+      "invoiceNumber": "INV-2026-0512",
+      "billingPeriod": "2026-05",
+      "amountPhp": 162700,
+      "status": "paid",
+      "issuedAt": "2026-05-12T08:00:00Z",
+      "dueAt": "2026-05-30T08:00:00Z"
+   },
+   {
+      "id": "INV-2026-0498",
+      "organizationId": "ORG-002",
+      "invoiceNumber": "INV-2026-0498",
+      "billingPeriod": "2026-05",
+      "amountPhp": 1200000,
+      "status": "paid",
+      "issuedAt": "2026-05-10T08:00:00Z",
+      "dueAt": "2026-05-28T08:00:00Z"
+   },
+   {
+      "id": "INV-2026-0501",
+      "organizationId": "ORG-004",
+      "invoiceNumber": "INV-2026-0501",
+      "billingPeriod": "2026-05",
+      "amountPhp": 86000,
+      "status": "overdue",
+      "issuedAt": "2026-05-11T08:00:00Z",
+      "dueAt": "2026-05-29T08:00:00Z"
+   },
+   {
+      "id": "INV-2026-0477",
+      "organizationId": "ORG-003",
+      "invoiceNumber": "INV-2026-0477",
+      "billingPeriod": "2026-04",
+      "amountPhp": 132000,
+      "status": "paid",
+      "issuedAt": "2026-04-29T08:00:00Z",
+      "dueAt": "2026-05-17T08:00:00Z"
+   },
+   {
+      "id": "INV-2026-0465",
+      "organizationId": "ORG-005",
+      "invoiceNumber": "INV-2026-0465",
+      "billingPeriod": "2026-04",
+      "amountPhp": 206850,
+      "status": "overdue",
+      "issuedAt": "2026-04-24T08:00:00Z",
+      "dueAt": "2026-05-12T08:00:00Z"
+   },
+   {
+      "id": "INV-2026-0458",
+      "organizationId": "ORG-006",
+      "invoiceNumber": "INV-2026-0458",
+      "billingPeriod": "2026-04",
+      "amountPhp": 372000,
+      "status": "pending",
+      "issuedAt": "2026-04-22T08:00:00Z",
+      "dueAt": "2026-05-10T08:00:00Z"
+   },
+   {
+      "id": "INV-2026-0449",
+      "organizationId": "ORG-007",
+      "invoiceNumber": "INV-2026-0449",
+      "billingPeriod": "2026-03",
+      "amountPhp": 163500,
+      "status": "paid",
+      "issuedAt": "2026-03-28T08:00:00Z",
+      "dueAt": "2026-04-15T08:00:00Z"
+   },
+   {
+      "id": "INV-2026-0433",
+      "organizationId": "ORG-008",
+      "invoiceNumber": "INV-2026-0433",
+      "billingPeriod": "2026-03",
+      "amountPhp": 106450,
+      "status": "overdue",
+      "issuedAt": "2026-03-20T08:00:00Z",
+      "dueAt": "2026-04-07T08:00:00Z"
+   },
+   {
+      "id": "INV-2026-0422",
+      "organizationId": "ORG-009",
+      "invoiceNumber": "INV-2026-0422",
+      "billingPeriod": "2026-03",
+      "amountPhp": 145600,
+      "status": "pending",
+      "issuedAt": "2026-03-15T08:00:00Z",
+      "dueAt": "2026-04-02T08:00:00Z"
+   },
+   {
+      "id": "INV-2026-0410",
+      "organizationId": "ORG-010",
+      "invoiceNumber": "INV-2026-0410",
+      "billingPeriod": "2026-02",
+      "amountPhp": 433060,
+      "status": "paid",
+      "issuedAt": "2026-02-27T08:00:00Z",
+      "dueAt": "2026-03-17T08:00:00Z"
+   }
+]
