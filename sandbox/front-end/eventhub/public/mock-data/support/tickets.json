@@ -1,0 +1,29 @@
+[
+   {
+      "id": "TCK-1042",
+      "organizationId": "ORG-001",
+      "subject": "Payment mismatch in April payout",
+      "status": "open",
+      "priority": "high",
+      "assignedUserId": "USR-PLT-001",
+      "createdAt": "2026-07-18T08:00:00Z"
+   },
+   {
+      "id": "TCK-1031",
+      "organizationId": "ORG-002",
+      "subject": "Invoice discrepancy",
+      "status": "in_progress",
+      "priority": "medium",
+      "assignedUserId": "USR-PLT-001",
+      "createdAt": "2026-07-14T06:20:00Z"
+   },
+   {
+      "id": "TCK-1020",
+      "organizationId": "ORG-003",
+      "subject": "Reactivate account",
+      "status": "resolved",
+      "priority": "low",
+      "assignedUserId": "USR-PLT-001",
+      "createdAt": "2026-07-07T11:00:00Z"
+   }
+]
