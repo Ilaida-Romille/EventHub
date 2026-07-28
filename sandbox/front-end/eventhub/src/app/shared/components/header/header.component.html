@@ -29,11 +29,26 @@
             }
 
             @if (showProfile()) {
-            <div class="d-flex align-items-center gap-2 app-header-profile" role="button" tabindex="0"
-                aria-label="User profile placeholder">
-                <app-lucide-icon class="header-profile-icon" name="user-round" [size]="17"></app-lucide-icon>
-                <span class="header-profile-name fw-semibold">{{ profileName() }}</span>
-            </div>
+            <details class="app-header-profile-dropdown">
+                <summary class="d-flex align-items-center gap-2 app-header-profile" aria-label="Open user menu">
+                    <span class="profile-avatar-wrap">
+                        <app-lucide-icon class="header-profile-icon" name="user-round" [size]="16"></app-lucide-icon>
+                    </span>
+                    @if (showProfileName()) {
+                    <span class="header-profile-name fw-semibold">{{ profileName() }}</span>
+                    }
+                    <app-lucide-icon name="chevron-down" [size]="14"></app-lucide-icon>
+                </summary>
+
+                <ul class="profile-dropdown-menu" aria-label="Profile actions">
+                    <li>
+                        <a [routerLink]="logoutRoute()" class="profile-logout-link">
+                            <app-lucide-icon name="log-out" [size]="15"></app-lucide-icon>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </details>
             }
         </div>
     </div>

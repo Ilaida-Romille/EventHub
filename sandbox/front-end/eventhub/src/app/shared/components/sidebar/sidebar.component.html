@@ -1,9 +1,8 @@
-<aside id="platform-sidebar" class="platform-sidebar" [class.mobile-mode]="mobileMode()"
-    [class.mobile-open]="mobileOpen()" aria-label="Main navigation">
+<aside id="platform-sidebar" class="platform-sidebar" aria-label="Main navigation">
     <div class="sidebar-main">
         <div class="sidebar-brand-row" [class.compact]="showCollapsed()">
             @if (!showCollapsed()) {
-            <a class="sidebar-brand" routerLink="/platform/dashboard" (click)="notifyNavItemSelected()">
+            <a class="sidebar-brand" routerLink="/platform/dashboard">
                 <span class="sidebar-brand-icon-wrap pb-1">
                     <app-lucide-icon name="ticket" [size]="18"></app-lucide-icon>
                 </span>
@@ -11,7 +10,6 @@
             </a>
             }
 
-            @if (!mobileMode()) {
             <button class="btn sidebar-collapse-btn" type="button" (click)="toggleSidebar()"
                 [class.solo]="isCollapsed()" [attr.aria-label]="isCollapsed() ? 'Expand sidebar' : 'Collapse sidebar'"
                 [attr.title]="isCollapsed() ? 'Expand sidebar' : 'Collapse sidebar'">
@@ -21,14 +19,13 @@
                 </span>
 
             </button>
-            }
         </div>
 
         <nav class="sidebar-nav">
             @for (item of navItems; track item.route) {
             <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: !!item.exact }"
                 [attr.aria-label]="showCollapsed() ? item.label : null"
-                [attr.title]="showCollapsed() ? item.label : null" (click)="notifyNavItemSelected()">
+                [attr.title]="showCollapsed() ? item.label : null">
                 <app-lucide-icon [name]="item.icon" [size]="18"></app-lucide-icon>
                 @if (!showCollapsed()) {
                 <span>{{ item.label }}</span>
@@ -62,7 +59,7 @@
         </div>
 
         <a class="sidebar-logout" routerLink="/login" [attr.aria-label]="showCollapsed() ? 'Logout' : null"
-            [attr.title]="showCollapsed() ? 'Logout' : null" (click)="notifyNavItemSelected()">
+            [attr.title]="showCollapsed() ? 'Logout' : null">
             <app-lucide-icon name="log-out" [size]="17"></app-lucide-icon>
             @if (!showCollapsed()) {
             <span>Logout</span>

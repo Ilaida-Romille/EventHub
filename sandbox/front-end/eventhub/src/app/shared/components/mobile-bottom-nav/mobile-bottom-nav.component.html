@@ -1,0 +1,9 @@
+<nav class="mobile-bottom-nav" aria-label="Mobile platform navigation">
+    @for (item of navItems; track item.route) {
+    <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: !!item.exact }"
+        [attr.aria-label]="item.label" class="mobile-nav-link">
+        <app-lucide-icon [name]="item.icon" [size]="18"></app-lucide-icon>
+        <span>{{ item.label }}</span>
+    </a>
+    }
+</nav>

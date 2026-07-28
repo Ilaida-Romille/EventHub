@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, computed, inject, input, output, signal, model } from '@angular/core';
+import { Component, computed, inject, input, signal, model } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 
@@ -25,17 +25,12 @@ export class SidebarComponent {
 
    readonly profileName = input<string>('User Name');
    readonly profileRole = input<string>('User Role');
-   readonly mobileMode = input<boolean>(false);
-   readonly mobileOpen = input<boolean>(false);
 
    readonly isCollapsed = model<boolean>(false);
-   readonly navItemSelected = output<void>();
 
    protected readonly theme = signal<Theme>('light');
 
-   protected readonly showCollapsed = computed<boolean>(
-      () => !this.mobileMode() && this.isCollapsed()
-   );
+   protected readonly showCollapsed = computed<boolean>(() => this.isCollapsed());
 
    // TODO: Make navItems as inputs for reusability
    protected readonly navItems: NavItem[] = [
@@ -61,10 +56,6 @@ export class SidebarComponent {
 
    protected toggleSidebar(): void {
       this.isCollapsed.update((value) => !value);
-   }
-
-   protected notifyNavItemSelected(): void {
-      this.navItemSelected.emit();
    }
 
    private initializeThemeFromDocument(): void {

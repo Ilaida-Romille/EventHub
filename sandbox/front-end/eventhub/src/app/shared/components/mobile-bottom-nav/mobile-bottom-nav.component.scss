@@ -1,0 +1,39 @@
+:host {
+   display: block;
+}
+
+.mobile-bottom-nav {
+   position: fixed;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   z-index: 45;
+   display: grid;
+   grid-template-columns: repeat(4, minmax(0, 1fr));
+   gap: 0.35rem;
+   padding: 0.5rem 0.7rem calc(0.5rem + env(safe-area-inset-bottom));
+   background: color-mix(in srgb, var(--platform-panel) 88%, var(--platform-bg) 12%);
+   border-top: 1px solid color-mix(in srgb, var(--platform-border) 88%, transparent);
+   box-shadow: 0 -14px 32px rgb(5 10 20 / 20%);
+}
+
+.mobile-nav-link {
+   text-decoration: none;
+   color: var(--platform-muted);
+   border-radius: 0.85rem;
+   border: 1px solid transparent;
+   min-height: 3.05rem;
+   display: inline-flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 0.22rem;
+   font-size: 0.66rem;
+   font-weight: 700;
+}
+
+.mobile-nav-link.active {
+   color: var(--platform-heading);
+   border-color: color-mix(in srgb, var(--platform-accent) 70%, transparent);
+   background: color-mix(in srgb, var(--platform-panel) 58%, var(--platform-accent) 42%);
+}

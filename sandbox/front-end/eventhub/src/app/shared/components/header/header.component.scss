@@ -53,6 +53,64 @@
    border-radius: 999px;
    padding: 0.35rem 0.8rem 0.35rem 0.5rem;
    background: color-mix(in srgb, var(--app-card-bg) 85%, var(--bs-primary) 15%);
+   cursor: pointer;
+   list-style: none;
+}
+
+.app-header-profile-dropdown {
+   position: relative;
+
+   summary {
+      list-style: none;
+   }
+
+   summary::-webkit-details-marker {
+      display: none;
+   }
+}
+
+.profile-avatar-wrap {
+   width: 1.6rem;
+   height: 1.6rem;
+   border-radius: 999px;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   border: 1px solid color-mix(in srgb, var(--accent-color) 42%, transparent);
+   background: color-mix(in srgb, var(--app-card-bg) 68%, var(--accent-color) 32%);
+}
+
+.profile-dropdown-menu {
+   position: absolute;
+   right: 0;
+   top: calc(100% + 0.45rem);
+   margin: 0;
+   padding: 0.45rem;
+   width: 12rem;
+   border-radius: 12px;
+   border: 1px solid var(--bs-border-color);
+   background: var(--app-card-bg);
+   box-shadow: 0 14px 28px rgb(0 0 0 / 18%);
+   list-style: none;
+   z-index: 20;
+}
+
+.profile-logout-link {
+   width: 100%;
+   border-radius: 9px;
+   border: 1px solid color-mix(in srgb, #fb7185 38%, transparent);
+   background: color-mix(in srgb, #fb7185 12%, transparent);
+   color: #fb7185;
+   font-weight: 700;
+   text-decoration: none;
+   display: inline-flex;
+   align-items: center;
+   gap: 0.45rem;
+   padding: 0.5rem 0.65rem;
+}
+
+.profile-logout-link:hover {
+   color: #fecdd3;
 }
 
 .header-theme-toggle-btn {
@@ -78,7 +136,7 @@
 }
 
 .header-profile-icon {
-   color: var(--accent-color); // Updated profile icon accent
+   color: var(--accent-color);
 }
 
 .header-profile-name {
@@ -92,5 +150,14 @@
 
    .app-header-inner {
       padding: 0.8rem 0.95rem;
+   }
+
+   .app-header-profile {
+      padding-right: 0.55rem;
+      padding-left: 0.42rem;
+   }
+
+   .profile-dropdown-menu {
+      width: 10.6rem;
    }
 }

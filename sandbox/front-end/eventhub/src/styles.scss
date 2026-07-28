@@ -381,9 +381,9 @@ body {
    flex: 1 1 auto;
    min-width: 0;
    min-height: 100vh;
-   padding-top: 1.3rem;
-   padding-left: 5rem;
-   padding-right: 5rem;
+   padding-top: 1rem;
+   padding-left: 1.5rem;
+   padding-right: 1.5rem;
    overflow-x: clip;
 }
 
@@ -422,9 +422,17 @@ body {
 
 .platform-content {
    width: 100%;
-   max-width: 1200px;
+   max-width: 100%;
    display: flex;
    flex-direction: column;
+}
+
+.platform-content.fluid {
+   max-width: 100%;
+}
+
+.platform-content.mobile-nav-spaced {
+   padding-bottom: 5.4rem;
 }
 
 .platform-content .card {
@@ -472,31 +480,13 @@ body {
 }
 
 @media (width <= 992px) {
-   .platform-sidebar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: min(86vw, 320px);
-      min-width: min(86vw, 320px);
-      height: 100vh;
-      transform: translateX(-100%);
-      border-right: 1px solid var(--platform-border);
-      box-shadow: 0 24px 48px rgb(2 6 17 / 34%);
-   }
-
-   .platform-shell.mobile-sidebar-open {
-      .platform-sidebar {
-         transform: translateX(0);
-      }
-   }
-
    .platform-content-wrap {
       padding: 0 0 0.95rem;
    }
 
    .platform-topbar {
       position: static;
-      margin: 0 0 1rem;
+      margin: 0 0 0.8rem;
       padding: 0;
       border-bottom: 1px solid color-mix(in srgb, var(--platform-border) 80%, transparent);
    }
@@ -506,20 +496,9 @@ body {
       border-bottom-color: color-mix(in srgb, var(--platform-border) 80%, transparent);
    }
 
-   .platform-headline {
-      font-size: clamp(1.25rem, 7vw, 1.7rem);
-   }
-
-   .platform-subtitle {
-      font-size: 0.94rem;
-   }
-
-   .platform-page-header {
-      padding: 1rem 0.95rem 0;
-   }
-
    .platform-content {
       gap: 0;
+      padding-inline: 0.95rem;
    }
 }
 
