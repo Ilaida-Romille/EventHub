@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PlatformLayoutComponent } from '../../../../core/layouts/platform-layout/platform-layout.component';
-import { BillingTableRow } from '../../../../core/models/platform.models';
+import { BillingTableRow, OrganizationRecord } from '../../../../core/models/platform.models';
 import { PlatformDataService } from '../../../../core/services/platform-data.service';
 import {
    DataTableComponent,
@@ -10,11 +10,24 @@ import {
    DataTableSortState,
    DataTableToolbarAction
 } from '../../../../shared/components/data-table/data-table.component';
-import { InvoiceGeneratorCardsComponent } from '../../../../shared/components/invoice-generator-cards/invoice-generator-cards.component';
+import { ModalComponent } from '../../../../shared/components/modal/modal.component';
+import {
+   InvoiceGeneratorCardsComponent,
+   InvoiceGeneratorOrganizerOption
+} from '../../../../shared/components/invoice-generator-cards/invoice-generator-cards.component';
 import {
    FilterField,
    SearchFilterCardComponent
 } from '../../../../shared/components/search-filter-card/search-filter-card.component';
+
+interface InvoiceOrganizerOption extends InvoiceGeneratorOrganizerOption {
+   organizerId: string;
+   organizerName: string;
+   latestInvoiceNumber: string;
+   targetCycle: string;
+   status: BillingTableRow['status'] | null;
+   amountPhp: number;
+}
 
 @Component({
    selector: 'app-billing',
@@ -23,16 +36,25 @@ import {
       PlatformLayoutComponent,
       SearchFilterCardComponent,
       DataTableComponent,
-      InvoiceGeneratorCardsComponent
+      InvoiceGeneratorCardsComponent,
+      ModalComponent
    ],
    templateUrl: './billing.component.html',
    styleUrl: './billing.component.scss'
 })
 export class BillingComponent {
+   private readonly currencyFormatter = new Intl.NumberFormat('en-PH', {
+      style: 'currency',
+      currency: 'PHP'
+   });
+
    private readonly platformDataService = inject(PlatformDataService);
 
    private readonly billingRows = toSignal(this.platformDataService.getBillingTableRows(), {
       initialValue: [] as BillingTableRow[]
+   });
+   private readonly organizations = toSignal(this.platformDataService.getOrganizations(), {
+      initialValue: [] as OrganizationRecord[]
    });
 
    protected readonly tableActions: DataTableToolbarAction[] = [
@@ -82,6 +104,55 @@ export class BillingComponent {
    });
    protected readonly activeFilters = signal<Record<string, string>>({});
    protected readonly lastInteraction = signal<string>('Ready');
+   protected readonly isInvoiceModalOpen = signal<boolean>(false);
+   protected readonly isOrganizerDropdownOpen = signal<boolean>(false);
+   protected readonly selectedOrganizerId = signal<string | null>(null);
+
+   protected readonly organizerOptions = computed<InvoiceOrganizerOption[]>(() => {
+      const rows = this.billingRows();
+      const organizations = this.organizations();
+
+      return organizations
+         .map((organization) => {
+            const matchingRows = rows
+               .filter((row) => row.organizerId === organization.id)
+               .sort((leftRow, rightRow) => rightRow.issuedAt.localeCompare(leftRow.issuedAt));
+            const latestRow = matchingRows[0] ?? null;
+
+            return {
+               organizerId: organization.id,
+               organizerName: organization.name,
+               latestInvoiceNumber: latestRow?.invoiceNumber ?? 'No invoice number',
+               targetCycle: this.resolveTargetCycle(latestRow?.issuedAt ?? null),
+               status: latestRow?.status ?? null,
+               amountPhp: latestRow?.amountPhp ?? 0
+            };
+         })
+         .filter((option) => option.latestInvoiceNumber !== 'No invoice number');
+   });
+
+   protected readonly selectedOrganizer = computed<InvoiceOrganizerOption | null>(() => {
+      const selectedOrganizerId = this.selectedOrganizerId();
+      const options = this.organizerOptions();
+
+      if (!options.length || !selectedOrganizerId) {
+         return null;
+      }
+
+      return options.find((option) => option.organizerId === selectedOrganizerId) ?? null;
+   });
+
+   protected readonly selectedCycle = computed(
+      () => this.selectedOrganizer()?.targetCycle ?? 'MM/YY'
+   );
+
+   protected readonly selectedAmount = computed(() => this.selectedOrganizer()?.amountPhp ?? 0);
+   protected readonly selectedInvoiceNumber = computed(
+      () => this.selectedOrganizer()?.latestInvoiceNumber ?? 'INV-0000'
+   );
+   protected readonly selectedStatus = computed(
+      () => this.selectedOrganizer()?.status ?? 'pending'
+   );
 
    protected readonly filteredRows = computed(() => {
       const rows = this.billingRows();
@@ -153,5 +224,72 @@ export class BillingComponent {
    protected onRowAction(event: { actionKey: string; row: DataTableRow }): void {
       const invoiceNumber = String(event.row['invoiceNumber'] ?? 'record');
       this.lastInteraction.set(`${event.actionKey} executed for ${invoiceNumber}`);
+   }
+
+   protected openInvoiceModal(): void {
+      if (!this.selectedOrganizer()) {
+         this.lastInteraction.set('Select an organizer before generating an invoice');
+         return;
+      }
+
+      this.isInvoiceModalOpen.set(true);
+      this.lastInteraction.set('Invoice modal opened');
+   }
+
+   protected closeInvoiceModal(): void {
+      this.isInvoiceModalOpen.set(false);
+   }
+
+   protected toggleOrganizerDropdown(): void {
+      this.isOrganizerDropdownOpen.update((open) => !open);
+   }
+
+   protected selectOrganizer(organizerId: string): void {
+      this.selectedOrganizerId.set(organizerId);
+      this.isOrganizerDropdownOpen.set(false);
+   }
+
+   protected getSelectedOrganizerLabel(): string {
+      const selectedOrganizer = this.selectedOrganizer();
+
+      if (!selectedOrganizer) {
+         return 'Select organizer';
+      }
+
+      return selectedOrganizer.organizerName;
+   }
+
+   protected getSelectedOrganizerInvoiceLabel(): string {
+      const selectedOrganizer = this.selectedOrganizer();
+
+      if (!selectedOrganizer) {
+         return 'No invoice number';
+      }
+
+      return selectedOrganizer.latestInvoiceNumber;
+   }
+
+   private resolveTargetCycle(issuedAt: string | null): string {
+      if (!issuedAt) {
+         return 'MM/YY';
+      }
+
+      const date = new Date(issuedAt);
+      if (Number.isNaN(date.getTime())) {
+         return 'MM/YY';
+      }
+
+      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+      const year = String(date.getUTCFullYear()).slice(-2);
+      return `${month}/${year}`;
+   }
+
+   protected formatCurrencyPhp(amount: number): string {
+      return this.currencyFormatter.format(Number(amount ?? 0));
+   }
+
+   protected confirmInvoice(): void {
+      this.lastInteraction.set('Invoice preview confirmed');
+      this.closeInvoiceModal();
    }
 }

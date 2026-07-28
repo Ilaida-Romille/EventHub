@@ -15,20 +15,46 @@
             <div class="invoice-controls mb-4">
                 <div class="invoice-control invoice-control-wide">
                     <label class="form-label text-uppercase fw-bold mb-2">Organizer</label>
-                    <button
-                        class="btn btn-outline-light w-100 text-start d-flex justify-content-between align-items-center"
-                        type="button">
-                        <span class="panel-muted">Select organizer</span>
-                        <app-lucide-icon name="chevron-down" [size]="16"></app-lucide-icon>
-                    </button>
+                    <div class="dropup invoice-dropdown">
+                        <button id="invoice-organizer-toggle"
+                            class="btn btn-outline-light w-100 text-start d-flex justify-content-between align-items-center"
+                            type="button" aria-haspopup="listbox" [attr.aria-expanded]="isOrganizerMenuOpen()"
+                            (click)="toggleOrganizerMenu()">
+                            @if (selectedOrganizer(); as option) {
+                            <span id="invoice-organizer-toggle-label" class="d-flex flex-column">
+                                <span class="fw-semibold">{{ option.organizerName }}</span>
+                                <small class="text-secondary">{{ option.latestInvoiceNumber }}</small>
+                            </span>
+                            } @else {
+                            <span class="panel-muted">Select organizer</span>
+                            }
+                            <app-lucide-icon name="chevron-down" [size]="16"></app-lucide-icon>
+                        </button>
+
+                        @if (isOrganizerMenuOpen()) {
+                        <ul id="invoice-organizer-menu" class="dropdown-menu w-100 show" role="listbox">
+                            @for (option of organizerOptions(); track option.organizerId) {
+                            <li>
+                                <button type="button" class="dropdown-item py-2"
+                                    (click)="selectOrganizer(option.organizerId)">
+                                    <span class="d-block fw-semibold">{{ option.organizerName }}</span>
+                                    <small class="d-block text-secondary">{{ option.latestInvoiceNumber }}</small>
+                                </button>
+                            </li>
+                            }
+                        </ul>
+                        }
+                    </div>
                 </div>
                 <div class="invoice-control">
                     <label class="form-label text-uppercase fw-bold mb-2" for="invoice-cycle-field">Target Cycle</label>
                     <input type="text" id="invoice-cycle-field" class="form-control" readonly aria-readonly="true"
-                        placeholder="MM/YY" value="" />
+                        placeholder="MM/YY" [value]="selectedTargetCycle()" />
                 </div>
             </div>
-            <button type="button" class="btn btn-primary w-100 fw-bold">Generate Invoice</button>
+            <button type="button" class="btn btn-primary w-100 fw-bold" [disabled]="!selectedOrganizer()"
+                (click)="onGenerateRequested()">Generate
+                Invoice</button>
         </article>
     </div>
 </section>

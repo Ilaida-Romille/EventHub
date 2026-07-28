@@ -42,6 +42,10 @@
    color: var(--platform-muted);
 }
 
+.invoice-dropdown {
+   position: relative;
+}
+
 .btn-outline-light {
    border: 1px solid color-mix(in srgb, var(--platform-muted) 60%, transparent);
    background-color: var(--platform-panel-soft);
@@ -55,8 +59,46 @@
    }
 }
 
+#invoice-organizer-menu {
+   border: 1px solid color-mix(in srgb, var(--platform-muted) 32%, transparent);
+   background-color: var(--platform-panel);
+   max-height: min(44vh, 18rem);
+   overflow-y: auto;
+   overscroll-behavior: contain;
+   box-shadow: 0 18px 38px rgb(4 9 22 / 24%);
+
+   .dropdown-item {
+      color: var(--platform-heading);
+      border-bottom: 1px solid color-mix(in srgb, var(--platform-muted) 18%, transparent);
+
+      &:last-child {
+         border-bottom: 0;
+      }
+
+      &:hover,
+      &:focus,
+      &:focus-visible {
+         background-color: color-mix(
+            in srgb,
+            var(--platform-panel) 60%,
+            var(--platform-accent) 40%
+         );
+         color: var(--platform-heading);
+      }
+
+      small {
+         color: var(--platform-muted);
+      }
+   }
+}
+
 #invoice-cycle-field[readonly] {
    background-color: var(--platform-panel-soft);
    border-color: color-mix(in srgb, var(--platform-muted) 60%, transparent);
    color: var(--platform-heading);
+}
+
+.btn[disabled] {
+   opacity: 0.7;
+   cursor: not-allowed;
 }
