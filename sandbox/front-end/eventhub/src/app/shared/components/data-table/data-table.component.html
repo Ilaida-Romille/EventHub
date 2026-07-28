@@ -46,10 +46,11 @@
                     @for (column of columns(); track column.key) {
                     <td [class.text-end]="column.align === 'end'" [class.text-center]="column.align === 'center'">
                         @if (column.kind === 'badge') {
-                        <span class="status-pill" [class.status-success]="isBadgeTone(row[column.key], 'paid')"
-                            [class.status-danger]="isBadgeTone(row[column.key], 'overdue')"
+                        <span class="status-pill"
+                            [class.status-success]="isBadgeTone(row[column.key], 'paid') || isBadgeTone(row[column.key], 'active')"
+                            [class.status-danger]="isBadgeTone(row[column.key], 'overdue') || isBadgeTone(row[column.key], 'suspended')"
                             [class.status-warning]="isBadgeTone(row[column.key], 'pending')"
-                            [class.status-neutral]="isBadgeTone(row[column.key], 'active') || isBadgeTone(row[column.key], 'in progress')">
+                            [class.status-neutral]="isBadgeTone(row[column.key], 'in progress')">
                             {{ getBadgeLabel(row[column.key]) }}
                         </span>
                         } @else {
