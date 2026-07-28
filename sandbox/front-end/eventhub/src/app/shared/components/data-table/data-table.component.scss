@@ -1,0 +1,154 @@
+.data-table-shell {
+   border: 1px solid var(--platform-border);
+   border-radius: 18px;
+   overflow: hidden;
+}
+
+.table-toolbar {
+   display: flex;
+   gap: 1rem;
+   justify-content: flex-start;
+   align-items: center;
+   padding: 1rem;
+   border-bottom: 1px solid var(--platform-border);
+   flex-wrap: wrap;
+}
+
+.table-toolbar-actions {
+   display: flex;
+   gap: 0.45rem;
+   flex-wrap: wrap;
+}
+
+.table {
+   --bs-table-bg: var(--platform-panel);
+   --bs-table-striped-bg: var(--platform-row-alt);
+   --bs-table-hover-bg: color-mix(in srgb, var(--platform-panel) 75%, var(--platform-accent) 25%);
+   --bs-table-border-color: var(--platform-border);
+
+   color: var(--platform-heading);
+
+   thead th {
+      color: var(--platform-muted);
+      border-color: var(--platform-border);
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+   }
+}
+
+.cell-checkbox {
+   width: 2.5rem;
+   text-align: center;
+}
+
+.col-title {
+   vertical-align: middle;
+}
+
+.sort-btn {
+   border: 0;
+   background: transparent;
+   color: var(--platform-muted);
+   display: inline-flex;
+   margin-left: 0.3rem;
+
+   &.active {
+      color: var(--platform-heading);
+   }
+}
+
+.row-action-cell {
+   white-space: nowrap;
+}
+
+.row-action-btn {
+   color: var(--platform-accent-soft);
+   text-decoration: none;
+   font-weight: 700;
+}
+
+.row-action-btn:hover {
+   color: var(--platform-heading);
+}
+
+.row-action-btn.danger {
+   color: #fb7185;
+}
+
+.status-pill {
+   font-size: 0.74rem;
+   font-weight: 700;
+   border-radius: 999px;
+   padding: 0.24rem 0.6rem;
+   text-transform: capitalize;
+}
+
+.status-success {
+   background-color: rgb(16 185 129 / 18%);
+   color: #34d399;
+}
+
+.status-danger {
+   background-color: rgb(251 113 133 / 18%);
+   color: #fb7185;
+}
+
+.status-warning {
+   background-color: rgb(251 191 36 / 20%);
+   color: #f59e0b;
+}
+
+.status-neutral {
+   background-color: rgb(56 189 248 / 18%);
+   color: #38bdf8;
+}
+
+.table-footer {
+   border-top: 1px solid var(--platform-border);
+   padding: 0.9rem 1rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 1rem;
+   flex-wrap: wrap;
+}
+
+.table-count {
+   color: var(--platform-muted);
+   font-size: 0.9rem;
+   font-weight: 600;
+}
+
+.table-pagination {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.4rem;
+}
+
+.pagination-btn {
+   width: 2.1rem;
+   height: 2.1rem;
+   border-radius: 8px;
+   border: 1px solid var(--platform-border);
+   color: var(--platform-heading);
+   background: var(--platform-panel);
+   font-weight: 700;
+
+   &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+   }
+}
+
+.pagination-btn.active {
+   border-color: color-mix(in srgb, var(--platform-accent) 72%, transparent);
+   background: color-mix(in srgb, var(--platform-panel) 62%, var(--platform-accent) 38%);
+}
+
+.table-page-indicator {
+   color: var(--platform-muted);
+   margin-left: 0.45rem;
+   font-size: 0.85rem;
+   font-weight: 700;
+}

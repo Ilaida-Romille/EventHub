@@ -1,0 +1,91 @@
+<section class="data-table-shell card" [attr.aria-label]="tableId() + ' records table'">
+    <header class="table-toolbar">
+        <div class="table-toolbar-actions" aria-label="Table actions">
+            @for (action of toolbarActions(); track action.key) {
+            <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onToolbarAction(action.key)">{{
+                action.label }}</button>
+            }
+        </div>
+    </header>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle m-0">
+            <thead>
+                <tr class="text-uppercase">
+                    <th class="cell-checkbox" scope="col">
+                        <input type="checkbox" aria-label="Select all rows" [checked]="isAllRowsSelected()"
+                            (change)="toggleSelectAll($any($event.target).checked)" />
+                    </th>
+                    @for (column of columns(); track column.key) {
+                    <th scope="col" [class.text-end]="column.align === 'end'"
+                        [class.text-center]="column.align === 'center'">
+                        <span class="col-title">{{ column.label }}</span>
+                        @if (column.sortable) {
+                        <button type="button" class="sort-btn" [attr.aria-label]="'Sort by ' + column.label"
+                            [class.active]="isCurrentSort(column.key, 'asc') || isCurrentSort(column.key, 'desc')"
+                            (click)="onSortRequested(column)">
+                            <app-lucide-icon name="arrow-up-down" [size]="13"></app-lucide-icon>
+                        </button>
+                        }
+                    </th>
+                    }
+                    @if (rowActions().length > 0) {
+                    <th class="text-end" scope="col">Actions</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (row of rows(); track $index) {
+                <tr>
+                    <td class="cell-checkbox">
+                        <input type="checkbox" [attr.aria-label]="'Select row ' + ($index + 1)"
+                            [checked]="isRowSelected(row, $index)"
+                            (change)="toggleRowSelection(row, $index, $any($event.target).checked)" />
+                    </td>
+
+                    @for (column of columns(); track column.key) {
+                    <td [class.text-end]="column.align === 'end'" [class.text-center]="column.align === 'center'">
+                        @if (column.kind === 'badge') {
+                        <span class="status-pill" [class.status-success]="isBadgeTone(row[column.key], 'paid')"
+                            [class.status-danger]="isBadgeTone(row[column.key], 'overdue')"
+                            [class.status-warning]="isBadgeTone(row[column.key], 'pending')"
+                            [class.status-neutral]="isBadgeTone(row[column.key], 'active') || isBadgeTone(row[column.key], 'in progress')">
+                            {{ getBadgeLabel(row[column.key]) }}
+                        </span>
+                        } @else {
+                        <span>{{ getDisplayValue(row, column) }}</span>
+                        }
+                    </td>
+                    }
+
+                    @if (rowActions().length > 0) {
+                    <td class="text-end row-action-cell">
+                        @for (action of rowActions(); track action.key) {
+                        <button type="button" class="btn btn-link btn-sm row-action-btn"
+                            [class.danger]="action.tone === 'danger'" (click)="onRowAction(action.key, row)">{{
+                            action.label }}</button>
+                        }
+                    </td>
+                    }
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <footer class="table-footer">
+        <span class="table-count">Showing {{ showingCountText() }}</span>
+        <nav class="table-pagination" aria-label="Data table pagination">
+            <button type="button" class="pagination-btn" aria-label="Previous page" [disabled]="currentPage() === 1"
+                (click)="onPageSelected(currentPage() - 1)">&lsaquo;</button>
+            @for (page of visiblePageNumbers(); track page) {
+            <button type="button" class="pagination-btn" [class.active]="page === currentPage()"
+                [attr.aria-label]="'Page ' + page" (click)="onPageSelected(page)">{{ page }}</button>
+            }
+            <button type="button" class="pagination-btn" aria-label="Next page"
+                [disabled]="currentPage() === totalPages()"
+                (click)="onPageSelected(currentPage() + 1)">&rsaquo;</button>
+            <span class="table-page-indicator">Page {{ currentPage() }} of {{ totalPages() }}</span>
+        </nav>
+    </footer>
+</section>
