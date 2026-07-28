@@ -33,7 +33,8 @@
     <section class="col-md-6 d-flex align-items-center justify-content-center p-5 login-panel">
         <div class="w-100 login-panel-content">
 
-            <app-login-form (formSubmit)="onLoginSubmit($event)" />
+            <app-login-form [isSubmitting]="isSubmitting()" [authError]="authError()"
+                (formSubmit)="onLoginSubmit($event)" />
 
             <div class="login-divider text-center my-4">
                 <span class="text-secondary text-lowercase fs-6">or sign in with:</span>
@@ -78,15 +79,15 @@
             <div class="text-center pt-4">
                 <p class="text-secondary fs-6 mb-3">Don't have an account?</p>
                 <div class="d-flex flex-column gap-2">
-                    <a routerLink="/users/attendee-registration"
+                    <a routerLink="/users/employee-registration"
                         class="btn btn-outline-primary w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
                         <app-lucide-icon class="auth-role-icon" name="users" [size]="18"></app-lucide-icon>
-                        Sign Up as Employee
+                        Sign up as Employee
                     </a>
                     <a routerLink="/organizer/organizer-registration"
                         class="btn btn-outline-primary w-100 fw-bold d-flex align-items-center justify-content-center gap-2">
                         <app-lucide-icon class="auth-role-icon" name="building-2" [size]="18"></app-lucide-icon>
-                        Sign Up as Organizer
+                        Sign up as Organizer
                     </a>
                 </div>
             </div>

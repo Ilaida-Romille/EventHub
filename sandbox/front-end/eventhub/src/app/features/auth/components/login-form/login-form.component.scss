@@ -28,3 +28,13 @@
    color: var(--bs-body-color);
    cursor: pointer;
 }
+
+.invalid-feedback {
+   font-size: 0.8rem;
+   font-weight: 600;
+}
+
+.btn[disabled] {
+   opacity: 0.72;
+   cursor: not-allowed;
+}

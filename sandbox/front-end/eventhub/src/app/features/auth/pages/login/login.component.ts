@@ -1,11 +1,13 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
+import { firstValueFrom } from 'rxjs';
 import {
    LoginFormComponent,
    LoginFormValue
 } from '../../components/login-form/login-form.component';
 import { LucideIconComponent } from '../../../../shared/components/lucide-icon/lucide-icon.component';
+import { AuthService } from '../../../../core/services/auth.service';
 
 type Theme = 'light' | 'dark';
 
@@ -18,9 +20,13 @@ type Theme = 'light' | 'dark';
 })
 export class LoginComponent {
    private readonly document = inject(DOCUMENT);
+   private readonly router = inject(Router);
+   private readonly authService = inject(AuthService);
    private readonly themeStorageKey = 'eventhub-theme';
 
    protected readonly theme = signal<Theme>('light');
+   protected readonly isSubmitting = signal<boolean>(false);
+   protected readonly authError = signal<string | null>(null);
 
    constructor() {
       this.initializeThemeFromDocument();
@@ -41,7 +47,17 @@ export class LoginComponent {
       this.theme.set(activeTheme === 'dark' ? 'dark' : 'light');
    }
 
-   onLoginSubmit(formValue: LoginFormValue): void {
-      console.log('Login credentials:', formValue);
+   protected async onLoginSubmit(formValue: LoginFormValue): Promise<void> {
+      this.authError.set(null);
+      this.isSubmitting.set(true);
+
+      try {
+         const session = await firstValueFrom(this.authService.login(formValue));
+         await this.router.navigateByUrl(this.authService.resolveLandingRoute(session));
+      } catch {
+         this.authError.set('Invalid email or password. Please check your credentials.');
+      } finally {
+         this.isSubmitting.set(false);
+      }
    }
 }
