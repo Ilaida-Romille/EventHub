@@ -1,6 +1,6 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, inject, input, output, signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../core/services/auth.service';
 import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 
 type Theme = 'light' | 'dark';
@@ -8,12 +8,13 @@ type Theme = 'light' | 'dark';
 @Component({
    selector: 'app-header',
    standalone: true,
-   imports: [LucideIconComponent, RouterLink],
+   imports: [LucideIconComponent],
    templateUrl: './header.component.html',
    styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
    private readonly document = inject(DOCUMENT);
+   private readonly authService = inject(AuthService);
    private readonly themeStorageKey = 'eventhub-theme';
 
    readonly brandName = input<string>('EventHub');
@@ -46,6 +47,11 @@ export class HeaderComponent {
 
    protected onMenuToggle(): void {
       this.menuToggle.emit();
+   }
+
+   protected onLogout(event: MouseEvent): void {
+      event.preventDefault();
+      this.authService.logout();
    }
 
    private initializeThemeFromDocument(): void {

@@ -42,10 +42,10 @@
 
                 <ul class="profile-dropdown-menu" aria-label="Profile actions">
                     <li>
-                        <a [routerLink]="logoutRoute()" class="profile-logout-link">
+                        <button type="button" class="profile-logout-link" (click)="onLogout($event)">
                             <app-lucide-icon name="log-out" [size]="15"></app-lucide-icon>
                             <span>Logout</span>
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </details>
