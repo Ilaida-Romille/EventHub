@@ -1,16 +1,18 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, computed, inject, input, signal, model } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
+import { LayoutNavItem } from '../../../core/models/layout.models';
+import { AuthService } from '../../../core/services/auth.service';
 import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 
 type Theme = 'light' | 'dark';
 
-interface NavItem {
-   label: string;
-   route: string;
-   icon: string;
-   exact?: boolean;
-}
+const DEFAULT_PLATFORM_NAV_ITEMS: LayoutNavItem[] = [
+   { label: 'Item 1', route: '/#', icon: 'circle-question-mark', exact: true },
+   { label: 'Item 2', route: '/#', icon: 'circle-question-mark' },
+   { label: 'Item 3', route: '/#', icon: 'circle-question-mark' },
+   { label: 'Item 4', route: '/#', icon: 'circle-question-mark' }
+];
 
 @Component({
    selector: 'app-sidebar',
@@ -21,24 +23,19 @@ interface NavItem {
 })
 export class SidebarComponent {
    private readonly document = inject(DOCUMENT);
+   private readonly authService = inject(AuthService);
    private readonly themeStorageKey = 'eventhub-theme';
 
    readonly profileName = input<string>('User Name');
    readonly profileRole = input<string>('User Role');
+   readonly homeRoute = input<string>('/platform/dashboard');
+   readonly navItems = input<LayoutNavItem[]>(DEFAULT_PLATFORM_NAV_ITEMS);
 
    readonly isCollapsed = model<boolean>(false);
 
    protected readonly theme = signal<Theme>('light');
 
    protected readonly showCollapsed = computed<boolean>(() => this.isCollapsed());
-
-   // TODO: Make navItems as inputs for reusability
-   protected readonly navItems: NavItem[] = [
-      { label: 'Dashboard', route: '/platform/dashboard', icon: 'layout-dashboard', exact: true },
-      { label: 'Organizers', route: '/platform/organizers', icon: 'users' },
-      { label: 'Billing', route: '/platform/billing', icon: 'receipt-text' },
-      { label: 'Tickets', route: '/platform/tickets', icon: 'messages-square' }
-   ];
 
    constructor() {
       this.initializeThemeFromDocument();
@@ -56,6 +53,11 @@ export class SidebarComponent {
 
    protected toggleSidebar(): void {
       this.isCollapsed.update((value) => !value);
+   }
+
+   protected onLogout(event: MouseEvent): void {
+      event.preventDefault();
+      this.authService.logout();
    }
 
    private initializeThemeFromDocument(): void {

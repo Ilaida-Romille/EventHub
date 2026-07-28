@@ -2,7 +2,7 @@
     <div class="sidebar-main">
         <div class="sidebar-brand-row" [class.compact]="showCollapsed()">
             @if (!showCollapsed()) {
-            <a class="sidebar-brand" routerLink="/platform/dashboard">
+            <a class="sidebar-brand" [routerLink]="homeRoute()">
                 <span class="sidebar-brand-icon-wrap pb-1">
                     <app-lucide-icon name="ticket" [size]="18"></app-lucide-icon>
                 </span>
@@ -22,7 +22,7 @@
         </div>
 
         <nav class="sidebar-nav">
-            @for (item of navItems; track item.route) {
+            @for (item of navItems(); track item.route) {
             <a [routerLink]="item.route" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: !!item.exact }"
                 [attr.aria-label]="showCollapsed() ? item.label : null"
                 [attr.title]="showCollapsed() ? item.label : null">
@@ -58,12 +58,12 @@
             }
         </div>
 
-        <a class="sidebar-logout" routerLink="/login" [attr.aria-label]="showCollapsed() ? 'Logout' : null"
-            [attr.title]="showCollapsed() ? 'Logout' : null">
+        <button type="button" class="sidebar-logout" (click)="onLogout($event)"
+            [attr.aria-label]="showCollapsed() ? 'Logout' : null" [attr.title]="showCollapsed() ? 'Logout' : null">
             <app-lucide-icon name="log-out" [size]="17"></app-lucide-icon>
             @if (!showCollapsed()) {
             <span>Logout</span>
             }
-        </a>
+        </button>
     </div>
 </aside>
