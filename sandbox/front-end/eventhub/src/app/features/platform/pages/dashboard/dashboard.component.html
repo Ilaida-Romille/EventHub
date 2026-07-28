@@ -1,7 +1,7 @@
 <app-platform-layout>
-    <app-kpi-cards [cards]="kpiCards"></app-kpi-cards>
+    <app-kpi-cards [cards]="kpiCards()"></app-kpi-cards>
 
-    <app-analytics-bar-chart [bars]="analyticsBars"></app-analytics-bar-chart>
+    <app-analytics-bar-chart [bars]="analyticsBars()"></app-analytics-bar-chart>
 
     <nav class="shortcut-list" aria-label="Quick Actions Summary">
         <a routerLink="/platform/organizers" class="btn-shortcut">
