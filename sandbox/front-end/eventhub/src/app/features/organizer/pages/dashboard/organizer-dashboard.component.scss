@@ -1,0 +1,71 @@
+:host {
+   display: block;
+}
+
+.organizer-main {
+   width: min(1200px, 100%);
+   margin-inline: auto;
+   padding: 1.6rem 1rem 2rem;
+}
+
+.dashboard-welcome {
+   margin-bottom: 1.2rem;
+}
+
+.page-title {
+   margin: 0;
+   color: var(--platform-heading);
+   font-size: clamp(1.5rem, 3vw, 2rem);
+   font-weight: 800;
+}
+
+.subtitle-prompt {
+   margin: 0.5rem 0 0;
+   color: var(--platform-muted);
+   font-weight: 600;
+}
+
+.workspace-grid {
+   display: grid;
+   gap: 1rem;
+   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.workspace-card {
+   padding: 1.2rem;
+   border: 1px solid var(--platform-border);
+   border-radius: 16px;
+   background: var(--platform-panel);
+   display: flex;
+   flex-direction: column;
+   gap: 0.85rem;
+}
+
+.card-icon-box {
+   width: 2.6rem;
+   height: 2.6rem;
+   border-radius: 0.8rem;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   color: var(--platform-heading);
+   background: color-mix(in srgb, var(--platform-panel) 65%, var(--platform-accent) 35%);
+   border: 1px solid color-mix(in srgb, var(--platform-accent) 60%, transparent);
+}
+
+.card-body-content h2 {
+   color: var(--platform-heading);
+   font-size: 1.08rem;
+   margin: 0 0 0.45rem;
+}
+
+.card-body-content p {
+   color: var(--platform-muted);
+   margin: 0;
+   line-height: 1.5;
+}
+
+.card-action-trigger {
+   margin-top: auto;
+   align-self: flex-start;
+}

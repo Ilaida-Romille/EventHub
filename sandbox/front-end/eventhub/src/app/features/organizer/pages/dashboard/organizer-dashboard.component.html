@@ -1,0 +1,24 @@
+<app-platform-layout [layoutContext]="'organizer'" [profileRole]="'Organizer Admin'" [profileName]="'Jane Dela Cruz'">
+    <main class="organizer-main">
+        <header class="dashboard-welcome">
+            <h1 class="page-title">Welcome back, Acme Events Co.</h1>
+            <p class="subtitle-prompt">What would you like to do today?</p>
+        </header>
+
+        <section class="workspace-grid" aria-label="Workspace Hub Options">
+            @for (card of workspaceCards; track card.title) {
+            <article class="card workspace-card">
+                <div class="card-icon-box">
+                    <app-lucide-icon [name]="card.icon" [size]="22"></app-lucide-icon>
+                </div>
+                <div class="card-body-content">
+                    <h2>{{ card.title }}</h2>
+                    <p>{{ card.body }}</p>
+                </div>
+                <a routerLink="/organizer/dashboard" class="btn btn-primary card-action-trigger">{{ card.actionLabel
+                    }}</a>
+            </article>
+            }
+        </section>
+    </main>
+</app-platform-layout>
