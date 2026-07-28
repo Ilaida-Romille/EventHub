@@ -9,9 +9,7 @@ export interface DataTableColumn {
    kind?: 'text' | 'badge' | 'amount' | 'person';
 }
 
-export interface DataTableRow {
-   [key: string]: string | number | undefined;
-}
+export type DataTableRow = Record<string, string | number | undefined>;
 
 export type DataTableSortDirection = 'asc' | 'desc';
 

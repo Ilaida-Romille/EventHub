@@ -1,7 +1,6 @@
 @if (open()) {
-<div class="app-modal-backdrop" (click)="closeModal()">
-    <section class="app-modal" role="dialog" aria-modal="true" [attr.aria-label]="title()"
-        (click)="$event.stopPropagation()">
+<div class="app-modal-backdrop" tabindex="-1" (click)="onBackdropClick($event)" (keydown.escape)="closeModal()">
+    <section class="app-modal" role="dialog" aria-modal="true" [attr.aria-label]="title()">
         <header class="app-modal-header">
             <h3>{{ title() }}</h3>
             <button type="button" class="btn app-modal-close" (click)="closeModal()" aria-label="Close dialog">

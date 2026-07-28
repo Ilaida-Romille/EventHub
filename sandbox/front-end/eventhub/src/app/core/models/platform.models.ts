@@ -33,7 +33,7 @@ export interface InvoiceRecord {
 }
 
 export interface DashboardAnalytics {
-   monthlyEventVolume: Array<{ month: string; count: number }>;
+   monthlyEventVolume: { month: string; count: number }[];
 }
 
 export interface OrganizerTableRow {

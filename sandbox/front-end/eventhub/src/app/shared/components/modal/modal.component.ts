@@ -11,9 +11,15 @@ import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 export class ModalComponent {
    readonly open = input<boolean>(false);
    readonly title = input<string>('Dialog');
-   readonly close = output<void>();
+   readonly closed = output<void>();
 
    protected closeModal(): void {
-      this.close.emit();
+      this.closed.emit();
+   }
+
+   onBackdropClick(event: MouseEvent): void {
+      if (event.target === event.currentTarget) {
+         this.closeModal();
+      }
    }
 }
