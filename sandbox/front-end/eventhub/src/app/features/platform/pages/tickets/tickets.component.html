@@ -1,91 +1,86 @@
-<app-platform-layout title="Tickets and Requests"
-    subtitle="Review incoming support issues and move organizers from questions to resolution faster.">
+<app-platform-layout [fluidContent]="true">
     <div class="tickets-layout">
-        <div class="tickets-queue-column d-flex flex-column gap-3">
+        <aside class="tickets-queue-column d-flex flex-column gap-3">
             <section class="card p-3 queue-card" aria-label="Current open tickets list">
                 <div class="queue-top mb-3">
                     <h2 class="h6 fw-bold m-0">Open Queue</h2>
-                    <span class="queue-count">12 tickets</span>
+                    <span class="queue-count">{{ queueCount() }} tickets</span>
                 </div>
 
-                <div id="tickets-container" class="d-flex flex-column gap-2">
-                    <article class="ticket-item active">
+                <div class="d-flex flex-column gap-2">
+                    @for (ticket of tickets(); track ticket.id) {
+                    <article class="ticket-item text-start" [class.active]="ticket.id === selectedTicket()?.id"
+                        role="button" tabindex="0" (click)="selectTicket(ticket.id)"
+                        (keydown.enter)="selectTicket(ticket.id)"
+                        (keydown.space)="$event.preventDefault(); selectTicket(ticket.id)">
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <strong>Payment mismatch in April payout</strong>
-                            <span class="status-badge badge-open">Open</span>
+                            <strong>{{ ticket.subject }}</strong>
+                            <span class="status-badge" [class.badge-open]="ticket.status === 'open'"
+                                [class.badge-progress]="ticket.status === 'in_progress'"
+                                [class.badge-resolved]="ticket.status === 'resolved'">
+                                {{ ticket.status === 'in_progress' ? 'In Progress' : (ticket.status === 'open' ? 'Open'
+                                : 'Resolved') }}
+                            </span>
                         </div>
-                        <p class="ticket-meta mb-1">Acme Corp • Priority High</p>
-                        <small class="ticket-time">Opened 22 minutes ago</small>
+                        <p class="ticket-meta mb-1">{{ ticket.companyName }} • Priority {{ ticket.priority === 'high' ?
+                            'High' : ticket.priority === 'medium' ? 'Medium' : 'Low' }}</p>
+                        <small class="ticket-time">{{ resolveTicketTime(ticket.createdAt) }}</small>
                     </article>
-
-                    <article class="ticket-item">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <strong>Need invoice copy for compliance</strong>
-                            <span class="status-badge badge-progress">In Progress</span>
-                        </div>
-                        <p class="ticket-meta mb-1">Northline Systems • Priority Medium</p>
-                        <small class="ticket-time">Opened 1 hour ago</small>
-                    </article>
-
-                    <article class="ticket-item">
-                        <div class="d-flex justify-content-between align-items-start mb-2">
-                            <strong>Bulk attendee import issue</strong>
-                            <span class="status-badge badge-resolved">Resolved</span>
-                        </div>
-                        <p class="ticket-meta mb-1">Everpeak Ltd • Priority Low</p>
-                        <small class="ticket-time">Opened yesterday</small>
-                    </article>
+                    }
                 </div>
             </section>
-
-            <app-pagination-controls prevId="tickets-prev-page" nextId="tickets-next-page"
-                indicatorId="tickets-page-indicator" indicatorText="Page 1 of 1"
-                align="center"></app-pagination-controls>
-        </div>
+        </aside>
 
         <div class="tickets-thread-column">
+            @if (selectedTicket(); as activeTicket) {
             <section class="card chat-card p-0" aria-label="Active ticket discussion panel">
                 <header class="chat-header p-4 border-bottom">
                     <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center gap-3">
                         <div>
-                            <h2 id="active-ticket-title" class="h5 fw-extrabold m-0">Payment mismatch in April payout
-                            </h2>
-                            <p class="ticket-meta mt-2 mb-0">Acme Corp • Opened July 20, 2026 • Assigned to John</p>
+                            <h2 id="active-ticket-title" class="h5 fw-extrabold m-0">{{ activeTicket.subject }}</h2>
+                            <p class="ticket-meta mt-2 mb-0">{{ activeTicket.companyName }} • {{
+                                resolveTicketTime(activeTicket.createdAt) }} • Assigned to {{ activeTicket.assignedTo }}
+                            </p>
                         </div>
-                        <span id="active-ticket-status"
-                            class="status-badge badge-open align-self-start align-self-sm-auto">Open</span>
+                        <span id="active-ticket-status" class="status-badge"
+                            [class.badge-open]="activeTicket.status === 'open'"
+                            [class.badge-progress]="activeTicket.status === 'in_progress'"
+                            [class.badge-resolved]="activeTicket.status === 'resolved'">
+                            {{ activeTicket.status === 'in_progress' ? 'In Progress' : (activeTicket.status === 'open' ?
+                            'Open' : 'Resolved') }}
+                        </span>
                     </div>
                 </header>
 
                 <div class="chat-thread p-4">
                     <div class="chat-message organizer">
-                        <div class="chat-avatar">AC</div>
+                        <div class="chat-avatar">{{ activeTicket.companyName.slice(0, 2).toUpperCase() }}</div>
                         <div class="chat-bubble">
-                            <div class="chat-meta">Acme Corp • 9:41 AM</div>
+                            <div class="chat-meta">{{ activeTicket.companyName }} • 9:41 AM</div>
                             <p>
-                                We are seeing a discrepancy between attendee count and payout total for the last
-                                invoice.
-                                Please confirm the fee breakdown and update us with a corrected statement.
+                                We are following up on the latest support update for {{
+                                activeTicket.subject.toLowerCase() }}.
+                                Please confirm the next steps and keep us posted with any progress.
                             </p>
                         </div>
                     </div>
 
                     <div class="chat-message support">
-                        <div class="chat-avatar">JD</div>
+                        <div class="chat-avatar">EH</div>
                         <div class="chat-bubble">
                             <div class="chat-meta">You • 10:04 AM</div>
                             <p>
-                                Thanks for flagging this. We are reconciling the settlement line items now and will send
-                                your revised invoice with the corrected attendee fee totals within the next hour.
+                                Thanks for the update. We are reviewing the case details and will respond with a clear
+                                resolution plan shortly.
                             </p>
                         </div>
                     </div>
 
                     <div class="chat-message organizer">
-                        <div class="chat-avatar">AC</div>
+                        <div class="chat-avatar">{{ activeTicket.companyName.slice(0, 2).toUpperCase() }}</div>
                         <div class="chat-bubble">
-                            <div class="chat-meta">Acme Corp • 10:11 AM</div>
-                            <p>Perfect, we need this today for compliance submission. Thank you.</p>
+                            <div class="chat-meta">{{ activeTicket.companyName }} • 10:11 AM</div>
+                            <p>Appreciated. Please keep the thread updated once the next action is ready.</p>
                         </div>
                     </div>
                 </div>
@@ -114,6 +109,7 @@
                     </div>
                 </form>
             </section>
+            }
         </div>
     </div>
 </app-platform-layout>

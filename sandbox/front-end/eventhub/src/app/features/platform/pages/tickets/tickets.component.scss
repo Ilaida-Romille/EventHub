@@ -1,8 +1,13 @@
+:host {
+   display: block;
+}
+
 .tickets-layout {
    display: flex;
    flex-wrap: wrap;
    gap: 1.5rem;
    align-items: flex-start;
+   min-height: calc(100vh - 7.8rem);
 }
 
 .tickets-queue-column {
@@ -93,29 +98,60 @@
    color: #34d399;
 }
 
+.ticket-item {
+   padding: 16px;
+   border: 1px solid var(--platform-border);
+   border-radius: 14px;
+   cursor: pointer;
+   transition: all 0.24s ease;
+   background: transparent;
+
+   &:hover {
+      transform: translateY(-1px);
+      background-color: color-mix(in srgb, var(--platform-panel) 70%, var(--platform-accent) 30%);
+      border-color: color-mix(in srgb, var(--platform-accent) 65%, transparent);
+   }
+
+   &.active {
+      background-color: color-mix(in srgb, var(--platform-panel) 68%, var(--platform-accent) 32%);
+      border-left: 4px solid var(--platform-accent);
+      box-shadow: 0 10px 24px rgb(10 18 43 / 20%);
+   }
+
+   strong {
+      color: var(--platform-heading);
+      font-size: 0.95rem;
+   }
+}
+
+.status-badge {
+   font-size: 0.75rem;
+   font-weight: 700;
+   padding: 2px 8px;
+   border-radius: 999px;
+   text-transform: uppercase;
+   display: inline-block;
+}
+
+.badge-open {
+   background-color: rgb(244 114 182 / 16%);
+   color: #f34545;
+}
+
+.badge-progress {
+   background-color: rgb(245 158 11 / 15%);
+   color: #f59e0b;
+}
+
+.badge-resolved {
+   background-color: rgb(16 185 129 / 15%);
+   color: #34d399;
+}
+
 .page-indicator-wrap {
    color: var(--platform-muted);
    font-size: 0.9rem;
    font-weight: 600;
-}
-
-.page-nav-btn {
-   background: var(--platform-panel);
-   border: 1px solid var(--platform-border);
-   color: var(--platform-heading);
-   width: 32px;
-   height: 32px;
-   display: inline-flex;
-   align-items: center;
-   justify-content: center;
-   border-radius: 8px;
-   text-decoration: none;
-
-   &:hover {
-      background-color: color-mix(in srgb, var(--platform-panel) 65%, var(--platform-accent) 35%);
-      border-color: color-mix(in srgb, var(--platform-accent) 70%, transparent);
-      color: var(--platform-heading);
-   }
 }
 
 .card {
@@ -141,6 +177,7 @@
 
 .chat-card {
    overflow: hidden;
+   min-height: calc(100vh - 8.8rem);
 }
 
 .chat-header,
