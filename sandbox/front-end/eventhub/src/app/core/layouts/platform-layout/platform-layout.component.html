@@ -1,6 +1,7 @@
 <div class="platform-shell" [class.sidebar-collapsed]="showCollapsedSidebar()">
     @if (!isMobile()) {
-    <app-sidebar [profileName]="profileName()" [profileRole]="profileRole()" [(isCollapsed)]="collapsed">
+    <app-sidebar [profileName]="profileName()" [profileRole]="resolvedProfileRole()" [homeRoute]="resolvedHomeRoute()"
+        [navItems]="resolvedNavItems()" [(isCollapsed)]="collapsed">
     </app-sidebar>
     }
 
@@ -18,6 +19,6 @@
     </section>
 
     @if (isMobile()) {
-    <app-mobile-bottom-nav></app-mobile-bottom-nav>
+    <app-mobile-bottom-nav [navItems]="resolvedNavItems()"></app-mobile-bottom-nav>
     }
 </div>

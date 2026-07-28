@@ -1,11 +1,16 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
 import {
+   LucideArrowUpDown,
    LucideArrowRight,
+   LucideBadgeCheck,
    LucideBuilding2,
+   LucideCalendarFold,
    LucideChevronDown,
    LucideChevronLeft,
    LucideChevronRight,
    LucideCircleCheckBig,
+   LucideContactRound,
    LucideLayoutDashboard,
    LucideLogOut,
    LucideMenu,
@@ -16,6 +21,7 @@ import {
    LucidePanelLeftOpen,
    LucideReceiptText,
    LucideSendHorizontal,
+   LucideSettings,
    LucideSun,
    LucideTicket,
    LucideUserRound,
@@ -30,14 +36,19 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
    providers: [
       provideBrowserGlobalErrorListeners(),
+      provideHttpClient(),
       provideRouter(routes),
       provideLucideIcons(
+         LucideArrowUpDown,
          LucideArrowRight,
+         LucideBadgeCheck,
          LucideBuilding2,
+         LucideCalendarFold,
          LucideChevronDown,
          LucideChevronLeft,
          LucideChevronRight,
          LucideCircleCheckBig,
+         LucideContactRound,
          LucideLayoutDashboard,
          LucideLogOut,
          LucideMenu,
@@ -48,6 +59,7 @@ export const appConfig: ApplicationConfig = {
          LucidePanelLeftOpen,
          LucideReceiptText,
          LucideSendHorizontal,
+         LucideSettings,
          LucideSun,
          LucideTicket,
          LucideUserRound,
