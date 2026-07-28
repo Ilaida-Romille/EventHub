@@ -1,0 +1,62 @@
+.section-break {
+   margin: 2rem 0 1rem;
+   font-size: 1.3rem;
+   font-weight: 800;
+   color: var(--platform-heading);
+}
+
+.billing-panels {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1.5rem;
+}
+
+.billing-panel {
+   flex: 1 1 320px;
+   background-color: var(--platform-panel);
+   border: 1px solid var(--platform-border);
+   border-radius: 18px;
+}
+
+.invoice-controls {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 1rem;
+}
+
+.invoice-control {
+   flex: 1 1 160px;
+}
+
+.invoice-control-wide {
+   flex-basis: 260px;
+}
+
+.form-label {
+   font-size: 0.82rem;
+   color: var(--platform-muted);
+   letter-spacing: 0.04em;
+}
+
+.panel-muted {
+   color: var(--platform-muted);
+}
+
+.btn-outline-light {
+   border: 1px solid color-mix(in srgb, var(--platform-muted) 60%, transparent);
+   background-color: var(--platform-panel-soft);
+   color: var(--platform-heading);
+   min-height: 44px;
+
+   &:hover {
+      border-color: color-mix(in srgb, var(--platform-accent) 72%, transparent);
+      background-color: color-mix(in srgb, var(--platform-panel) 72%, var(--platform-accent) 28%);
+      color: var(--platform-heading);
+   }
+}
+
+#invoice-cycle-field[readonly] {
+   background-color: var(--platform-panel-soft);
+   border-color: color-mix(in srgb, var(--platform-muted) 60%, transparent);
+   color: var(--platform-heading);
+}

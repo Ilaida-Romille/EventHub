@@ -1,0 +1,46 @@
+.search-filter-card {
+   background: var(--platform-panel);
+   border: 1px solid var(--platform-border);
+   border-radius: 18px;
+}
+
+.search-filter-form {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: flex-end;
+   gap: 1rem;
+}
+
+.search-filter-field {
+   flex: 1 1 220px;
+}
+
+.search-filter-wide {
+   flex-basis: 360px;
+}
+
+.form-label {
+   font-size: 0.82rem;
+   color: var(--platform-muted);
+   letter-spacing: 0.04em;
+}
+
+.search-filter-actions {
+   display: flex;
+   align-items: flex-end;
+
+   .btn {
+      min-width: 11rem;
+   }
+}
+
+@media (width <= 768px) {
+   .search-filter-actions {
+      flex: 1 0 100%;
+
+      .btn {
+         min-width: 0;
+         width: 100%;
+      }
+   }
+}

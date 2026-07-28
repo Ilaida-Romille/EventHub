@@ -1,0 +1,24 @@
+<section class="search-filter-card p-4" aria-label="Search and filter controls">
+    <form class="search-filter-form" method="GET" action="" (submit)="onSubmit($event)">
+        @for (field of fields(); track field.id) {
+        <div class="search-filter-field" [class.search-filter-wide]="!!field.wide">
+            <label [for]="field.id" class="form-label text-uppercase fw-bold mb-2">{{ field.label }}</label>
+            @if (field.type === 'select') {
+            <select [id]="field.id" [name]="field.id" class="form-select">
+                @for (option of field.options ?? []; track option.value) {
+                <option [value]="option.value" [selected]="option.value === getInitialValue(field.id)">{{
+                    option.label }}</option>
+                }
+            </select>
+            } @else {
+            <input [id]="field.id" [name]="field.id" [type]="field.type" class="form-control"
+                [placeholder]="field.placeholder ?? ''" [value]="getInitialValue(field.id)" />
+            }
+        </div>
+        }
+
+        <div class="search-filter-actions">
+            <button [id]="actionId()" class="btn btn-primary fw-bold px-5" type="submit">{{ actionLabel() }}</button>
+        </div>
+    </form>
+</section>
