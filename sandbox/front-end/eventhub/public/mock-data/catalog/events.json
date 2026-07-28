@@ -1,0 +1,112 @@
+[
+   {
+      "id": "EVT-1001",
+      "organizationId": "ORG-001",
+      "category": "tech",
+      "title": "Tech Summit 2026",
+      "startAt": "2026-08-14T09:00:00Z",
+      "endAt": "2026-08-14T17:00:00Z",
+      "venue": "Makati Convention Center",
+      "capacityTotal": 200,
+      "capacityUsed": 121
+   },
+   {
+      "id": "EVT-1002",
+      "organizationId": "ORG-002",
+      "category": "social",
+      "title": "Year-End Party",
+      "startAt": "2026-12-12T18:00:00Z",
+      "endAt": "2026-12-12T22:00:00Z",
+      "venue": "BGC Grand Pavilion",
+      "capacityTotal": 250,
+      "capacityUsed": 198
+   },
+   {
+      "id": "EVT-1003",
+      "organizationId": "ORG-004",
+      "category": "corporate",
+      "title": "Leadership Offsite",
+      "startAt": "2026-09-03T08:30:00Z",
+      "endAt": "2026-09-03T16:30:00Z",
+      "venue": "Tagaytay Executive Retreat",
+      "capacityTotal": 30,
+      "capacityUsed": 9
+   },
+   {
+      "id": "EVT-1004",
+      "organizationId": "ORG-003",
+      "category": "tech",
+      "title": "Product Conference",
+      "startAt": "2026-10-21T09:00:00Z",
+      "endAt": "2026-10-21T18:00:00Z",
+      "venue": "SMX Convention Center",
+      "capacityTotal": 45,
+      "capacityUsed": 37
+   },
+   {
+      "id": "EVT-1005",
+      "organizationId": "ORG-005",
+      "category": "corporate",
+      "title": "Sales Kickoff",
+      "startAt": "2027-01-15T10:00:00Z",
+      "endAt": "2027-01-15T14:00:00Z",
+      "venue": "Ortigas Business Forum Hall",
+      "capacityTotal": 120,
+      "capacityUsed": 64
+   },
+   {
+      "id": "EVT-1006",
+      "organizationId": "ORG-006",
+      "category": "social",
+      "title": "Wellness Day",
+      "startAt": "2026-11-08T08:00:00Z",
+      "endAt": "2026-11-08T15:00:00Z",
+      "venue": "Ayala Circuit Events Hall",
+      "capacityTotal": 60,
+      "capacityUsed": 49
+   },
+   {
+      "id": "EVT-1007",
+      "organizationId": "ORG-007",
+      "category": "tech",
+      "title": "Developer Workshop",
+      "startAt": "2026-08-28T09:30:00Z",
+      "endAt": "2026-08-28T16:30:00Z",
+      "venue": "UP TechnoHub Auditorium",
+      "capacityTotal": 50,
+      "capacityUsed": 42
+   },
+   {
+      "id": "EVT-1008",
+      "organizationId": "ORG-008",
+      "category": "social",
+      "title": "Client Appreciation Night",
+      "startAt": "2026-09-18T19:00:00Z",
+      "endAt": "2026-09-18T23:00:00Z",
+      "venue": "Manila Peninsula Ballroom",
+      "capacityTotal": 80,
+      "capacityUsed": 64
+   },
+   {
+      "id": "EVT-1009",
+      "organizationId": "ORG-009",
+      "category": "corporate",
+      "title": "Operations Planning Day",
+      "startAt": "2026-10-05T09:00:00Z",
+      "endAt": "2026-10-05T13:00:00Z",
+      "venue": "QC Business Hub",
+      "capacityTotal": 30,
+      "capacityUsed": 18
+   },
+   {
+      "id": "EVT-1010",
+      "organizationId": "ORG-010",
+      "category": "tech",
+      "title": "Innovation Demo Day",
+      "startAt": "2026-11-22T13:00:00Z",
+      "endAt": "2026-11-22T18:00:00Z",
+      "venue": "BGC Innovation Theater",
+      "capacityTotal": 100,
+      "capacityUsed": 73
+   }
+]
