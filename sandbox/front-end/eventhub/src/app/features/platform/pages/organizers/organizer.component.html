@@ -1,48 +1,14 @@
-<app-platform-layout title="Organizers Management"
-    subtitle="Review organization status, account health, and event activity.">
-    <div class="filter-row p-4 mb-4">
-        <form id="organizers-filter-form" class="filter-form" method="GET" action="">
-            <div class="filter-field filter-field-wide">
-                <label for="organizers-search-query" class="form-label text-uppercase fw-bold mb-2">Search by company
-                    name</label>
-                <input type="text" id="organizers-search-query" class="form-control"
-                    placeholder="Enter company name..." />
-            </div>
+<app-platform-layout>
+    <app-search-filter-card class="d-block mb-4" [fields]="organizerFilters" actionId="organizers-search-btn"
+        actionLabel="Search" [initialValues]="activeFilters()"
+        (filtersSubmitted)="onFiltersSubmitted($event)"></app-search-filter-card>
 
-            <div class="filter-field">
-                <label for="organizers-status-filter" class="form-label text-uppercase fw-bold mb-2">Status</label>
-                <select id="organizers-status-filter" class="form-select">
-                    <option value="">All Statuses</option>
-                    <option value="active">Active</option>
-                    <option value="suspended">Suspended</option>
-                    <option value="pending">Pending</option>
-                </select>
-            </div>
+    <app-data-table tableId="organizers-table" [columns]="organizerColumns" [rows]="pagedRows()"
+        [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()" [sortState]="sortState()"
+        [toolbarActions]="tableActions" [rowActions]="rowActions" (sortChanged)="onSortChanged($event)"
+        (pageChanged)="onPageChanged($event)" (toolbarActionTriggered)="onToolbarAction($event)"
+        (rowActionTriggered)="onRowAction($event)">
+    </app-data-table>
 
-            <div class="filter-actions">
-                <button id="organizers-search-btn" class="btn btn-primary px-5 fw-bold" type="submit">Search</button>
-            </div>
-
-            <div class="filter-feedback">
-                <small id="organizers-search-feedback" class="text-warning d-block"></small>
-            </div>
-        </form>
-    </div>
-
-    <div class="table-responsive mb-4">
-        <table class="table table-striped table-hover align-middle m-0" style="min-width: 700px;">
-            <thead>
-                <tr class="text-uppercase" style="font-size: 0.8rem;">
-                    <th class="p-3 px-4 border-bottom">Company Name</th>
-                    <th class="p-3 px-4 border-bottom"># Events</th>
-                    <th class="p-3 px-4 border-bottom">Status</th>
-                    <th class="p-3 px-4 border-bottom">Actions</th>
-                </tr>
-            </thead>
-            <tbody id="organizers-table-body" class="border-0"></tbody>
-        </table>
-    </div>
-
-    <app-pagination-controls prevId="organizers-prev-page" nextId="organizers-next-page"
-        indicatorId="organizers-page-indicator" indicatorText="Page 1 of 1" align="end"></app-pagination-controls>
+    <p class="table-state-message mt-3 mb-0">{{ lastInteraction() }}</p>
 </app-platform-layout>
