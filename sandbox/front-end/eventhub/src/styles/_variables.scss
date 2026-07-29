@@ -1,0 +1,87 @@
+// ==========================================
+// 1. BOOTSTRAP CONFIG & SETTINGS
+// ==========================================
+$color-mode-type: data;
+$enable-dark-mode: true;
+
+// Shared Typography & Components
+$font-family-sans-serif:
+   'Plus Jakarta Sans',
+   -apple-system,
+   blinkmacsystemfont,
+   'Segoe UI',
+   roboto,
+   sans-serif;
+$btn-border-radius: 24px;
+$btn-padding-y: 10px;
+$btn-padding-x: 24px;
+$input-border-radius: 8px;
+$input-padding-y: 10px;
+$input-padding-x: 14px;
+
+// ==========================================
+// 2. LIGHT MODE DESIGN TOKENS (REVISED)
+// ==========================================
+// Base Palette
+$primary: #1d4ed8;
+$secondary: #475569;
+$accent-color: #0d9488;
+$danger: #dc2626;
+$success: #047857;
+$warning: #b45309;
+
+// Layout & Surfaces
+$body-bg: #eef2f6;
+$body-color: #0f172a;
+$border-color: #cbd5e1;
+$panel-bg: #f8fafc;
+$panel-soft: #f1f5f9;
+$sidebar-bg: #e2e8f0;
+$row-alt: #f1f5f9;
+
+// Gradients & Shadows
+$hero-gradient-start: #e2e8f0;
+$hero-gradient-end: #f8fafc;
+$hero-body: #334155;
+$login-divider: #cbd5e1;
+$login-placeholder: #64748b;
+$login-panel-shadow: 0 20px 45px rgb(15 23 42 / 8%);
+$card-shadow: 0 10px 25px rgb(15 23 42 / 6%);
+$ring-color: rgb(29 78 216 / 25%);
+$accent-soft: #1e40af;
+
+// Bootstrap Form Component Bindings
+$input-bg: $panel-bg;
+$input-border-color: $border-color;
+$input-color: $body-color;
+$input-focus-border-color: $primary;
+
+// ==========================================
+// 3. DARK MODE DESIGN TOKENS
+// ==========================================
+// Base Palette (Dark)
+$primary-dark: #1d4ed8;
+$accent-soft-dark: #1e40af;
+$body-secondary-dark: #9db0d8;
+
+// Layout & Surfaces (Dark)
+$body-bg-dark: #040714;
+$body-color-dark: #e9f0ff;
+$border-color-dark: #15203e;
+$panel-bg-dark: #0a1128;
+$panel-soft-dark: #080e21;
+$sidebar-bg-dark: #070c1e;
+$row-alt-dark: #0d1733;
+
+// Gradients & Shadows (Dark)
+$app-header-bg-dark: #080d21;
+$hero-gradient-start-dark: #0a1027;
+$login-placeholder-dark: #8fa3cf;
+$card-shadow-dark: 0 14px 36px rgb(2 6 17 / 50%);
+$ring-color-dark: rgb(29 78 216 / 35%);
+
+// Bootstrap Form Component Bindings (Dark)
+$input-bg-dark: $panel-soft-dark;
+$input-border-color-dark: $border-color-dark;
+$input-color-dark: #fff;
+$input-focus-border-color-dark: rgba($primary-dark, 0.45);

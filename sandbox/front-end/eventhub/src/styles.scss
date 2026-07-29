@@ -1,107 +1,64 @@
-// Bootstrap color modes
-$color-mode-type: data;
-$enable-dark-mode: true;
-
-// Light mode tokens
-$body-bg: #edf2ff;
-$body-color: #12203d;
-$primary: #2954f3;
-$secondary: #6076a8;
-$danger: #dc2626;
-$success: #0f8c6d;
-$warning: #b45309;
-$border-color: #b9c7e6;
-$input-bg: #f8fbff;
-$input-border-color: $border-color;
-$input-color: #12203d;
-$input-focus-border-color: rgba($primary, 0.42);
-
-// Dark mode tokens
-$body-bg-dark: #040714;
-$body-color-dark: #e9f0ff;
-$body-secondary-color-dark: #9db0d8;
-$body-tertiary-color-dark: #9db0d8;
-$border-color-dark: #15203e;
-$input-bg-dark: #080e21;
-$input-border-color-dark: #15203e;
-$input-color-dark: #fff;
-$input-focus-border-color-dark: rgba($primary, 0.45);
-
-// Shared component tokens
-$font-family-sans-serif:
-   'Plus Jakarta Sans',
-   -apple-system,
-   blinkmacsystemfont,
-   'Segoe UI',
-   roboto,
-   sans-serif;
-$btn-border-radius: 24px;
-$btn-padding-y: 10px;
-$btn-padding-x: 24px;
-$input-border-radius: 8px;
-$input-padding-y: 10px;
-$input-padding-x: 14px;
-
+@use 'variables' as *;
 @import 'bootstrap/scss/bootstrap';
 
 :root {
-   --app-header-bg: #f5f8ff;
-   --app-card-bg: #fff;
-   --hero-gradient-start: #d9e6ff;
-   --hero-gradient-end: #f6f9ff;
-   --hero-heading: #12203d;
-   --hero-body: #49608e;
-   --login-divider-color: #c3d0eb;
-   --login-input-bg: #f8fbff;
-   --login-input-border: #b9c7e6;
-   --login-input-color: #12203d;
-   --login-input-placeholder: #5e75a5;
+   --app-header-bg: #{$panel-soft};
+   --app-card-bg: #{$panel-bg};
+   --hero-gradient-start: #{$hero-gradient-start};
+   --hero-gradient-end: #{$hero-gradient-end};
+   --hero-heading: #{$body-color};
+   --hero-body: #{$hero-body};
+   --login-divider-color: #{$login-divider};
+   --login-input-bg: #{$panel-soft};
+   --login-input-border: #{$border-color};
+   --login-input-color: #{$body-color};
+   --login-input-placeholder: #{$login-placeholder};
    --login-input-focus: var(--bs-primary);
    --login-input-focus-ring: color-mix(in srgb, var(--bs-primary) 20%, transparent);
-   --login-panel-shadow: 0 24px 60px rgb(26 42 84 / 12%);
-   --accent-color: #2dd4bf;
-   --privileged-bg: #edf2ff;
-   --privileged-sidebar: #dfe8fb;
-   --privileged-panel: #fff;
-   --privileged-panel-soft: #f5f8ff;
-   --privileged-border: #b9c7e6;
-   --privileged-row-alt: #eff4ff;
-   --privileged-heading: #12203d;
-   --privileged-muted: #5c719e;
-   --privileged-accent: #2954f3;
-   --privileged-accent-soft: #1f43c9;
-   --privileged-ring: rgb(41 84 243 / 35%);
-   --privileged-card-shadow: 0 12px 30px rgb(14 25 50 / 11%);
+   --login-panel-shadow: #{$login-panel-shadow};
+   --accent-color: #{$accent-color};
+   --privileged-bg: #{$body-bg};
+   --privileged-sidebar: #{$sidebar-bg};
+   --privileged-panel: #{$panel-bg};
+   --privileged-panel-soft: #{$panel-soft};
+   --privileged-border: #{$border-color};
+   --privileged-row-alt: #{$row-alt};
+   --privileged-heading: #{$body-color};
+   --privileged-muted: #{$secondary};
+   --privileged-accent: #{$primary};
+   --privileged-accent-soft: #{$accent-soft};
+   --privileged-ring: #{$ring-color};
+   --privileged-card-shadow: #{$card-shadow};
 }
 
 [data-bs-theme='dark'] {
-   --app-header-bg: #080d21;
-   --app-card-bg: #0a1128;
-   --hero-gradient-start: #0a1027;
-   --hero-gradient-end: #040714;
-   --hero-heading: #e9f0ff;
-   --hero-body: #9db0d8;
-   --login-divider-color: #15203e;
-   --login-input-bg: #080e21;
-   --login-input-border: #15203e;
-   --login-input-color: #fff;
-   --login-input-placeholder: #8fa3cf;
+   --app-header-bg: #{$app-header-bg-dark};
+   --app-card-bg: #{$panel-bg-dark};
+   --hero-gradient-start: #{$hero-gradient-start-dark};
+   --hero-gradient-end: #{$body-bg-dark};
+   --hero-heading: #{$body-color-dark};
+   --hero-body: #{$body-secondary-dark};
+   --login-divider-color: #{$border-color-dark};
+   --login-input-bg: #{$panel-soft-dark};
+   --login-input-border: #{$border-color-dark};
+   --login-input-color: #{$input-color-dark};
+   --login-input-placeholder: #{$login-placeholder-dark};
 
    /* Surface & Layout Backgrounds */
-   --privileged-bg: #040714;
-   --privileged-sidebar: #070c1e;
-   --privileged-panel: #0a1128;
-   --privileged-panel-soft: #080e21;
-   --privileged-border: #15203e;
-   --privileged-row-alt: #0d1733;
-   --privileged-heading: #e9f0ff;
-   --privileged-muted: #9db0d8;
+   --privileged-bg: #{$body-bg-dark};
+   --privileged-sidebar: #{$sidebar-bg-dark};
+   --privileged-panel: #{$panel-bg-dark};
+   --privileged-panel-soft: #{$panel-soft-dark};
+   --privileged-border: #{$border-color-dark};
+   --privileged-row-alt: #{$row-alt-dark};
+   --privileged-heading: #{$body-color-dark};
+   --privileged-muted: #{$body-secondary-dark};
 
    /* Accent Blues */
-   --privileged-accent: #1d4ed8;
-   --privileged-accent-soft: #1e40af;
-   --privileged-ring: rgb(29 78 216 / 35%);
-   --privileged-card-shadow: 0 14px 36px rgb(2 6 17 / 50%);
+   --privileged-accent: #{$primary-dark};
+   --privileged-accent-soft: #{$accent-soft-dark};
+   --privileged-ring: #{$ring-color-dark};
+   --privileged-card-shadow: #{$card-shadow-dark};
 
    .form-control {
       background-color: var(--login-input-bg);
