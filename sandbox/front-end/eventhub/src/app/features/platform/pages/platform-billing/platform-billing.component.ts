@@ -30,7 +30,7 @@ interface InvoiceOrganizerOption extends InvoiceGeneratorOrganizerOption {
 }
 
 @Component({
-   selector: 'app-billing',
+   selector: 'app-platform-billing',
    standalone: true,
    imports: [
       PlatformLayoutComponent,
@@ -39,10 +39,10 @@ interface InvoiceOrganizerOption extends InvoiceGeneratorOrganizerOption {
       InvoiceGeneratorCardsComponent,
       ModalComponent
    ],
-   templateUrl: './billing.component.html',
-   styleUrl: './billing.component.scss'
+   templateUrl: './platform-billing.component.html',
+   styleUrl: './platform-billing.component.scss'
 })
-export class BillingComponent {
+export class PlatformBillingComponent {
    private readonly currencyFormatter = new Intl.NumberFormat('en-PH', {
       style: 'currency',
       currency: 'PHP'

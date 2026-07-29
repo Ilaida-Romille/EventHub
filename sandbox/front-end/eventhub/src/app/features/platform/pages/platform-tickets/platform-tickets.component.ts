@@ -6,13 +6,13 @@ import { PlatformDataService } from '../../../../core/services/platform-data.ser
 import { LucideIconComponent } from '../../../../shared/components/lucide-icon/lucide-icon.component';
 
 @Component({
-   selector: 'app-tickets',
+   selector: 'app-platform-tickets',
    standalone: true,
    imports: [PlatformLayoutComponent, LucideIconComponent],
-   templateUrl: './tickets.component.html',
-   styleUrl: './tickets.component.scss'
+   templateUrl: './platform-tickets.component.html',
+   styleUrl: './platform-tickets.component.scss'
 })
-export class TicketsComponent {
+export class PlatformTicketsComponent {
    private readonly platformDataService = inject(PlatformDataService);
 
    private readonly ticketRows = toSignal(this.platformDataService.getTicketRows(), {

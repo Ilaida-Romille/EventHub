@@ -8,7 +8,7 @@ import { KpiCardsComponent } from '../../../../shared/components/kpi-cards/kpi-c
 import { LucideIconComponent } from '../../../../shared/components/lucide-icon/lucide-icon.component';
 
 @Component({
-   selector: 'app-dashboard',
+   selector: 'app-platform-dashboard',
    standalone: true,
    imports: [
       RouterLink,
@@ -17,10 +17,10 @@ import { LucideIconComponent } from '../../../../shared/components/lucide-icon/l
       KpiCardsComponent,
       AnalyticsBarChartComponent
    ],
-   templateUrl: './dashboard.component.html',
-   styleUrl: './dashboard.component.scss'
+   templateUrl: './platform-dashboard.component.html',
+   styleUrl: './platform-dashboard.component.scss'
 })
-export class DashboardComponent {
+export class PlatformDashboardComponent {
    private readonly platformDataService = inject(PlatformDataService);
 
    private readonly organizations = toSignal(this.platformDataService.getOrganizations(), {

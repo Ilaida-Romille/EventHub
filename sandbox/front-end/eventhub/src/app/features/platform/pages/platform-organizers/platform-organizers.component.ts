@@ -16,13 +16,13 @@ import {
 } from '../../../../shared/components/search-filter-card/search-filter-card.component';
 
 @Component({
-   selector: 'app-organizer',
+   selector: 'app-platform-organizers',
    standalone: true,
    imports: [PlatformLayoutComponent, SearchFilterCardComponent, DataTableComponent],
-   templateUrl: './organizer.component.html',
-   styleUrl: './organizer.component.scss'
+   templateUrl: './platform-organizers.component.html',
+   styleUrl: './platform-organizers.component.scss'
 })
-export class OrganizerComponent {
+export class PlatformOrganizersComponent {
    private readonly platformDataService = inject(PlatformDataService);
 
    private readonly organizerRows = toSignal(this.platformDataService.getOrganizerTableRows(), {
