@@ -147,10 +147,6 @@ export class DataTableComponent {
       return sortState.columnKey === columnKey && sortState.direction === direction;
    }
 
-   protected onToolbarAction(actionKey: DataTableToolbarAction['key']): void {
-      this.toolbarActionTriggered.emit(actionKey);
-   }
-
    protected onSortRequested(column: DataTableColumn): void {
       if (!column.sortable) {
          return;

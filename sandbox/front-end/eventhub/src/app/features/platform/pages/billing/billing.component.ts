@@ -103,7 +103,6 @@ export class BillingComponent {
       direction: 'asc'
    });
    protected readonly activeFilters = signal<Record<string, string>>({});
-   protected readonly lastInteraction = signal<string>('Ready');
    protected readonly isInvoiceModalOpen = signal<boolean>(false);
    protected readonly isOrganizerDropdownOpen = signal<boolean>(false);
    protected readonly selectedOrganizerId = signal<string | null>(null);
@@ -205,35 +204,26 @@ export class BillingComponent {
    protected onFiltersSubmitted(filters: Record<string, string>): void {
       this.activeFilters.set(filters);
       this.currentPage.set(1);
-      this.lastInteraction.set('Filters applied');
    }
 
    protected onSortChanged(sortState: DataTableSortState): void {
       this.sortState.set(sortState);
-      this.lastInteraction.set(`Sorted by ${sortState.columnKey}`);
    }
 
    protected onPageChanged(page: number): void {
       this.currentPage.set(page);
    }
 
-   protected onToolbarAction(action: DataTableToolbarAction['key']): void {
-      this.lastInteraction.set(`Toolbar action: ${action}`);
-   }
-
    protected onRowAction(event: { actionKey: string; row: DataTableRow }): void {
       const invoiceNumber = String(event.row['invoiceNumber'] ?? 'record');
-      this.lastInteraction.set(`${event.actionKey} executed for ${invoiceNumber}`);
    }
 
    protected openInvoiceModal(): void {
       if (!this.selectedOrganizer()) {
-         this.lastInteraction.set('Select an organizer before generating an invoice');
          return;
       }
 
       this.isInvoiceModalOpen.set(true);
-      this.lastInteraction.set('Invoice modal opened');
    }
 
    protected closeInvoiceModal(): void {
@@ -289,7 +279,6 @@ export class BillingComponent {
    }
 
    protected confirmInvoice(): void {
-      this.lastInteraction.set('Invoice preview confirmed');
       this.closeInvoiceModal();
    }
 }

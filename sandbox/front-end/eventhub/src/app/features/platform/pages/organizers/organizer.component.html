@@ -6,9 +6,7 @@
     <app-data-table tableId="organizers-table" [columns]="organizerColumns" [rows]="pagedRows()"
         [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()" [sortState]="sortState()"
         [toolbarActions]="tableActions" [rowActions]="rowActions" (sortChanged)="onSortChanged($event)"
-        (pageChanged)="onPageChanged($event)" (toolbarActionTriggered)="onToolbarAction($event)"
-        (rowActionTriggered)="onRowAction($event)">
+        (pageChanged)="onPageChanged($event)" (rowActionTriggered)="onRowAction($event)">
     </app-data-table>
 
-    <p class="table-state-message mt-3 mb-0">{{ lastInteraction() }}</p>
 </app-platform-layout>

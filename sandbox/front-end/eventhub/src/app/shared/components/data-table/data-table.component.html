@@ -2,7 +2,7 @@
     <header class="table-toolbar">
         <div class="table-toolbar-actions" aria-label="Table actions">
             @for (action of toolbarActions(); track action.key) {
-            <button type="button" class="btn btn-outline-secondary btn-sm" (click)="onToolbarAction(action.key)">{{
+            <button type="button" class="btn btn-outline-secondary btn-sm">{{
                 action.label }}</button>
             }
         </div>

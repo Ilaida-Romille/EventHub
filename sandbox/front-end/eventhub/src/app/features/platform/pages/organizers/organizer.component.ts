@@ -38,8 +38,8 @@ export class OrganizerComponent {
    ];
 
    protected readonly rowActions: DataTableRowAction[] = [
-      { key: 'profile', label: 'Profile' },
-      { key: 'contact', label: 'Contact' }
+      { key: 'view', label: 'View' },
+      { key: 'change_status', label: 'Change Status' }
    ];
 
    protected readonly organizerFilters: FilterField[] = [
@@ -77,7 +77,6 @@ export class OrganizerComponent {
       direction: 'asc'
    });
    protected readonly activeFilters = signal<Record<string, string>>({});
-   protected readonly lastInteraction = signal<string>('Ready');
 
    protected readonly filteredRows = computed(() => {
       const rows = this.organizerRows();
@@ -125,24 +124,17 @@ export class OrganizerComponent {
    protected onFiltersSubmitted(filters: Record<string, string>): void {
       this.activeFilters.set(filters);
       this.currentPage.set(1);
-      this.lastInteraction.set('Filters applied');
    }
 
    protected onSortChanged(sortState: DataTableSortState): void {
       this.sortState.set(sortState);
-      this.lastInteraction.set(`Sorted by ${sortState.columnKey}`);
    }
 
    protected onPageChanged(page: number): void {
       this.currentPage.set(page);
    }
 
-   protected onToolbarAction(action: DataTableToolbarAction['key']): void {
-      this.lastInteraction.set(`Toolbar action: ${action}`);
-   }
-
    protected onRowAction(event: { actionKey: string; row: DataTableRow }): void {
       const organizerName = String(event.row['name'] ?? 'organizer');
-      this.lastInteraction.set(`${event.actionKey} executed for ${organizerName}`);
    }
 }
