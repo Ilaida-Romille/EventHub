@@ -1,12 +1,16 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
 import { PlatformLayoutComponent } from '../../../../core/layouts/platform-layout/platform-layout.component';
 import { PlatformDataService } from '../../../../core/services/platform-data.service';
 import { AnalyticsBarChartComponent } from '../../../../shared/components/analytics-bar-chart/analytics-bar-chart.component';
-import { KpiCardsComponent } from '../../../../shared/components/kpi-cards/kpi-cards.component';
+import { KpiCardComponent } from '../../../../shared/components/kpi-card/kpi-card.component';
 import { LucideIconComponent } from '../../../../shared/components/lucide-icon/lucide-icon.component';
-
+export interface DashboardShortcut {
+   label: string;
+   routerLink: string;
+   icon?: string;
+}
 @Component({
    selector: 'app-platform-dashboard',
    standalone: true,
@@ -14,7 +18,7 @@ import { LucideIconComponent } from '../../../../shared/components/lucide-icon/l
       RouterLink,
       PlatformLayoutComponent,
       LucideIconComponent,
-      KpiCardsComponent,
+      KpiCardComponent,
       AnalyticsBarChartComponent
    ],
    templateUrl: './platform-dashboard.component.html',
@@ -48,4 +52,10 @@ export class PlatformDashboardComponent {
          height: `${Math.round((item.count / maxCount) * 100)}%`
       }));
    });
+
+   readonly shortcuts = signal<DashboardShortcut[]>([
+      { label: 'View Organizers', routerLink: '/platform/organizers', icon: 'arrow-right' },
+      { label: 'View Billing', routerLink: '/platform/billing', icon: 'arrow-right' },
+      { label: 'View Tickets', routerLink: '/platform/tickets', icon: 'arrow-right' }
+   ]);
 }

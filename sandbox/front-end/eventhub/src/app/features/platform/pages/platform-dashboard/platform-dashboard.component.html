@@ -1,20 +1,23 @@
 <app-platform-layout>
-    <app-kpi-cards [cards]="kpiCards()"></app-kpi-cards>
+    <section class="row row-cols-1 row-cols-md-auto g-3 mb-4" aria-label="Metrics Overview">
+        @for (card of kpiCards(); track card.label) {
+        <div class="col flex-fill">
+            <app-kpi-card [value]="card.value" [label]="card.label"></app-kpi-card>
+        </div>
+        }
+    </section>
 
     <app-analytics-bar-chart [bars]="analyticsBars()"></app-analytics-bar-chart>
 
-    <nav class="shortcut-list" aria-label="Quick Actions Summary">
-        <a routerLink="/platform/organizers" class="btn-shortcut">
-            <span>View Organizers</span>
-            <app-lucide-icon name="arrow-right" [size]="15"></app-lucide-icon>
-        </a>
-        <a routerLink="/platform/billing" class="btn-shortcut">
-            <span>View Billing</span>
-            <app-lucide-icon name="arrow-right" [size]="15"></app-lucide-icon>
-        </a>
-        <a routerLink="/platform/tickets" class="btn-shortcut">
-            <span>View Tickets</span>
-            <app-lucide-icon name="arrow-right" [size]="15"></app-lucide-icon>
-        </a>
+    <nav class="row row-cols-1 row-cols-md-3 g-3 mt-1" aria-label="Quick Actions Summary">
+        @for (shortcut of shortcuts(); track shortcut.routerLink) {
+        <div class="col">
+            <a [routerLink]="shortcut.routerLink"
+                class="shortcut-card h-100 p-3 p-md-4 d-flex align-items-center justify-content-between text-decoration-none fw-bold">
+                <span>{{ shortcut.label }}</span>
+                <app-lucide-icon [name]="shortcut.icon || 'arrow-right'" [size]="15"></app-lucide-icon>
+            </a>
+        </div>
+        }
     </nav>
 </app-platform-layout>

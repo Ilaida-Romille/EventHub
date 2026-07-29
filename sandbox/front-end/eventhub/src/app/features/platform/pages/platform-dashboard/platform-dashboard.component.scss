@@ -1,38 +1,17 @@
-.btn-shortcut {
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   flex: 1 1 220px;
+.shortcut-card {
    background: var(--platform-panel);
    border: 1px solid var(--platform-border);
    border-radius: 14px;
-   padding: 18px 24px;
-   font-weight: 700;
    font-size: 0.95rem;
    color: var(--platform-heading);
-   text-decoration: none;
    transition:
       background-color 0.25s ease,
       border-color 0.25s ease,
-      color 0.25s ease,
       transform 0.25s ease;
 
    &:hover {
       background-color: color-mix(in srgb, var(--platform-panel) 60%, var(--platform-accent) 40%);
       border-color: color-mix(in srgb, var(--platform-accent) 72%, transparent);
-      color: var(--platform-heading);
       transform: translateY(-1px);
-   }
-}
-
-.shortcut-list {
-   display: flex;
-   flex-wrap: wrap;
-   gap: 1rem;
-}
-
-@media (width <= 768px) {
-   .btn-shortcut {
-      padding: 16px 18px;
    }
 }
