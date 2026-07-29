@@ -17,13 +17,13 @@ $input-color: #12203d;
 $input-focus-border-color: rgba($primary, 0.42);
 
 // Dark mode tokens
-$body-bg-dark: #0a1027;
+$body-bg-dark: #040714;
 $body-color-dark: #e9f0ff;
 $body-secondary-color-dark: #9db0d8;
 $body-tertiary-color-dark: #9db0d8;
-$border-color-dark: #26345f;
-$input-bg-dark: #111a36;
-$input-border-color-dark: #26345f;
+$border-color-dark: #15203e;
+$input-bg-dark: #080e21;
+$input-border-color-dark: #15203e;
 $input-color-dark: #fff;
 $input-focus-border-color-dark: rgba($primary, 0.45);
 
@@ -75,29 +75,33 @@ $input-padding-x: 14px;
 }
 
 [data-bs-theme='dark'] {
-   --app-header-bg: #121a37;
-   --app-card-bg: #111a36;
-   --hero-gradient-start: #131b3a;
-   --hero-gradient-end: #0a1027;
+   --app-header-bg: #080d21;
+   --app-card-bg: #0a1128;
+   --hero-gradient-start: #0a1027;
+   --hero-gradient-end: #040714;
    --hero-heading: #e9f0ff;
    --hero-body: #9db0d8;
-   --login-divider-color: #26345f;
-   --login-input-bg: #111a36;
-   --login-input-border: #26345f;
+   --login-divider-color: #15203e;
+   --login-input-bg: #080e21;
+   --login-input-border: #15203e;
    --login-input-color: #fff;
    --login-input-placeholder: #8fa3cf;
-   --privileged-bg: #0a1027;
-   --privileged-sidebar: #0e1733;
-   --privileged-panel: #121c3b;
-   --privileged-panel-soft: #111a36;
-   --privileged-border: #26345f;
-   --privileged-row-alt: #18264b;
+
+   /* Surface & Layout Backgrounds */
+   --privileged-bg: #040714;
+   --privileged-sidebar: #070c1e;
+   --privileged-panel: #0a1128;
+   --privileged-panel-soft: #080e21;
+   --privileged-border: #15203e;
+   --privileged-row-alt: #0d1733;
    --privileged-heading: #e9f0ff;
    --privileged-muted: #9db0d8;
-   --privileged-accent: #3c65ff;
-   --privileged-accent-soft: #75a3ff;
-   --privileged-ring: rgb(60 101 255 / 35%);
-   --privileged-card-shadow: 0 14px 36px rgb(2 6 17 / 34%);
+
+   /* Accent Blues */
+   --privileged-accent: #1d4ed8;
+   --privileged-accent-soft: #1e40af;
+   --privileged-ring: rgb(29 78 216 / 35%);
+   --privileged-card-shadow: 0 14px 36px rgb(2 6 17 / 50%);
 
    .form-control {
       background-color: var(--login-input-bg);
