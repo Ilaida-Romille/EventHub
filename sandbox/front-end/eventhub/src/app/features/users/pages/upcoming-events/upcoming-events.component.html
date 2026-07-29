@@ -1,0 +1,29 @@
+<section class="users-shell">
+    <app-header brandName="EventHub" profileName="Juan Dela Cruz" [showThemeToggle]="true" [showProfile]="true"
+        [logoutRoute]="'/login'"></app-header>
+
+    <main class="users-main">
+        <h1 class="users-title">Upcoming Events</h1>
+
+        <div class="mb-4">
+            <app-search-filter-card [fields]="searchFields()" actionLabel="Search"
+                (filtersSubmitted)="onSearchSubmitted($event)">
+            </app-search-filter-card>
+        </div>
+
+        <div class="events-toolbar d-flex align-items-center justify-content-between mb-4 flex-wrap gap-3">
+            <app-category-switch [tabs]="['Upcoming', 'Recently Added']" [selectedTab]="activeCategory()"
+                (tabChange)="activeCategory.set($event)">
+            </app-category-switch>
+
+            <app-view-toggle [view]="activeView()" (viewChange)="activeView.set($event)">
+            </app-view-toggle>
+        </div>
+
+        <div [class.events-grid]="activeView() === 'grid'" [class.events-list]="activeView() === 'list'">
+            @for (event of filteredEvents(); track event.id) {
+            <app-event-card [event]="event" [view]="activeView()"></app-event-card>
+            }
+        </div>
+    </main>
+</section>

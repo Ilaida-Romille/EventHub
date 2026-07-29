@@ -1,0 +1,31 @@
+.category-switch-nav {
+   display: inline-flex;
+   align-items: center;
+   background: color-mix(in srgb, var(--privileged-panel) 80%, var(--privileged-border) 20%);
+   border: 1px solid var(--privileged-border);
+   border-radius: 999px;
+   padding: 4px;
+   gap: 4px;
+}
+
+.category-tab-btn {
+   background: transparent;
+   border: none;
+   border-radius: 999px;
+   padding: 0.45rem 1.25rem;
+   font-size: 0.88rem;
+   font-weight: 700;
+   color: var(--privileged-muted);
+   cursor: pointer;
+   transition: all 0.25s ease;
+
+   &:hover {
+      color: var(--privileged-heading);
+   }
+
+   &.active {
+      background: var(--privileged-panel);
+      color: var(--privileged-heading);
+      box-shadow: 0 2px 8px rgb(0 0 0 / 12%);
+   }
+}

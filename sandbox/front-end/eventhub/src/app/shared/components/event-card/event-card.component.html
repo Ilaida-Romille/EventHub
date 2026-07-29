@@ -1,0 +1,110 @@
+@if (view() === 'grid') {
+<div class="flip-card-container">
+    <div class="flip-card-inner" [class.is-flipped]="isFlipped()">
+        <article class="card flip-card-front">
+            <div class="card-img-wrapper">
+                <img [src]="event().imageUrl" [alt]="event().title" class="card-img" />
+                <span class="event-category-badge">{{ event().category }}</span>
+
+                <button type="button" class="btn-info-top-right" (click)="toggleFlip($event)" title="View Event Details"
+                    aria-label="View Event Details">
+                    <app-lucide-icon name="info" [size]="24"></app-lucide-icon>
+                </button>
+            </div>
+
+            <div class="card-body">
+                <h3 class="event-title">{{ event().title }}</h3>
+
+                <p class="event-meta">
+                    <app-lucide-icon name="calendar" [size]="14"></app-lucide-icon>
+                    <span>{{ event().date }}</span>
+                </p>
+
+                <p class="event-meta">
+                    <app-lucide-icon name="map-pin" [size]="14"></app-lucide-icon>
+                    <span>{{ event().venue }}</span>
+                </p>
+
+                <div class="capacity-bar-wrapper mt-2">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="attendee-badge">
+                            <app-lucide-icon name="users" [size]="14"></app-lucide-icon>
+                            <span><strong>{{ event().registeredCount }}</strong> / {{ event().venueLimit }}
+                                registered</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer p-3 pt-0 border-0 bg-transparent">
+                <a routerLink="/users/event-registration" class="btn btn-primary w-100 fw-bold">Register</a>
+            </div>
+        </article>
+
+        <article class="card flip-card-back">
+            <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <span class="event-category-badge">{{ event().category }}</span>
+                    <button type="button" class="btn-close-flip" (click)="toggleFlip($event)" title="Return to front"
+                        aria-label="Return to front">
+                        <app-lucide-icon name="x" [size]="18"></app-lucide-icon>
+                    </button>
+                </div>
+
+                <h3 class="event-title mb-1">{{ event().title }}</h3>
+                <p class="organizer-text mb-2">Organized by: <strong>{{ event().organizer }}</strong></p>
+
+                <div class="description-scroll flex-grow-1">
+                    <p class="event-description m-0">{{ event().description }}</p>
+                </div>
+            </div>
+
+            <div class="card-footer p-3 pt-0 border-0 bg-transparent d-flex gap-2">
+                <button type="button" class="btn btn-outline-secondary fw-bold flex-fill"
+                    (click)="toggleFlip($event)">Back</button>
+                <a routerLink="/users/event-registration" class="btn btn-primary fw-bold flex-fill text-nowrap">Register
+                    Now</a>
+            </div>
+        </article>
+    </div>
+</div>
+} @else {
+<article class="card list-card" [class.is-expanded]="isExpanded()">
+    <div class="list-main-row">
+        <img [src]="event().imageUrl" [alt]="event().title" class="list-img" />
+
+        <div class="list-info flex-grow-1">
+            <div class="d-flex align-items-center gap-2 mb-1">
+                <span class="event-category-badge">{{ event().category }}</span>
+                <span class="attendee-pill">
+                    <app-lucide-icon name="users" [size]="12"></app-lucide-icon>
+                    {{ event().registeredCount }} / {{ event().venueLimit }} Limit
+                </span>
+            </div>
+            <h3 class="event-title">{{ event().title }}</h3>
+            <p class="event-meta m-0">
+                <span>{{ event().date }}</span> &bull; <span>{{ event().venue }}</span>
+            </p>
+        </div>
+
+        <div class="list-actions d-flex align-items-center gap-2">
+            <button type="button" class="btn-info-circle" (click)="toggleDetails($event)" title="Toggle Details"
+                [class.active]="isExpanded()">
+                <app-lucide-icon name="info" [size]="18"></app-lucide-icon>
+            </button>
+            <a routerLink="/users/event-registration" class="btn btn-primary fw-bold px-3">Register</a>
+        </div>
+    </div>
+
+    <div class="list-details-panel" [class.is-expanded]="isExpanded()">
+        <div class="panel-content">
+            <hr class="my-2" />
+            <p class="mb-1 text-muted small d-flex align-items-center gap-2">
+                <span>Organized by: <strong>{{ event().organizer }}</strong></span> &bull;
+                <span>Max Capacity: <strong>{{ event().venueLimit }} people</strong></span>
+            </p>
+            <p class="event-description mb-0">{{ event().description }}</p>
+        </div>
+    </div>
+</article>
+}

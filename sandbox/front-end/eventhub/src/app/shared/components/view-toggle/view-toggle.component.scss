@@ -1,0 +1,37 @@
+.view-toggle-group {
+   display: inline-flex;
+   align-items: center;
+   background: color-mix(in srgb, var(--privileged-panel) 80%, var(--privileged-border) 20%);
+   border: 1px solid var(--privileged-border);
+   border-radius: 12px;
+   padding: 3px;
+
+   .divider {
+      width: 1px;
+      height: 18px;
+      background: var(--privileged-border);
+   }
+}
+
+.toggle-btn {
+   background: transparent;
+   border: none;
+   border-radius: 9px;
+   padding: 0.45rem 0.65rem;
+   color: var(--privileged-muted);
+   cursor: pointer;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   transition: all 0.2s ease;
+
+   &:hover {
+      color: var(--privileged-heading);
+   }
+
+   &.active {
+      background: var(--privileged-panel);
+      color: var(--privileged-heading);
+      box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+   }
+}

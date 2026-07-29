@@ -1,0 +1,11 @@
+<div class="view-toggle-group" role="group" aria-label="Layout view mode">
+    <button type="button" class="toggle-btn" [class.active]="view() === 'grid'" (click)="setView('grid')"
+        title="Grid View" aria-label="Grid View">
+        <app-lucide-icon name="layout-grid" [size]="18"></app-lucide-icon>
+    </button>
+    <div class="divider"></div>
+    <button type="button" class="toggle-btn" [class.active]="view() === 'list'" (click)="setView('list')"
+        title="List View" aria-label="List View">
+        <app-lucide-icon name="list" [size]="18"></app-lucide-icon>
+    </button>
+</div>

@@ -1,0 +1,8 @@
+<nav class="category-switch-nav" role="tablist" aria-label="Category Selection">
+    @for (tab of tabs(); track tab) {
+    <button type="button" class="category-tab-btn" [class.active]="selectedTab() === tab" (click)="selectTab(tab)"
+        role="tab" [attr.aria-selected]="selectedTab() === tab">
+        {{ tab }}
+    </button>
+    }
+</nav>
