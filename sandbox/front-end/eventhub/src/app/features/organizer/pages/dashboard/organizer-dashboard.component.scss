@@ -25,12 +25,6 @@
    font-weight: 600;
 }
 
-.workspace-grid {
-   display: grid;
-   gap: 1rem;
-   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-}
-
 .workspace-card {
    padding: 1.2rem;
    border: 1px solid var(--platform-border);
