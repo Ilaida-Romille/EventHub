@@ -2,7 +2,7 @@
     <div class="container-fluid app-header-inner">
         <div class="d-flex align-items-center gap-2">
             @if (showMenuButton()) {
-            <button type="button" class="btn header-menu-btn" aria-controls="platform-sidebar"
+            <button type="button" class="btn header-menu-btn" aria-controls="privileged-sidebar"
                 [attr.aria-expanded]="menuExpanded()" aria-label="Toggle navigation menu" (click)="onMenuToggle()">
                 <app-lucide-icon [name]="menuExpanded() ? 'x' : 'menu'" [size]="18"></app-lucide-icon>
             </button>

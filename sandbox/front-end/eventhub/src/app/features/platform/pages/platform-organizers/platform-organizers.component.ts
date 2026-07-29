@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { PlatformLayoutComponent } from '../../../../core/layouts/platform-layout/platform-layout.component';
+import { PrivilegedLayoutComponent } from '../../../../core/layouts/privileged-layout/privileged-layout.component';
 import { OrganizerTableRow } from '../../../../core/models/platform.models';
 import { PlatformDataService } from '../../../../core/services/platform-data.service';
 import { DataTableComponent } from '../../../../shared/components/data-table/data-table.component';
@@ -18,7 +18,7 @@ import {
 @Component({
    selector: 'app-platform-organizers',
    standalone: true,
-   imports: [PlatformLayoutComponent, SearchFilterCardComponent, DataTableComponent],
+   imports: [PrivilegedLayoutComponent, SearchFilterCardComponent, DataTableComponent],
    templateUrl: './platform-organizers.component.html',
    styleUrl: './platform-organizers.component.scss'
 })

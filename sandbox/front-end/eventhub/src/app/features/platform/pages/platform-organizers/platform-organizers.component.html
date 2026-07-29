@@ -1,4 +1,4 @@
-<app-platform-layout>
+<app-privileged-layout>
     <app-search-filter-card class="d-block mb-4" [fields]="organizerFilters" actionId="organizers-search-btn"
         actionLabel="Search" [initialValues]="activeFilters()"
         (filtersSubmitted)="onFiltersSubmitted($event)"></app-search-filter-card>
@@ -9,4 +9,4 @@
         (pageChanged)="onPageChanged($event)" (rowActionTriggered)="onRowAction($event)">
     </app-data-table>
 
-</app-platform-layout>
+</app-privileged-layout>

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { PlatformLayoutComponent } from '../../../../core/layouts/platform-layout/platform-layout.component';
+import { PrivilegedLayoutComponent } from '../../../../core/layouts/privileged-layout/privileged-layout.component';
 import { LucideIconComponent } from '../../../../shared/components/lucide-icon/lucide-icon.component';
 
 @Component({
    selector: 'app-organizer-dashboard',
    standalone: true,
-   imports: [RouterLink, LucideIconComponent, PlatformLayoutComponent],
+   imports: [RouterLink, LucideIconComponent, PrivilegedLayoutComponent],
    templateUrl: './organizer-dashboard.component.html',
    styleUrl: './organizer-dashboard.component.scss'
 })

@@ -1,19 +1,19 @@
-<div class="platform-shell" [class.sidebar-collapsed]="showCollapsedSidebar()">
+<div class="privileged-shell" [class.sidebar-collapsed]="showCollapsedSidebar()">
     @if (!isMobile()) {
     <app-sidebar [profileName]="profileName()" [profileRole]="resolvedProfileRole()" [homeRoute]="resolvedHomeRoute()"
         [navItems]="resolvedNavItems()" [(isCollapsed)]="collapsed">
     </app-sidebar>
     }
 
-    <section class="platform-content-wrap">
-        <header class="platform-topbar">
+    <section class="privileged-content-wrap">
+        <header class="privileged-topbar">
             @if (isMobile()) {
             <app-header [brandName]="'EventHub'" [showMenuButton]="false" [showProfile]="true" [showProfileName]="false"
                 [showThemeToggle]="true" [showBrandLogo]="true" [logoutRoute]="'/login'"></app-header>
             }
         </header>
 
-        <main class="platform-content" [class.fluid]="fluidContent()" [class.mobile-nav-spaced]="isMobile()">
+        <main class="privileged-content" [class.fluid]="fluidContent()" [class.mobile-nav-spaced]="isMobile()">
             <ng-content></ng-content>
         </main>
     </section>

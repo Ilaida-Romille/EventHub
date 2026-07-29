@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { RouterLink } from '@angular/router';
-import { PlatformLayoutComponent } from '../../../../core/layouts/platform-layout/platform-layout.component';
+import { PrivilegedLayoutComponent } from '../../../../core/layouts/privileged-layout/privileged-layout.component';
 import { PlatformDataService } from '../../../../core/services/platform-data.service';
 import { AnalyticsBarChartComponent } from '../../../../shared/components/analytics-bar-chart/analytics-bar-chart.component';
 import { KpiCardComponent } from '../../../../shared/components/kpi-card/kpi-card.component';
@@ -16,7 +16,7 @@ export interface DashboardShortcut {
    standalone: true,
    imports: [
       RouterLink,
-      PlatformLayoutComponent,
+      PrivilegedLayoutComponent,
       LucideIconComponent,
       KpiCardComponent,
       AnalyticsBarChartComponent

@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { PlatformLayoutComponent } from '../../../../core/layouts/platform-layout/platform-layout.component';
+import { PrivilegedLayoutComponent } from '../../../../core/layouts/privileged-layout/privileged-layout.component';
 import { BillingTableRow, OrganizationRecord } from '../../../../core/models/platform.models';
 import { PlatformDataService } from '../../../../core/services/platform-data.service';
 import {
@@ -33,7 +33,7 @@ interface InvoiceOrganizerOption extends InvoiceGeneratorOrganizerOption {
    selector: 'app-platform-billing',
    standalone: true,
    imports: [
-      PlatformLayoutComponent,
+      PrivilegedLayoutComponent,
       SearchFilterCardComponent,
       DataTableComponent,
       InvoiceGeneratorCardsComponent,

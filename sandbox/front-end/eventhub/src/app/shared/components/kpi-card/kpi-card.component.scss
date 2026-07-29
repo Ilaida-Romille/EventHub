@@ -1,6 +1,6 @@
 .card {
-   background-color: var(--platform-panel);
-   border: 1px solid var(--platform-border);
+   background-color: var(--privileged-panel);
+   border: 1px solid var(--privileged-border);
    border-radius: 18px;
 }
 
@@ -9,8 +9,8 @@
    overflow: hidden;
    background: linear-gradient(
       180deg,
-      color-mix(in srgb, var(--platform-panel) 92%, #2d57f0 8%),
-      var(--platform-panel)
+      color-mix(in srgb, var(--privileged-panel) 92%, #2d57f0 8%),
+      var(--privileged-panel)
    );
 
    &::before {
@@ -20,20 +20,20 @@
       left: 0;
       width: 4px;
       height: 100%;
-      background: var(--platform-accent);
+      background: var(--privileged-accent);
    }
 
    .value {
       font-size: 2.75rem;
       font-weight: 800;
       line-height: 1.1;
-      color: var(--platform-heading);
+      color: var(--privileged-heading);
    }
 }
 
 .metric-label {
    font-size: 0.85rem;
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
 }
 
 @media (max-width >= 768px) {

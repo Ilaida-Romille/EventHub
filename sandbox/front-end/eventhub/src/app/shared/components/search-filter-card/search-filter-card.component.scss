@@ -1,6 +1,6 @@
 .search-filter-card {
-   background: var(--platform-panel);
-   border: 1px solid var(--platform-border);
+   background: var(--privileged-panel);
+   border: 1px solid var(--privileged-border);
    border-radius: 18px;
 }
 
@@ -21,7 +21,7 @@
 
 .form-label {
    font-size: 0.82rem;
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
    letter-spacing: 0.04em;
 }
 

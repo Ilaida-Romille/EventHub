@@ -1,5 +1,5 @@
 .data-table-shell {
-   border: 1px solid var(--platform-border);
+   border: 1px solid var(--privileged-border);
    border-radius: 18px;
    overflow: hidden;
 }
@@ -10,7 +10,7 @@
    justify-content: flex-start;
    align-items: center;
    padding: 1rem;
-   border-bottom: 1px solid var(--platform-border);
+   border-bottom: 1px solid var(--privileged-border);
    flex-wrap: wrap;
 }
 
@@ -21,16 +21,20 @@
 }
 
 .table {
-   --bs-table-bg: var(--platform-panel);
-   --bs-table-striped-bg: var(--platform-row-alt);
-   --bs-table-hover-bg: color-mix(in srgb, var(--platform-panel) 75%, var(--platform-accent) 25%);
-   --bs-table-border-color: var(--platform-border);
+   --bs-table-bg: var(--privileged-panel);
+   --bs-table-striped-bg: var(--privileged-row-alt);
+   --bs-table-hover-bg: color-mix(
+      in srgb,
+      var(--privileged-panel) 75%,
+      var(--privileged-accent) 25%
+   );
+   --bs-table-border-color: var(--privileged-border);
 
-   color: var(--platform-heading);
+   color: var(--privileged-heading);
 
    thead th {
-      color: var(--platform-muted);
-      border-color: var(--platform-border);
+      color: var(--privileged-muted);
+      border-color: var(--privileged-border);
       font-size: 0.8rem;
       letter-spacing: 0.04em;
       white-space: nowrap;
@@ -49,12 +53,12 @@
 .sort-btn {
    border: 0;
    background: transparent;
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
    display: inline-flex;
    margin-left: 0.3rem;
 
    &.active {
-      color: var(--platform-heading);
+      color: var(--privileged-heading);
    }
 }
 
@@ -63,13 +67,13 @@
 }
 
 .row-action-btn {
-   color: var(--platform-accent-soft);
+   color: var(--privileged-accent-soft);
    text-decoration: none;
    font-weight: 700;
 }
 
 .row-action-btn:hover {
-   color: var(--platform-heading);
+   color: var(--privileged-heading);
 }
 
 .row-action-btn.danger {
@@ -105,7 +109,7 @@
 }
 
 .table-footer {
-   border-top: 1px solid var(--platform-border);
+   border-top: 1px solid var(--privileged-border);
    padding: 0.9rem 1rem;
    display: flex;
    align-items: center;
@@ -115,7 +119,7 @@
 }
 
 .table-count {
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
    font-size: 0.9rem;
    font-weight: 600;
 }
@@ -130,9 +134,9 @@
    width: 2.1rem;
    height: 2.1rem;
    border-radius: 8px;
-   border: 1px solid var(--platform-border);
-   color: var(--platform-heading);
-   background: var(--platform-panel);
+   border: 1px solid var(--privileged-border);
+   color: var(--privileged-heading);
+   background: var(--privileged-panel);
    font-weight: 700;
 
    &:disabled {
@@ -142,12 +146,12 @@
 }
 
 .pagination-btn.active {
-   border-color: color-mix(in srgb, var(--platform-accent) 72%, transparent);
-   background: color-mix(in srgb, var(--platform-panel) 62%, var(--platform-accent) 38%);
+   border-color: color-mix(in srgb, var(--privileged-accent) 72%, transparent);
+   background: color-mix(in srgb, var(--privileged-panel) 62%, var(--privileged-accent) 38%);
 }
 
 .table-page-indicator {
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
    margin-left: 0.45rem;
    font-size: 0.85rem;
    font-weight: 700;

@@ -13,8 +13,8 @@
 .app-modal {
    width: min(680px, 100%);
    border-radius: 20px;
-   border: 1px solid var(--platform-border);
-   background: var(--platform-panel);
+   border: 1px solid var(--privileged-border);
+   background: var(--privileged-panel);
    box-shadow: 0 24px 70px rgb(4 9 22 / 28%);
 }
 
@@ -28,11 +28,11 @@
 }
 
 .app-modal-header {
-   border-bottom: 1px solid var(--platform-border);
+   border-bottom: 1px solid var(--privileged-border);
 
    h3 {
       margin: 0;
-      color: var(--platform-heading);
+      color: var(--privileged-heading);
       font-size: 1rem;
       font-weight: 700;
    }
@@ -43,22 +43,22 @@
 }
 
 .app-modal-footer {
-   border-top: 1px solid var(--platform-border);
+   border-top: 1px solid var(--privileged-border);
    justify-content: flex-end;
 }
 
 .app-modal-close {
    width: 2rem;
    height: 2rem;
-   border: 1px solid var(--platform-border);
-   color: var(--platform-muted);
+   border: 1px solid var(--privileged-border);
+   color: var(--privileged-muted);
    border-radius: 999px;
    display: inline-flex;
    align-items: center;
    justify-content: center;
 
    &:hover {
-      color: var(--platform-heading);
-      border-color: var(--platform-accent);
+      color: var(--privileged-heading);
+      border-color: var(--privileged-accent);
    }
 }

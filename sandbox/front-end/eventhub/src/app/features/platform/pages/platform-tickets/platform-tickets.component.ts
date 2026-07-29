@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { PlatformLayoutComponent } from '../../../../core/layouts/platform-layout/platform-layout.component';
+import { PrivilegedLayoutComponent } from '../../../../core/layouts/privileged-layout/privileged-layout.component';
 import { TicketTableRow } from '../../../../core/models/platform.models';
 import { PlatformDataService } from '../../../../core/services/platform-data.service';
 import { LucideIconComponent } from '../../../../shared/components/lucide-icon/lucide-icon.component';
@@ -8,7 +8,7 @@ import { LucideIconComponent } from '../../../../shared/components/lucide-icon/l
 @Component({
    selector: 'app-platform-tickets',
    standalone: true,
-   imports: [PlatformLayoutComponent, LucideIconComponent],
+   imports: [PrivilegedLayoutComponent, LucideIconComponent],
    templateUrl: './platform-tickets.component.html',
    styleUrl: './platform-tickets.component.scss'
 })

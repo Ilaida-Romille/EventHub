@@ -19,13 +19,13 @@ const ORGANIZER_NAV_ITEMS: LayoutNavItem[] = [
 ];
 
 @Component({
-   selector: 'app-platform-layout',
+   selector: 'app-privileged-layout',
    standalone: true,
    imports: [SidebarComponent, HeaderComponent, MobileBottomNavComponent],
-   templateUrl: './platform-layout.component.html',
-   styleUrl: './platform-layout.component.scss'
+   templateUrl: './privileged-layout.component.html',
+   styleUrl: './privileged-layout.component.scss'
 })
-export class PlatformLayoutComponent {
+export class PrivilegedLayoutComponent {
    private readonly destroyRef = inject(DestroyRef);
 
    readonly layoutContext = input<AppLayoutContext>('platform');

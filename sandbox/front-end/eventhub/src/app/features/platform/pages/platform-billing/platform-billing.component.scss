@@ -3,21 +3,21 @@
 }
 
 .table-state-message {
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
    font-size: 0.85rem;
    font-weight: 600;
 }
 
 .invoice-preview-head h6,
 .invoice-preview-table thead th {
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
 }
 
 .invoice-preview-head p,
 .invoice-preview-table td,
 .invoice-preview-table th,
 .modal-grand-total {
-   color: var(--platform-heading);
+   color: var(--privileged-heading);
 }
 
 .invoice-dropdown {

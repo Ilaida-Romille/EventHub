@@ -1,6 +1,6 @@
 .analytics-title {
    font-size: 0.95rem;
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
 }
 
 .chart-container {
@@ -29,7 +29,7 @@
 
 .grid-line {
    width: 100%;
-   border-top: 1px dashed var(--platform-border);
+   border-top: 1px dashed var(--privileged-border);
    position: relative;
 }
 
@@ -39,7 +39,7 @@
    top: -0.55rem;
    font-size: 0.7rem;
    font-weight: 600;
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
 }
 
 .chart-bars {
@@ -68,8 +68,8 @@
    height: var(--value, 0%);
    background: linear-gradient(
       180deg,
-      var(--platform-accent, #2d57f0),
-      color-mix(in srgb, var(--platform-accent, #2d57f0) 30%, transparent)
+      var(--privileged-accent, #2d57f0),
+      color-mix(in srgb, var(--privileged-accent, #2d57f0) 30%, transparent)
    );
    border-radius: 6px 6px 0 0;
    transition: height 0.4s ease-out;
@@ -82,9 +82,9 @@
    top: -28px;
    left: 50%;
    transform: translateX(-50%);
-   background: var(--platform-panel);
-   color: var(--platform-heading);
-   border: 1px solid var(--platform-border);
+   background: var(--privileged-panel);
+   color: var(--privileged-heading);
+   border: 1px solid var(--privileged-border);
    padding: 2px 6px;
    border-radius: 6px;
    font-size: 0.7rem;
@@ -104,14 +104,14 @@
    position: absolute;
    bottom: -1.75rem;
    font-size: 0.75rem;
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
    font-weight: 600;
    text-transform: uppercase;
 }
 
 .card {
-   background-color: var(--platform-panel);
-   border: 1px solid var(--platform-border);
+   background-color: var(--privileged-panel);
+   border: 1px solid var(--privileged-border);
    border-radius: 18px;
 }
 

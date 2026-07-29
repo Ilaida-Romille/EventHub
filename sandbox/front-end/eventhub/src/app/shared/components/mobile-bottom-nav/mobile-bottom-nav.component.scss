@@ -12,14 +12,14 @@
    grid-template-columns: repeat(4, minmax(0, 1fr));
    gap: 0.35rem;
    padding: 0.5rem 0.7rem calc(0.5rem + env(safe-area-inset-bottom));
-   background: color-mix(in srgb, var(--platform-panel) 88%, var(--platform-bg) 12%);
-   border-top: 1px solid color-mix(in srgb, var(--platform-border) 88%, transparent);
+   background: color-mix(in srgb, var(--privileged-panel) 88%, var(--privileged-bg) 12%);
+   border-top: 1px solid color-mix(in srgb, var(--privileged-border) 88%, transparent);
    box-shadow: 0 -14px 32px rgb(5 10 20 / 20%);
 }
 
 .mobile-nav-link {
    text-decoration: none;
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
    border-radius: 0.85rem;
    border: 1px solid transparent;
    min-height: 3.05rem;
@@ -33,7 +33,7 @@
 }
 
 .mobile-nav-link.active {
-   color: var(--platform-heading);
-   border-color: color-mix(in srgb, var(--platform-accent) 70%, transparent);
-   background: color-mix(in srgb, var(--platform-panel) 58%, var(--platform-accent) 42%);
+   color: var(--privileged-heading);
+   border-color: color-mix(in srgb, var(--privileged-accent) 70%, transparent);
+   background: color-mix(in srgb, var(--privileged-panel) 58%, var(--privileged-accent) 42%);
 }

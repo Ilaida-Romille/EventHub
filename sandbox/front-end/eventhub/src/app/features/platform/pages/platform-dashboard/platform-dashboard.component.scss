@@ -1,17 +1,21 @@
 .shortcut-card {
-   background: var(--platform-panel);
-   border: 1px solid var(--platform-border);
+   background: var(--privileged-panel);
+   border: 1px solid var(--privileged-border);
    border-radius: 14px;
    font-size: 0.95rem;
-   color: var(--platform-heading);
+   color: var(--privileged-heading);
    transition:
       background-color 0.25s ease,
       border-color 0.25s ease,
       transform 0.25s ease;
 
    &:hover {
-      background-color: color-mix(in srgb, var(--platform-panel) 60%, var(--platform-accent) 40%);
-      border-color: color-mix(in srgb, var(--platform-accent) 72%, transparent);
+      background-color: color-mix(
+         in srgb,
+         var(--privileged-panel) 60%,
+         var(--privileged-accent) 40%
+      );
+      border-color: color-mix(in srgb, var(--privileged-accent) 72%, transparent);
       transform: translateY(-1px);
    }
 }

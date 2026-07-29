@@ -60,18 +60,18 @@ $input-padding-x: 14px;
    --login-input-focus-ring: color-mix(in srgb, var(--bs-primary) 20%, transparent);
    --login-panel-shadow: 0 24px 60px rgb(26 42 84 / 12%);
    --accent-color: #2dd4bf;
-   --platform-bg: #edf2ff;
-   --platform-sidebar: #dfe8fb;
-   --platform-panel: #fff;
-   --platform-panel-soft: #f5f8ff;
-   --platform-border: #b9c7e6;
-   --platform-row-alt: #eff4ff;
-   --platform-heading: #12203d;
-   --platform-muted: #5c719e;
-   --platform-accent: #2954f3;
-   --platform-accent-soft: #1f43c9;
-   --platform-ring: rgb(41 84 243 / 35%);
-   --platform-card-shadow: 0 12px 30px rgb(14 25 50 / 11%);
+   --privileged-bg: #edf2ff;
+   --privileged-sidebar: #dfe8fb;
+   --privileged-panel: #fff;
+   --privileged-panel-soft: #f5f8ff;
+   --privileged-border: #b9c7e6;
+   --privileged-row-alt: #eff4ff;
+   --privileged-heading: #12203d;
+   --privileged-muted: #5c719e;
+   --privileged-accent: #2954f3;
+   --privileged-accent-soft: #1f43c9;
+   --privileged-ring: rgb(41 84 243 / 35%);
+   --privileged-card-shadow: 0 12px 30px rgb(14 25 50 / 11%);
 }
 
 [data-bs-theme='dark'] {
@@ -86,18 +86,18 @@ $input-padding-x: 14px;
    --login-input-border: #26345f;
    --login-input-color: #fff;
    --login-input-placeholder: #8fa3cf;
-   --platform-bg: #0a1027;
-   --platform-sidebar: #0e1733;
-   --platform-panel: #121c3b;
-   --platform-panel-soft: #111a36;
-   --platform-border: #26345f;
-   --platform-row-alt: #18264b;
-   --platform-heading: #e9f0ff;
-   --platform-muted: #9db0d8;
-   --platform-accent: #3c65ff;
-   --platform-accent-soft: #75a3ff;
-   --platform-ring: rgb(60 101 255 / 35%);
-   --platform-card-shadow: 0 14px 36px rgb(2 6 17 / 34%);
+   --privileged-bg: #0a1027;
+   --privileged-sidebar: #0e1733;
+   --privileged-panel: #121c3b;
+   --privileged-panel-soft: #111a36;
+   --privileged-border: #26345f;
+   --privileged-row-alt: #18264b;
+   --privileged-heading: #e9f0ff;
+   --privileged-muted: #9db0d8;
+   --privileged-accent: #3c65ff;
+   --privileged-accent-soft: #75a3ff;
+   --privileged-ring: rgb(60 101 255 / 35%);
+   --privileged-card-shadow: 0 14px 36px rgb(2 6 17 / 34%);
 
    .form-control {
       background-color: var(--login-input-bg);
@@ -120,14 +120,14 @@ body {
    background:
       radial-gradient(
          circle at 15% 0%,
-         color-mix(in srgb, var(--platform-accent) 9%, transparent) 0%,
+         color-mix(in srgb, var(--privileged-accent) 9%, transparent) 0%,
          transparent 34%
       ),
-      var(--platform-bg);
-   color: var(--platform-heading);
+      var(--privileged-bg);
+   color: var(--privileged-heading);
 }
 
-.platform-shell {
+.privileged-shell {
    min-height: 100vh;
    display: flex;
    align-items: stretch;
@@ -135,7 +135,7 @@ body {
    position: relative;
 }
 
-.platform-sidebar {
+.privileged-sidebar {
    position: sticky;
    top: 0;
    width: 280px;
@@ -145,8 +145,8 @@ body {
    display: flex;
    flex-direction: column;
    justify-content: space-between;
-   background: var(--platform-sidebar);
-   border-right: 1px solid var(--platform-border);
+   background: var(--privileged-sidebar);
+   border-right: 1px solid var(--privileged-border);
    z-index: 30;
    transition:
       width 0.22s ease,
@@ -176,7 +176,7 @@ body {
    display: inline-flex;
    align-items: center;
    gap: 0.6rem;
-   color: var(--platform-heading);
+   color: var(--privileged-heading);
    text-decoration: none;
    font-size: 1.2rem;
    font-weight: 800;
@@ -190,35 +190,35 @@ body {
    display: inline-flex;
    align-items: center;
    justify-content: center;
-   color: var(--platform-heading);
+   color: var(--privileged-heading);
    background: linear-gradient(
       145deg,
-      color-mix(in srgb, var(--platform-accent) 40%, transparent),
-      color-mix(in srgb, var(--platform-panel) 75%, var(--platform-accent) 25%)
+      color-mix(in srgb, var(--privileged-accent) 40%, transparent),
+      color-mix(in srgb, var(--privileged-panel) 75%, var(--privileged-accent) 25%)
    );
-   border: 1px solid color-mix(in srgb, var(--platform-accent) 50%, transparent);
+   border: 1px solid color-mix(in srgb, var(--privileged-accent) 50%, transparent);
 }
 
 .sidebar-collapse-btn {
    width: 2rem;
    height: 2rem;
-   border: 1px solid var(--platform-border);
+   border: 1px solid var(--privileged-border);
    border-radius: 10px;
-   color: var(--platform-muted);
+   color: var(--privileged-muted);
    display: inline-flex;
    align-items: center;
    justify-content: center;
 
    &:hover {
-      color: var(--platform-heading);
-      border-color: color-mix(in srgb, var(--platform-accent) 65%, transparent);
-      background: color-mix(in srgb, var(--platform-panel) 70%, var(--platform-accent) 30%);
+      color: var(--privileged-heading);
+      border-color: color-mix(in srgb, var(--privileged-accent) 65%, transparent);
+      background: color-mix(in srgb, var(--privileged-panel) 70%, var(--privileged-accent) 30%);
    }
 
    &.solo {
       width: 2.2rem;
       height: 2.2rem;
-      border-color: color-mix(in srgb, var(--platform-accent) 45%, var(--platform-border));
+      border-color: color-mix(in srgb, var(--privileged-accent) 45%, var(--privileged-border));
    }
 }
 
@@ -231,7 +231,7 @@ body {
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      color: var(--platform-muted);
+      color: var(--privileged-muted);
       text-decoration: none;
       padding: 0.7rem 0.8rem;
       border-radius: 10px;
@@ -241,15 +241,15 @@ body {
    }
 
    a:hover {
-      color: var(--platform-heading);
-      background: color-mix(in srgb, var(--platform-panel) 68%, var(--platform-accent) 32%);
-      border-color: color-mix(in srgb, var(--platform-accent) 65%, transparent);
+      color: var(--privileged-heading);
+      background: color-mix(in srgb, var(--privileged-panel) 68%, var(--privileged-accent) 32%);
+      border-color: color-mix(in srgb, var(--privileged-accent) 65%, transparent);
    }
 
    a.active {
-      color: var(--platform-heading);
-      background: color-mix(in srgb, var(--platform-panel) 62%, var(--platform-accent) 38%);
-      border-color: color-mix(in srgb, var(--platform-accent) 70%, transparent);
+      color: var(--privileged-heading);
+      background: color-mix(in srgb, var(--privileged-panel) 62%, var(--privileged-accent) 38%);
+      border-color: color-mix(in srgb, var(--privileged-accent) 70%, transparent);
       box-shadow: inset 0 0 0 1px rgb(255 255 255 / 4%);
    }
 }
@@ -259,7 +259,7 @@ body {
    flex-direction: column;
    gap: 0.65rem;
    padding-top: 0.75rem;
-   border-top: 1px solid color-mix(in srgb, var(--platform-border) 80%, transparent);
+   border-top: 1px solid color-mix(in srgb, var(--privileged-border) 80%, transparent);
 }
 
 .sidebar-theme-toggle {
@@ -268,16 +268,16 @@ body {
    gap: 0.5rem;
    justify-content: flex-start;
    width: 100%;
-   border: 1px solid var(--platform-border);
-   color: var(--platform-muted);
+   border: 1px solid var(--privileged-border);
+   color: var(--privileged-muted);
    border-radius: 10px;
    padding: 0.55rem 0.7rem;
    font-weight: 600;
 
    &:hover {
-      color: var(--platform-heading);
-      border-color: color-mix(in srgb, var(--platform-accent) 65%, transparent);
-      background: color-mix(in srgb, var(--platform-panel) 68%, var(--platform-accent) 32%);
+      color: var(--privileged-heading);
+      border-color: color-mix(in srgb, var(--privileged-accent) 65%, transparent);
+      background: color-mix(in srgb, var(--privileged-panel) 68%, var(--privileged-accent) 32%);
    }
 }
 
@@ -287,8 +287,8 @@ body {
    gap: 0.55rem;
    padding: 0.55rem;
    border-radius: 12px;
-   background: color-mix(in srgb, var(--platform-panel) 78%, var(--platform-accent) 22%);
-   border: 1px solid color-mix(in srgb, var(--platform-accent) 35%, var(--platform-border));
+   background: color-mix(in srgb, var(--privileged-panel) 78%, var(--privileged-accent) 22%);
+   border: 1px solid color-mix(in srgb, var(--privileged-accent) 35%, var(--privileged-border));
 
    &.compact {
       justify-content: center;
@@ -304,8 +304,8 @@ body {
    justify-content: center;
    font-size: 0.72rem;
    font-weight: 800;
-   color: var(--platform-heading);
-   background: color-mix(in srgb, var(--platform-panel) 68%, var(--platform-accent) 32%);
+   color: var(--privileged-heading);
+   background: color-mix(in srgb, var(--privileged-panel) 68%, var(--privileged-accent) 32%);
 }
 
 .profile-meta {
@@ -315,7 +315,7 @@ body {
    line-height: 1.15;
 
    strong {
-      color: var(--platform-heading);
+      color: var(--privileged-heading);
       font-size: 0.86rem;
       white-space: nowrap;
       overflow: hidden;
@@ -323,7 +323,7 @@ body {
    }
 
    small {
-      color: var(--platform-muted);
+      color: var(--privileged-muted);
       font-weight: 600;
       font-size: 0.72rem;
    }
@@ -348,8 +348,8 @@ body {
    border-color: color-mix(in srgb, #fb7185 52%, transparent);
 }
 
-.platform-shell.sidebar-collapsed {
-   .platform-sidebar {
+.privileged-shell.sidebar-collapsed {
+   .privileged-sidebar {
       width: 82px;
       min-width: 82px;
       padding: 1rem 0.6rem;
@@ -368,7 +368,7 @@ body {
    }
 }
 
-.platform-sidebar-backdrop {
+.privileged-sidebar-backdrop {
    position: fixed;
    inset: 0;
    border: 0;
@@ -377,7 +377,7 @@ body {
    z-index: 25;
 }
 
-.platform-content-wrap {
+.privileged-content-wrap {
    flex: 1 1 auto;
    min-width: 0;
    min-height: 100vh;
@@ -387,7 +387,7 @@ body {
    overflow-x: clip;
 }
 
-.platform-topbar {
+.privileged-topbar {
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
@@ -396,107 +396,107 @@ body {
    padding: 0.3rem 0.25rem 1rem;
 }
 
-.platform-page-header {
+.privileged-page-header {
    display: flex;
    flex-direction: column;
    gap: 0.35rem;
    padding-inline: 0.25rem;
 }
 
-.platform-headline {
-   color: var(--platform-heading);
+.privileged-headline {
+   color: var(--privileged-heading);
    margin: 0;
    font-size: clamp(1.45rem, 2.4vw, 2rem);
    font-weight: 800;
 }
 
-.platform-subtitle {
-   color: var(--platform-muted);
+.privileged-subtitle {
+   color: var(--privileged-muted);
    margin: 0.35rem 0 0;
 }
 
-.platform-top-actions {
+.privileged-top-actions {
    display: flex;
    gap: 0.6rem;
 }
 
-.platform-content {
+.privileged-content {
    width: 100%;
    max-width: 100%;
    display: flex;
    flex-direction: column;
 }
 
-.platform-content.fluid {
+.privileged-content.fluid {
    max-width: 100%;
 }
 
-.platform-content.mobile-nav-spaced {
+.privileged-content.mobile-nav-spaced {
    padding-bottom: 5.4rem;
 }
 
-.platform-content .card {
-   background-color: var(--platform-panel);
-   border: 1px solid var(--platform-border);
+.privileged-content .card {
+   background-color: var(--privileged-panel);
+   border: 1px solid var(--privileged-border);
    border-radius: 18px;
-   box-shadow: var(--platform-card-shadow);
+   box-shadow: var(--privileged-card-shadow);
 }
 
-.platform-content .form-control,
-.platform-content .form-select {
-   background: var(--platform-panel-soft);
-   border-color: var(--platform-border);
-   color: var(--platform-heading);
+.privileged-content .form-control,
+.privileged-content .form-select {
+   background: var(--privileged-panel-soft);
+   border-color: var(--privileged-border);
+   color: var(--privileged-heading);
 }
 
-.platform-content .form-control::placeholder {
-   color: color-mix(in srgb, var(--platform-muted) 82%, transparent);
+.privileged-content .form-control::placeholder {
+   color: color-mix(in srgb, var(--privileged-muted) 82%, transparent);
 }
 
-.platform-content .form-control:focus,
-.platform-content .form-select:focus {
-   border-color: var(--platform-accent);
-   box-shadow: 0 0 0 0.2rem var(--platform-ring);
+.privileged-content .form-control:focus,
+.privileged-content .form-select:focus {
+   border-color: var(--privileged-accent);
+   box-shadow: 0 0 0 0.2rem var(--privileged-ring);
 }
 
-.platform-content .btn-primary {
+.privileged-content .btn-primary {
    background: linear-gradient(
       135deg,
-      var(--platform-accent) 0%,
-      color-mix(in srgb, var(--platform-accent) 78%, #4de2d4 22%) 100%
+      var(--privileged-accent) 0%,
+      color-mix(in srgb, var(--privileged-accent) 78%, #4de2d4 22%) 100%
    );
    border: 0;
 }
 
-.platform-content .btn-outline-secondary {
-   color: var(--platform-heading);
-   border-color: var(--platform-border);
+.privileged-content .btn-outline-secondary {
+   color: var(--privileged-heading);
+   border-color: var(--privileged-border);
 }
 
-.platform-content .btn-outline-secondary:hover {
-   color: var(--platform-heading);
-   background: color-mix(in srgb, var(--platform-panel) 62%, var(--platform-accent) 38%);
-   border-color: color-mix(in srgb, var(--platform-accent) 72%, transparent);
+.privileged-content .btn-outline-secondary:hover {
+   color: var(--privileged-heading);
+   background: color-mix(in srgb, var(--privileged-panel) 62%, var(--privileged-accent) 38%);
+   border-color: color-mix(in srgb, var(--privileged-accent) 72%, transparent);
 }
 
 @media (width <= 992px) {
-   .platform-content-wrap {
+   .privileged-content-wrap {
       padding: 0 0 0.95rem;
    }
 
-   .platform-topbar {
+   .privileged-topbar {
       position: static;
       margin: 0 0 0.8rem;
       padding: 0;
-      border-bottom: 1px solid color-mix(in srgb, var(--platform-border) 80%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--privileged-border) 80%, transparent);
    }
 
-   .platform-topbar .app-header {
+   .privileged-topbar .app-header {
       width: 100%;
-      border-bottom-color: color-mix(in srgb, var(--platform-border) 80%, transparent);
+      border-bottom-color: color-mix(in srgb, var(--privileged-border) 80%, transparent);
    }
 
-   .platform-content {
+   .privileged-content {
       gap: 0;
       padding-inline: 0.95rem;
    }
