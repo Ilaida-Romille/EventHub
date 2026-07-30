@@ -5,7 +5,7 @@ import { UpcomingEventsComponent } from './pages/upcoming-events/upcoming-events
 
 export const USERS_ROUTES: Routes = [
    { path: 'upcoming-events', component: UpcomingEventsComponent },
-   { path: 'event-details', component: EventDetailsComponent },
-   { path: 'event-registration', component: EventRegistrationComponent },
+   { path: 'events/:id', component: EventDetailsComponent },
+   { path: 'events/:id/register', component: EventRegistrationComponent },
    { path: '', pathMatch: 'full', redirectTo: 'upcoming-events' }
 ];
