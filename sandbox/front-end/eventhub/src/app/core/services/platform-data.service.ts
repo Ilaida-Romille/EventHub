@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Service, inject } from '@angular/core';
 import { Observable, forkJoin, map } from 'rxjs';
 import { MockApiService } from './mock-api.service';
 import { MockUser } from '../models/auth.models';
@@ -13,7 +13,7 @@ import {
    TicketTableRow
 } from '../models/platform.models';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class PlatformDataService {
    private readonly mockApi = inject(MockApiService);
 

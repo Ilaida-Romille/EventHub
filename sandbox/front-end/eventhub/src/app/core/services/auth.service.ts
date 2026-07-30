@@ -1,10 +1,10 @@
-import { Injectable, computed, signal, inject } from '@angular/core';
+import { Service, computed, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, map, throwError } from 'rxjs';
 import { AuthSession, LoginCredentials, MockUser } from '../models/auth.models';
 import { MockApiService } from './mock-api.service';
 
-@Injectable({ providedIn: 'root' })
+@Service()
 export class AuthService {
    private readonly router = inject(Router);
    private readonly mockApi = inject(MockApiService);
