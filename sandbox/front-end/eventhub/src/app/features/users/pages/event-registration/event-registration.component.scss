@@ -1,0 +1,228 @@
+:host {
+   display: block;
+}
+
+.registration-shell {
+   min-height: 100vh;
+}
+
+.registration-main {
+   width: min(1180px, 100%);
+   margin-inline: auto;
+   padding: 1.4rem 1rem 2.5rem;
+}
+
+.back-link {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.4rem;
+   color: var(--privileged-accent, #2563eb);
+   font-weight: 700;
+   text-decoration: none;
+   font-size: 0.9rem;
+
+   &:hover {
+      text-decoration: underline;
+   }
+}
+
+.registration-grid {
+   display: grid;
+   grid-template-columns: 380px 1fr;
+   gap: 1.5rem;
+   align-items: start;
+
+   @media (width <= 992px) {
+      grid-template-columns: 1fr;
+   }
+}
+
+.event-summary-stack {
+   display: flex;
+   flex-direction: column;
+   gap: 1.25rem;
+}
+
+.card {
+   border: 1px solid var(--privileged-border, #cbd5e1);
+   border-radius: 18px;
+   background: var(--privileged-panel, #fff);
+   box-shadow: var(--privileged-card-shadow, none);
+}
+
+.summary-card {
+   padding: 1.5rem;
+
+   .event-tag {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-radius: 999px;
+      padding: 0.35rem 0.8rem;
+      background: var(--privileged-accent, #2563eb);
+      color: #fff;
+      font-weight: 800;
+      line-height: 1;
+   }
+
+   .event-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--privileged-heading);
+      margin: 0.8rem 0 0.2rem;
+      line-height: 1.25;
+   }
+
+   .organizer-text {
+      font-size: 0.85rem;
+      color: var(--privileged-muted);
+      margin-bottom: 1.25rem;
+   }
+}
+
+.meta-list {
+   display: flex;
+   flex-direction: column;
+   gap: 1rem;
+
+   .meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+
+      app-lucide-icon {
+         color: var(--privileged-accent, #2563eb);
+         margin-top: 2px;
+      }
+
+      strong {
+         display: block;
+         font-size: 0.75rem;
+         text-transform: uppercase;
+         color: var(--privileged-muted);
+         letter-spacing: 0.02em;
+      }
+
+      span {
+         font-size: 0.9rem;
+         font-weight: 600;
+         color: var(--privileged-heading);
+      }
+   }
+}
+
+.capacity-box {
+   margin-top: 1.25rem;
+   padding-top: 1rem;
+   border-top: 1px dashed var(--privileged-border, #e2e8f0);
+
+   .fs-sm {
+      font-size: 0.8rem;
+      color: var(--privileged-muted);
+   }
+
+   .progress-track {
+      height: 6px;
+      background: var(--privileged-panel-soft, #f1f5f9);
+      border-radius: 999px;
+      overflow: hidden;
+   }
+
+   .progress-bar {
+      height: 100%;
+      background: var(--privileged-accent, #2563eb);
+      transition: width 0.35s ease;
+   }
+}
+
+.map-card {
+   padding: 1.25rem;
+
+   .card-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--privileged-heading);
+      margin: 0 0 0.3rem;
+   }
+
+   .location-address {
+      font-size: 0.85rem;
+      color: var(--privileged-muted);
+      margin-bottom: 0.85rem;
+   }
+
+   .map-wrapper {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--privileged-border, #cbd5e1);
+   }
+}
+
+.form-card {
+   .form-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--privileged-heading);
+   }
+
+   .form-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.03em;
+      color: var(--privileged-heading);
+   }
+}
+
+.required {
+   color: #ef4444;
+}
+
+.error-msg {
+   color: #ef4444;
+   font-size: 0.78rem;
+   margin-top: 0.25rem;
+   display: block;
+}
+
+/* State Views */
+.state-container {
+   padding: 1.5rem 0;
+
+   .state-icon-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+
+      &.success {
+         background: #dcfce7;
+         color: #16a34a;
+      }
+
+      &.warning {
+         background: #fef3c7;
+         color: #d97706;
+      }
+   }
+
+   .state-desc {
+      color: var(--privileged-muted);
+      max-width: 480px;
+      margin: 0.5rem auto 0;
+   }
+
+   .action-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+   }
+}
