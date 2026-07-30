@@ -3,7 +3,6 @@ import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 
 @Component({
    selector: 'app-pagination-controls',
-   standalone: true,
    imports: [LucideIconComponent],
    templateUrl: './pagination-controls.component.html',
    styleUrl: './pagination-controls.component.scss'

@@ -5,7 +5,6 @@ import { LucideIconComponent } from '../../../../shared/components/lucide-icon/l
 
 @Component({
    selector: 'app-organizer-dashboard',
-   standalone: true,
    imports: [RouterLink, LucideIconComponent, PrivilegedLayoutComponent],
    templateUrl: './organizer-dashboard.component.html',
    styleUrl: './organizer-dashboard.component.scss'

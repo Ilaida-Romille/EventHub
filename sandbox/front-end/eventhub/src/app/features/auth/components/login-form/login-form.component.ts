@@ -13,7 +13,6 @@ export interface LoginFormValue {
 
 @Component({
    selector: 'app-login-form',
-   standalone: true,
    imports: [ReactiveFormsModule],
    templateUrl: './login-form.component.html',
    styleUrl: './login-form.component.scss'

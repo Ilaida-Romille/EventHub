@@ -13,7 +13,6 @@ export interface DashboardShortcut {
 }
 @Component({
    selector: 'app-platform-dashboard',
-   standalone: true,
    imports: [
       RouterLink,
       PrivilegedLayoutComponent,

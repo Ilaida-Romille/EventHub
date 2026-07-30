@@ -12,7 +12,6 @@ const DEFAULT_PLATFORM_NAV_ITEMS: LayoutNavItem[] = [
 
 @Component({
    selector: 'app-mobile-bottom-nav',
-   standalone: true,
    imports: [RouterLink, RouterLinkActive, LucideIconComponent],
    templateUrl: './mobile-bottom-nav.component.html',
    styleUrl: './mobile-bottom-nav.component.scss'

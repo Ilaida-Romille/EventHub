@@ -5,7 +5,6 @@ export type ViewMode = 'grid' | 'list';
 
 @Component({
    selector: 'app-view-toggle',
-   standalone: true,
    imports: [LucideIconComponent],
    templateUrl: './view-toggle.component.html',
    styleUrl: './view-toggle.component.scss'

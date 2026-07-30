@@ -10,7 +10,6 @@ export interface InvoiceGeneratorOrganizerOption {
 
 @Component({
    selector: 'app-invoice-generator-cards',
-   standalone: true,
    imports: [LucideIconComponent],
    templateUrl: './invoice-generator-cards.component.html',
    styleUrl: './invoice-generator-cards.component.scss'

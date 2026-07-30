@@ -3,7 +3,6 @@ import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 
 @Component({
    selector: 'app-modal',
-   standalone: true,
    imports: [LucideIconComponent],
    templateUrl: './modal.component.html',
    styleUrl: './modal.component.scss'

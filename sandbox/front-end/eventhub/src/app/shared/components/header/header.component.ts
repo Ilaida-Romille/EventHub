@@ -7,7 +7,6 @@ type Theme = 'light' | 'dark';
 
 @Component({
    selector: 'app-header',
-   standalone: true,
    imports: [LucideIconComponent],
    templateUrl: './header.component.html',
    styleUrl: './header.component.scss'

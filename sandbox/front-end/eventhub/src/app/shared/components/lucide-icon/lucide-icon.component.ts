@@ -3,7 +3,6 @@ import { LucideDynamicIcon } from '@lucide/angular';
 
 @Component({
    selector: 'app-lucide-icon',
-   standalone: true,
    imports: [LucideDynamicIcon],
    templateUrl: './lucide-icon.component.html'
 })

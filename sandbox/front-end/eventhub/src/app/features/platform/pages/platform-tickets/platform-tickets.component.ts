@@ -7,7 +7,6 @@ import { LucideIconComponent } from '../../../../shared/components/lucide-icon/l
 
 @Component({
    selector: 'app-platform-tickets',
-   standalone: true,
    imports: [PrivilegedLayoutComponent, LucideIconComponent],
    templateUrl: './platform-tickets.component.html',
    styleUrl: './platform-tickets.component.scss'

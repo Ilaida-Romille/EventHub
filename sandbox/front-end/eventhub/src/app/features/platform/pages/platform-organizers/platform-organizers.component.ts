@@ -17,7 +17,6 @@ import {
 
 @Component({
    selector: 'app-platform-organizers',
-   standalone: true,
    imports: [PrivilegedLayoutComponent, SearchFilterCardComponent, DataTableComponent],
    templateUrl: './platform-organizers.component.html',
    styleUrl: './platform-organizers.component.scss'

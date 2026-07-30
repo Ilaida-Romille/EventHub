@@ -39,7 +39,6 @@ const DEFAULT_TOOLBAR_ACTIONS: DataTableToolbarAction[] = [
 
 @Component({
    selector: 'app-data-table',
-   standalone: true,
    imports: [LucideIconComponent],
    templateUrl: './data-table.component.html',
    styleUrl: './data-table.component.scss'

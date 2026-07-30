@@ -20,7 +20,6 @@ const ORGANIZER_NAV_ITEMS: LayoutNavItem[] = [
 
 @Component({
    selector: 'app-privileged-layout',
-   standalone: true,
    imports: [SidebarComponent, HeaderComponent, MobileBottomNavComponent],
    templateUrl: './privileged-layout.component.html',
    styleUrl: './privileged-layout.component.scss'

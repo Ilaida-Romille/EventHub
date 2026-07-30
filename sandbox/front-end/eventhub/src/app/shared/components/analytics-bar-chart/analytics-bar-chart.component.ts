@@ -8,7 +8,6 @@ export interface ChartBar {
 
 @Component({
    selector: 'app-analytics-bar-chart',
-   standalone: true,
    templateUrl: './analytics-bar-chart.component.html',
    styleUrl: './analytics-bar-chart.component.scss'
 })

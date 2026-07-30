@@ -13,7 +13,6 @@ type Theme = 'light' | 'dark';
 
 @Component({
    selector: 'app-login',
-   standalone: true,
    imports: [RouterLink, LoginFormComponent, LucideIconComponent],
    templateUrl: './login.component.html',
    styleUrl: './login.component.scss'

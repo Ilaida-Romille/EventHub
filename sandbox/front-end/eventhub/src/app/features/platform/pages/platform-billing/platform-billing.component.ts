@@ -31,7 +31,6 @@ interface InvoiceOrganizerOption extends InvoiceGeneratorOrganizerOption {
 
 @Component({
    selector: 'app-platform-billing',
-   standalone: true,
    imports: [
       PrivilegedLayoutComponent,
       SearchFilterCardComponent,

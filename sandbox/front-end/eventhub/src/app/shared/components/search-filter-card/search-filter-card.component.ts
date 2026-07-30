@@ -16,7 +16,6 @@ export interface FilterField {
 
 @Component({
    selector: 'app-search-filter-card',
-   standalone: true,
    templateUrl: './search-filter-card.component.html',
    styleUrl: './search-filter-card.component.scss'
 })

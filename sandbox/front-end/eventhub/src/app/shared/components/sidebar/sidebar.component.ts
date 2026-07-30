@@ -16,7 +16,6 @@ const DEFAULT_PLATFORM_NAV_ITEMS: LayoutNavItem[] = [
 
 @Component({
    selector: 'app-sidebar',
-   standalone: true,
    imports: [RouterLink, RouterLinkActive, LucideIconComponent],
    templateUrl: './sidebar.component.html',
    styleUrl: './sidebar.component.scss'
