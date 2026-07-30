@@ -60,6 +60,7 @@
    --privileged-ring: #{$ring-color-dark};
    --privileged-card-shadow: #{$card-shadow-dark};
 
+   .form-select,
    .form-control {
       background-color: var(--login-input-bg);
       border-color: var(--login-input-border);
