@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { LayoutNavItem } from '../../../core/models/layout.models';
+import { LayoutNavItem } from '../../../core/models/layout.model';
 import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 
 const DEFAULT_PLATFORM_NAV_ITEMS: LayoutNavItem[] = [

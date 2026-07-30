@@ -1,5 +1,5 @@
 import { Component, DestroyRef, computed, inject, input, signal } from '@angular/core';
-import { AppLayoutContext, LayoutNavItem } from '../../models/layout.models';
+import { AppLayoutContext, LayoutNavItem } from '../../models/layout.model';
 import { HeaderComponent } from '../../../shared/components/header/header.component';
 import { MobileBottomNavComponent } from '../../../shared/components/mobile-bottom-nav/mobile-bottom-nav.component';
 import { SidebarComponent } from '../../../shared/components/sidebar/sidebar.component';

@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PrivilegedLayoutComponent } from '../../../../core/layouts/privileged-layout/privileged-layout.component';
-import { OrganizerTableRow } from '../../../../core/models/platform.models';
+import { OrganizerTableRow } from '../../../../core/models/platform.model';
 import { PlatformDataService } from '../../../../core/services/platform-data.service';
 import { DataTableComponent } from '../../../../shared/components/data-table/data-table.component';
 import {

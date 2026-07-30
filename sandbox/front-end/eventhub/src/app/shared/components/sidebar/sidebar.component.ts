@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, computed, inject, input, signal, model } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { LayoutNavItem } from '../../../core/models/layout.models';
+import { LayoutNavItem } from '../../../core/models/layout.model';
 import { AuthService } from '../../../core/services/auth.service';
 import { LucideIconComponent } from '../lucide-icon/lucide-icon.component';
 

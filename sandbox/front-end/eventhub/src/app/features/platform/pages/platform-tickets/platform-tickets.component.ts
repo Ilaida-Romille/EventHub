@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { PrivilegedLayoutComponent } from '../../../../core/layouts/privileged-layout/privileged-layout.component';
-import { TicketTableRow } from '../../../../core/models/platform.models';
+import { TicketTableRow } from '../../../../core/models/platform.model';
 import { PlatformDataService } from '../../../../core/services/platform-data.service';
 import { LucideIconComponent } from '../../../../shared/components/lucide-icon/lucide-icon.component';
 

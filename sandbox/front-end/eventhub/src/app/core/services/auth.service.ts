@@ -1,7 +1,7 @@
 import { Service, computed, signal, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, map, throwError } from 'rxjs';
-import { AuthSession, LoginCredentials, MockUser } from '../models/auth.models';
+import { AuthSession, LoginCredentials, MockUser } from '../models/auth.model';
 import { MockApiService } from './mock-api.service';
 
 @Service()

@@ -1,7 +1,7 @@
 import { Service, inject } from '@angular/core';
 import { Observable, forkJoin, map } from 'rxjs';
 import { MockApiService } from './mock-api.service';
-import { MockUser } from '../models/auth.models';
+import { MockUser } from '../models/auth.model';
 import {
    BillingTableRow,
    DashboardAnalytics,
@@ -11,7 +11,7 @@ import {
    OrganizationRecord,
    SupportTicketRecord,
    TicketTableRow
-} from '../models/platform.models';
+} from '../models/platform.model';
 
 @Service()
 export class PlatformDataService {
