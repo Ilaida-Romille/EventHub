@@ -22,12 +22,8 @@ export class HeaderComponent {
    readonly showThemeToggle = input<boolean>(true);
    readonly showProfile = input<boolean>(true);
    readonly showProfileName = input<boolean>(true);
-   readonly showMenuButton = input<boolean>(false);
-   readonly menuExpanded = input<boolean>(false);
    readonly showBrandLogo = input<boolean>(true);
    readonly logoutRoute = input<string>('/login');
-
-   readonly menuToggle = output<void>();
 
    protected readonly theme = signal<Theme>('light');
 
@@ -43,10 +39,6 @@ export class HeaderComponent {
       this.theme.set(nextTheme);
       this.document.documentElement.setAttribute('data-bs-theme', nextTheme);
       localStorage.setItem(this.themeStorageKey, nextTheme);
-   }
-
-   protected onMenuToggle(): void {
-      this.menuToggle.emit();
    }
 
    protected onLogout(event: MouseEvent): void {

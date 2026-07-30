@@ -329,15 +329,6 @@ body {
    }
 }
 
-.privileged-sidebar-backdrop {
-   position: fixed;
-   inset: 0;
-   border: 0;
-   padding: 0;
-   background: rgb(7 12 25 / 52%);
-   z-index: 25;
-}
-
 .privileged-content-wrap {
    flex: 1 1 auto;
    min-width: 0;
@@ -357,30 +348,6 @@ body {
    padding: 0.3rem 0.25rem 1rem;
 }
 
-.privileged-page-header {
-   display: flex;
-   flex-direction: column;
-   gap: 0.35rem;
-   padding-inline: 0.25rem;
-}
-
-.privileged-headline {
-   color: var(--privileged-heading);
-   margin: 0;
-   font-size: clamp(1.45rem, 2.4vw, 2rem);
-   font-weight: 800;
-}
-
-.privileged-subtitle {
-   color: var(--privileged-muted);
-   margin: 0.35rem 0 0;
-}
-
-.privileged-top-actions {
-   display: flex;
-   gap: 0.6rem;
-}
-
 .privileged-content {
    width: 100%;
    max-width: 100%;
@@ -394,50 +361,6 @@ body {
 
 .privileged-content.mobile-nav-spaced {
    padding-bottom: 5.4rem;
-}
-
-.privileged-content .card {
-   background-color: var(--privileged-panel);
-   border: 1px solid var(--privileged-border);
-   border-radius: 18px;
-   box-shadow: var(--privileged-card-shadow);
-}
-
-.privileged-content .form-control,
-.privileged-content .form-select {
-   background: var(--privileged-panel-soft);
-   border-color: var(--privileged-border);
-   color: var(--privileged-heading);
-}
-
-.privileged-content .form-control::placeholder {
-   color: color-mix(in srgb, var(--privileged-muted) 82%, transparent);
-}
-
-.privileged-content .form-control:focus,
-.privileged-content .form-select:focus {
-   border-color: var(--privileged-accent);
-   box-shadow: 0 0 0 0.2rem var(--privileged-ring);
-}
-
-.privileged-content .btn-primary {
-   background: linear-gradient(
-      135deg,
-      var(--privileged-accent) 0%,
-      color-mix(in srgb, var(--privileged-accent) 78%, #4de2d4 22%) 100%
-   );
-   border: 0;
-}
-
-.privileged-content .btn-outline-secondary {
-   color: var(--privileged-heading);
-   border-color: var(--privileged-border);
-}
-
-.privileged-content .btn-outline-secondary:hover {
-   color: var(--privileged-heading);
-   background: color-mix(in srgb, var(--privileged-panel) 62%, var(--privileged-accent) 38%);
-   border-color: color-mix(in srgb, var(--privileged-accent) 72%, transparent);
 }
 
 @media (width <= 992px) {

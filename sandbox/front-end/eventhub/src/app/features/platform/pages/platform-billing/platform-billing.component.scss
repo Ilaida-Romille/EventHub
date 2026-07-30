@@ -2,12 +2,6 @@
    display: block;
 }
 
-.table-state-message {
-   color: var(--privileged-muted);
-   font-size: 0.85rem;
-   font-weight: 600;
-}
-
 .invoice-preview-head h6,
 .invoice-preview-table thead th {
    color: var(--privileged-muted);
@@ -18,23 +12,4 @@
 .invoice-preview-table th,
 .modal-grand-total {
    color: var(--privileged-heading);
-}
-
-.invoice-dropdown {
-   position: relative;
-}
-
-.badge-paid {
-   background-color: rgb(16 185 129 / 20%);
-   color: #10b981;
-}
-
-.badge-overdue {
-   background-color: rgb(239 68 110 / 20%);
-   color: #ef4444;
-}
-
-.badge-pending {
-   background-color: rgb(251 191 36 / 20%);
-   color: #f59e0b;
 }
