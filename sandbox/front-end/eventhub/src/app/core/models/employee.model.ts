@@ -1,5 +1,5 @@
 export interface Employee {
-   id: string;
+   id?: string;
    firstName: string;
    lastName: string;
    email: string;
@@ -10,28 +10,18 @@ export interface Employee {
    registeredEventIds: string[];
 }
 
-export interface EmployeeInput {
-   firstName: string;
-   lastName: string;
-   email: string;
-   company: string;
-   department: string;
-   jobTitle: string;
-   avatarUrl?: string;
-   registeredEventIds: string[];
-}
+export type EmployeePatchRequest = Partial<Omit<Employee, 'id'>>;
 
-export interface EmployeePatch {
+export interface EmployeeQueryParams {
    firstName?: string;
    lastName?: string;
    email?: string;
    company?: string;
    department?: string;
    jobTitle?: string;
-   avatarUrl?: string;
-   registeredEventIds?: string[];
-}
-
-export interface ErrorResponse {
-   message?: string;
+   page?: number; // Default: 0
+   size?: number; // Default: 10
+   sortBy?: 'id' | 'firstName' | 'lastName' | 'email' | 'company' | 'department' | 'jobTitle';
+   sortDir?: 'asc' | 'desc';
+   all?: boolean;
 }
