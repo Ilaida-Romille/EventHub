@@ -18,15 +18,3 @@
    font-size: clamp(1.4rem, 2.6vw, 1.9rem);
    font-weight: 800;
 }
-
-.events-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-   gap: 1rem;
-}
-
-.events-list {
-   display: flex;
-   flex-direction: column;
-   gap: 1rem;
-}

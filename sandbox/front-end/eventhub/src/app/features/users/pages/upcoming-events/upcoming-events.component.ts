@@ -1,4 +1,4 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
 import {
    FilterField,
@@ -9,9 +9,8 @@ import {
    ViewMode,
    ViewToggleComponent
 } from '../../../../shared/components/view-toggle/view-toggle.component';
-import { MOCK_EVENTS } from '../../events.mock';
-import { Event } from '../../../../core/models/event.model';
 import { EventCardComponent } from '../../../../shared/components/event-card/event-card.component';
+import { EventService } from '../../../../core/services/event.service';
 
 @Component({
    selector: 'app-upcoming-events',
@@ -25,11 +24,15 @@ import { EventCardComponent } from '../../../../shared/components/event-card/eve
    templateUrl: './upcoming-events.component.html',
    styleUrl: './upcoming-events.component.scss'
 })
-export class UpcomingEventsComponent {
+export class UpcomingEventsComponent implements OnInit {
+   private readonly eventService = inject(EventService);
+
    protected readonly activeCategory = signal<string>('Upcoming');
    protected readonly activeView = signal<ViewMode>('grid');
-   protected readonly eventsList = signal<Event[]>(MOCK_EVENTS);
    protected readonly filterQuery = signal<string>('');
+
+   protected readonly isLoading = this.eventService.loading;
+   protected readonly errorMessage = this.eventService.error;
 
    protected readonly searchFields = signal<FilterField[]>([
       {
@@ -46,8 +49,9 @@ export class UpcomingEventsComponent {
    protected readonly filteredEvents = computed(() => {
       const query = this.filterQuery().toLowerCase().trim();
       const category = this.activeCategory();
+      const events = this.eventService.events();
 
-      return this.eventsList().filter((evt) => {
+      return events.filter((evt) => {
          const matchesSearch =
             !query ||
             evt.title.toLowerCase().includes(query) ||
@@ -59,6 +63,10 @@ export class UpcomingEventsComponent {
          return matchesSearch;
       });
    });
+
+   ngOnInit(): void {
+      this.eventService.getEvents().subscribe();
+   }
 
    protected onSearchSubmitted(filters: Record<string, string>): void {
       if (filters['search'] !== undefined) {

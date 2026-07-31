@@ -22,7 +22,20 @@
         </div>
 
         <section aria-label="Event listings">
-            <div [class.events-grid]="activeView() === 'grid'" [class.events-list]="activeView() === 'list'">
+            @if (activeView() === 'grid') {
+            <div class="row g-3">
+                @for (eventItem of filteredEvents(); track eventItem.id) {
+                <div class="col-12 col-sm-6 col-lg-4 d-flex">
+                    <app-event-card class="w-100" [event]="eventItem" [view]="activeView()"></app-event-card>
+                </div>
+                } @empty {
+                <div class="col-12 empty-state">
+                    <p>No events found matching your criteria.</p>
+                </div>
+                }
+            </div>
+            } @else {
+            <div class="events-list d-flex flex-column gap-3">
                 @for (eventItem of filteredEvents(); track eventItem.id) {
                 <app-event-card [event]="eventItem" [view]="activeView()"></app-event-card>
                 } @empty {
@@ -31,6 +44,7 @@
                 </div>
                 }
             </div>
+            }
         </section>
     </main>
 </section>
