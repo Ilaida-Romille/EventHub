@@ -23,7 +23,7 @@
 
         <section aria-label="Event listings">
             @if (activeView() === 'grid') {
-            <div class="row g-3">
+            <div class="row g-3 mb-4">
                 @for (eventItem of filteredEvents(); track eventItem.id) {
                 <div class="col-12 col-sm-6 col-lg-4 d-flex">
                     <app-event-card class="w-100" [event]="eventItem" [view]="activeView()"></app-event-card>
@@ -35,7 +35,7 @@
                 }
             </div>
             } @else {
-            <div class="events-list d-flex flex-column gap-3">
+            <div class="events-list d-flex flex-column gap-3 mb-4">
                 @for (eventItem of filteredEvents(); track eventItem.id) {
                 <app-event-card [event]="eventItem" [view]="activeView()"></app-event-card>
                 } @empty {
@@ -43,6 +43,15 @@
                     <p>No events found matching your criteria.</p>
                 </div>
                 }
+            </div>
+            }
+
+            @if (totalPages() > 1) {
+            <div class="d-flex justify-content-end align-items-center mt-4">
+                <app-pagination-controls prevId="btn-prev-events" nextId="btn-next-events"
+                    indicatorId="events-page-indicator" [indicatorText]="pageIndicatorText()" align="end"
+                    (prevClick)="onPrevPage()" (nextClick)="onNextPage()">
+                </app-pagination-controls>
             </div>
             }
         </section>
