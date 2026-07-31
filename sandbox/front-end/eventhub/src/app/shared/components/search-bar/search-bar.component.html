@@ -1,0 +1,8 @@
+<div class="search-input-wrapper">
+    <input type="text" class="form-control search-input" placeholder="Search by title, location..." [value]="query()"
+        (input)="onInput($event)" (keydown.enter)="triggerSearch()" aria-label="Search events" />
+    <button type="button" class="btn search-btn" (click)="triggerSearch()" aria-label="Submit search">
+        <app-lucide-icon name="search" [size]="16"></app-lucide-icon>
+
+    </button>
+</div>

@@ -1,23 +1,22 @@
+:host {
+   display: inline-flex;
+   align-items: center;
+}
+
 .view-toggle-group {
    display: inline-flex;
    align-items: center;
-   background: color-mix(in srgb, var(--privileged-panel) 80%, var(--privileged-border) 20%);
-   border: 1px solid var(--privileged-border);
-   border-radius: 12px;
-   padding: 3px;
-
-   .divider {
-      width: 1px;
-      height: 18px;
-      background: var(--privileged-border);
-   }
+   background: transparent;
+   border: none;
+   padding: 0;
+   gap: 2px;
 }
 
 .toggle-btn {
    background: transparent;
    border: none;
-   border-radius: 9px;
-   padding: 0.45rem 0.65rem;
+   border-radius: 9999px;
+   padding: 0.4rem 0.65rem;
    color: var(--privileged-muted);
    cursor: pointer;
    display: inline-flex;
@@ -30,8 +29,8 @@
    }
 
    &.active {
-      background: var(--privileged-panel);
+      background: color-mix(in srgb, var(--privileged-panel) 85%, var(--privileged-accent) 15%);
       color: var(--privileged-heading);
-      box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+      box-shadow: 0 2px 6px rgb(0 0 0 / 15%);
    }
 }

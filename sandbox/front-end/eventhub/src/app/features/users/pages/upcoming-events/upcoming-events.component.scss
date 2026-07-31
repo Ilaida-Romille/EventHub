@@ -12,9 +12,20 @@
    padding: 1.35rem 1rem 2rem;
 }
 
-.users-title {
-   color: var(--privileged-heading);
-   margin: 0 0 1rem;
-   font-size: clamp(1.4rem, 2.6vw, 1.9rem);
-   font-weight: 800;
+.merged-toolbar-pill {
+   height: 44px;
+   background: color-mix(in srgb, var(--privileged-panel) 80%, var(--privileged-border) 20%);
+   border: 1px solid var(--privileged-border);
+   border-radius: 9999px;
+   padding: 4px 6px 4px 4px;
+   gap: 4px;
+   box-sizing: border-box;
+
+   .pill-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--privileged-border);
+      flex-shrink: 0;
+      margin-inline: 4px;
+   }
 }

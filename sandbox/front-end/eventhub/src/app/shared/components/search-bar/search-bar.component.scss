@@ -1,0 +1,50 @@
+:host {
+   display: inline-block;
+   flex: 1 1 auto;
+}
+
+.search-input-wrapper {
+   position: relative;
+   display: flex;
+   align-items: center;
+   min-width: 220px;
+}
+
+.search-input {
+   background: transparent;
+   border: none;
+   box-shadow: none !important;
+   color: var(--login-input-color);
+   padding: 0.35rem 2.2rem 0.35rem 0.75rem;
+   font-size: 0.875rem;
+   height: 34px;
+
+   &::placeholder {
+      color: var(--login-input-placeholder);
+   }
+}
+
+.search-btn {
+   position: absolute;
+   right: 0.25rem;
+   background: transparent;
+   border: none;
+   color: var(--privileged-muted);
+   padding: 0.3rem 0.5rem;
+   border-radius: 50%;
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   transition:
+      color 0.2s ease,
+      background-color 0.2s ease;
+
+   &:hover {
+      color: var(--privileged-heading);
+      background-color: color-mix(
+         in srgb,
+         var(--privileged-panel) 70%,
+         var(--privileged-accent) 30%
+      );
+   }
+}

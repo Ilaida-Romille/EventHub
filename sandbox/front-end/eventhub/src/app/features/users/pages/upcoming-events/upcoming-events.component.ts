@@ -1,9 +1,6 @@
 import { Component, computed, inject, OnInit, signal, HostListener } from '@angular/core';
 import { HeaderComponent } from '../../../../shared/components/header/header.component';
-import {
-   FilterField,
-   SearchFilterCardComponent
-} from '../../../../shared/components/search-filter-card/search-filter-card.component';
+import { SearchBarComponent } from '../../../../shared/components/search-bar/search-bar.component';
 import { CategorySwitchComponent } from '../../../../shared/components/category-switch/category-switch.component';
 import {
    ViewMode,
@@ -15,9 +12,10 @@ import { PaginationControlsComponent } from '../../../../shared/components/pagin
 
 @Component({
    selector: 'app-upcoming-events',
+   standalone: true,
    imports: [
       HeaderComponent,
-      SearchFilterCardComponent,
+      SearchBarComponent,
       CategorySwitchComponent,
       ViewToggleComponent,
       EventCardComponent,
@@ -39,18 +37,6 @@ export class UpcomingEventsComponent implements OnInit {
    protected readonly errorMessage = this.eventService.error;
    protected readonly currentPage = this.eventService.currentPage;
    protected readonly totalPages = this.eventService.totalPages;
-
-   protected readonly searchFields = signal<FilterField[]>([
-      {
-         id: 'search',
-         label: 'Search Events',
-         type: 'text',
-         placeholder: 'Search by title, location...',
-         wide: true
-      },
-      { id: 'startDate', label: 'From Date', type: 'date' },
-      { id: 'endDate', label: 'To Date', type: 'date' }
-   ]);
 
    protected readonly pageIndicatorText = computed(() => {
       const page = this.totalPages() === 0 ? 0 : this.currentPage() + 1;
@@ -84,7 +70,7 @@ export class UpcomingEventsComponent implements OnInit {
       const newSize = this.getResponsivePageSize();
       if (newSize !== this.pageSize()) {
          this.pageSize.set(newSize);
-         this.fetchEvents(0); // Reset to page 0 when layout changes
+         this.fetchEvents(0);
       }
    }
 
@@ -110,10 +96,8 @@ export class UpcomingEventsComponent implements OnInit {
       }
    }
 
-   protected onSearchSubmitted(filters: Record<string, string>): void {
-      if (filters['search'] !== undefined) {
-         this.filterQuery.set(filters['search']);
-      }
+   protected onSearchSubmitted(searchTerm: string): void {
+      this.filterQuery.set(searchTerm);
       this.fetchEvents(0);
    }
 
