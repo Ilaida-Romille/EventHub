@@ -13,7 +13,7 @@
                 <button type="button" class="btn-info-top-right" (click)="toggleFlip($event)"
                     [attr.aria-expanded]="isFlipped()" title="View event description"
                     aria-label="View event description">
-                    <app-lucide-icon name="info" [size]="20" aria-hidden="true"></app-lucide-icon>
+                    <app-lucide-icon name="info" [size]="22" aria-hidden="true"></app-lucide-icon>
                 </button>
             </div>
 
@@ -122,7 +122,7 @@
             <button type="button" class="btn-info-circle" (click)="toggleDetails($event)"
                 title="Toggle quick description" [class.active]="isExpanded()" [attr.aria-expanded]="isExpanded()"
                 aria-label="Toggle description">
-                <app-lucide-icon name="info" [size]="18" aria-hidden="true"></app-lucide-icon>
+                <app-lucide-icon name="info" [size]="24" aria-hidden="true"></app-lucide-icon>
             </button>
 
             <a [routerLink]="['/users/events', event().id]" class="btn btn-outline-secondary fw-bold px-3">View</a>
