@@ -170,6 +170,10 @@ export class DataTableComponent {
       this.rowActionTriggered.emit({ actionKey, row });
    }
 
+   protected onToolbarAction(actionKey: DataTableToolbarAction['key']): void {
+      this.toolbarActionTriggered.emit(actionKey);
+   }
+
    protected isAllRowsSelected(): boolean {
       const rows = this.rows();
       if (rows.length === 0) {
