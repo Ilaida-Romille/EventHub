@@ -1,1 +1,61 @@
-/* Reuses page indicator and page-nav-btn styles from page-level styles. */
+:host {
+   display: block;
+}
+
+.page-indicator-wrap {
+   user-select: none;
+}
+
+.page-indicator {
+   font-size: 0.875rem;
+   font-weight: 600;
+   color: var(--privileged-heading);
+   letter-spacing: 0.01em;
+   padding: 0.25rem 0.5rem;
+}
+
+.page-nav-btn {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   width: 36px;
+   height: 36px;
+   padding: 0;
+   border: 1px solid var(--privileged-border);
+   border-radius: 10px;
+   background-color: var(--privileged-panel);
+   color: var(--privileged-muted);
+   cursor: pointer;
+   transition: all 0.2s ease-in-out;
+   box-shadow: var(--privileged-card-shadow, 0 1px 2px rgb(0 0 0 / 5%));
+
+   &:hover:not(:disabled) {
+      color: var(--privileged-heading);
+      background-color: color-mix(
+         in srgb,
+         var(--privileged-panel) 68%,
+         var(--privileged-accent) 32%
+      );
+      border-color: color-mix(in srgb, var(--privileged-accent) 65%, transparent);
+      transform: translateY(-1px);
+   }
+
+   &:active:not(:disabled) {
+      transform: translateY(0);
+   }
+
+   &:focus-visible {
+      outline: 2px solid var(--privileged-accent);
+      outline-offset: 2px;
+   }
+
+   &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      border-color: color-mix(in srgb, var(--privileged-border) 80%, transparent);
+      background-color: var(--privileged-panel-soft);
+      color: var(--privileged-muted);
+      box-shadow: none;
+      transform: none;
+   }
+}

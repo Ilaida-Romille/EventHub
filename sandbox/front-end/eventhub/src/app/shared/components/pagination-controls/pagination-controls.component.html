@@ -1,11 +1,18 @@
-<div class="page-indicator-wrap d-flex align-items-center gap-3" [class.justify-content-start]="align() === 'start'"
+<nav class="page-indicator-wrap d-flex align-items-center gap-3" [class.justify-content-start]="align() === 'start'"
     [class.justify-content-center]="align() === 'center'" [class.justify-content-end]="align() === 'end'"
-    [class.mb-4]="withBottomMargin()">
-    <a href="#" [id]="prevId()" class="page-nav-btn" aria-label="Back page">
-        <app-lucide-icon name="chevron-left" [size]="16"></app-lucide-icon>
-    </a>
-    <span [id]="indicatorId()">{{ indicatorText() }}</span>
-    <a href="#" [id]="nextId()" class="page-nav-btn" aria-label="Forward page">
-        <app-lucide-icon name="chevron-right" [size]="16"></app-lucide-icon>
-    </a>
-</div>
+    [class.mb-4]="withBottomMargin()" aria-label="Pagination Navigation">
+
+    <button type="button" [id]="prevId()" class="page-nav-btn" [disabled]="isFirstPage()"
+        [attr.aria-disabled]="isFirstPage()" aria-label="Previous Page" (click)="onPrev($event)">
+        <app-lucide-icon name="chevron-left" [size]="18"></app-lucide-icon>
+    </button>
+
+    <span [id]="indicatorId()" class="page-indicator" aria-live="polite">
+        {{ indicatorText() }}
+    </span>
+
+    <button type="button" [id]="nextId()" class="page-nav-btn" [disabled]="isLastPage()"
+        [attr.aria-disabled]="isLastPage()" aria-label="Next Page" (click)="onNext($event)">
+        <app-lucide-icon name="chevron-right" [size]="18"></app-lucide-icon>
+    </button>
+</nav>
