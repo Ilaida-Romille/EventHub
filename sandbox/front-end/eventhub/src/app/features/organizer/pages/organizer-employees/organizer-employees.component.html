@@ -1,0 +1,79 @@
+<app-privileged-layout [layoutContext]="'organizer'" [profileRole]="'Organizer Admin'" [profileName]="'Jane Dela Cruz'">
+    <app-search-filter-card class="d-block mb-4" [fields]="employeeFilters" actionId="employees-search-btn"
+        actionLabel="Search" [initialValues]="activeFilters()"
+        (filtersSubmitted)="onFiltersSubmitted($event)"></app-search-filter-card>
+
+    <app-data-table tableId="organizer-employees-table" [columns]="employeeColumns" [rows]="pagedRows()"
+        [currentPage]="currentPage()" [pageSize]="pageSize()" [totalItems]="totalItems()" [sortState]="sortState()"
+        [toolbarActions]="tableActions" [rowActions]="rowActions" (sortChanged)="onSortChanged($event)"
+        (pageChanged)="onPageChanged($event)" (rowActionTriggered)="onRowAction($event)"
+        (toolbarActionTriggered)="onToolbarActionTriggered($event)">
+    </app-data-table>
+</app-privileged-layout>
+
+<app-modal [open]="isCreateModalOpen()" title="Create New Employee" (closed)="closeCreateModal()">
+    <form modal-body [formGroup]="employeeForm" (ngSubmit)="onCreateEmployeeSubmit()" id="createEmployeeForm"
+        class="row g-3">
+        <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name</label>
+            <input type="text" id="firstName" class="form-control" formControlName="firstName" placeholder="John" />
+            @if (employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid) {
+            <small class="text-danger">First name is required.</small>
+            }
+        </div>
+
+        <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name</label>
+            <input type="text" id="lastName" class="form-control" formControlName="lastName" placeholder="Doe" />
+            @if (employeeForm.get('lastName')?.touched && employeeForm.get('lastName')?.invalid) {
+            <small class="text-danger">Last name is required.</small>
+            }
+        </div>
+
+        <div class="col-md-12">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" id="email" class="form-control" formControlName="email"
+                placeholder="john.doe@example.com" />
+            @if (employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid) {
+            <small class="text-danger">A valid email is required.</small>
+            }
+        </div>
+
+        <div class="col-md-6">
+            <label for="jobTitle" class="form-label">Job Title</label>
+            <input type="text" id="jobTitle" class="form-control" formControlName="jobTitle"
+                placeholder="Software Engineer" />
+            @if (employeeForm.get('jobTitle')?.touched && employeeForm.get('jobTitle')?.invalid) {
+            <small class="text-danger">Job title is required.</small>
+            }
+        </div>
+
+        <div class="col-md-6">
+            <label for="department" class="form-label">Department</label>
+            <input type="text" id="department" class="form-control" formControlName="department"
+                placeholder="Engineering" />
+            @if (employeeForm.get('department')?.touched && employeeForm.get('department')?.invalid) {
+            <small class="text-danger">Department is required.</small>
+            }
+        </div>
+
+        <div class="col-md-12">
+            <label for="company" class="form-label">Company</label>
+            <input type="text" id="company" class="form-control" formControlName="company" placeholder="Acme Inc." />
+            @if (employeeForm.get('company')?.touched && employeeForm.get('company')?.invalid) {
+            <small class="text-danger">Company is required.</small>
+            }
+        </div>
+    </form>
+
+    <div modal-footer class="d-flex gap-2">
+        <button type="button" class="btn btn-outline-secondary" (click)="closeCreateModal()">Cancel</button>
+        <button type="submit" form="createEmployeeForm" class="btn btn-primary" [disabled]="employeeService.loading()">
+            @if (employeeService.loading()) {
+            Saving...
+            } @else {
+            Create Employee
+            }
+        </button>
+    </div>
+</app-modal>
