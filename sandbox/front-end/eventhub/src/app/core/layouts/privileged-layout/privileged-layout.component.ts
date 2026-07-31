@@ -13,9 +13,10 @@ const PLATFORM_NAV_ITEMS: LayoutNavItem[] = [
 
 const ORGANIZER_NAV_ITEMS: LayoutNavItem[] = [
    { label: 'Dashboard', route: '/organizer/dashboard', icon: 'layout-dashboard', exact: true },
-   { label: 'Employees', route: '/organizer/employees', icon: 'badge-check' },
+   { label: 'Employees', route: '/organizer/employees', icon: 'users' },
    { label: 'Events', route: '/organizer/events', icon: 'calendar-fold' },
-   { label: 'Settings', route: '/organizer/settings', icon: 'settings' }
+   { label: 'Settings', route: '/organizer/settings', icon: 'settings' },
+   { label: 'Tickets / Requests', route: '/organizer/tickets', icon: 'messages-square' }
 ];
 
 @Component({

@@ -14,7 +14,7 @@ export class OrganizerDashboardComponent {
       {
          title: 'Manage Employees',
          body: 'Add, remove, and manage the employees on your corporate account.',
-         icon: 'badge-check',
+         icon: 'users',
          actionLabel: 'Open',
          route: '/organizer/employees'
       },
@@ -35,7 +35,7 @@ export class OrganizerDashboardComponent {
       {
          title: 'File a Ticket / Request',
          body: 'Reach out securely to the EventHub platform operations team for help.',
-         icon: 'contact-round',
+         icon: 'messages-square',
          actionLabel: 'New Ticket',
          route: '/organizer/dashboard'
       }
