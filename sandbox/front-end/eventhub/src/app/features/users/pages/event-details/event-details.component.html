@@ -10,61 +10,63 @@
             </a>
         </nav>
 
-        <header class="event-header-card mb-4">
-            <div class="header-main-info">
-                <div class="d-flex align-items-center gap-2 mb-2 flex-wrap">
-                    <span class="status-badge" [attr.data-status]="event().status">{{ statusLabel() }}</span>
-                    <span class="organizer-badge">Organized by <strong>{{ event().organizerName }}</strong></span>
+        <header class="hero-card mb-4">
+            <div class="hero-top-bar">
+                <div class="host-info">
+                    <span class="status-badge" [attr.data-status]="event().status">
+                        <span class="status-dot"></span>
+                        {{ statusLabel() }}
+                    </span>
+                    <span class="organizer-tag">
+                        Organized by <strong>{{ event().organizerName }}</strong>
+                    </span>
                 </div>
 
-                <h1 class="title-text">{{ event().title }}</h1>
-
-                <div class="meta-pills-row">
-                    <div class="meta-pill">
-                        <app-lucide-icon name="calendar" [size]="15" aria-hidden="true"></app-lucide-icon>
-                        <span>{{ event().startDateTime | date:'fullDate' }}</span>
-                    </div>
-
-                    <div class="meta-pill">
-                        <app-lucide-icon name="clock" [size]="15" aria-hidden="true"></app-lucide-icon>
-                        <span>{{ event().startDateTime | date:'shortTime' }} - {{ event().endDateTime | date:'shortTime'
-                            }}</span>
-                    </div>
-
-                    <div class="meta-pill">
-                        <app-lucide-icon name="map-pin" [size]="15" aria-hidden="true"></app-lucide-icon>
-                        <span>{{ event().venue }}</span>
+                <div class="attendees-top-block">
+                    <span class="block-label">Who's Attending</span>
+                    <div class="avatar-stack">
+                        @for (attendee of attendees(); track attendee.id) {
+                        <img [src]="attendee.avatar" [alt]="attendee.name" class="avatar-img" [title]="attendee.name" />
+                        }
+                        @if (event().capacity.registered > attendees().length) {
+                        <div class="avatar-img avatar-overflow">
+                            +{{ event().capacity.registered - attendees().length }}
+                        </div>
+                        }
                     </div>
                 </div>
             </div>
 
-            <div class="header-action-stack">
-                @if (isRegistrationOpen()) {
-                <a [routerLink]="['/users/events', event().id, 'register']"
-                    class="btn btn-primary btn-lg fw-bold w-100">
-                    Register Now
-                </a>
-                } @else {
-                <button disabled class="btn btn-disabled btn-lg fw-bold w-100" type="button">
-                    Registration Unavailable
-                </button>
-                }
+            <h1 class="hero-title">{{ event().title }}</h1>
+
+            <div class="hero-about-block">
+                <h2 class="section-subheading">
+                    <app-lucide-icon name="file-text" [size]="18" aria-hidden="true"></app-lucide-icon>
+                    <span>About This Event</span>
+                </h2>
+                <p class="hero-description">{{ event().description }}</p>
+            </div>
+
+            <div class="hero-divider"></div>
+
+            <div class="capacity-block">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="block-label">Capacity & Availability</span>
+                    <span class="capacity-count"><strong>{{ event().capacity.registered }}</strong> of {{
+                        event().capacity.maximum }} seats filled</span>
+                </div>
+                <div class="progress-track" role="progressbar" [attr.aria-valuenow]="capacityPercent()"
+                    aria-valuemin="0" aria-valuemax="100">
+                    <div class="progress-bar" [style.width.%]="capacityPercent()"></div>
+                </div>
             </div>
         </header>
 
         <div class="details-grid">
             <div class="main-stack">
-                <section class="card section-card" aria-labelledby="about-heading">
-                    <h2 id="about-heading" class="section-title">
-                        <app-lucide-icon name="file-text" [size]="20" aria-hidden="true"></app-lucide-icon>
-                        <span>About This Event</span>
-                    </h2>
-                    <p class="description-text">{{ event().description }}</p>
-                </section>
-
                 <section class="card section-card" aria-labelledby="agenda-heading">
                     <h2 id="agenda-heading" class="section-title">
-                        <app-lucide-icon name="list-checks" [size]="20" aria-hidden="true"></app-lucide-icon>
+                        <app-lucide-icon name="list-checks" [size]="22" aria-hidden="true"></app-lucide-icon>
                         <span>Event Schedule & Agenda</span>
                     </h2>
 
@@ -74,7 +76,7 @@
                             <div class="time-slot">
                                 <time [attr.datetime]="item.startDateTime">{{ item.startDateTime | date:'shortTime'
                                     }}</time>
-                                <span class="time-separator">-</span>
+                                <span> – </span>
                                 <time [attr.datetime]="item.endDateTime">{{ item.endDateTime | date:'shortTime'
                                     }}</time>
                             </div>
@@ -86,9 +88,11 @@
                                     <span class="break-tag">Break</span>
                                     }
                                 </div>
+
                                 @if (item.description) {
                                 <p class="agenda-desc">{{ item.description }}</p>
                                 }
+
                                 <div class="item-meta">
                                     @if (item.speaker) {
                                     <span><app-lucide-icon name="user" [size]="14" aria-hidden="true"></app-lucide-icon>
@@ -102,7 +106,7 @@
                             </div>
                         </article>
                         } @empty {
-                        <div class="empty-agenda text-muted p-3 text-center">
+                        <div class="empty-agenda text-muted p-4 text-center">
                             <p class="m-0">No published schedule items found for this event.</p>
                         </div>
                         }
@@ -111,32 +115,22 @@
             </div>
 
             <aside class="side-stack">
-                <section class="card side-card" aria-labelledby="capacity-heading">
-                    <h3 id="capacity-heading" class="side-title">Capacity & Availability</h3>
-                    <div class="capacity-stat d-flex justify-content-between align-items-baseline mb-2">
-                        <span class="fs-4 fw-extrabold text-heading">{{ event().capacity.registered }}</span>
-                        <span class="text-muted small">of {{ event().capacity.maximum }} seats filled</span>
-                    </div>
-                    <div class="progress-track" role="progressbar" [attr.aria-valuenow]="capacityPercent()"
-                        aria-valuemin="0" aria-valuemax="100">
-                        <div class="progress-bar" [style.width.%]="capacityPercent()"></div>
-                    </div>
-                </section>
-
                 <section class="card side-card" aria-labelledby="venue-heading">
-                    <h3 id="venue-heading" class="side-title">Venue Location</h3>
+                    <h2 id="venue-heading" class="side-title">
+                        <app-lucide-icon name="map-pin" [size]="22" aria-hidden="true"></app-lucide-icon>
+                        <span>Venue Location</span>
+                    </h2>
                     <p class="venue-address mb-3">{{ event().venue }}</p>
                     <div class="map-container">
                         <iframe [src]="sanitizedMapUrl()" width="100%" height="220" style="border:0;" allowfullscreen=""
-                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                            title="Google Maps venue view"></iframe>
+                            loading="lazy" title="Google Maps venue view"></iframe>
                     </div>
                 </section>
 
-                <section class="card side-card text-center">
-                    <h3 class="side-title justify-content-center">Need Assistance?</h3>
-                    <p class="text-muted small mb-3">Have questions regarding registration or special requirements?</p>
-                    <button class="btn btn-outline-secondary w-100 fw-bold" type="button">Contact Organizer</button>
+                <section class="card assistance-card">
+                    <h2 class="side-title">Need Assistance?</h2>
+                    <p class="assistance-text">Have questions regarding registration or special requirements?</p>
+                    <button class="contact-btn" type="button">Contact Organizer</button>
                 </section>
             </aside>
         </div>

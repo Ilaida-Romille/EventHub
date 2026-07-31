@@ -7,6 +7,13 @@ import { LucideIconComponent } from '../../../../shared/components/lucide-icon/l
 import { MOCK_EVENTS } from '../../events.mock';
 import { Event } from '../../../../core/models/event.model';
 
+export interface Attendee {
+   id: string;
+   name: string;
+   avatar: string;
+   role?: string;
+}
+
 @Component({
    selector: 'app-event-details',
    standalone: true,
@@ -19,12 +26,43 @@ export class EventDetailsComponent {
 
    public readonly event = signal<Event>(MOCK_EVENTS[0]);
 
-   protected readonly isRegistrationOpen = computed(() => {
-      return (
-         this.event().status === 'registration_open' &&
-         this.event().capacity.registered < this.event().capacity.maximum
-      );
-   });
+   protected readonly attendees = signal<Attendee[]>([
+      {
+         id: '1',
+         name: 'Alex Rivera',
+         role: 'Lead Architect',
+         avatar:
+            'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80'
+      },
+      {
+         id: '2',
+         name: 'Sarah Chen',
+         role: 'Senior AI Engineer',
+         avatar:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80'
+      },
+      {
+         id: '3',
+         name: 'Marcus Vance',
+         role: 'Staff Developer',
+         avatar:
+            'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80'
+      },
+      {
+         id: '4',
+         name: 'Elena Rostova',
+         role: 'Principal Researcher',
+         avatar:
+            'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80'
+      },
+      {
+         id: '5',
+         name: 'David Kim',
+         role: 'Product Manager',
+         avatar:
+            'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80'
+      }
+   ]);
 
    protected readonly sanitizedMapUrl = computed<SafeResourceUrl>(() => {
       const venue = encodeURIComponent(this.event().venue);
@@ -48,8 +86,6 @@ export class EventDetailsComponent {
             return 'Live Now';
          case 'completed':
             return 'Completed';
-         case 'cancelled':
-            return 'Cancelled';
          default:
             return 'Upcoming';
       }
