@@ -15,25 +15,29 @@ export class OrganizerDashboardComponent {
          title: 'Manage Employees',
          body: 'Add, remove, and manage the employees on your corporate account.',
          icon: 'badge-check',
-         actionLabel: 'Open'
+         actionLabel: 'Open',
+         route: '/organizer/employees'
       },
       {
          title: 'Manage Events',
          body: "Create, edit, and configure your company's premium events.",
          icon: 'calendar-fold',
-         actionLabel: 'Open'
+         actionLabel: 'Open',
+         route: '/organizer/events'
       },
       {
          title: 'Settings',
          body: 'Update your corporate company profile and account global preferences.',
          icon: 'settings',
-         actionLabel: 'Open'
+         actionLabel: 'Open',
+         route: '/organizer/dashboard'
       },
       {
          title: 'File a Ticket / Request',
          body: 'Reach out securely to the EventHub platform operations team for help.',
          icon: 'contact-round',
-         actionLabel: 'New Ticket'
+         actionLabel: 'New Ticket',
+         route: '/organizer/dashboard'
       }
    ];
 }

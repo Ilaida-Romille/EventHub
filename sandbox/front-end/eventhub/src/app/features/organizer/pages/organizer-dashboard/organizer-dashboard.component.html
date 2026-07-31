@@ -16,8 +16,7 @@
                         <h2>{{ card.title }}</h2>
                         <p>{{ card.body }}</p>
                     </div>
-                    <a routerLink="/organizer/dashboard" class="btn btn-primary card-action-trigger">{{ card.actionLabel
-                        }}</a>
+                    <a [routerLink]="card.route" class="btn btn-primary card-action-trigger">{{ card.actionLabel }}</a>
                 </article>
             </div>
             }
