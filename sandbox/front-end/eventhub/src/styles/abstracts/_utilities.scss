@@ -1,0 +1,27 @@
+.text-primary-color {
+    color: var(--color-primary);
+}
+
+.bg-primary-color {
+    background: var(--color-primary);
+}
+
+.bg-surface {
+    background: #15181D;
+}
+
+.rounded-lg {
+    border-radius: 1rem;
+}
+
+.shadow-soft {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .3);
+}
+
+/* Global SCSS */
+.placeholder-light {
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+        opacity: 1;
+    }
+}

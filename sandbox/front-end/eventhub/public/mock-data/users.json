@@ -1,0 +1,61 @@
+[
+   {
+      "id": "USR-PLT-001",
+      "email": "ops@eventhub.com",
+      "password": "EventHub#2026",
+      "firstName": "John",
+      "lastName": "Dela Cruz",
+      "role": "platform_admin",
+      "organizationId": null,
+      "avatarUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&auto=format&fit=crop&q=80"
+   },
+   {
+      "id": "USR-ORG-001",
+      "email": "admin@company.com",
+      "password": "Organizer#2026",
+      "firstName": "Jane",
+      "lastName": "Dela Cruz",
+      "role": "organizer_admin",
+      "organizationId": "ORG-001",
+      "avatarUrl": "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80"
+   },
+   {
+      "id": "USR-ORG-002",
+      "email": "owner@northwind.com",
+      "password": "Organizer#2026",
+      "firstName": "Angelica",
+      "lastName": "Ramos",
+      "role": "organizer_admin",
+      "organizationId": "ORG-002",
+      "avatarUrl": "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=100&auto=format&fit=crop&q=80"
+   },
+   {
+      "id": "USR-EMP-001",
+      "email": "juan@company.com",
+      "password": "attendee#2026",
+      "firstName": "Juan",
+      "lastName": "Dela Cruz",
+      "role": "attendee",
+      "organizationId": "ORG-001",
+      "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80"
+   },
+   {
+      "id": "USR-EMP-002",
+      "email": "maria@company.com",
+      "password": "attendee#2026",
+      "firstName": "Maria",
+      "lastName": "Santos",
+      "role": "attendee",
+      "organizationId": "ORG-006",
+      "avatarUrl": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80"
+   },
+   {
+      "id": "USR-EMP-003",
+      "email": "suspended@company.com",
+      "password": "attendee#2026",
+      "firstName": "Suspended",
+      "lastName": "User",
+      "role": "attendee",
+      "organizationId": "ORG-003"
+   }
+]

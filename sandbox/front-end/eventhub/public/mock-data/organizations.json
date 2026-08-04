@@ -1,0 +1,72 @@
+[
+   {
+      "id": "ORG-001",
+      "name": "Acme Events Co.",
+      "status": "active",
+      "ownerUserId": "USR-ORG-001",
+      "createdAt": "2026-01-03T09:00:00Z"
+   },
+   {
+      "id": "ORG-002",
+      "name": "Northwind Corp.",
+      "status": "active",
+      "ownerUserId": "USR-ORG-002",
+      "createdAt": "2026-01-05T10:15:00Z"
+   },
+   {
+      "id": "ORG-003",
+      "name": "Globex Holdings",
+      "status": "suspended",
+      "ownerUserId": "USR-ORG-002",
+      "createdAt": "2026-01-09T08:10:00Z"
+   },
+   {
+      "id": "ORG-004",
+      "name": "Initech PH",
+      "status": "active",
+      "ownerUserId": "USR-ORG-001",
+      "createdAt": "2026-01-12T11:05:00Z"
+   },
+   {
+      "id": "ORG-005",
+      "name": "Umbrella Group",
+      "status": "pending",
+      "ownerUserId": "USR-ORG-001",
+      "createdAt": "2026-02-01T13:20:00Z"
+   },
+   {
+      "id": "ORG-006",
+      "name": "Wayne Enterprises",
+      "status": "active",
+      "ownerUserId": "USR-ORG-001",
+      "createdAt": "2026-01-19T07:30:00Z"
+   },
+   {
+      "id": "ORG-007",
+      "name": "Stark Experiences",
+      "status": "active",
+      "ownerUserId": "USR-ORG-001",
+      "createdAt": "2026-01-21T09:50:00Z"
+   },
+   {
+      "id": "ORG-008",
+      "name": "Wonka Live Labs",
+      "status": "pending",
+      "ownerUserId": "USR-ORG-001",
+      "createdAt": "2026-02-10T12:30:00Z"
+   },
+   {
+      "id": "ORG-009",
+      "name": "Hooli Events",
+      "status": "suspended",
+      "ownerUserId": "USR-ORG-001",
+      "createdAt": "2026-02-22T04:00:00Z"
+   },
+   {
+      "id": "ORG-010",
+      "name": "Aperture Gatherings",
+      "status": "active",
+      "ownerUserId": "USR-ORG-001",
+      "createdAt": "2026-03-05T06:40:00Z"
+   }
+]

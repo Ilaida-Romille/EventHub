@@ -1,0 +1,28 @@
+<div class="organizer-shell">
+	<aside class="organizer-sidebar">
+		<div class="organizer-brand">
+			<span class="brand-mark">EH</span>
+			<div>
+				<p class="brand-eyebrow">Temporary nav</p>
+				<h1>Organizer</h1>
+			</div>
+		</div>
+
+		<nav class="organizer-nav" aria-label="Organizer navigation">
+			@for (item of navigationItems; track item.path) {
+				<a
+					[routerLink]="item.path"
+					routerLinkActive="is-active"
+					[routerLinkActiveOptions]="{ exact: item.path === 'dashboard' }"
+					class="nav-link"
+				>
+					{{ item.label }}
+				</a>
+			}
+		</nav>
+	</aside>
+
+	<main class="organizer-content">
+		<router-outlet />
+	</main>
+</div>

@@ -1,0 +1,110 @@
+[
+   {
+      "id": "TCK-1042",
+      "organizationId": "ORG-001",
+      "subject": "Payment mismatch in April payout",
+      "status": "open",
+      "priority": "high",
+      "assignedUserId": "USR-PLT-001",
+      "createdAt": "2026-07-18T08:00:00Z"
+   },
+   {
+      "id": "TCK-1031",
+      "organizationId": "ORG-002",
+      "subject": "Invoice discrepancy",
+      "status": "in_progress",
+      "priority": "medium",
+      "assignedUserId": "USR-PLT-001",
+      "createdAt": "2026-07-14T06:20:00Z"
+   },
+   {
+      "id": "TCK-1020",
+      "organizationId": "ORG-003",
+      "subject": "Reactivate account",
+      "status": "resolved",
+      "priority": "low",
+      "assignedUserId": "USR-PLT-001",
+      "createdAt": "2026-07-07T11:00:00Z"
+   },
+   {
+      "id": "TCK-1019",
+      "organizationId": "ORG-004",
+      "subject": "SSL Certificate renewal failed",
+      "status": "open",
+      "priority": "high",
+      "assignedUserId": "USR-PLT-002",
+      "createdAt": "2026-07-06T14:15:00Z"
+   },
+   {
+      "id": "TCK-1018",
+      "organizationId": "ORG-005",
+      "subject": "Custom domain setup guidance",
+      "status": "in_progress",
+      "priority": "low",
+      "assignedUserId": "USR-PLT-002",
+      "createdAt": "2026-07-05T09:30:00Z"
+   },
+   {
+      "id": "TCK-1017",
+      "organizationId": "ORG-006",
+      "subject": "Bulk export CSV timing out",
+      "status": "open",
+      "priority": "medium",
+      "assignedUserId": "USR-PLT-001",
+      "createdAt": "2026-07-04T16:45:00Z"
+   },
+   {
+      "id": "TCK-1016",
+      "organizationId": "ORG-007",
+      "subject": "API webhook notification failure",
+      "status": "in_progress",
+      "priority": "high",
+      "assignedUserId": "USR-PLT-003",
+      "createdAt": "2026-07-03T11:20:00Z"
+   },
+   {
+      "id": "TCK-1015",
+      "organizationId": "ORG-008",
+      "subject": "Billing seat count adjustment",
+      "status": "resolved",
+      "priority": "low",
+      "assignedUserId": "USR-PLT-001",
+      "createdAt": "2026-07-02T10:00:00Z"
+   },
+   {
+      "id": "TCK-1014",
+      "organizationId": "ORG-009",
+      "subject": "SSO Login error with Okta",
+      "status": "open",
+      "priority": "high",
+      "assignedUserId": "USR-PLT-002",
+      "createdAt": "2026-07-01T08:10:00Z"
+   },
+   {
+      "id": "TCK-1013",
+      "organizationId": "ORG-010",
+      "subject": "Unable to upload event banner",
+      "status": "in_progress",
+      "priority": "medium",
+      "assignedUserId": "USR-PLT-003",
+      "createdAt": "2026-06-30T15:00:00Z"
+   },
+   {
+      "id": "TCK-1012",
+      "organizationId": "ORG-011",
+      "subject": "Permissions issue on team dashboard",
+      "status": "open",
+      "priority": "medium",
+      "assignedUserId": "USR-PLT-001",
+      "createdAt": "2026-06-29T12:30:00Z"
+   },
+   {
+      "id": "TCK-1011",
+      "organizationId": "ORG-012",
+      "subject": "Refund request for duplicate charge",
+      "status": "resolved",
+      "priority": "high",
+      "assignedUserId": "USR-PLT-002",
+      "createdAt": "2026-06-28T09:00:00Z"
+   }
+]

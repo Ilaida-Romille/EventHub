@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+/* Bootstrap */
+@use "bootstrap/scss/bootstrap";
+@use "bootstrap-icons/font/bootstrap-icons.css";
+
+/* Design Tokens */
+@use "styles/abstracts/colors";
+@use "styles/abstracts/variables";
+@use "styles/abstracts/typography";
+@use "styles/abstracts/animations";
+@use "styles/abstracts/utilities";
+
+/* Base */
+@use "styles/base/fonts";
+@use "styles/base/global";
+
+/* Bootstrap Overrides */
+@use "styles/bootstrap/bootstrap-overrides";
+
+/* Target auto-filled input state */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    /* Retain your dark background color using an inner box shadow */
+    -webkit-box-shadow: 0 0 0 1000px var(--color-accent) inset;
+
+    /* Retain your desired text color */
+    -webkit-text-fill-color: #ffffff;
+
+    /* Keep your custom border transition smooth */
+    transition: background-color 5000s ease-in-out 0s;
+}

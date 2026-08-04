@@ -1,0 +1,69 @@
+.login-form {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 1.25rem;
+
+}
+
+.options {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.options a {
+
+    color: var(--color-primary);
+
+    font-size: .9rem;
+
+}
+
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    input {
+        width: 100%;
+        /* Add extra right padding so typed text doesn't overlap the eye icon */
+        padding-right: 2.5rem;
+    }
+
+    .toggle-password {
+        position: absolute;
+        right: 0.75rem;
+        background: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        cursor: pointer;
+        color: var(--color-gray-400, #6c757d);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+            color: var(--color-white, #fff);
+        }
+
+        i {
+            font-size: 1.2rem;
+        }
+    }
+}
+
+.login-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+}
